@@ -4193,4 +4193,10 @@ Widgets
 .choose-input-list .input-select-list > ul.list-ul a i {
     color: #6ea6e7; }
 
-/*
+/**/
+.imgDisplayBox{
+    width: 60px;
+    height: 60px;
+    border: 1px solid #dedede;
+    margin: 0 auto;
+}

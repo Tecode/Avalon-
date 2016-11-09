@@ -1,0 +1,112 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="98">
+            <item index="0" class="java.lang.String" itemvalue="ms-controller" />
+            <item index="1" class="java.lang.String" itemvalue="ms-important" />
+            <item index="2" class="java.lang.String" itemvalue="ms-include" />
+            <item index="3" class="java.lang.String" itemvalue="ms-text" />
+            <item index="4" class="java.lang.String" itemvalue="ms-for" />
+            <item index="5" class="java.lang.String" itemvalue="ms-duplex-boolean" />
+            <item index="6" class="java.lang.String" itemvalue="ms-html" />
+            <item index="7" class="java.lang.String" itemvalue="ms-value" />
+            <item index="8" class="java.lang.String" itemvalue="ms-data-duplex-observe" />
+            <item index="9" class="java.lang.String" itemvalue="ms-duplex-text" />
+            <item index="10" class="java.lang.String" itemvalue="ms-skip" />
+            <item index="11" class="java.lang.String" itemvalue="ms-class" />
+            <item index="12" class="java.lang.String" itemvalue="ms-scan" />
+            <item index="13" class="java.lang.String" itemvalue="ms-hover" />
+            <item index="14" class="java.lang.String" itemvalue="ms-active" />
+            <item index="15" class="java.lang.String" itemvalue="ms-on" />
+            <item index="16" class="java.lang.String" itemvalue="ms-visible" />
+            <item index="17" class="java.lang.String" itemvalue="ms-if" />
+            <item index="18" class="java.lang.String" itemvalue="ms-if-loop" />
+            <item index="19" class="java.lang.String" itemvalue="ms-duplex" />
+            <item index="20" class="java.lang.String" itemvalue="ms-css" />
+            <item index="21" class="java.lang.String" itemvalue="ms-data" />
+            <item index="22" class="java.lang.String" itemvalue="ms-checked" />
+            <item index="23" class="java.lang.String" itemvalue="ms-selected" />
+            <item index="24" class="java.lang.String" itemvalue="ms-readonly" />
+            <item index="25" class="java.lang.String" itemvalue="ms-disabled" />
+            <item index="26" class="java.lang.String" itemvalue="ms-enabled" />
+            <item index="27" class="java.lang.String" itemvalue="ms-title" />
+            <item index="28" class="java.lang.String" itemvalue="ms-src" />
+            <item index="29" class="java.lang.String" itemvalue="ms-href" />
+            <item index="30" class="java.lang.String" itemvalue="ms-attr" />
+            <item index="31" class="java.lang.String" itemvalue="ms-repeat" />
+            <item index="32" class="java.lang.String" itemvalue="ms-each" />
+            <item index="33" class="java.lang.String" itemvalue="ms-with" />
+            <item index="34" class="java.lang.String" itemvalue="ms-widget" />
+            <item index="35" class="java.lang.String" itemvalue="ms-click" />
+            <item index="36" class="java.lang.String" itemvalue="ms-dblclick" />
+            <item index="37" class="java.lang.String" itemvalue="ms-mousedown" />
+            <item index="38" class="java.lang.String" itemvalue="ms-mouseup" />
+            <item index="39" class="java.lang.String" itemvalue="ms-mouseover" />
+            <item index="40" class="java.lang.String" itemvalue="ms-mousemove" />
+            <item index="41" class="java.lang.String" itemvalue="ms-mouseout" />
+            <item index="42" class="java.lang.String" itemvalue="ms-keypress" />
+            <item index="43" class="java.lang.String" itemvalue="ms-keydown" />
+            <item index="44" class="java.lang.String" itemvalue="ms-keyup" />
+            <item index="45" class="java.lang.String" itemvalue="ms-mouseenter" />
+            <item index="46" class="java.lang.String" itemvalue="ms-mouseleave" />
+            <item index="47" class="java.lang.String" itemvalue="ms-blur" />
+            <item index="48" class="java.lang.String" itemvalue="ms-focus" />
+            <item index="49" class="java.lang.String" itemvalue="ms-change" />
+            <item index="50" class="java.lang.String" itemvalue="ms-hover" />
+            <item index="51" class="java.lang.String" itemvalue="ms-css-${1:pname}" />
+            <item index="52" class="java.lang.String" itemvalue="ms-attr-${1:pname}" />
+            <item index="53" class="java.lang.String" itemvalue="ms-repeat-${1:data}item" />
+            <item index="54" class="java.lang.String" itemvalue="ms-each-${1:data}item" />
+            <item index="55" class="java.lang.String" itemvalue="ms-on-${1:event}" />
+            <item index="56" class="java.lang.String" itemvalue="accordion" />
+            <item index="57" class="java.lang.String" itemvalue="at" />
+            <item index="58" class="java.lang.String" itemvalue="browser" />
+            <item index="59" class="java.lang.String" itemvalue="checkboxlist" />
+            <item index="60" class="java.lang.String" itemvalue="colorpicker" />
+            <item index="61" class="java.lang.String" itemvalue="cookie" />
+            <item index="62" class="java.lang.String" itemvalue="coupledatepicker" />
+            <item index="63" class="java.lang.String" itemvalue="datepicker" />
+            <item index="64" class="java.lang.String" itemvalue="daterangepicker" />
+            <item index="65" class="java.lang.String" itemvalue="dialog" />
+            <item index="66" class="java.lang.String" itemvalue="doublelist" />
+            <item index="67" class="java.lang.String" itemvalue="draggable=" />
+            <item index="68" class="java.lang.String" itemvalue="dropdown" />
+            <item index="69" class="java.lang.String" itemvalue="flipswitch" />
+            <item index="70" class="java.lang.String" itemvalue="live" />
+            <item index="71" class="java.lang.String" itemvalue="miniswitch" />
+            <item index="72" class="java.lang.String" itemvalue="notice" />
+            <item index="73" class="java.lang.String" itemvalue="pager" />
+            <item index="74" class="java.lang.String" itemvalue="position" />
+            <item index="75" class="java.lang.String" itemvalue="preview" />
+            <item index="76" class="java.lang.String" itemvalue="progressbar" />
+            <item index="77" class="java.lang.String" itemvalue="promise" />
+            <item index="78" class="java.lang.String" itemvalue="resizable=" />
+            <item index="79" class="java.lang.String" itemvalue="scrollbar" />
+            <item index="80" class="java.lang.String" itemvalue="scrollspy=" />
+            <item index="81" class="java.lang.String" itemvalue="simplegrid" />
+            <item index="82" class="java.lang.String" itemvalue="slider" />
+            <item index="83" class="java.lang.String" itemvalue="spinner" />
+            <item index="84" class="java.lang.String" itemvalue="store" />
+            <item index="85" class="java.lang.String" itemvalue="switchdropdown" />
+            <item index="86" class="java.lang.String" itemvalue="tab" />
+            <item index="87" class="java.lang.String" itemvalue="textbox" />
+            <item index="88" class="java.lang.String" itemvalue="tooltip" />
+            <item index="89" class="java.lang.String" itemvalue="data-include-rendered" />
+            <item index="90" class="java.lang.String" itemvalue="data-include-loaded" />
+            <item index="91" class="java.lang.String" itemvalue="data-with-sorted" />
+            <item index="92" class="java.lang.String" itemvalue="data-duplex-changed" />
+            <item index="93" class="java.lang.String" itemvalue="data-duplex-event" />
+            <item index="94" class="java.lang.String" itemvalue="data-event" />
+            <item index="95" class="java.lang.String" itemvalue="data-repeat-rendered" />
+            <item index="96" class="java.lang.String" itemvalue="data-each-rendered" />
+            <item index="97" class="java.lang.String" itemvalue="data-with-rendered" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+  </profile>
+</component>

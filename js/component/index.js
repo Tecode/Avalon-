@@ -70,6 +70,14 @@ require(['avalon','bootstrap','bootstrap_toggle', 'bootstrap_select', 'sammy', '
             this.load('page/goodsmanage.html')
                 .swap();
         });
+        this.get('#/goodsorder', function () {//商品订单
+            this.load('page/goodsorder.html')
+                .swap();
+        });
+        this.get('#/offlinepay', function () {//线下支付
+            this.load('page/offlinepay.html')
+                .swap();
+        });
     });
 
 // start the application
