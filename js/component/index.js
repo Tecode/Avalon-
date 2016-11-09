@@ -66,6 +66,10 @@ require(['avalon','bootstrap','bootstrap_toggle', 'bootstrap_select', 'sammy', '
             this.load('page/paycount.html')
                 .swap();
         });
+        this.get('#/goodsmanage', function () {//商品管理
+            this.load('page/goodsmanage.html')
+                .swap();
+        });
     });
 
 // start the application
