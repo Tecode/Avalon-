@@ -1,0 +1,107 @@
+
+<div class="page-header">
+    <h1 class="title">会员卡记录</h1>
+    <ol class="breadcrumb">
+        <li><a href="javascript:;">会员卡记录</a></li>
+        <li class="active">礼品兑换记录</li>
+    </ol>
+
+    <!-- Start Page Header Right Div -->
+    <div class="right">
+        <div class="btn-group" role="group" aria-label="...">
+            <a href="javascript:;" class="btn btn-light"><i class="fa fa-refresh"></i></a>
+            <a href="#" class="btn btn-light"><i class="fa fa-search"></i></a>
+        </div>
+    </div>
+    <!-- End Page Header Right Div -->
+
+</div>
+
+<div class="row">
+    <div class="col-md-12 table-searchBox">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                礼品兑换记录
+            </div>
+            <div class="panel-body">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label for="example1" class="form-label">礼品名称</label>
+                        <input type="text" class="form-control" id="giftName" placeholder="礼品名称">
+                    </div>
+                    <div class="controls form-group">
+                        <label for="example1" class="form-label">兑换时间</label>
+                        <div class="input-prepend input-group">
+                            <span class="add-on input-group-addon"><i class="fa fa-calendar"></i></span>
+                            <input type="text" id="date-picker" class="form-control active" value="03/18/2015">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="example1" class="form-label">核销码</label>
+                        <input type="text" class="form-control" id="hxcode" placeholder="核销码">
+                    </div>
+                    <button type="submit" class="btn btn-default submitbutton">查询订单</button>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <table class="table table-bordered table-striped" ms-controller="showList">
+            <thead>
+            <tr class="table-header">
+                <td>礼品图片</td>
+                <td>礼品名称</td>
+                <td>兑换时间</td>
+                <td>兑换人姓名</td>
+                <td>兑换数量</td>
+                <td>核销码</td>
+                <td>消耗积分</td>
+                <td>操作</td>
+                <td>详情</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ms-for="el in @listData" ms-data-value="el">
+                <td>
+                    <div class="imgDisplayBox">
+                        <img src="../img/example-logo.png" height="auto" width="100%">
+                    </div>
+                </td>
+                <td>{{el.username}}</td>
+                <td>{{el.out_trade_no}}</td>
+                <td>{{el.total_fee}}</td>
+                <td>{{el.time_start}}</td>
+                <td><span ms-if="el.paystate == 0">未支付</span><span ms-if="el.paystate == 1">收款成功</span></td>
+                <td>{{el.body}}</td>
+                <td>{{el.goods_tag}}</td>
+                <td><a ms-if="el.paystate == 0">查看</a><a ms-if="el.paystate == 1">退款</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--分页插件-->
+    <div class="am-container text-center ms-controller" ms-controller="test">
+        <p>共 {{@totalItems}} 条记录</p>
+        <ul class="pagination pagination-md">
+            <li><a href="javascript:;" ms-click="@changePage(1)">首页</a></li>
+            <li ms-class="{'am-disabled' : @curPage == 1}"><a href="javascript:;" ms-click="@changePage(@curPage-1)">«</a></li>
+            <li ms-for="el in @pageItems" ms-class="{'active' : @curPage == el}" ms-click="@changePage(el)"><a href="javascript:;">{{el}}</a></li>
+            <li ms-class="{'am-disabled' : @curPage == @totalPages}"><a href="javascript:;" ms-click="@changePage(@curPage+1)">»</a></li>
+            <li><a href="javascript:;" ms-click="@changePage(@totalPages)">尾页</a></li>
+        </ul>
+    </div>
+
+</div>
+
+<script>
+    require(['paycount'],function (paycount) {
+        var url = {
+            getpaycountList:'json/payCountList.json'
+        };
+        paycount.init_start(url);
+    })
+</script>

@@ -78,6 +78,30 @@ require(['avalon','bootstrap','bootstrap_toggle', 'bootstrap_select', 'sammy', '
             this.load('page/offlinepay.html')
                 .swap();
         });
+        this.get('#/rechargerecord', function () {//充值记录
+            this.load('page/rechargerecord.html')
+                .swap();
+        });
+        this.get('#/consumerecord', function () {//消费记录
+            this.load('page/consumerecord.html')
+                .swap();
+        });
+        this.get('#/exchangerecord', function () {//礼品兑换记录
+            this.load('page/exchangerecord.html')
+                .swap();
+        });
+        this.get('#/usecardquery', function () {//优惠券记录查询
+            this.load('page/usecardquery.html')
+                .swap();
+        });
+        this.get('#/pointsrecord', function () {//活动记录
+            this.load('page/pointsrecord.html')
+                .swap();
+        });
+        this.get('#/membershipcard', function () {//会员查询
+            this.load('page/membershipcard.html')
+                .swap();
+        });
     });
 
 // start the application

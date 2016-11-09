@@ -1,0 +1,108 @@
+
+<div class="page-header">
+    <h1 class="title">会员卡记录</h1>
+    <ol class="breadcrumb">
+        <li><a href="javascript:;">会员卡记录</a></li>
+        <li class="active">活动记录</li>
+    </ol>
+
+    <!-- Start Page Header Right Div -->
+    <div class="right">
+        <div class="btn-group" role="group" aria-label="...">
+            <a href="javascript:;" class="btn btn-light"><i class="fa fa-refresh"></i></a>
+            <a href="#" class="btn btn-light"><i class="fa fa-search"></i></a>
+        </div>
+    </div>
+    <!-- End Page Header Right Div -->
+
+</div>
+
+<div class="row">
+    <div class="col-md-12 table-searchBox">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                活动记录
+            </div>
+            <div class="panel-body">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label for="example1" class="form-label">用户名</label>
+                        <input type="text" class="form-control" id="userName" placeholder="用户名">
+                    </div>
+                    <div class="controls form-group">
+                        <label for="example1" class="form-label">类型</label>
+                        <select class="selectpicker" style="display: none;">
+                            <optgroup label="Marketplace">
+                                <option>Themeforest</option>
+                                <option>Codecanyon</option>
+                                <option>Photodune</option>
+                                <option>Graphicriver</option>
+                                <option>Activeden</option>
+                            </optgroup>
+                            <optgroup label="Community">
+                                <option>Forums</option>
+                                <option>Blog</option>
+                                <option>Meetups</option>
+                            </optgroup>
+                        </select><div class="btn-group bootstrap-select"><button type="button" class="btn dropdown-toggle selectpicker btn-light" data-toggle="dropdown" title="Themeforest" aria-expanded="false"><span class="filter-option pull-left">Themeforest</span>&nbsp;<span class="caret"></span></button><div class="dropdown-menu open" style="max-height: 137px; overflow: hidden; min-height: 122px;"><ul class="dropdown-menu inner selectpicker" role="menu" style="max-height: 125px; overflow-y: auto; min-height: 110px;"><li class="dropdown-header" data-original-index="null"><span class="text">Marketplace</span></li><li data-original-index="0" class="selected"><a tabindex="0" class="opt " data-optgroup="1" data-normalized-text="&lt;span class=&quot;text&quot;&gt;Themeforest&lt;/span&gt;"><span class="text">Themeforest</span><span class="fa fa-check check-mark"></span></a></li><li data-original-index="1"><a tabindex="0" class="opt " data-optgroup="1" data-normalized-text="&lt;span class=&quot;text&quot;&gt;Codecanyon&lt;/span&gt;"><span class="text">Codecanyon</span><span class="fa fa-check check-mark"></span></a></li><li data-original-index="2"><a tabindex="0" class="opt " data-optgroup="1" data-normalized-text="&lt;span class=&quot;text&quot;&gt;Photodune&lt;/span&gt;"><span class="text">Photodune</span><span class="fa fa-check check-mark"></span></a></li><li data-original-index="3"><a tabindex="0" class="opt " data-optgroup="1" data-normalized-text="&lt;span class=&quot;text&quot;&gt;Graphicriver&lt;/span&gt;"><span class="text">Graphicriver</span><span class="fa fa-check check-mark"></span></a></li><li data-original-index="4"><a tabindex="0" class="opt " data-optgroup="1" data-normalized-text="&lt;span class=&quot;text&quot;&gt;Activeden&lt;/span&gt;"><span class="text">Activeden</span><span class="fa fa-check check-mark"></span></a></li><li class="divider" data-original-index="null"></li><li class="dropdown-header" data-original-index="null"><span class="text">Community</span></li><li data-original-index="5"><a tabindex="0" class="opt " data-optgroup="2" data-normalized-text="&lt;span class=&quot;text&quot;&gt;Forums&lt;/span&gt;"><span class="text">Forums</span><span class="fa fa-check check-mark"></span></a></li><li data-original-index="6"><a tabindex="0" class="opt " data-optgroup="2" data-normalized-text="&lt;span class=&quot;text&quot;&gt;Blog&lt;/span&gt;"><span class="text">Blog</span><span class="fa fa-check check-mark"></span></a></li><li data-original-index="7"><a tabindex="0" class="opt " data-optgroup="2" data-normalized-text="&lt;span class=&quot;text&quot;&gt;Meetups&lt;/span&gt;"><span class="text">Meetups</span><span class="fa fa-check check-mark"></span></a></li></ul></div></div>
+                    </div>
+                    <div class="controls form-group">
+                        <label for="example1" class="form-label">活动时间</label>
+                        <div class="input-prepend input-group">
+                            <span class="add-on input-group-addon"><i class="fa fa-calendar"></i></span>
+                            <input type="text" id="date-range-picker" class="form-control active" value="03/18/2015 - 03/23/2015">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-default submitbutton">查询订单</button>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <table class="table table-bordered table-striped" ms-controller="showList">
+            <thead>
+            <tr class="table-header">
+                <td>用户名</td>
+                <td>类型</td>
+                <td>时间</td>
+                <td>获得积分</td>
+                <td>备注</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ms-for="el in @listData" ms-data-value="el">
+                <td>{{el.storename}}</td>
+                <td>{{el.username}}</td>
+                <td>{{el.out_trade_no}}</td>
+                <td>{{el.total_fee}}</td>
+                <td>{{el.time_start}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--分页插件-->
+    <div class="am-container text-center ms-controller" ms-controller="test">
+        <p>共 {{@totalItems}} 条记录</p>
+        <ul class="pagination pagination-md">
+            <li><a href="javascript:;" ms-click="@changePage(1)">首页</a></li>
+            <li ms-class="{'am-disabled' : @curPage == 1}"><a href="javascript:;" ms-click="@changePage(@curPage-1)">«</a></li>
+            <li ms-for="el in @pageItems" ms-class="{'active' : @curPage == el}" ms-click="@changePage(el)"><a href="javascript:;">{{el}}</a></li>
+            <li ms-class="{'am-disabled' : @curPage == @totalPages}"><a href="javascript:;" ms-click="@changePage(@curPage+1)">»</a></li>
+            <li><a href="javascript:;" ms-click="@changePage(@totalPages)">尾页</a></li>
+        </ul>
+    </div>
+
+</div>
+
+<script>
+    require(['paycount'],function (paycount) {
+        var url = {
+            getpaycountList:'json/payCountList.json'
+        };
+        paycount.init_start(url);
+    })
+</script>
