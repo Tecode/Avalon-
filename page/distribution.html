@@ -1,0 +1,95 @@
+
+<div class="page-header">
+    <h1 class="title">配送方式设置</h1>
+    <ol class="breadcrumb">
+        <li><a href="javascript:;">微商城</a></li>
+        <li class="active">配送方式设置</li>
+    </ol>
+    <div class="right">
+        可以查询 <span class="label label-danger">商品属性</span>或 <span class="label label-danger">商品名称</span>。
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12 table-searchBox">
+        <div class="panel panel-default" style="padding-bottom: 0">
+            <div class="panel-title">
+                配送方式查询修改
+            </div>
+            <div class="panel-body">
+                <div class="col-lg-3 col-md-4 padding-0">
+                    <ul class="mailbox-inbox" style="border-right-width: 0">
+                        <li class="search" style="border-bottom-width: 0">
+                            <form>
+                                <input type="text" class="mailbox-search" id="mailboxsearch" placeholder="搜索键或回车进行搜索">
+                                <span class="searchbutton"><i class="fa fa-search"></i></span>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                <div class="chat col-lg-9 col-md-8 padding-0" style="border-left-width: 0">
+                    <div class="title" style="border-bottom-width: 0">
+                        <div class="mailbox-menu" style="border-bottom-width: 0;border-top-width: 0;margin-top: 5px">
+                            <ul class="menu">
+                                <li><a href="#"><i class="fa fa-inbox"></i> Inbox</a></li>
+                                <li><a href="#"><i class="fa fa-flag-o"></i> Important</a></li>
+                                <li><a href="#"><i class="fa fa-paper-plane-o"></i> Sent</a></li>
+                                <li><a href="#"><i class="fa fa-trash"></i> Trash</a></li>
+                            </ul>
+
+                        </div>
+                        <!--<div class="btn-group" role="group" aria-label="...">-->
+                        <!--<button type="button" class="btn btn-icon btn-sm btn-light"><i class="fa fa-share"></i></button>-->
+                        <!--<button type="button" class="btn btn-icon btn-sm btn-light"><i class="fa fa-star-o"></i></button>-->
+                        <!--<button type="button" class="btn btn-icon btn-sm btn-light"><i class="fa fa-trash"></i></button>-->
+                        <!--</div>-->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <table class="table table-bordered table-striped" ms-controller="showList">
+            <thead>
+            <tr class="table-header">
+                <td>卡券名称</td>
+                <td>用户名</td>
+                <td>使用类型</td>
+                <td>条件</td>
+                <td>数量</td>
+                <td>领取时间</td>
+                <td>使用时间</td>
+                <td>使用状态</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ms-for="el in @listData" ms-data-value="el">
+                <td>{{el.storename}}</td>
+                <td>{{el.username}}</td>
+                <td>{{el.out_trade_no}}</td>
+                <td>{{el.total_fee}}</td>
+                <td>{{el.time_start}}</td>
+                <td><span ms-if="el.paystate == 0">未支付</span><span ms-if="el.paystate == 1">收款成功</span></td>
+                <td>{{el.body}}</td>
+                <td>{{el.goods_tag}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--分页插件-->
+    <div class="am-container text-center ms-controller" ms-controller="test">
+        <p>共 {{@totalItems}} 条记录</p>
+        <ul class="pagination pagination-md">
+            <li><a href="javascript:;" ms-click="@changePage(1)">首页</a></li>
+            <li ms-class="{'am-disabled' : @curPage == 1}"><a href="javascript:;" ms-click="@changePage(@curPage-1)">«</a></li>
+            <li ms-for="el in @pageItems" ms-class="{'active' : @curPage == el}" ms-click="@changePage(el)"><a href="javascript:;">{{el}}</a></li>
+            <li ms-class="{'am-disabled' : @curPage == @totalPages}"><a href="javascript:;" ms-click="@changePage(@curPage+1)">»</a></li>
+            <li><a href="javascript:;" ms-click="@changePage(@totalPages)">尾页</a></li>
+        </ul>
+    </div>
+</div>

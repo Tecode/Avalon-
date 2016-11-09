@@ -1302,7 +1302,7 @@ Mailbox
   color: #76747A;
   font-size: 13px;
   padding: 16px 0;
-  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  /*border-right: 1px solid rgba(0, 0, 0, 0.08);*/
 }
 .mailbox-menu .menu li .fa {
   font-size: 16px;

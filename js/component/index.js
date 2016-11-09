@@ -102,6 +102,27 @@ require(['avalon','bootstrap','bootstrap_toggle', 'bootstrap_select', 'sammy', '
             this.load('page/membershipcard.html')
                 .swap();
         });
+        this.get('#/album', function () {//首页相册
+            this.load('page/album.html')
+                .swap();
+        });
+        this.get('#/distribution', function () {//配送方式配置
+            this.load('page/distribution.html')
+                .swap();
+        });
+        this.get('#/arrangement', function () {//商城支付配置
+            this.load('page/arrangement.html')
+                .swap();
+        });
+        this.get('#/fication', function () {//商城分类管理
+            this.load('page/fication.html')
+                .swap();
+        });
+        this.get('#/attribute', function () {//商品类型和属性
+            this.load('page/attribute.html')
+                .swap();
+        });
+
     });
 
 // start the application
