@@ -1,0 +1,222 @@
+<!-- Start Page Header -->
+<div class="page-header">
+    <h1 class="title">商户数据统计</h1>
+    <ol class="breadcrumb">
+        <li class="active">显示统计当日数据和总数据</li>
+    </ol>
+    <div class="right">
+        <div class="btn-group" role="group" aria-label="...">
+            <a href="#/main" class="btn btn-light">数据统计</a>
+            <a href="#" class="btn btn-light"><i class="fa fa-refresh"></i></a>
+            <a href="#" class="btn btn-light"><i class="fa fa-search"></i></a>
+            <a href="javascript:;" class="btn btn-light" id="topstats"><i class="fa fa-line-chart"></i></a>
+        </div>
+    </div>
+</div>
+<div class="container-widget">
+    <div class="col-md-12">
+        <ul class="topstats clearfix">
+            <li class="arrow"></li>
+            <li class="col-xs-6 col-lg-4">
+                <span class="title"><i class="fa fa-dot-circle-o"></i>今日收款</span>
+                <h3><i class="fa fa-rmb"></i>&nbsp;95454.45</h3>
+                <span class="diff"><i class="fa fa-caret-right"></i>&nbsp;&nbsp;当日收款数据统计汇总</span>
+            </li>
+            <li class="col-xs-6 col-lg-4">
+                <span class="title"><i class="fa fa-shopping-cart"></i>当月收款</span>
+                <h3 class="color-up"><i class="fa fa-rmb"></i>&nbsp;36999999.45</h3>
+                <span class="diff color-up"><i class="fa fa-caret-right"></i>&nbsp;&nbsp;当月收款数据统计汇总</span>
+            </li>
+            <li class="col-xs-12 col-lg-4">
+                <span class="title"><i class="fa fa-clock-o"></i>总收款</span>
+                <h3 class="color-down"><i class="fa fa-rmb"></i>&nbsp;360000000000.45</h3>
+                <span class="diff color-down"><i class="fa fa-caret-right"></i>&nbsp;&nbsp;统计到目前为止总收款金额</span>
+            </li>
+        </ul>
+    </div>
+    <!--微信收款统计-->
+    <div class="row">
+
+        <!-- Start Chart Daily -->
+        <div class="col-md-12 col-lg-7">
+            <div class=" panel-widget widget chart-with-stats clearfix" style="height:450px;">
+
+                <div class="col-sm-12" style="height:450px;">
+                    <h4 class="title">当月微信支付收款统计<small>最近更新: 1 小时以前</small></h4>
+                    <div class="top-label"><h2>128.14</h2><h4>今日总计</h4></div>
+                    <div class="bigchart" id="todaysales"></div>
+                </div>
+                <div class="right" style="height:450px;">
+                    <h4 class="title">概要信息</h4>
+                    <!-- start stats -->
+                    <ul class="widget-inline-list clearfix">
+                        <li class="col-12"><span>962</span>门店总数<i class="chart sparkline-green"></i></li>
+                        <li class="col-12"><span>367</span>Codecanyon<i class="chart sparkline-blue"></i></li>
+                        <li class="col-12"><span>92</span>Photodune<i class="chart sparkline-red"></i></li>
+                    </ul>
+                    <!-- end stats -->
+                </div>
+
+
+            </div>
+        </div>
+        <!-- End Chart Daily -->
+
+
+        <!-- Start Files -->
+        <div class="col-md-12 col-lg-5">
+            <div class="panel panel-widget" style="height:450px;">
+                <div class="panel-title">
+                    门店总收款排行前7名&nbsp;<span class="label label-danger">共29</span>
+                    <ul class="panel-tools">
+                        <li><a class="icon"><i class="fa fa-refresh"></i></a></li>
+                    </ul>
+                </div>
+                <div class="panel-body table-responsive">
+
+                    <table class="table table-dic table-hover ">
+                        <tbody>
+                        <tr>
+                            <td><i class="fa fa-bullhorn"></i><strong>No.1</strong></td>
+                            <td>重庆鱼油开发有限公司</td>
+                            <td class="text-r"><i class="fa fa-rmb"></i>&nbsp;2511.36</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-file-archive-o"></i>Backup</td>
+                            <td>Zip</td>
+                            <td class="text-r">27/2/2015 12:34 AM</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-file-code-o"></i>Kode Theme</td>
+                            <td>Html</td>
+                            <td class="text-r">27/2/2015 12:34 AM</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-file-pdf-o"></i>Documents</td>
+                            <td>Pdf</td>
+                            <td class="text-r">27/2/2015 12:34 AM</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-folder-o"></i>Themes</td>
+                            <td>Folder</td>
+                            <td class="text-r">27/2/2015 12:34 AM</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-folder-o"></i>Uploaded Files</td>
+                            <td>Folder</td>
+                            <td class="text-r">27/2/2015 12:34 AM</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-folder-o"></i>Personal Files</td>
+                            <td>Folder</td>
+                            <td class="text-r">27/2/2015 12:34 AM</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <!-- End Files -->
+
+    </div>
+    <!-- End First Row -->
+    <!--微信收款统计-->
+    <div class="row">
+
+        <!-- Start Chart Daily -->
+        <div class="col-md-12 col-lg-7">
+            <div class=" panel-widget widget chart-with-stats clearfix" style="height:450px;">
+
+                <div class="col-sm-12" style="height:450px;">
+                    <h4 class="title">当月商城收款统计<small>最近更新: 1 小时以前</small></h4>
+                    <div class="top-label"><h2>128.14</h2><h4>今日总计</h4></div>
+                    <div class="bigchart" id="shoppingall"></div>
+                </div>
+                <div class="right" style="height:450px;">
+                    <h4 class="title">PAGE VIEW</h4>
+                    <!-- start stats -->
+                    <ul class="widget-inline-list clearfix">
+                        <li class="col-12"><span>962</span>Themeforest<i class="chart sparkline-green"></i></li>
+                        <li class="col-12"><span>367</span>Codecanyon<i class="chart sparkline-blue"></i></li>
+                        <li class="col-12"><span>92</span>Photodune<i class="chart sparkline-red"></i></li>
+                    </ul>
+                    <!-- end stats -->
+                </div>
+
+
+            </div>
+        </div>
+        <!-- End Chart Daily -->
+
+
+        <!-- Start Files -->
+        <div class="col-md-12 col-lg-5">
+            <div class="panel panel-widget" style="height:450px;">
+                <div class="panel-title">
+                    门店今日收款排行前7名&nbsp;<span class="label label-danger">共29</span>
+                    <ul class="panel-tools">
+                        <li><a class="icon"><i class="fa fa-refresh"></i></a></li>
+                    </ul>
+                </div>
+                <div class="panel-body table-responsive">
+
+                    <table class="table table-dic table-hover ">
+                        <tbody>
+                        <tr>
+                            <td><i class="fa fa-bullhorn"></i><strong>No.1</strong></td>
+                            <td>重庆鱼油开发有限公司</td>
+                            <td class="text-r"><i class="fa fa-rmb"></i>&nbsp;2511.36</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-file-archive-o"></i>Backup</td>
+                            <td>Zip</td>
+                            <td class="text-r">27/2/2015 12:34 AM</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-file-code-o"></i>Kode Theme</td>
+                            <td>Html</td>
+                            <td class="text-r">27/2/2015 12:34 AM</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-file-pdf-o"></i>Documents</td>
+                            <td>Pdf</td>
+                            <td class="text-r">27/2/2015 12:34 AM</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-folder-o"></i>Themes</td>
+                            <td>Folder</td>
+                            <td class="text-r">27/2/2015 12:34 AM</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-folder-o"></i>Uploaded Files</td>
+                            <td>Folder</td>
+                            <td class="text-r">27/2/2015 12:34 AM</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-folder-o"></i>Personal Files</td>
+                            <td>Folder</td>
+                            <td class="text-r">27/2/2015 12:34 AM</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <!-- End Files -->
+
+    </div>
+    <!-- End First Row -->
+
+
+
+
+
+</div>
+<script>
+    requirejs(['main'], function( main ) {
+        //define返回一个对象在当前页面调用该方法执行操作
+        main.init_start();
+    });
+</script>
