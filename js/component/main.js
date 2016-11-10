@@ -2,74 +2,56 @@
  * Created by ASSOON on 2016/11/6.
  */
 define(['bootstrap','avalon','d3','rickshaw','featurepack'], function(bootstrap,avalon,d3,rickshaw,featurepack) {
-    var overallSituation,showChart,listInfo,url;
+    var overallSituation,listInfo,url;
 //代码从这里开始执行
     var initStart = function (l) {
         url = l;
         cloudMail.avalonStart();
         featurepack.pack.toggleTops();
-        cloudMail.drawImg();
         //获取数据
         cloudMail.getAjax.getResponse();
         //获取支付数据
         cloudMail.getAjax.getPayResponse();
         //获取商城数据
-        cloudMail.getAjax.getMallResponse()
+        cloudMail.getAjax.getMallResponse();
+        //绘制
+
     };
     var Fn = function () {
-        this.drawImg = function () {
+        this.drawImg = function (id,chartData,tips) {
+            var d = [];
+            for(var a=0;a<chartData.length;a++){
+                d.push({x:null,y:null});
+                d[a].x = parseFloat(chartData[a].day);
+                d[a].y = parseFloat(chartData[a].money);
+            }
             var seriesData = [ [], [], []];
             var random = new Rickshaw.Fixtures.RandomData(1);
-            for (var i = 0; i < 30; i++) {
+            for (var i = 0; i < chartData.length; i++) {
                 random.addData(seriesData);
             }
+            var tip = tips?'今日微信支付收入':'今日商城收入';
             // 实例支付
-            var paygraph = new Rickshaw.Graph( {
-                element: document.getElementById("payChart"),
+            var graph = new Rickshaw.Graph( {
+                element: document.getElementById(id),
                 renderer: 'bar',
                 series: [
                     {
                         color: "#77BBFF",
                         //支付收入图标
-                        data: [ { x: 0, y: 23}, { x: 1, y: 15 }, { x: 2, y: 78 }, { x: 3, y: 19 } ],
-                        name: '今日微信支付收入'
-                    }
-                ],
-                min:0
-            } );
-            //实例化商城
-            var mallgraph = new Rickshaw.Graph( {
-                element: document.getElementById("mallChart"),
-                renderer: 'bar',
-                series: [
-                    {
-                        color: "#77BBFF",
-                        data: seriesData[0],
-                        name: '今日商城收入'
+                        data:d,
+                        name: tip
                     }
                 ]
             } );
-            console.log(seriesData[1]);
-            mallgraph.render();
-
-            paygraph.render();
+            graph.render();
             //鼠标移动到上面弹出提示
             var hoverDetail = new Rickshaw.Graph.HoverDetail( {
-                graph: paygraph,
+                graph: graph,
                 formatter: function(series, x, y) {
-                    var date = '<span class="date">' +x+ '</span>';
+                    var date = '<span class="date">' +new Date().getFullYear()+'年'+(new Date().getMonth()+1)+'月'+x+'日'+ '</span>';
                     var swatch = '<span class="detail_swatch" style="background-color: ' + series.color + '"></span>';
-                    var content = swatch + series.name + ": " + y + '<br>' + date;
-                    return content;
-                }
-            } );
-
-            var hoverDetai = new Rickshaw.Graph.HoverDetail( {
-                graph: mallgraph,
-                formatter: function(series, x, y) {
-                    var date = '<span class="date">' + new Date(x * 1000).toUTCString() + '</span>';
-                    var swatch = '<span class="detail_swatch" style="background-color: ' + series.color + '"></span>';
-                    var content = swatch + series.name + ": " + parseInt(y) + '<br>' + date;
+                    var content = swatch + series.name + ": " + y +'元' + '<br>' + date;
                     return content;
                 }
             } );
@@ -86,9 +68,6 @@ define(['bootstrap','avalon','d3','rickshaw','featurepack'], function(bootstrap,
                 $id:"listInfo",
                     payRnking:[],
                     mallRanking:[]
-            });
-            showChart = avalon.define({
-                $id:"showChart"
             });
 
             avalon.scan(document.body);
@@ -111,10 +90,12 @@ define(['bootstrap','avalon','d3','rickshaw','featurepack'], function(bootstrap,
             getPayResponse:function () {
                 featurepack.pack.ajax(url.reportNow,"get",null,function (result) {
                     if(result.code == 0){
-                        overallSituation.payChart = result.data;
+                        // showChart.payChart = result.data.nowmonthday;
                         overallSituation.payNowday = result.data.nowday;
                         overallSituation.payNowcount = result.data.nowcount;
                         overallSituation.payNowmonth = result.data.nowmonth;
+                        //绘制商城数据图像
+                        cloudMail.drawImg("payChart",result.data.nowmonthday,true);
                     }else {
                         alert("Error")
                     }
@@ -124,7 +105,9 @@ define(['bootstrap','avalon','d3','rickshaw','featurepack'], function(bootstrap,
             getMallResponse:function () {
                 featurepack.pack.ajax(url.mallReport,"get",null,function (result) {
                     if(result.code == 0){
-                        showChart.mallChar = result.data
+                        // showChart.mallChar = result.data.nowmonthday;
+                        //绘制商城数据图像
+                        cloudMail.drawImg("mallChart",result.data.nowmonthday,false);
                     }else {
                         alert("Error")
                     }

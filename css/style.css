@@ -3223,7 +3223,7 @@ div[data-role="editor-toolbar"] {
 }
 /* Panel widget */
 .panel-widget {
-  overflow: hidden;
+  /*overflow: hidden;*/
   border: none;
 }
 /* Panel Default */
@@ -3691,7 +3691,7 @@ table td {
 Widgets
 ================================================================================= */
 .widget {
-  overflow: hidden;
+  /*overflow: hidden;*/
   margin-bottom: 10px;
   background: #fff;
   border-radius: 3px;
