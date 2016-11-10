@@ -18,7 +18,7 @@ define(['bootstrap','avalon','d3','rickshaw','featurepack'], function(bootstrap,
     };
     var Fn = function () {
         this.drawImg = function () {
-            var seriesData = [ [], []];
+            var seriesData = [ [], [], []];
             var random = new Rickshaw.Fixtures.RandomData(1);
             for (var i = 0; i < 30; i++) {
                 random.addData(seriesData);
@@ -30,7 +30,8 @@ define(['bootstrap','avalon','d3','rickshaw','featurepack'], function(bootstrap,
                 series: [
                     {
                         color: "#77BBFF",
-                        data: seriesData[0],
+                        //支付收入图标
+                        data: [ { x: 0, y: 23}, { x: 1, y: 15 }, { x: 2, y: 78 }, { x: 3, y: 19 } ],
                         name: '今日微信支付收入'
                     }
                 ],
