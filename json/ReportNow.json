@@ -1,0 +1,166 @@
+
+{
+  "code": 0,
+  "msg": "获取成功",
+  "data": {
+    "nowmonthday": [
+      {
+        "day": "1",
+        "money": "0.03",
+        "moneytime": null
+      },
+      {
+        "day": "2",
+        "money": "0.06",
+        "moneytime": null
+      },
+      {
+        "day": "3",
+        "money": "0.02",
+        "moneytime": null
+      },
+      {
+        "day": "4",
+        "money": "0.01",
+        "moneytime": null
+      },
+      {
+        "day": "5",
+        "money": "0",
+        "moneytime": null
+      },
+      {
+        "day": "6",
+        "money": "0",
+        "moneytime": null
+      },
+      {
+        "day": "7",
+        "money": "0",
+        "moneytime": null
+      },
+      {
+        "day": "8",
+        "money": "0",
+        "moneytime": null
+      },
+      {
+        "day": "9",
+        "money": "0",
+        "moneytime": null
+      },
+      {
+        "day": "10",
+        "money": "0.02",
+        "moneytime": null
+      },
+      {
+        "day": "11",
+        "money": "0",
+        "moneytime": null
+      },
+      {
+        "day": "12",
+        "money": "0",
+        "moneytime": null
+      },
+      {
+        "day": "13",
+        "money": "0",
+        "moneytime": null
+      },
+      {
+        "day": "14",
+        "money": "0",
+        "moneytime": null
+      },
+      {
+        "day": "15",
+        "money": "0",
+        "moneytime": null
+      },
+      {
+        "day": "16",
+        "money": "0",
+        "moneytime": null
+      },
+      {
+        "day": "17",
+        "money": "0",
+        "moneytime": null
+      },
+      {
+        "day": "18",
+        "money": "0",
+        "moneytime": null
+      },
+      {
+        "day": "19",
+        "money": "0",
+        "moneytime": null
+      },
+      {
+        "day": "20",
+        "money": "0",
+        "moneytime": null
+      },
+      {
+        "day": "21",
+        "money": "0",
+        "moneytime": null
+      },
+      {
+        "day": "22",
+        "money": "0",
+        "moneytime": null
+      },
+      {
+        "day": "23",
+        "money": "0",
+        "moneytime": null
+      },
+      {
+        "day": "24",
+        "money": "0",
+        "moneytime": null
+      },
+      {
+        "day": "25",
+        "money": "0",
+        "moneytime": null
+      },
+      {
+        "day": "26",
+        "money": "0",
+        "moneytime": null
+      },
+      {
+        "day": "27",
+        "money": "0",
+        "moneytime": null
+      },
+      {
+        "day": "28",
+        "money": "0",
+        "moneytime": null
+      },
+      {
+        "day": "29",
+        "money": "0",
+        "moneytime": null
+      },
+      {
+        "day": "30",
+        "money": "0",
+        "moneytime": null
+      }
+    ],
+    "nowtime": [
+
+    ],
+    "nowcount": "107.13",
+    "nowyear": "0",
+    "nowmonth": "0.14",
+    "nowday": "0.02"
+  }
+}

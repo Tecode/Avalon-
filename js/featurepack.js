@@ -4,9 +4,9 @@
 define(['jquery','avalon'], function ($,avalon) {
     var pack = function () {
         //定义ajax方法
-        this.ajax = function (url,type,postdata,dataType,fn) {
+        this.ajax = function (url,type,postdata,fn) {
             $.ajax({
-                url:url,type:type,data:postdata,dataType:dataType,
+                url:url,type:type,data:postdata,dataType:"json",
                 success:function (result) {
                     fn?fn.call(this,result):'';
                 },
@@ -15,6 +15,7 @@ define(['jquery','avalon'], function ($,avalon) {
                 }
             })
         };
+        //分页
         this.pager = function (fn,url) {
             var vm = null;
             var self =this;
@@ -55,6 +56,12 @@ define(['jquery','avalon'], function ($,avalon) {
                 }
             });
             avalon.scan(document.body);
+        };
+        //隐藏或者显示的一些事件
+        this.toggleTops = function () {
+            $("#topstats").click(function () {
+                $(".topstats").slideToggle(100);
+            });
         };
         //正则表达式
         this.RE = function () {
