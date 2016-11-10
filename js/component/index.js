@@ -122,7 +122,49 @@ require(['avalon','bootstrap','bootstrap_toggle', 'bootstrap_select', 'sammy', '
             this.load('page/attribute.html')
                 .swap();
         });
+        //2016-11-10 11：20
+        this.get('#/entry', function () {//商品录入
+            this.load('page/entry.html')
+                .swap();
+        });
+        this.get('#/allorders', function () {//全部订单
+            this.load('page/allorders.html')
+                .swap();
+        });
+        this.get('#/confirmorder', function () {//待确认订单
+            this.load('page/confirmorder.html')
+                .swap();
+        });
+        this.get('#/payout', function () {//出售中的商品
+            this.load('page/payout.html')
+                .swap();
+        });
+        this.get('#/warehouse', function () {//仓库中的商品
+            this.load('page/warehouse.html')
+                .swap();
+        });
 
+        //2016-11-10 11：26
+        this.get('#/pointssetting', function () {//积分设置
+            this.load('page/pointssetting.html')
+                .swap();
+        });
+        this.get('#/giftmanage', function () {//礼品管理
+            this.load('page/giftmanage.html')
+                .swap();
+        });
+        this.get('#/card', function () {//微信会员卡
+            this.load('page/card.html')
+                .swap();
+        });
+        this.get('#/cardmanage', function () {//优惠卡设置
+            this.load('page/cardmanage.html')
+                .swap();
+        });
+        this.get('#/wechatcard', function () {//微信会员列表
+            this.load('page/wechatcard.html')
+                .swap();
+        });
     });
 
 // start the application

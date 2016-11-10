@@ -1302,7 +1302,7 @@ Mailbox
   color: #76747A;
   font-size: 13px;
   padding: 16px 0;
-  /*border-right: 1px solid rgba(0, 0, 0, 0.08);*/
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
 }
 .mailbox-menu .menu li .fa {
   font-size: 16px;
@@ -4199,4 +4199,25 @@ Widgets
     height: 60px;
     border: 1px solid #dedede;
     margin: 0 auto;
+}
+.search-component{
+    position: relative;
+}
+.search-component a{
+    position: absolute;
+    right: -5px;
+    top:0;
+}
+.search-component input{
+    border-radius: 999px;
+    border: none;
+    height: 28px;
+    margin-right: 5px;
+    padding-left: 20px;
+    padding-right: 36px;
+    background: rgba(0, 0, 0, 0.07);
+    color: #333;
+}
+.teble-margin{
+    margin: 0 .2em;
 }
