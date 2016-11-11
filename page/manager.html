@@ -18,3 +18,14 @@
 <div class="row">
 
 </div>
+    <script>
+        requirejs(['mamager'], function( mamager ) {
+            //define返回一个对象在当前页面调用该方法执行操作
+            var url ={
+                mallReport:"json/MallReport.json",//获取商城统计图
+                reportNow:"json/ReportNow.json",//获取支付统计图
+                reportStoreAll:"json/ReportStoreAll.json"//获取所有
+            };
+            mamager.init_start(url);
+        });
+    </script>

@@ -2,17 +2,20 @@
  * Created by ASSOON on 2016/11/7.
  */
 
-define(['avalon','bootstrap','featurepack'], function(avalon,bootstrap,featurepack) {
+define(['avalon','bootstrap','moment','daterangepicker','featurepack'], function(avalon,bootstrap,moment,daterangepicker,featurepack) {
     var dataUrl = null;
     var showList;
     var initStart = function (url) {
         dataUrl = url;
+        featurepack.pack.datePicker();
     //分页插件封装的avalon需要传url
         var fn = function () {
             showList.listData = arguments[0].data.orderinfojson;
-            console.info(arguments[0])
         };
-        featurepack.pack.pager(fn,url);
+        var getResponse = function (data) {
+            featurepack.pack.pager(fn,data,dataUrl.getpaycountList);
+        };
+        getResponse();
         initControler();
 
     };
@@ -20,7 +23,10 @@ define(['avalon','bootstrap','featurepack'], function(avalon,bootstrap,featurepa
     function initControler() {
         showList = avalon.define({
             $id:"showList",
-            listData:[]
+            listData:[],
+            searchButton:function () {
+                alert(10)
+            }
         });
 
 

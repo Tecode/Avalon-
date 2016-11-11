@@ -79,7 +79,7 @@ define(['bootstrap','avalon', 'jstree','jquery_select','sweet_alert'], function 
                         },
                         "separator_after": true
                     }
-                },
+                }
 
             }
 

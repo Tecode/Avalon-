@@ -1,7 +1,7 @@
 /**
  * Created by ASSOON on 2016/11/6.
  */
-define(['jquery','avalon'], function ($,avalon) {
+define(['jquery','avalon','moment','daterangepicker'], function ($,avalon,moment,daterangepicker) {
     var pack = function () {
         //定义ajax方法
         this.ajax = function (url,type,postdata,fn) {
@@ -16,11 +16,19 @@ define(['jquery','avalon'], function ($,avalon) {
             })
         };
         //分页
-        this.pager = function (fn,url) {
+        this.pager = function (fn,postdata,url) {
+            var ajaxdata = {
+                pageSize: 20,
+                curPage:1
+            };
+            for(key in postdata){
+                ajaxdata[key] = postdata[key];
+            }
+
             var vm = null;
-            var self =this;
-            var ajax = function () {
-                self.ajax(url.getpaycountList,"get",null,"json",function (result) {
+            var self = this;
+            var ajax = function (postdata) {
+                self.ajax(url,"get",postdata,function (result) {
                     if(result.code == 0){
                         vm.totalItems = result.data.pagejson[0].totalcount;
                         fn.call(this,result);
@@ -28,20 +36,35 @@ define(['jquery','avalon'], function ($,avalon) {
                 });
             };
 
-            ajax();
+            ajax(ajaxdata);
+
              vm = avalon.define({
                 $id: "test",
-                curPage: 1,
-                totalPages: 15,
-                totalItems: 0,
-                pageItems: [1,2,3,4,5,6],
-                pageSize: 10,
+                curPage: 1,//开始页
+                totalPages: 15,//总页数
+                totalItems: 0,//总共多少条
+                pageItems: [1,2,3,4,5,6,7,8,9,10],
+                pageSize: 20,//每页显示条数
                 changePage: function (p) {
+                    if(p<0){
+                        p = 0
+                    }else if(p>vm.totalPages){
+                        p = vm.totalPages
+                    }
+
                     this.curPage = p;
                     page = p;
                     //回调函数
-                    ajax();
-                    console.log('curPage:' + this.curPage);
+                var changePage = {
+                    pageSize: 20,
+                    curPage:this.curPage
+                };
+                for(ket in postdata){
+                    changePage[key] = postdata[key]
+                }
+                    ajax(changePage);
+
+                    console.log(changePage);
                     if (this.totalPages <= 5) {
                         this.pageItems = avalon.range(1, this.totalPages + 1);
                     } else {
@@ -64,6 +87,11 @@ define(['jquery','avalon'], function ($,avalon) {
             });
         };
         //正则表达式
+        this.datePicker = function () {
+            $('#date-range-picker').daterangepicker(null, function(start, end, label) {
+                console.log(start.toISOString(), end.toISOString(), label);
+            });
+        };
         this.RE = function () {
 
         }

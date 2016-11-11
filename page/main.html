@@ -68,10 +68,10 @@
 
                     <table class="table table-dic table-hover ">
                         <tbody>
-                        <tr ms-for="(index,el) in @payRnking" ms-if="index<=6">
+                        <tr ms-for="(index,pay) in @payRnking" ms-if="index<=6">
                             <td><i class="fa fa-bullhorn"></i><strong>No.{{index+1}}</strong></td>
-                            <td>{{el.name}}</td>
-                            <td class="text-r"><i class="fa fa-rmb"></i>&nbsp;{{el.money}}</td>
+                            <td>{{pay.name}}</td>
+                            <td class="text-r"><i class="fa fa-rmb"></i>{{'&nbsp;'+pay.money}}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -115,10 +115,10 @@
 
                     <table class="table table-dic table-hover ">
                         <tbody>
-                        <tr ms-for="(index,el) in @mallRanking" ms-if="index<=6">
+                        <tr ms-for="(index,mall) in @mallRanking" ms-if="index<=6">
                             <td><i class="fa fa-bullhorn"></i><strong>No.{{index+1}}</strong></td>
-                            <td>{{el.name}}</td>
-                            <td class="text-r"><i class="fa fa-rmb"></i>&nbsp;{{el.money}}</td>
+                            <td>{{mall.name}}</td>
+                            <td class="text-r"><i class="fa fa-rmb"></i>{{'&nbsp;'+mall.money}}</td>
                         </tr>
                         </tbody>
                     </table>

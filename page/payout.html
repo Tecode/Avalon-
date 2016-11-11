@@ -89,3 +89,12 @@
         </div>
     </div>
 </div>
+
+<script>
+    require(['paycount'], function (paycount) {
+        var url = {
+            OrderList:"json/OrderList.json"
+        };
+        paycount.init_start(url);
+    })
+</script>

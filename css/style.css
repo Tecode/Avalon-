@@ -4221,3 +4221,6 @@ Widgets
 .teble-margin{
     margin: 0 .2em;
 }
+.am-disabled{
+  pointer-events:none
+}

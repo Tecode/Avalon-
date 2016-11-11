@@ -3443,7 +3443,11 @@
 	           avalon.warn('vm.$id must be specified')
 	       }
 	       if (avalon.vmodels[$id]) {
-	           throw Error('error:[' + $id + '] had defined!')
+               //把存在的删除，不允许抛出错误
+               delete avalon.vmodels[$id];
+               //我也不想这么干实在是没办法
+	           //throw Error('error:[' + $id + '] had defined!')
+
 	       }
 	       var vm = warlords.masterFactory(definition, {}, {
 	           pathname: '',
@@ -5244,8 +5248,8 @@
 	           })
 	       },
 	       addField: function (field) {
-	           var validator = this
-	           var node = field.dom
+	           var validator = this;
+	           var node = field.dom;
 	           /* istanbul ignore if */
 	           if (validator.validateInKeyup && (!field.isChanged && !field.debounceTime)) {
 	               avalon.bind(node, 'keyup', function (e) {
