@@ -1,0 +1,164 @@
+{
+  "code": 0,
+  "msg": "获取成功",
+  "data": [
+    {
+      "id": 2366,
+      "name": "df",
+      "loginname": "dsfas@10013",
+      "position": "",
+      "mobile": "1234231646345",
+      "storename": "默认门店",
+      "img": "/static/style/images/avter.jpg",
+      "sex": 0,
+      "isenable": 0,
+      "storeid": "517",
+      "wxcode": "",
+      "time": "2016/8/19 10:55:55",
+      "email": "10251265@qq.com",
+      "depts": [
+        {
+          "id": 131,
+          "text": "企业号体验32144488"
+        },
+        {
+          "id": 895,
+          "text": "测试撒"
+        },
+        {
+          "id": 896,
+          "text": "艾丝凡"
+        }
+      ]
+    },
+    {
+      "id": 2362,
+      "name": "qwer",
+      "loginname": "13423434@10013",
+      "position": "",
+      "mobile": "2324231423423",
+      "storename": "默认门店地方",
+      "img": "/static/style/images/avter.jpg",
+      "sex": 0,
+      "isenable": 0,
+      "storeid": "70",
+      "wxcode": "",
+      "time": "2016/8/19 10:24:21",
+      "email": "43534524@qq.com",
+      "depts": [
+        {
+          "id": 131,
+          "text": "企业号体验32144488"
+        },
+        {
+          "id": 895,
+          "text": "测试撒"
+        },
+        {
+          "id": 1215,
+          "text": "123"
+        }
+      ]
+    },
+    {
+      "id": 2311,
+      "name": "rany",
+      "loginname": "123412341234@10013",
+      "position": "aa",
+      "mobile": "158560141741",
+      "storename": "默认门店",
+      "img": "/static/style/images/avter.jpg",
+      "sex": 0,
+      "isenable": 0,
+      "storeid": "517",
+      "wxcode": "",
+      "time": "2016/8/10 11:20:06",
+      "email": "21423@qq.com",
+      "depts": [
+        {
+          "id": 895,
+          "text": "测试撒"
+        },
+        {
+          "id": 990,
+          "text": "子部门1"
+        }
+      ]
+    },
+    {
+      "id": 2310,
+      "name": "qwe",
+      "loginname": "123131651@10013",
+      "position": "",
+      "mobile": "15856011414",
+      "storename": "默认门店地方",
+      "img": "/static/style/images/avter.jpg",
+      "sex": 0,
+      "isenable": 0,
+      "storeid": "70",
+      "wxcode": "",
+      "time": "2016/8/10 11:19:23",
+      "email": "1234134@qq.com",
+      "depts": [
+        {
+          "id": 131,
+          "text": "企业号体验32144488"
+        },
+        {
+          "id": 895,
+          "text": "测试撒"
+        },
+        {
+          "id": 990,
+          "text": "子部门1"
+        }
+      ]
+    },
+    {
+      "id": 1864,
+      "name": "测试1111",
+      "loginname": "00001@10013",
+      "position": "",
+      "mobile": "15123118023",
+      "storename": "默认门店地方",
+      "img": "/static/style/images/avter.jpg",
+      "sex": 0,
+      "isenable": 0,
+      "storeid": "70",
+      "wxcode": "",
+      "time": "2016/6/15 15:08:21",
+      "email": "",
+      "depts": [
+        {
+          "id": 895,
+          "text": "测试撒"
+        },
+        {
+          "id": 896,
+          "text": "艾丝凡"
+        }
+      ]
+    },
+    {
+      "id": 1731,
+      "name": "11111",
+      "loginname": "001@10013",
+      "position": "程序员",
+      "mobile": "18290359159",
+      "storename": "默认门店地方",
+      "img": "/static/style/images/avter.jpg",
+      "sex": 0,
+      "isenable": 1,
+      "storeid": "70",
+      "wxcode": "",
+      "time": "2016/5/10 17:50:52",
+      "email": "1455842879@qq.com",
+      "depts": [
+        {
+          "id": 895,
+          "text": "测试撒"
+        }
+      ]
+    }
+  ]
+}

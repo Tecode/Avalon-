@@ -11,4 +11,5 @@ cloudMail:实例化对象名称
 
 完成度：
 main:已完成参数需要增加
-payConfig:
+payConfig:需不需要验证
+paycount:查看需要显示那些信息

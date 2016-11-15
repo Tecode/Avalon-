@@ -17,7 +17,7 @@ var require = {
         jquery_select:'jquery.select',
         sweet_alert:'sweet-alert/sweet-alert.min',
 
-
+//不要
         mmHistory: 'lib/mmHistory',
         mmRouter: 'lib/mmRouter',
         layer: 'lib/layer/layer',

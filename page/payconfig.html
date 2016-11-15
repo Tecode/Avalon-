@@ -5,22 +5,22 @@
             <li class="active">你可以新增或修改删除已有的支付方式</li>
         </ol>
         <div class="right">
-            <a href="javascript:;" class="btn btn-success" ms-click="@addPayConfig"><i class="fa fa-plus"></i>&nbsp;新增支付</a>
+            <a href="javascript:;" class="btn btn-success" ms-click="##addPayConfig"><i class="fa fa-plus"></i>&nbsp;新增支付</a>
         </div>
         <!-- End Page Header Right Div -->
 
     </div>
     <div class="row">
-        <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-4" ms-for="(index,config) in ##configList">
             <div class="panel panel-default">
                 <div class="panel-body status">
                     <div class="config clearfix text-center">
                         <div class="box"><i class="fa fa-wechat"></i></div>
-                        <span class="name"><b>默认支付方式</b></span>
+                        <span class="name"><b>{{config.merchantname}}</b></span>
                     </div>
                     <ul class="links">
-                        <li><a href="javascript:;" class="config_color" ms-click="@editPayConfig"><i class="fa fa fa-pencil"></i>编辑</a></li>
-                        <li><a href="javascript:;" class="config_color" ms-click="@deletePayConfig"><i class="fa fa-trash-o"></i>删除</a></li>
+                        <li><a href="javascript:;" class="config_color" ms-attr="{data_info:index}" ms-click="##editPayConfig(config)"><i class="fa fa fa-pencil"></i>编辑</a></li>
+                        <li><a href="javascript:;" class="config_color" ms-attr="{data_info:index}" ms-click="##deletePayConfig(config)"><i class="fa fa-trash-o"></i>删除</a></li>
                     </ul>
                 </div>
             </div>
@@ -45,60 +45,59 @@
                         <!--</div>-->
 
                         <div class="panel-body">
-                            <form class="form-horizontal" action="#/payConfig" ms-validate="@validate">
+                            <form class="form-horizontal" action="#/payConfig" ms-validate="##validate">
                                 <div class="form-group">
                                     <div class="col-sm-4 col-sm-offset-2">
-                                        <button type="button" class="btn btn-block btn-default" ms-click="@toggleMolde" :class="[@common && 'btn-light']">普通模式</button>
+                                        <button type="button" class="btn btn-block btn-default" ms-click="##toggleMolde" :class="[##common && 'btn-light']">普通模式</button>
                                     </div>
                                     <div class="col-sm-4">
-                                        <button type="button" class="btn btn-block btn-default" ms-click="@toggleMolde" :class="[@server && 'btn-light']">服务商模式</button>
+                                        <button type="button" class="btn btn-block btn-default" ms-click="##toggleMolde" :class="[##server && 'btn-light']">服务商模式</button>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label form-label">支付方式名称</label>
                                     <div class="col-sm-9">
-                                        <input type="text" ms-rules="{required:true}" ms-duplex="@merchantname" data-email-message="请输入一个正确的邮箱" placeholder="取个名称，方便随时查看" class="form-control" id="input11">
+                                        <input type="text" ms-rules="{required:true}" ms-duplex="##merchantname" placeholder="取个名称，方便随时查看" class="form-control" id="input11">
                                     </div>
-                                    <p class="col-sm-offset-3 col-sm-9 color-down">格式错误!</p>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label form-label">微信收款描述</label>
                                     <div class="col-sm-9">
-                                        <input type="text" ms-rules="{norequired:true}" placeholder="微信收款描述" class="form-control" id="input12">
+                                        <input type="text" ms-rules="{norequired:true}" ms-duplex="##repost_levenl" placeholder="微信收款描述" class="form-control" id="input12">
                                     </div>
                                 </div>
                                 <hr/>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label form-label">AppID</label>
                                     <div class="col-sm-9">
-                                        <input type="text" placeholder="AppID" class="form-control" id="input13">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label form-label">AppKey</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" placeholder="AppKey" class="form-control" id="input14">
+                                        <input type="text" placeholder="AppID" ms-duplex="##appid" class="form-control" id="input13">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label form-label">AppSecret</label>
                                     <div class="col-sm-9">
-                                        <input placeholder="AppSecret" type="text" class="form-control">
+                                        <input type="text" placeholder="AppSecret" ms-duplex="##appsecret" class="form-control" id="input14">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label form-label">AppSecret</label>
+                                    <div class="col-sm-9">
+                                        <input placeholder="AppSecret" ms-duplex="##appsecret" type="text" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label form-label">商户号</label>
                                     <div class="col-sm-9">
-                                        <input type="text" placeholder="商户号" class="form-control">
+                                        <input type="text" placeholder="商户号" ms-duplex="##mch_id" class="form-control">
                                     </div>
                                 </div>
-                                <div class="form-group" ms-if="@type==2">
+                                <div class="form-group" ms-if="##type==2">
                                     <label class="col-sm-3 control-label form-label">支付证书</label>
                                     <div class="col-sm-9">
-                                        <a href="javascript:;" class="btn btn-light">选择证书</a>
+                                        <img ms-attr="{src:##sslcert_path}" style="margin-bottom: 1.5em" width="100%"/>
                                     </div>
-                                    <div class="col-sm-12">
-                                        <img src="" width="100%"/>
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <a href="javascript:;" class="btn btn-light">选择证书</a>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -153,7 +152,10 @@
 <script>
     require(['payconfig'], function (payconfig) {
         var url = {
-            payConfigRetrun:"json/PayConfigRetrun.json"
+            payConfigRetrun:"json/payConfigList.json",
+            deletepayConfig:'json/PayConfigDelete.json',
+            addPayConfig:'json/PayConfigDelete.json',
+            editPayConfig:'json/PayConfigDelete.json'
         };
         payconfig.init_start(url);
     })

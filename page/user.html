@@ -16,61 +16,54 @@
     </div>
 
 </div>
-
+<div class="ms-controller" ms-controller="userlist">
 <div class="row" id="user">
 
     <!-- Start Project Stats -->
     <div class="col-md-12 col-lg-9">
         <div class="panel panel-widget">
             <div class="panel-title">
-                全部成员&nbsp;<span class="label label-info">62</span>
+                全部成员
+                <button class="btn btn-xs btn-light marginRL8" ms-click="##choiceAll" data="0">全部选中</button>
+                <button class="btn btn-xs btn-danger marginRL8" ms-click="##deleteSelect">删除已选</button>
                 <ul class="panel-tools">
-                    <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
                     <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
                 </ul>
             </div>
 
-            <div class="panel-search">
-                <form>
-                    <input type="text" class="form-control" placeholder="Search...">
-                    <i class="fa fa-search icon"></i>
-                </form>
-            </div>
-
 
             <div class="panel-body table-responsive">
-
-                <table class="table table-hover">
+                <table id="example0" class="table display dataTable" role="grid" aria-describedby="example0_info">
                     <thead>
-                    <tr>
+                    <tr class="tableheader">
+                        <td>选择</td>
                         <td>姓名</td>
                         <td>账号</td>
                         <td>职位</td>
+                        <td>手机</td>
                         <td>分店</td>
                         <td>状态</td>
-                        <td class="text-right">操作</td>
+                        <td>操作</td>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>965</td>
-                        <td>Kode Dashboard Template</td>
-                        <td><span class="label label-default">Developing</span></td>
-                        <td><span class="demo-project-stats">2424</span></td>
-                        <td><span class="label label-default">Developing</span></td>
-                        <td><span class="demo-project-stats">242</span></td>
-                    </tr>
-                    <tr>
-                        <td>965</td>
-                        <td>Kode Dashboard Template</td>
-                        <td><span class="label label-default">Developing</span></td>
-                        <td><span class="demo-project-stats">2424</span></td>
-                        <td><span class="label label-default">Developing</span></td>
-                        <td><span class="demo-project-stats">242</span></td>
+                    <tr role="row" ms-for="(index,value) in ##userList" :class="[(index%2==0? 'odd':'even')]">
+                        <td class="sorting_1">
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" ms-duplex="##select" ms-attr="{value:value.id,id:value.id}">
+                                <label ms-attr="{for:value.id}"></label>
+                            </div>
+                        </td>
+                        <td>{{value.name}}</td>
+                        <td class="">{{value.loginname}}</td>
+                        <td>{{value.position}}</td>
+                        <td>{{value.mobile}}</td>
+                        <td>{{value.storename}}</td>
+                        <td><span ms-if="value.isenable==0">正常</span><span ms-if="value.isenable==1" class="color-down">错误</span></td>
+                        <td class="sorting_1"><a href="javascript:;" ms-click="##editTree(value)">编辑</a></td>
                     </tr>
                     </tbody>
                 </table>
-
             </div>
         </div>
     </div>
@@ -87,7 +80,7 @@
     <!-- End Teammates -->
     <!-- 弹出的大框框 -->
     <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -97,34 +90,35 @@
                     <div class="panel panel-default">
 
                         <div class="panel-title">
-                            新增成员
+                            成员管理
                         </div>
 
                         <div class="panel-body">
-                            <form class="form-horizontal">
-
+                            <form ms-validate = "##validate" action="#/user" class="form-horizontal">
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label form-label">姓名</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="input11">
+                                        <input type="text" ms-duplex="##filldata.name" ms-rules="{required: true}" class="form-control" id="input11">
                                     </div>
+                                    <p class="col-sm-offset-2 col-sm-10 color-down">有错误信息</p>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label form-label">性别</label>
                                     <div class="col-sm-10">
-                                        <select class="selectpicker" style="display: none;">
-                                            <option>Themeforest</option>
-                                            <option>Codecanyon</option>
-                                            <option>Photodune</option>
-                                            <option>Graphicriver</option>
-                                            <option>Activeden</option>
-                                        </select><div class="btn-group bootstrap-select"><button type="button" class="btn dropdown-toggle selectpicker btn-light" data-toggle="dropdown" title="Themeforest" aria-expanded="false"><span class="filter-option pull-left">Themeforest</span>&nbsp;<span class="caret"></span></button><div class="dropdown-menu open" style="max-height: 223px; overflow: hidden; min-height: 122px;"><ul class="dropdown-menu inner selectpicker" role="menu" style="max-height: 211px; overflow-y: auto; min-height: 110px;"><li data-original-index="0" class="selected"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Themeforest</span>"><span class="text">Themeforest</span><span class="fa fa-check check-mark"></span></a></li><li data-original-index="1"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Codecanyon</span>"><span class="text">Codecanyon</span><span class="fa fa-check check-mark"></span></a></li><li data-original-index="2"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Photodune</span>"><span class="text">Photodune</span><span class="fa fa-check check-mark"></span></a></li><li data-original-index="3"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Graphicriver</span>"><span class="text">Graphicriver</span><span class="fa fa-check check-mark"></span></a></li><li data-original-index="4"><a tabindex="0" class="" data-normalized-text="<span class=&quot;text&quot;>Activeden</span>"><span class="text">Activeden</span><span class="fa fa-check check-mark"></span></a></li></ul></div></div>
-                                    </div>
+                                        <div class="radio radio-danger radio-inline">
+                                            <input type="radio" id="inlineRadio1" ms-rules="{required: true}" ms-duplex="##filldata.sex" value="1" >
+                                            <label for="inlineRadio1"> 男 </label>
+                                        </div>
+                                        <div class="radio radio-danger radio-inline">
+                                            <input type="radio" id="inlineRadio2" ms-rules="{required: true}" ms-duplex="##filldata.sex" value="0" >
+                                            <label for="inlineRadio2"> 女 </label>
+                                        </div>
+                                        </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label form-label">账号</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control">
+                                        <input type="text" ms-duplex="##filldata.loginname" ms-rules="{required: true}" class="form-control loginname">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -139,13 +133,13 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label form-label">手机号码</label>
                                     <div class="col-sm-10">
-                                        <input type="tel" class="form-control">
+                                        <input type="tel" ms-rules="{required: true,pattern:/^1(3|4|5|7|8)\d{9}$/}" class="form-control" ms-duplex="##filldata.mobile">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label form-label">邮箱</label>
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control">
+                                        <input type="email" class="form-control" ms-rules="{required: true,email:true}" ms-duplex="##filldata.email">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -157,13 +151,13 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label form-label">职位</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="input122">
+                                        <input type="text" ms-duplex="##filldata.position" class="form-control" id="input122">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-default">Submit</button>
+                                        <button type="submit" class="btn btn-default">提交</button>
                                     </div>
                                 </div>
 
@@ -174,8 +168,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-default">Save changes</button>
+                    <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
                 </div>
             </div>
         </div>
@@ -216,8 +209,13 @@
     <button style="display: none" type="button" id="showSmallbox" data-target="#myModal3" data-toggle="modal"></button>
     <button style="display: none" type="button" id="showDialog" data-target="#myModal" data-toggle="modal"></button>
 </div>
+</div>
 <script>
     require(['user'],function (user) {
-       user. init_start();
+        var url ={
+          getUserListUrl:"json/userList.json",//获取数据显示在表格
+          deletePeopleUrl:"json/userList.json"//删除人员
+        };
+       user. init_start(url);
     })
 </script>

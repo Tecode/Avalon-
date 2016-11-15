@@ -128,6 +128,7 @@ body {
 a {
   color: #399bff;
   text-decoration: none;
+  cursor:default;
 }
 a:hover,
 a:focus {
@@ -513,6 +514,7 @@ Sidebar
 }
 .sidebar .label-default {
   background: rgba(255, 255, 255, 0.2);
+    font-family: 'Microsoft YaHei';
 }
 .sidebar-panel {
   background: none;
@@ -878,8 +880,8 @@ Content
   padding-top: 80px;
   margin-left: 250px;
   background: #f5f5f5;
-  -webkit-transition: all .2s linear;
-  transition: all .2s linear;
+  /*-webkit-transition: all .2s linear;*/
+  /*transition: all .2s linear;*/
 }
 /* =================================================================================
 FOOTER 
@@ -1921,7 +1923,7 @@ Top Stats
 .topstats h3 {
   font-size: 28px;
   font-weight: bold;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Microsoft YaHei';
   letter-spacing: -1px;
   line-height: normal;
   margin: 1px 0;
@@ -3486,7 +3488,7 @@ div[data-role="editor-toolbar"] {
   overflow: auto;
   top: 0;
   left: 0;
-  z-index: 9999;
+  z-index: 1000;
 }
 .panel-tools-hover {
   display: none;
@@ -3676,6 +3678,7 @@ table td {
   padding: 15px;
   line-height: 1.7;
     vertical-align: middle;
+  font-family: 'Microsoft YaHei';
 }
 .doc-grid {
   padding: 10px 20px;
@@ -3739,7 +3742,7 @@ Widgets
   font-size: 18px;
   display: block;
   color: inherit;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Microsoft YaHei';
   font-weight: 600;
 }
 .widget-inline-list .chart {
@@ -3799,7 +3802,7 @@ Widgets
   padding: 10px 20px;
 }
 .chart-with-stats .top-label h2 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Microsoft YaHei';
   margin: 0;
   font-weight: bold;
   color: #37363e;
@@ -3812,7 +3815,7 @@ Widgets
   color: #58666e;
 }
 .chart-with-stats .title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Microsoft YaHei';
   color: #58666e;
   font-weight: bold;
   position: absolute;
@@ -4223,4 +4226,18 @@ Widgets
 }
 .am-disabled{
   pointer-events:none
+}
+#example0 .tableheader td{
+    border-top: 1px solid #ddd;
+    padding: 16px 10px;
+    font-weight: lighter;
+    font-size: 14px;
+    background-color: #f9f9f9;
+}
+.marginRL8{
+    margin: 0 8px;
+}
+#example0 .checkbox{
+    margin-top: 5px;
+    margin-left: 8px;
 }

@@ -40,8 +40,7 @@ define(['bootstrap','avalon','featurepack','sweet_alert'], function(bootstrap,av
                             alert("请求方法");
                             swal("删除成功!", "您已经删除了这项配置，点击OK关闭窗口。", "success");
                         });
-                },
-                bindData:{}
+                }
             });
             avalon.scan(document.body)
         };

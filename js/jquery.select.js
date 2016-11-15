@@ -91,7 +91,7 @@
             var data = options.jsonData;
             $(options.selectList).find('.list-ul').html('');
             for (var i=0; i < data.length; i++) {
-                var liobj = '<li><a href="javascript:;" data-id="'+ data[i].id +'"><i class="glyphicon glyphicon-folder-close"></i> <span class="item-text">'+ data[i].text +'</span></a></li>';
+                var liobj = '<li><a href="javascript:;" data-id="'+ data[i].id +'"><i class="fa fa-folder"></i> <span class="item-text">'+ data[i].text +'</span></a></li>';
                 $(liobj).appendTo($(options.selectList).find('.list-ul'));
             }
         }
@@ -111,7 +111,7 @@
             return;
         }
         if(!icon){
-            icon = 'glyphicon glyphicon-folder-close';
+            icon = 'fa fa-folder';
         }
         if(options.multiple){
             var liobj = '<li class="input-list-item" data-id="'+ id +'"><span class="item-icon"><i class="'+  icon+'"></i></span> <span class="item-text">'+ text +'</span> <a href="javascript:;" class="item-remove"><i class="fa fa-trash-o"></i></a></li>';
