@@ -159,9 +159,27 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, d
                 size: "auto"
             });
         };
-        //正则表达式
-        this.RE = function () {
-
+        this.checkValue = function (fn) {
+            return{
+                // onError: function (reasons) {
+                //     $('.tips-msg').remove();
+                //     reasons.forEach(function (child) {
+                //         $(child.element).parents('.col-sm-10').after('<p class="col-sm-offset-2 tips-msg col-sm-10 color-down">'+child.message+'</p>');
+                //     })
+                // },
+                onValidateAll: function (reasons) {
+                    reasons.length == 0?(function () {
+                        fn.call(this,'');
+                    })():(function () {
+                        $('.tips-msg').remove();
+                        reasons.forEach(function (child) {
+                            $(child.element).parents('.col-sm-10').after('<p class="col-sm-offset-2 tips-msg col-sm-10 color-down">'+child.message+'</p>');
+                        })
+                    })();
+                },
+                validateInBlur:true,
+                validateInKeyup:true
+            }
         }
     };
     var _featurepack = new pack();
