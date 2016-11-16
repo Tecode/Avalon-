@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="js/bower_components/jstree/dist/themes/default/style.css">
 <div class="ms-controller" ms-controller="storeManage">
 <div class="page-header">
     <h1 class="title">门店管理</h1>
@@ -45,7 +46,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label form-label">门店名称</label>
                                 <div class="col-sm-9">
-                                    <input type="text" ms-rules="{required:true}" ms-duplex="##filldata.branchname" data-required-message="门店名称不能为空！" placeholder="取个名称，方便随时查看" class="form-control" id="input11">
+                                    <input type="text" ms-focus="##clearAttr" ms-rules="{required:true}" ms-duplex="##filldata.branchname" data-required-message="门店名称不能为空！" placeholder="取个名称，方便随时查看" class="form-control" id="input11">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -141,7 +142,9 @@
             storemanageUrl:"json/storemanage.json",
             getDeptTree:'json/treejson.json',
             getBranchList:'/OrderRecord/HttpGetBranchList',
-            getPayList:'/PayConfig/PayConfigList'
+            getPayList:'/PayConfig/PayConfigList',
+            addStoreUrl:'json/storemanage.json',
+            editStoreUrl:'json/storemanage.json'
         };
         storemanage.init_start(url);
     })
