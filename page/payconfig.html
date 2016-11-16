@@ -5,7 +5,7 @@
             <li class="active">你可以新增或修改删除已有的支付方式</li>
         </ol>
         <div class="right">
-            <a href="javascript:;" class="btn btn-success" ms-click="##addPayConfig"><i class="fa fa-plus"></i>&nbsp;新增支付</a>
+            <a href="javascript:;" class="btn btn-success" ms-click="##addPayConfig"><i class="fa fa-plus"></i>新增支付</a>
         </div>
         <!-- End Page Header Right Div -->
 
@@ -57,7 +57,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label form-label">支付方式名称</label>
                                     <div class="col-sm-9">
-                                        <input type="text" ms-rules="{required:true}" ms-duplex="##merchantname" placeholder="取个名称，方便随时查看" class="form-control" id="input11">
+                                        <input type="text" ms-rules="{required:true}" ms-duplex="##merchantname" data-required-message="支付方式名称必须填写！" placeholder="取个名称，方便随时查看" ms-focus="##clear" class="form-control" id="input11">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -88,7 +88,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label form-label">商户号</label>
                                     <div class="col-sm-9">
-                                        <input type="text" placeholder="商户号" ms-duplex="##mch_id" class="form-control">
+                                        <input type="text" ms-rules="{pattern:/^\d{10}$/}" data-pattern-message="商户号必须填写或商户号格式错误！" placeholder="10位数字" ms-focus="##clear" ms-duplex="##mch_id" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group" ms-if="##type==2">

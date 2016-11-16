@@ -1,0 +1,68 @@
+[
+    {
+        "id":"dept_1",
+        "text": "测试父部门",
+        "type":"dept",
+        "state": {
+            "opened": true
+        },
+        "children": [
+            {
+                "id":"dept_2",
+                "text": "测试子部门1",
+                "type":"dept",
+                "children": [
+                    {
+                        "id":"dept_3",
+                        "type":"dept",
+                        "text": "测试子部门11测试子部门11测试子部门11测试子部门11"
+                    },
+                    {
+                        "id":"user_1",
+                        "type":"user",
+                        "text":"用户姓名"
+                    }
+                ]
+            },
+            {
+                "id":"dept_4",
+                "type":"dept",
+                "text": "测试子部门2",
+                "children" : true 
+            }
+        ]
+    },
+    {
+        "id":"dept_11",
+        "text": "测试父部门",
+        "type":"dept",
+        "state": {
+            "opened": true
+        },
+        "children": [
+            {
+                "id":"dept_21",
+                "text": "测试子部门1",
+                "type":"dept",
+                "children": [
+                    {
+                        "id":"dept_31",
+                        "type":"dept",
+                        "text": "测试子部门11"
+                    },
+                    {
+                        "id":"user_11",
+                        "type":"user",
+                        "text":"用户姓名"
+                    }
+                ]
+            },
+            {
+                "id":"dept_41",
+                "type":"dept",
+                "text": "测试子部门2",
+                "children" : true 
+            }
+        ]
+    }
+]

@@ -159,10 +159,6 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'sweet_alert', 'featur
                                 })():(function () {
                                 cloudMail.editUser(postdata,$('.data_tree').jstree('get_selected', true)[0].id)
                                 })();
-                            // userInfoForm.deptid = deptid.substring(0, deptid.length - 1);
-                            // var postdata = userInfoForm;
-                            // postdata.userid = userInfoForm.id;
-                            console.info(postdata)
                 }),
                 choice: function (e) {
                     $(e.target).children('input').attr({'selected': 'selected'})

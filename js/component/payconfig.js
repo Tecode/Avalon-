@@ -2,7 +2,7 @@
  * Created by ASSOON on 2016/11/11.
  */
 define(['bootstrap','avalon','featurepack','sweet_alert'], function(bootstrap,avalon,featurepack,swal) {
-    var overallSituation,url;
+    var overallSituation,url,type;
 
     var initStart = function (l) {
         url = l;
@@ -31,39 +31,29 @@ define(['bootstrap','avalon','featurepack','sweet_alert'], function(bootstrap,av
                         configList:[],
                         list:{},
                         //验证表达式
-                        validate: {
-                            onError: function (reasons) {
-                                reasons.forEach(function (reason) {
-                                    console.log(reason.getMessage())
-                                })
-                            },
-                            onValidateAll: function (reasons) {
-                                if (reasons.length) {
-                                    console.log(reasons);
-                                } else {
-                                    var postdata = {
-                                        appid:overallSituation.appid,
-                                        appkey:overallSituation.appkey,
-                                        appsecret:overallSituation.appsecret,
-                                        mch_id:overallSituation.mch_id,
-                                        merchantid:overallSituation.merchantid,
-                                        merchantname:overallSituation.merchantname,
-                                        payTypeChange:overallSituation.payTypeChange,
-                                        repost_levenl:overallSituation.repost_levenl,
-                                        sslcert_path:overallSituation.sslcert_path,
-                                        type:overallSituation.type
-                                    };
-                                        if(overallSituation.appid ==""){
-                                            cloudMail.getAjax.addPayConfig(postdata);
-                                        }else {
-                                            cloudMail.getAjax.postPayConfig(postdata);
-                                        }
-                                }
-                            },
-                            validateInBlur:true,
-                            validateInKeyup:true
-                        },
+                        validate: featurepack.pack.checkValue(function () {
+                            var postdata = {
+                                merchantname:overallSituation.merchantname,
+                                repost_levenl:overallSituation.repost_levenl,
+                                appid:overallSituation.appid,
+                                mch_id:overallSituation.mch_id,
+                                appsecret:overallSituation.appsecret,
+                                sslcert_path:overallSituation.sslcert_path,
+                                type:overallSituation.type
+                            };
+                                postdata.type==1?(function () {
+                                    delete postdata.sslcert_path;
+                                })():'';
+                                type == 1?(function () {
+                                    //添加
+                                    cloudMail.getAjax.addPayConfig(postdata)
+                                })():(function () {
+                                    //修改
+                                    cloudMail.getAjax.postPayConfig(postdata)
+                                })()
+                        }),
                         addPayConfig:function () {
+                            type = 1;
                             overallSituation.common = false;
                             overallSituation.server = true;
                             $("#showBigBox").click();
@@ -76,7 +66,11 @@ define(['bootstrap','avalon','featurepack','sweet_alert'], function(bootstrap,av
                             overallSituation.sslcert_path = '';
                             overallSituation.type = "1";
                         },
+                        clear:function () {
+                            $('.tips-msg').remove();
+                        },
                         editPayConfig:function (el) {
+                            type = 2;
                             $("#showBigBox").click();
 
                             overallSituation.merchantname = el.merchantname;
@@ -137,9 +131,11 @@ define(['bootstrap','avalon','featurepack','sweet_alert'], function(bootstrap,av
             },
             postPayConfig:function (postdata) {
                 featurepack.pack.ajax(url.editPayConfig,"post",postdata,function (result) {
+                    console.info(postdata);
                     if(result.code == 0){
                         swal("修改成功!", "您已经修改了这项配置，点击OK关闭窗口。", "success");
                         cloudMail.getAjax.getResponse();
+                        console.info(postdata)
                     }else{
                         swal(result.msg,"","error");
                     }
@@ -147,6 +143,7 @@ define(['bootstrap','avalon','featurepack','sweet_alert'], function(bootstrap,av
             },
             addPayConfig:function (postdata) {
                 featurepack.pack.ajax(url.addPayConfig,"post",postdata,function (result) {
+                    console.info(postdata)
                     if(result.code == 0){
                         swal("添加成功!", "您已经添加了这项配置，点击OK关闭窗口。", "success");
                         cloudMail.getAjax.getResponse();

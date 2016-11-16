@@ -16,7 +16,7 @@
         if(options.jstree.url != ""){
             var initHtml = '<div class="choose-input-list"><ul><li class="input"><input style="box-shadow:none;height: 22px" type="text" placeholder=""></li></ul><div class="input-select-list"><div class="list-tree"></div></div></div>';
         }else{
-            var initHtml = '<div class="choose-input-list"><ul><li class="input"><input type="text" placeholder=""></li></ul><div class="input-select-list"><ul class="list-ul"></ul></div></div>';
+            var initHtml = '<div class="choose-input-list"><ul><li class="input"><input style="box-shadow:none;height: 22px" type="text" placeholder=""></li></ul><div class="input-select-list"><ul class="list-ul"></ul></div></div>';
         }
 
         var selectObj = $(initHtml).appendTo($(obj));

@@ -173,7 +173,11 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, d
                     })():(function () {
                         $('.tips-msg').remove();
                         reasons.forEach(function (child) {
-                            $(child.element).parents('.col-sm-10').after('<p class="col-sm-offset-2 tips-msg col-sm-10 color-down">'+child.message+'</p>');
+                            if($(child.element).parent('div').hasClass('col-sm-9')){
+                                $(child.element).parent('div').after('<p class="col-sm-offset-3 tips-msg col-sm-9 color-down">'+child.message+'</p>');
+                            }else if($(child.element).parent('div').hasClass('col-sm-10')){
+                                $(child.element).parent('div').after('<p class="col-sm-offset-2 tips-msg col-sm-10 color-down">'+child.message+'</p>');
+                            }
                         })
                     })();
                 },

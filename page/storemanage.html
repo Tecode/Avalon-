@@ -7,28 +7,26 @@
 
     <!-- Start Page Header Right Div -->
     <div class="right">
-        <a href="javascript:;" class="btn btn-danger"><i class="fa fa-pencil"></i>&nbsp;新增门店</a>
+        <a href="javascript:;" class="btn btn-success" ms-click="##addStore"><i class="fa fa-plus"></i>新增门店</a>
     </div>
     <!-- End Page Header Right Div -->
 
 </div>
 <div class="row">
-    <div class="col-md-6 col-lg-4">
+    <div class="col-md-6 col-lg-4" ms-for="key in ##storeList">
         <div class="panel panel-default">
             <div class="panel-body status">
                 <div class="config clearfix text-center">
                     <div class="box"><i class="fa fa-shopping-cart"></i></div>
-                    <span class="name"><b>默认门店</b></span>
+                    <span class="name"><b>{{key.branchname}}</b></span>
                 </div>
                 <ul class="links">
-                    <li><a href="#" class="config_color"><i class="fa fa fa-pencil"></i>编辑</a></li>
-                    <li><a href="#" class="config_color"><i class="fa fa-trash-o"></i>删除</a></li>
-                    <li><a href="#" class="config_color"><i class="fa fa-trash-o"></i>详情</a></li>
+                    <li><a href="javascript:;" class="config_color" ms-click="##editStore(key)"><i class="fa fa fa-pencil"></i>编辑</a></li>
+                    <li><a href="javascript:;" class="config_color" ms-click="##deleteStore(key)"><i class="fa fa-trash-o"></i>删除</a></li>
                 </ul>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <!-- 弹出的大框框 -->
@@ -42,66 +40,49 @@
             </div>
             <div class="modal-body">
                 <div class="panel panel-default">
-
-                    <!--<div class="panel-title">-->
-                    <!--新增成员-->
-                    <!--</div>-->
-
                     <div class="panel-body">
-                        <form class="form-horizontal" action="#/payConfig" ms-validate="@validate">
+                        <form class="form-horizontal" action="#/storemanage" ms-validate="##validate">
                             <div class="form-group">
-                                <div class="col-sm-4 col-sm-offset-2">
-                                    <button type="button" class="btn btn-block btn-default" ms-click="@toggleMolde" :class="[@common && 'btn-light']">普通模式</button>
-                                </div>
-                                <div class="col-sm-4">
-                                    <button type="button" class="btn btn-block btn-default" ms-click="@toggleMolde" :class="[@server && 'btn-light']">服务商模式</button>
+                                <label class="col-sm-3 control-label form-label">门店名称</label>
+                                <div class="col-sm-9">
+                                    <input type="text" ms-rules="{required:true}" ms-duplex="##filldata.branchname" data-required-message="门店名称不能为空！" placeholder="取个名称，方便随时查看" class="form-control" id="input11">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label form-label">支付方式名称</label>
+                                <label class="col-sm-3 control-label form-label">门店支付描述</label>
                                 <div class="col-sm-9">
-                                    <input type="text" ms-rules="{required:true}" ms-duplex="@merchantname" data-email-message="请输入一个正确的邮箱" placeholder="取个名称，方便随时查看" class="form-control" id="input11">
-                                </div>
-                                <p class="col-sm-offset-3 col-sm-9 color-down">格式错误!</p>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label form-label">微信收款描述</label>
-                                <div class="col-sm-9">
-                                    <input type="text" ms-rules="{norequired:true}" placeholder="微信收款描述" class="form-control" id="input12">
-                                </div>
-                            </div>
-                            <hr/>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label form-label">AppID</label>
-                                <div class="col-sm-9">
-                                    <input type="text" placeholder="AppID" class="form-control" id="input13">
+                                    <input type="text" ms-rules="{norequired:true}" placeholder="微信收款描述" ms-duplex="##filldata.branchpaydes" class="form-control" id="input12">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label form-label">AppKey</label>
+                                <label class="col-sm-3 control-label form-label">负责人</label>
                                 <div class="col-sm-9">
-                                    <input type="text" placeholder="AppKey" class="form-control" id="input14">
+                                    <div class="select-user form-control"></div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label form-label">AppSecret</label>
+                                <label class="col-sm-3 control-label form-label">是否在线支付</label>
                                 <div class="col-sm-9">
-                                    <input placeholder="AppSecret" type="text" class="form-control">
+                                    <div class="radio radio-danger radio-inline" :click="##clearAttr">
+                                        <input type="radio" id="inlineRadio1" ms-rules="{required: true}" ms-duplex="##filldata.isonline" value="1" >
+                                        <label for="inlineRadio1"> 是 </label>
+                                    </div>
+                                    <div class="radio radio-danger radio-inline" :click="##clearAttr">
+                                        <input type="radio" id="inlineRadio2" ms-rules="{required: true}" ms-duplex="##filldata.isonline" value="0" >
+                                        <label for="inlineRadio2"> 否 </label>
+                                    </div>
+                                </div>
+                                </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label form-label">管辖范围</label>
+                                <div class="col-sm-9">
+                                        <div class="select-dept form-control"></div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label form-label">商户号</label>
+                                <label class="col-sm-3 control-label form-label">收款方式</label>
                                 <div class="col-sm-9">
-                                    <input type="text" placeholder="商户号" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group" ms-if="@type==2">
-                                <label class="col-sm-3 control-label form-label">支付证书</label>
-                                <div class="col-sm-9">
-                                    <a href="javascript:;" class="btn btn-light">选择证书</a>
-                                </div>
-                                <div class="col-sm-12">
-                                    <img src="" width="100%"/>
+                                        <div class="select-paytype form-control"></div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -153,10 +134,14 @@
 <button style="display: none" type="button" id="showSmallbox" data-target="#myModal3" data-toggle="modal"></button>
 <button style="display: none" type="button" id="showDialog" data-target="#myModal" data-toggle="modal"></button>
 
+</div>
 <script>
     require(['storemanage'], function (storemanage) {
         var url = {
-            payConfigRetrun:"json/PayConfigRetrun.json"
+            storemanageUrl:"json/storemanage.json",
+            getDeptTree:'json/treejson.json',
+            getBranchList:'/OrderRecord/HttpGetBranchList',
+            getPayList:'/PayConfig/PayConfigList'
         };
         storemanage.init_start(url);
     })
