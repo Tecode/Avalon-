@@ -95,7 +95,7 @@
 			}
 		},
 		error: function (str, e) {
-			throw (e || Error)(str)
+		throw (e || Error)(str)
 		},
 		//将一个以空格或逗号隔开的字符串或数组,转换成一个键值都为1的对象
 		oneObject: function (array, val) {

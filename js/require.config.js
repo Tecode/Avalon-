@@ -16,6 +16,7 @@ var require = {
         daterangepicker:'date-range-picker/daterangepicker',
         jquery_select:'jquery.select',
         sweet_alert:'sweet-alert/sweet-alert.min',
+        es6promise:'bower_components/es6-promise/es6-promise.auto.js',
 
 
         paycount:'component/paycount',//收款统计
@@ -30,7 +31,7 @@ var require = {
     },
     shim:{
         bootstrap:{deps:['jquery']},
-        avalon: { exports: "avalon" },
+        avalon: {exports: "avalon"},
         bootstrap_toggle:{deps:['jquery']},
         rickshaw:{deps:['d3']},
         sammy:{deps:['jquery']},
