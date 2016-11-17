@@ -11,18 +11,9 @@
                 "id":"dept_2",
                 "text": "测试子部门1",
                 "type":"dept",
-                "children": [
-                    {
-                        "id":"dept_3",
-                        "type":"dept",
-                        "text": "测试子部门11测试子部门11测试子部门11测试子部门11"
-                    },
-                    {
-                        "id":"user_1",
-                        "type":"user",
-                        "text":"用户姓名"
-                    }
-                ]
+                "children": [{"id":"user_2649","text":"ryl","type":"user","children":false},{"id":"user_1830","text":"lhx","type"
+                :"user","children":false},{"id":"user_321","text":"chenj1","type":"user","children":false},{"id":"user_170"
+                ,"text":"测试123","type":"user","children":false}]
             },
             {
                 "id":"dept_4",

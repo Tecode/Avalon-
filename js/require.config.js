@@ -35,7 +35,8 @@ var require = {
         user:'component/user',//人员管理
         goodsmanage:'component/goodsmanage',//商品管理
         payconfig:'component/payconfig',//支付配置
-        storemanage:'component/storemanage'//门店管理
+        storemanage:'component/storemanage',//门店管理
+        offlinepay:'component/offlinepay'//线上商品
 
     },
     shim:{

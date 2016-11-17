@@ -32,8 +32,8 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, d
             var ajax = function (postdata) {
                 self.ajax(url, "get", postdata, function (result) {
                     if (result.code == 0) {
-                        vm.totalItems = result.data.pagejson[0].totalcount;
-                        vm.totalPages = result.data.pagejson[0].pagecount;
+                        vm.totalItems = result.data.pagejson.totalcount;
+                        vm.totalPages = result.data.pagejson.pagecount;
                         fn.call(this, result);
                     }
                 });

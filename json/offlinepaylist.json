@@ -1,0 +1,114 @@
+{
+  "code": 0,
+  "msg": "获取成功",
+  "data": {
+    "goods": [
+      {
+        "sname": "测试",
+        "suser": [
+          {
+            "id":"user_321",
+            "text":"chenj1"
+          }
+        ],
+        "reminduser": [
+          {
+            "id": 895,
+            "text": "测试撒"
+          },
+          {
+            "id": 896,
+            "text": "艾丝凡"
+          }
+        ],
+        "slogo": "img/profileimg.png",
+        "stime": "2016/10/12 10:14:56",
+        "scode": "img/code.png",
+        "sid": 480
+      },
+      {
+        "sname": "科院",
+        "suser": {
+          "id": 2673,
+          "text": "测试111"
+        },
+        "reminduser": [
+          {
+            "id": 895,
+            "text": "测试撒"
+          },
+          {
+            "id": 896,
+            "text": "艾丝凡"
+          }
+        ],
+        "slogo": "img/profileimg.png",
+        "stime": "2016/10/11 10:27:54",
+        "scode": "img/code.png",
+        "sid": 476
+      },
+      {
+        "sname": "23",
+        "suser": {
+          "id": 1731,
+          "text": "11111"
+        },
+        "reminduser": [
+
+        ],
+        "slogo": "img/profileimg.png",
+        "stime": "2016/7/18 18:17:20",
+        "scode": "img/code.png",
+        "sid": 372
+      },
+      {
+        "sname": "测试",
+        "suser": {
+          "id": 1740,
+          "text": "测试"
+        },
+        "reminduser": [
+
+        ],
+        "slogo": "img/profileimg.png",
+        "stime": "2016/5/11 14:01:11",
+        "scode": "img/code.png",
+        "sid": 229
+      },
+      {
+        "sname": "123",
+        "suser": {
+          "id": "user_11",
+          "text": "chenj1"
+        },
+        "reminduser": [
+
+        ],
+        "slogo": "img/profileimg.png",
+        "stime": "2016/4/20 10:34:19",
+        "scode": "img/code.png",
+        "sid": 153
+      },
+      {
+        "sname": "门店1234",
+        "suser": {
+          "id": "user_12",
+          "text": "chenj1"
+        },
+        "reminduser": [
+
+        ],
+        "slogo": "img/profileimg.png",
+        "stime": "2016/4/18 10:56:45",
+        "scode": "img/code.png",
+        "sid": 139
+      }
+    ],
+    "pagejson": {
+      "pagesize": 20,
+      "pagecount": 6,
+      "pageindex": 0,
+      "totalcount":500
+    }
+  }
+}

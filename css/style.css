@@ -4250,3 +4250,20 @@ form .tips-msg{
     font-size: 10em;
     color: #dedede;
 }
+/*显示二维码*/
+.dispalyimg{
+    width: 200px;
+    height: 200px;
+    position: fixed;
+    top:40%;
+    left: 50%;
+    margin-left: -100px;
+    background-color: #fff;
+    border-radius: 5px;
+    display: none;
+}
+.dispalyimg img{
+    display: block;
+    margin:0 auto;
+    margin-top: 20px;
+}

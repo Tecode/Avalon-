@@ -21,8 +21,8 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'sweet_alert', 'featur
                 'core': {
                     "check_callback": true,
                     'data': {
-                        "url": "json/datatree.json",
-                        "dataType": "json" // needed only if you do not supply JSON headers
+                        "url": dataUrl.getJstreeUrl,
+                        "dataType": "json"
                     }
                 },
                 "types": {
@@ -78,13 +78,13 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'sweet_alert', 'featur
 
                 }
 
-            })
-                .on("changed.jstree", function (e, data) {
-
-                })
-                .on('open_node.jstree', function (e, data) {
-
-                });
+            });
+                // .on("changed.jstree", function (e, data) {
+                //
+                // })
+                // .on('open_node.jstree', function (e, data) {
+                //
+                // });
         },
         avalonStart: function () {
             overallSituation = avalon.define({
@@ -151,11 +151,11 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'sweet_alert', 'featur
                             delete postdata.wxcode;
                             delete postdata.time;
                             delete postdata.img;
-                    console.log(isAddDepartment());
                             isAddDepartment().doubt?(function () {
                                 //$('.data_tree').jstree('get_selected', true)[0].id 获取当前所在部门id
                                 cloudMail.addUser(postdata,$('.data_tree').jstree('get_selected', true)[0].id)
                                 })():(function () {
+                                console.info($('.data_tree').jstree('get_selected', true));
                                 cloudMail.editUser(postdata,$('.data_tree').jstree('get_selected', true)[0].id)
                                 })();
                 }),

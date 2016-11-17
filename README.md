@@ -13,3 +13,11 @@ cloudMail:实例化对象名称
 main:已完成参数需要增加
 payConfig:需不需要验证
 paycount:查看需要显示那些信息
+
+分页名称格式统一为：
+    "pagejson": {
+      "pagesize": 20,
+      "pagecount": 6,
+      "pageindex": 0,
+      "totalcount":500
+    }

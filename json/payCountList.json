@@ -2,14 +2,13 @@
   "code": "0",
   "msg": "获取成功",
   "data": {
-    "pagejson": [
+    "pagejson":
       {
         "pagecount": 30,
         "pageindex": 1,
         "pagesize": 20,
         "totalcount": 1000
-      }
-    ],
+      },
     "orderinfojson": [
       {
         "body": "得到",
