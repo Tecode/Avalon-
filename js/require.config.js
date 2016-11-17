@@ -17,18 +17,6 @@ var require = {
         jquery_select:'jquery.select',
         sweet_alert:'sweet-alert/sweet-alert.min',
 
-//不要
-        mmHistory: 'lib/mmHistory',
-        mmRouter: 'lib/mmRouter',
-        layer: 'lib/layer/layer',
-        highcharts: 'lib/highcharts',
-        select: 'lib/jquery.select',
-        pager: 'lib/jquery.pager',
-        datepicker: 'lib/datetime/js/bootstrap-datetimepicker',
-        metisMenu: 'lib/metisMenu/metisMenu.min',
-        WebUploader: 'lib/webuploader/webuploader.min',
-
-
 
         paycount:'component/paycount',//收款统计
         main:'component/main',//加载的首页
@@ -36,7 +24,8 @@ var require = {
         goodsmanage:'component/goodsmanage',//商品管理
         payconfig:'component/payconfig',//支付配置
         storemanage:'component/storemanage',//门店管理
-        offlinepay:'component/offlinepay'//线上商品
+        offlinepay:'component/offlinepay',//线上商品
+        giftmanage:'component/giftmanage'
 
     },
     shim:{

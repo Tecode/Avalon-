@@ -6,6 +6,9 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, d
     var render = true;
     var pack = function () {
         //定义ajax方法
+        this.render = function (fn) {
+            render = fn.call(this,'');
+        };
         this.ajax = function (url, type, postdata, fn) {
             $.ajax({
                 url: url, type: type, data: postdata, dataType: "json",
@@ -186,6 +189,9 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, d
                 validateInBlur:true,
                 validateInKeyup:true
             }
+        };
+        this.upload = function () {
+
         }
     };
     var _featurepack = new pack();
