@@ -28,8 +28,6 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, d
                 ajaxdata[key] = postdata[key];
             }
 
-            console.info(ajaxdata);
-
             var self = this;
             var ajax = function (postdata) {
                 self.ajax(url, "get", postdata, function (result) {
@@ -48,7 +46,7 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, d
                 vm = avalon.define({
                     $id: "test",
                     curPage: 1,//开始页
-                    totalPages: 10,//总页数
+                    totalPages: 0,//总页数
                     totalItems: 0,//总共多少条
                     pageItems: [1],
                     pageSize: 20,//每页显示条数
@@ -107,6 +105,10 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, d
         this.toggleTops = function () {
             $("#topstats").click(function () {
                 $(".topstats").slideToggle(100);
+            });
+
+            $("#search").click(function () {
+                $(".panel").slideToggle(100);
             });
         };
         this.datePicker = function (fn) {

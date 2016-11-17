@@ -7,7 +7,7 @@
         "pagecount": 30,
         "pageindex": 1,
         "pagesize": 20,
-        "totalcount": 60
+        "totalcount": 1000
       }
     ],
     "orderinfojson": [
@@ -313,5 +313,6 @@
       }
     ]
   },
-  "sum": "1.06515255794258E+15"
+  "sum": "1200",
+  "total":"200"
 }

@@ -4245,3 +4245,8 @@ form .tips-msg{
     margin-bottom: 0;
     margin-top: 8px;
 }
+/*数据为空提示*/
+.isnullTips span{
+    font-size: 10em;
+    color: #dedede;
+}

@@ -14,17 +14,6 @@ define(['avalon','bootstrap','bootstrap_select','moment','daterangepicker','feat
         paystate:"",
         username:""
     };
-    var initStart = function (url) {
-        dataUrl = url;
-        //下拉选项初始化
-        featurepack.pack.option();
-        featurepack.pack.datePicker(cloudMail.getTime);
-        //分页和查询
-        cloudMail.getResponse(postdata);
-        cloudMail.avalonStart();
-
-    };
-
     var Fn = function () {
         this.avalonStart = function () {
                 showList = avalon.define({
@@ -52,6 +41,8 @@ define(['avalon','bootstrap','bootstrap_select','moment','daterangepicker','feat
 
                 searchList = avalon.define({
                     $id:"searchList",
+                    total:"0",//总笔数
+                    sum:"0",//总收入
                     searchButton:function () {
                         $("form").serializeArray().map(function (child,index) {
                             postdata[child.name] = child.value
@@ -59,29 +50,13 @@ define(['avalon','bootstrap','bootstrap_select','moment','daterangepicker','feat
                         cloudMail.getResponse(postdata);
                     }
                 });
-
-                searchList.$watch("onDispose", function(){
-                    var id = searchList.$id;
-                    //清理内存
-                    delete avalon.vmodels[id];
-                    if(avalon.scopes && avalon.scopes[id]){
-                        delete avalon.scopes[id]
-                    }
-                         });
-                showList.$watch("onDispose", function(){
-                    var id = showList.$id;
-                    //清理内存
-                    delete avalon.vmodels[id];
-                    if(avalon.scopes && avalon.scopes[id]){
-                        delete avalon.scopes[id]
-                    }
-                    });
                 avalon.scan(document.body);
                 };
                 //分页插件封装的avalon需要传url
                 this.fn = function () {
                     showList.listData = arguments[0].data.orderinfojson;
-                    alert(100000)
+                    searchList.total = arguments[0].total;
+                    searchList.sum = arguments[0].sum;
                 };
                 this.getResponse = function (data) {
                     featurepack.pack.pager(this.fn,data,dataUrl.getpaycountList);
@@ -103,7 +78,17 @@ define(['avalon','bootstrap','bootstrap_select','moment','daterangepicker','feat
                 }
     };
     var cloudMail = new Fn();
+    var initStart = function (url) {
+        dataUrl = url;
+        //下拉选项初始化
+        featurepack.pack.option();
+        featurepack.pack.toggleTops();
+        featurepack.pack.datePicker(cloudMail.getTime);
+        //分页和查询
+        cloudMail.getResponse(postdata);
+        cloudMail.avalonStart();
 
+    };
     return {
         init_start: initStart
     };

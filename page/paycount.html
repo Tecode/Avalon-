@@ -11,7 +11,7 @@
     <div class="right">
         <div class="btn-group" role="group" aria-label="...">
             <a href="javascript:;" class="btn btn-light"><i class="fa fa-refresh"></i></a>
-            <a href="#" class="btn btn-light"><i class="fa fa-search"></i></a>
+            <a href="javascript:;" class="btn btn-light" id="search"><i class="fa fa-search"></i></a>
         </div>
     </div>
     <!-- End Page Header Right Div -->
@@ -24,7 +24,7 @@
             <div class="panel-title">
                 订单查询
             </div>
-            <span class="text-right">交易笔数: 100笔 交易金额: 60元</span>
+            <span class="text-right">交易笔数: {{'&nbsp;'+##total}}笔 交易金额: {{'&nbsp;'+##sum}}元</span>
             <div class="panel-body">
                 <form class="form-inline">
                     <div class="controls form-group">
@@ -86,7 +86,7 @@
     </div>
 
     <div class="panel-body ms-controller" ms-controller="showList">
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered table-striped" ms-if="##listData.length > 0">
             <thead>
             <tr class="table-header">
                 <td>门店</td>
@@ -114,10 +114,14 @@
             </tr>
             </tbody>
         </table>
+        <div class="isnullTips" ms-if="##listData.length==0">
+            <p class="text-center"><span class="fa fa-folder-open"></span></p>
+            <p class="text-center">这里什么也没有，您可以试试搜索一下。</p>
+        </div>
     </div>
 
     <!--分页插件-->
-    <div class="am-container text-center ms-controller" ms-controller="test">
+    <div class="am-container text-center ms-controller" ms-controller="test" ms-if="##totalItems>0">
         <p>共 {{##totalItems}} 条记录</p>
             <ul class="pagination pagination-md">
                 <li><a href="javascript:;" ms-click="##changePage(1)">首页</a></li>
