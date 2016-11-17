@@ -3,17 +3,16 @@
  */
 define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'sweet_alert', 'featurepack'], function (bootstrap, avalon, jstree, jquery_select, swal, featurepack) {
     var dataUrl, overallSituation, checkMiniBox ,isAddDepartment;
-    var getTreeNodeId = function (nodeid) {
-        return nodeid.split('_').length > 1 ? nodeid.split('_')[1] : nodeid.split('_')
-    };
     var cloudMail = {
+        getTreeNodeId:function (nodeid) {
+        return nodeid.split('_').length > 1 ? nodeid.split('_')[1] : nodeid.split('_')
+        },
         initSlect: function () {
             $('.selectdept').select({
                 url: '',
                 multiple: true,
-                //获取下拉jstree
                 jstree: {
-                    'url': 'json/datatree.json'
+                    'url': dataUrl.getJstreeUrl
                 }
             });
 
@@ -98,7 +97,7 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'sweet_alert', 'featur
                     overallSituation.filldata = el;
                     $('.loginname').attr('readonly', 'readonly');
                     $('.selectdept').select('setSelected', el.depts);
-                    cloudMail.setDeptUser(1);
+                    cloudMail.setDeptUser(2);
                 },
                 clearAttr: function (e) {
                     $(e.target).parents('.col-sm-10').siblings('.tips-msg').remove();
@@ -138,7 +137,7 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'sweet_alert', 'featur
                         var depts = $('.selectdept').select('getSelected');
                             var deptid = '';
                             $(depts).each(function (i, dept) {
-                                deptid += getTreeNodeId(dept.id) + ",";
+                                deptid += cloudMail.getTreeNodeId(dept.id) + ",";
                             });
                         var postdata = {};
                             postdata.deptid = deptid;
@@ -191,6 +190,7 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'sweet_alert', 'featur
             // 添加修改用户
         setDeptUser:function (type) {
             type==1?(function () {
+                $('.selectdept').select('clearSelected');
                 isAddDepartment = function () {
                     return {
                         doubt:true
@@ -225,7 +225,7 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'sweet_alert', 'featur
                     isAddDepartment = function () {
                         return {
                             doubt:false,
-                            deptId:getTreeNodeId(selectedNode[0].id)
+                            deptId:cloudMail.getTreeNodeId(selectedNode[0].id)
                         }
                     };
                 })();

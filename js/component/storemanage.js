@@ -13,9 +13,11 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'featurepack', 'sweet_
                 scope: [],
                 paytype: [],
                 addStore: function () {
+                    globalData = {type:1,value:0};
                     cloudMail.setBranch(1, null);
                 },
                 editStore: function (el) {
+                    globalData = {type:2,value:el};
                     overallSituation.filldata = el;
                     cloudMail.setBranch(2, el);
                 },
@@ -23,29 +25,40 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'featurepack', 'sweet_
                     $('.tips-msg').remove()
                 },
                 validate: featurepack.pack.checkValue(function () {
-                    if(overallSituation.person.length ==0){
-                        $('.select-user').parent('div').after('<p class="col-sm-offset-3 tips-msg col-sm-9 color-down">请选择负责人</p>');
-                    }
-                    else if(overallSituation.scope.length ==0){
-                        $('.select-dept').parent('div').after('<p class="col-sm-offset-3 tips-msg col-sm-9 color-down">请选择负责人的管辖范围</p>');
-                    }
-                    else if(overallSituation.paytype.length ==0){
-                        $('.select-paytype').parent('div').after('<p class="col-sm-offset-3 tips-msg col-sm-9 color-down">请选择收款方式</p>');
-                    }else {
-                        var user = (selectUser.select('getSelected')).length > 0 ? cloudMail.getTreeNodeId((selectUser.select('getSelected'))[0].id) : '';
-                        var postdata = {
-                            user:user,
-                            scope:selectDept.select('getSelected'),
-                            paytype:selectPayType.select('getSelected'),
-                            branchname:overallSituation.filldata.branchname,
-                            branchpaydes:overallSituation.filldata.branchpaydes,
-                            isonline:overallSituation.filldata.isonline
-                        };
-                        cloudMail.addUser(postdata);
-                        cloudMail.editUser(postdata);
+                    overallSituation.person = selectUser.select('getSelected');
+                    overallSituation.scope=selectDept.select('getSelected');
+                    overallSituation.paytype=selectPayType.select('getSelected');
+                    $('.tips-msg').remove();
+                        if(overallSituation.person.length ==0){
+                            $('.select-user').parent('div').after('<p class="col-sm-offset-3 tips-msg col-sm-9 color-down">请选择负责人</p>');
+                        }
+                        else if(overallSituation.scope.length ==0){
+                            $('.select-dept').parent('div').after('<p class="col-sm-offset-3 tips-msg col-sm-9 color-down">请选择负责人的管辖范围</p>');
+                        }
+                        else if(overallSituation.paytype.length ==0){
+                            $('.select-paytype').parent('div').after('<p class="col-sm-offset-3 tips-msg col-sm-9 color-down">请选择收款方式</p>');
+                        }else {
+                            var user = (selectUser.select('getSelected')).length > 0 ? cloudMail.getTreeNodeId((selectUser.select('getSelected'))[0].id) : '';
+                            var postdata = {
+                                user:user,
+                                scope:selectDept.select('getSelected'),
+                                paytype:selectPayType.select('getSelected'),
+                                branchname:overallSituation.filldata.branchname,
+                                branchpaydes:overallSituation.filldata.branchpaydes,
+                                isonline:overallSituation.filldata.isonline
+                            };
+                            globalData.type ==1?(function () {
+                                //增加
+                                postdata.branchid = 0;
+                                cloudMail.addStore(postdata);
+                            })():(function () {
+                                //修改
+                                postdata.branchid = globalData.value.branchid;
+                                cloudMail.editStore(postdata);
+                            })();
                     }
                 }),
-                deleteStore: function () {
+                deleteStore: function (el) {
                     swal({
                             title: "确定删除该支付配置?",
                             text: "删除以后将不会恢复!",
@@ -57,8 +70,7 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'featurepack', 'sweet_
                             closeOnConfirm: false
                         },
                         function () {
-                            alert("请求方法");
-                            swal("删除成功!", "您已经删除了这项配置，点击OK关闭窗口。", "success");
+                            cloudMail.deleteStore({branchid:el.branchid})
                         });
                 }
             });
@@ -69,7 +81,7 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'featurepack', 'sweet_
                 url: '',
                 multiple: false,
                 jstree: {
-                    url: dataUrl.getDeptTree + '?type=user',
+                    url: dataUrl.getDeptTree+'?type=user',
                     selectType: 'user'
                 }
             });
@@ -91,6 +103,7 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'featurepack', 'sweet_
         },
         setBranch: function (type, value) {
             type == 1 ? (function () {
+                overallSituation.filldata = {branchname:"",branchpaydes:"",isonline:"1"};
                 selectPayType.select('clearSelected');
                 selectDept.select('clearSelected');
                 selectUser.select('clearSelected');
@@ -137,6 +150,16 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'featurepack', 'sweet_
             featurepack.pack.ajax(dataUrl.editStoreUrl, "post", postdata, function (result) {
                 if (result.code == 0) {
                     swal("修改成功!", "您已经修改了门店，点击OK关闭窗口。", "success");
+                } else {
+                    swal(result.msg, "", "error");
+                }
+            })
+        },
+        deleteStore: function (postdata) {
+            featurepack.pack.ajax(dataUrl.deleteStoreUrl, "post", postdata, function (result) {
+                if (result.code == 0) {
+                    swal("删除成功!", "您已经删除了门店，点击OK关闭窗口。", "success");
+                    console.info(postdata)
                 } else {
                     swal(result.msg, "", "error");
                 }

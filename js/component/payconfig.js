@@ -143,7 +143,6 @@ define(['bootstrap','avalon','featurepack','sweet_alert'], function(bootstrap,av
             },
             addPayConfig:function (postdata) {
                 featurepack.pack.ajax(url.addPayConfig,"post",postdata,function (result) {
-                    console.info(postdata)
                     if(result.code == 0){
                         swal("添加成功!", "您已经添加了这项配置，点击OK关闭窗口。", "success");
                         cloudMail.getAjax.getResponse();

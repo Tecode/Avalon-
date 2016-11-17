@@ -66,12 +66,12 @@
                     }
                 },
                 'types':{
-                    // "dept":{
-                    //     "icon" : "fa fa-folder"
-                    // },
-                    // "user":{
-                    //     "icon" : "fa fa-folder"
-                    // },
+                    "dept":{
+                        "icon" : "fa fa-folder"
+                    },
+                    "user":{
+                        "icon" : "fa fa-user"
+                    },
                     "default" : {
                         "icon" : "fa fa-folder"
                     }
