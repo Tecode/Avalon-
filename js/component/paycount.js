@@ -83,7 +83,7 @@ define(['avalon','bootstrap','bootstrap_select','moment','daterangepicker','feat
         //下拉选项初始化
         featurepack.pack.option();
         featurepack.pack.toggleTops();
-        featurepack.pack.datePicker(cloudMail.getTime);
+        featurepack.pack.datePicker(cloudMail.getTime,"#date-range-picker",false);
         //分页和查询
         cloudMail.getResponse(postdata);
         cloudMail.avalonStart();

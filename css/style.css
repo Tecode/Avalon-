@@ -4268,3 +4268,12 @@ form .tips-msg{
     margin:0 auto;
     margin-top: 20px;
 }
+.doubleinput .col-sm-9 input{
+    width: 12%;
+    border: none;
+    padding-right: 5px;
+    box-shadow: none;
+    border-radius: 0;
+    border-bottom: 1px solid #58666e;
+    color: #d43f3a;
+}

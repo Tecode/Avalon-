@@ -26,7 +26,8 @@ var require = {
         payconfig:'component/payconfig',//支付配置
         storemanage:'component/storemanage',//门店管理
         offlinepay:'component/offlinepay',//线上商品
-        giftmanage:'component/giftmanage'
+        giftmanage:'component/giftmanage',//礼品管理
+        card:'component/card'//卡券管理
 
     },
     shim:{

@@ -69,18 +69,6 @@
             <p class="text-center">这里什么也没有，您可以试试搜索一下。</p>
         </div>
     </div>
-</div>
-    <!--分页-->
-    <div class="am-container text-center ms-controller" ms-controller="test" ms-if="##totalItems>0">
-        <p>共 {{##totalItems}} 条记录</p>
-        <ul class="pagination pagination-md">
-            <li><a href="javascript:;" ms-click="##changePage(1)">首页</a></li>
-            <li ms-class="{'am-disabled' : ##curPage == 1}"><a href="javascript:;" ms-click="##changePage(##curPage-1)">«</a></li>
-            <li ms-for="el in ##pageItems" ms-class="{'active' : ##curPage == el}" ms-click="##changePage(el)"><a href="javascript:;">{{el}}</a></li>
-            <li ms-class="{'am-disabled' : ##curPage == ##totalPages}"><a href="javascript:;" ms-click="##changePage(##curPage+1)">»</a></li>
-            <li><a href="javascript:;" ms-click="##changePage(##totalPages)">尾页</a></li>
-        </ul>
-    </div>
     <!-- 弹出的大框框 -->
     <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-md">
@@ -170,6 +158,18 @@
         </button>
     </div>
     <button style="display: none" type="button" id="showBigBox" data-target="#myModal2" data-toggle="modal"></button>
+</div>
+    <!--分页-->
+    <div class="am-container text-center ms-controller" ms-controller="test" ms-if="##totalItems>0">
+        <p>共 {{##totalItems}} 条记录</p>
+        <ul class="pagination pagination-md">
+            <li><a href="javascript:;" ms-click="##changePage(1)">首页</a></li>
+            <li ms-class="{'am-disabled' : ##curPage == 1}"><a href="javascript:;" ms-click="##changePage(##curPage-1)">«</a></li>
+            <li ms-for="el in ##pageItems" ms-class="{'active' : ##curPage == el}" ms-click="##changePage(el)"><a href="javascript:;">{{el}}</a></li>
+            <li ms-class="{'am-disabled' : ##curPage == ##totalPages}"><a href="javascript:;" ms-click="##changePage(##curPage+1)">»</a></li>
+            <li><a href="javascript:;" ms-click="##changePage(##totalPages)">尾页</a></li>
+        </ul>
+    </div>
 
 <script>
     require(['giftmanage'],function (giftmanage) {

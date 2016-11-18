@@ -112,18 +112,25 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, d
                 $(".panel").slideToggle(100);
             });
         };
-        this.datePicker = function (fn) {
-            $('#date-range-picker').daterangepicker(
+        this.datePicker = function (fn,id,type) {
+            var dateUntil = moment();
+            type?(function () {
+                dateUntil = null;
+                })():(function () {
+                dateUntil= moment();
+                });
+            $(id).daterangepicker(
                 {
+                    singleDatePicker: type,
                     // startDate: moment().startOf('day'),
                     //endDate: moment(),
                     //minDate: '01/01/2012',    //最小时间
-                    maxDate: moment(), //最大时间
+                    maxDate: dateUntil, //最大时间
                     dateLimit: {
                         days: 30
                     }, //起止时间的最大间隔
                     showDropdowns: true,
-                    showWeekNumbers: true, //是否显示第几周
+                    showWeekNumbers: false, //是否显示第几周
                     timePicker: false, //是否显示小时和分钟
                     //timePickerIncrement : 60, //时间的增量，单位为分钟
                     //timePicker12Hour : false, //是否使用12小时制来显示时间
@@ -134,7 +141,7 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, d
                         '最近7日': [moment().subtract('days', 6), moment()],
                         '最近30日': [moment().subtract('days', 29), moment()]
                     },
-                    opens: 'right', //日期选择框的弹出位置
+                    opens: 'left', //日期选择框的弹出位置
                     buttonClasses: ['btn btn-default'],
                     applyClass: 'btn-small btn-primary blue',
                     cancelClass: 'btn-small',
@@ -172,7 +179,7 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, d
                 // },
                 onValidateAll: function (reasons) {
                     reasons.length == 0?(function () {
-                        fn.call(this,'');
+                        fn.call(this,'',reasons);
                     })():(function () {
                         $('.tips-msg').remove();
                         reasons.forEach(function (child) {
