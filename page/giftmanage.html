@@ -24,10 +24,10 @@
                 <form class="form-inline">
                     <div class="form-group">
                         <label for="example1" class="form-label">礼品名称</label>
-                        <input type="text" class="form-control" id="storeName" ms-duplex="##gifname" placeholder="礼品名称">
+                        <input type="text" class="form-control" id="giftName" ms-duplex="##gifname" placeholder="礼品名称">
                     </div>
                     <button type="button" class="btn btn-default submitbutton" style="margin-right: 1em" ms-click="##searchButton">查询订单</button>
-                    <button type="button" class="btn btn-success submitbutton" ms-click="##addPay">添加礼品</button>
+                    <button type="button" class="btn btn-success submitbutton" ms-click="##addGift">添加礼品</button>
                 </form>
 
             </div>
@@ -52,22 +52,26 @@
             <tr ms-for="key in ##offlinepayList">
                 <td>
                     <div class="imgDisplayBox">
-                        <img ms-attr="{src:key.slogo}" height="auto" width="100%"/>
+                        <img ms-attr="{src:key.gift_img}" height="auto" width="100%"/>
                     </div>
                 </td>
-                <td>{{key.sname}}</td>
-                <td>{{key.suser.text}}</td>
-                <td>{{key.stime}}</td>
-                <td>{{key.stime}}</td>
-                <td>{{key.stime}}</td>
-                <td><a href="javascript:;" style="margin-right: 1em" ms-click="##editPay(key)">编辑</a><a href="javascript:;" ms-click="##refund(key)">下架</a></td>
+                <td>{{key.gift_name}}</td>
+                <td>{{key.consume_credit}}</td>
+                <td>{{key.c_totalfee}}</td>
+                <td>{{key.description}}</td>
+                <td>{{key.gifttime}}</td>
+                <td><a href="javascript:;" style="margin-right: 1em" ms-click="##editGift(key)">编辑</a><a href="javascript:;" ms-click="##downGift(key)">下架</a></td>
             </tr>
             </tbody>
         </table>
+        <div class="isnullTips" ms-if="##offlinepayList.length==0">
+            <p class="text-center"><span class="fa fa-folder-open"></span></p>
+            <p class="text-center">这里什么也没有，您可以试试搜索一下。</p>
+        </div>
     </div>
-
-    <!--分页插件-->
-    <div class="am-container text-center ms-controller" ms-controller="test">
+</div>
+    <!--分页-->
+    <div class="am-container text-center ms-controller" ms-controller="test" ms-if="##totalItems>0">
         <p>共 {{##totalItems}} 条记录</p>
         <ul class="pagination pagination-md">
             <li><a href="javascript:;" ms-click="##changePage(1)">首页</a></li>
@@ -77,10 +81,6 @@
             <li><a href="javascript:;" ms-click="##changePage(##totalPages)">尾页</a></li>
         </ul>
     </div>
-
-    <div class="dispalyimg">
-        <img src="" alt="二维码" />
-    </div>
     <!-- 弹出的大框框 -->
     <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-md">
@@ -88,64 +88,38 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><strong>支付管理</strong></h4>
+                    <h4 class="modal-title"><strong>礼品管理</strong></h4>
                 </div>
                 <div class="modal-body">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <form class="form-horizontal" action="#/offlinepay" ms-validate="##validate">
+                            <form class="form-horizontal" action="#/giftmanage" ms-validate="##validate">
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label form-label">门店名称</label>
+                                    <label class="col-sm-3 control-label form-label">礼品名称</label>
                                     <div class="col-sm-9">
-                                        <input type="text" ms-focus="##clearAttr" ms-rules="{required:true}" ms-duplex="##filldata.sname" data-required-message="门店名称不能为空！" placeholder="取个名称，方便随时查看" class="form-control" id="input12">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label form-label">管理人员</label>
-                                    <div class="col-sm-9">
-                                        <div class="select-user form-control"></div>
-                                    </div>
-                                </div>
-                                <div class="form-group" ms-if="##globalData.type ==1">
-                                    <label class="col-sm-3 control-label form-label">拉取用户信息</label>
-                                    <div class="col-sm-9">
-                                        <div class="radio radio-info radio-inline" :click="##clearAttr">
-                                            <input type="radio" id="inlineRadio1" ms-rules="{required: true}" ms-duplex="##ispull" value="1" >
-                                            <label for="inlineRadio1"> 拉取 </label>
-                                        </div>
-                                        <div class="radio radio-inline" :click="##clearAttr">
-                                            <input type="radio" id="inlineRadio2" ms-rules="{required: true}" ms-duplex="##ispull" value="0" >
-                                            <label for="inlineRadio2"> 不拉取 </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group" ms-if="##globalData.type ==1">
-                                    <label class="col-sm-3 control-label form-label">是否中转</label>
-                                    <div class="col-sm-9">
-                                        <div class="radio radio-info radio-inline" :click="##clearAttr">
-                                            <input type="radio" id="inlineRadio3" ms-rules="{required: true}" ms-duplex="##istransfer" value="1" >
-                                            <label for="inlineRadio3"> 中转 </label>
-                                        </div>
-                                        <div class="radio radio-inline" :click="##clearAttr">
-                                            <input type="radio" id="inlineRadio4" ms-rules="{required: true}" ms-duplex="##istransfer" value="0" >
-                                            <label for="inlineRadio4"> 不中转 </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group" :visible="##globalData.type ==1 && ##istransfer==1">
-                                    <label class="col-sm-3 control-label form-label">中转地址</label>
-                                    <div class="col-sm-9">
-                                        <textarea class="form-control" rows="3" ms-rules="{norequired:true,pattern:/(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?/}" ms-duplex="##transferUrl" :focus="##clearAttr" data-pattern-message="输入的地址不合法！" placeholder="例如：http://www.cqyytx.com" id="textarea1"></textarea>
+                                        <input type="text" ms-focus="##clearAttr" ms-rules="{required:true}" ms-duplex="##filldata.gift_name" data-required-message="礼品名称不能为空！" placeholder="取个名称，方便随时查看" class="form-control" id="input11">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label form-label">提醒用户</label>
+                                    <label class="col-sm-3 control-label form-label">所需积分</label>
                                     <div class="col-sm-9">
-                                        <div style="height: auto;min-height: 30px;" class="select-users form-control"></div>
+                                        <input type="text" ms-focus="##clearAttr" ms-rules="{digits:true}" ms-duplex="##filldata.c_totalfee" data-digits-message="积分必须是整数！" placeholder="输入兑换所需的积分数量" class="form-control" id="input12">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label form-label">门店Logo</label>
+                                    <label class="col-sm-3 control-label form-label">库存（个）</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" ms-focus="##clearAttr" ms-rules="{digits:true}" ms-duplex="##filldata.gift_stock" data-digits-message="库存数量必须是整数！" placeholder="输入总的库存数量" class="form-control" id="input13">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label form-label">描述</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-control" rows="3" ms-rules="{norequired:true,minlength:5}" ms-duplex="##filldata.description" :focus="##clearAttr" data-minlength-message="描述不能少于5个字符！" placeholder="输入该商品的描述" id="textarea1"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label form-label">商品图片</label>
                                     <div class="col-sm-9">
                                         <div class="select-dept form-control"></div>
                                     </div>
@@ -196,7 +170,6 @@
         </button>
     </div>
     <button style="display: none" type="button" id="showBigBox" data-target="#myModal2" data-toggle="modal"></button>
-</div>
 
 <script>
     require(['giftmanage'],function (giftmanage) {

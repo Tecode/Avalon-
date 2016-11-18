@@ -88,8 +88,6 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, d
                 });
                 avalon.scan(document.body);
             }
-
-
         };
         this.expand = function () {
             $('.panel-tools .expand-tool').on('click', function(){
@@ -191,7 +189,7 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, d
             }
         };
         this.upload = function () {
-
+        //上传文件
         }
     };
     var _featurepack = new pack();

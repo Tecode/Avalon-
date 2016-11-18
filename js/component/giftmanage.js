@@ -3,38 +3,31 @@
  */
 define(['bootstrap','avalon','jstree','jquery_select','sweet_alert','featurepack'], function(bootstrap,avalon,jstree,jquery_select,swal,featurepack) {
     var giftManage,dataUrl;
-    var postdata = {sname:""};
+    var postdata = {gifname:""};
     var cloudMail = {
-        getTreeNodeId:function (nodeid) {
-            return nodeid.split('_').length > 1 ? nodeid.split('_')[1] : nodeid.split('_')
-        },
         avalonStart:function () {
             giftManage = avalon.define({
                 $id:"giftmanage",
                 gifname:"",
                 offlinepayList:[],
-                filldata:[],
-                ispull:'0',
-                istransfer:'1',
-                transferUrl:'',
+                filldata:{},
                 globalData:{},
                 searchButton:function () {
-                    postdata.sname = offlinepay.sname;
+                    postdata.gifname = giftManage.gifname;
                     cloudMail.getResponse(postdata);
                 },
-                addPay:function () {
+                addGift:function () {
                     cloudMail.Judgment(1,null);
-                    offlinepay.globalData ={type:1}
+                    giftManage.globalData ={type:1}
                 },
-                editPay:function (el) {
-                    offlinepay.filldata = el;
+                editGift:function (el) {
+                    giftManage.globalData ={type:2};
                     cloudMail.Judgment(2,el);
-                    offlinepay.globalData ={type:2}
                 },
-                refund:function (el) {
+                downGift:function (el) {
                     swal({
-                            title: "确定删除吗？?",
-                            text: "您将会删除该支付配置!",
+                            title: "确定下架吗？?",
+                            text: "您将会下架该商品!",
                             type: "warning",
                             showCancelButton: true,
                             confirmButtonColor: "#DD6B55",
@@ -43,37 +36,27 @@ define(['bootstrap','avalon','jstree','jquery_select','sweet_alert','featurepack
                             closeOnConfirm: false
                         },
                         function () {
-                            cloudMail.refundMoney(el.sid);
+                            cloudMail.downGift(el.giftid);
                         });
                 },
                 clearAttr:function () {
                     $('.tips-msg').remove()
                 },
                 validate: featurepack.pack.checkValue(function () {
-                    var postdata = {};
-                    var deptid = '';
-                    $('.tips-msg').remove();
-                    if($('.select-user').select('getSelected').length ==0){
-                        $('.select-user').parent('div').after('<p class="col-sm-offset-3 tips-msg col-sm-9 color-down">请选择管理员</p>');
-                    }
-                    else if($('.select-users').select('getSelected').length ==0){
-                        $('.select-users').parent('div').after('<p class="col-sm-offset-3 tips-msg col-sm-9 color-down">请选择提醒用户</p>');
-                    }else {
-                        $($('.select-users').select('getSelected')).each(function (i, dept) {
-                            deptid += cloudMail.getTreeNodeId(dept.id) + ",";
-                        });
-                        postdata.sname = offlinepay.filldata.sname;
-                        postdata.user = $('.select-user').select('getSelected')[0].id;
-                        postdata.users = deptid;
-                        offlinepay.globalData.type == 1 ? (function () {
-                            postdata.istransfer = offlinepay.istransfer;
-                            postdata.ispull = offlinepay.ispull;
-                            postdata.transferUrl = offlinepay.transferUrl;
-                            cloudMail.addPayment(postdata);
-                        })():(function () {
-                            cloudMail.editPayment(postdata);
-                        })();
-                    }
+                    var postdata ={
+                        gift_name:giftManage.filldata.gift_name,
+                        c_totalfee:giftManage.filldata.c_totalfee,
+                        gift_stock:giftManage.filldata.gift_stock,
+                        description:giftManage.filldata.description,
+                        gift_img:"img/profileimg.png"//还没有写插件
+                    };
+                    giftManage.globalData.type ==1?(function () {
+                        postdata.giftid = 0;
+                        cloudMail.addGift(postdata);
+                    })():function () {
+                        postdata.giftid = giftManage.filldata.giftid;
+                        cloudMail.editGift(postdata);
+                    }()
                 })
             });
 
@@ -81,48 +64,20 @@ define(['bootstrap','avalon','jstree','jquery_select','sweet_alert','featurepack
         },
         //分页插件封装的avalon需要传url
         fn:function () {
-            giftManage.offlinepayList = arguments[0].data.goods;
+            giftManage.offlinepayList = arguments[0].data.giftlist;
         },
         getResponse:function (data) {
             featurepack.pack.pager(cloudMail.fn,data,dataUrl.getgiftmanageList);
         },
         Judgment:function (type,value) {
-            $('.select-user').select('clearSelected');
-            $('.select-users').select('clearSelected');
             type==1?(function () {
-                offlinepay.filldata = {sname:""};
-                offlinepay.ispull = 0;
-                offlinepay.istransfer = 0;
-                offlinepay.transferUrl = "";
+                giftManage.filldata = {gift_name:"",c_totalfee:"",gift_stock:"",description:"",gift_img:"img/profileimg.png"};
             })():(function () {
-                //json数据要有一个[]才可以
-                $('.select-user').select('setSelected',value.suser);
-                $('.select-users').select('setSelected',value.reminduser);
+                giftManage.filldata = value;
             })();
             $('#showBigBox').click();
         },
-        jsTreeInit:function () {
-            $('.select-user').select({
-                url:'',
-                multiple:false,
-                jstree:{
-                    url:dataUrl.getDeptTree,//+'?type=user'
-                    selectType:'user'
-                }
-            });
-            $('.select-users').select({
-                url:'',
-                multiple:true,
-                jstree:{
-                    url:dataUrl.getDeptTree,//+'?type=user'
-                    selectType:'user'
-                }
-            });
-            $('.choose-input-list').on('click',function () {
-                $('.tips-msg').remove()
-            })
-        },
-        editPayment:function (postdata) {
+        editGift:function (postdata) {
             featurepack.pack.ajax(dataUrl.editPayUrl, "post", postdata, function (result) {
                 if (result.code == 0) {
                     swal("修改成功!", "您已经修改了该成员，点击OK关闭窗口。", "success");
@@ -131,7 +86,8 @@ define(['bootstrap','avalon','jstree','jquery_select','sweet_alert','featurepack
                 }
             })
         },
-        addPayment:function (postdata) {
+        addGift:function (postdata) {
+            console.info(postdata)
             featurepack.pack.ajax(dataUrl.addPayUrl, "get", postdata, function (result) {
                 if (result.code == 0) {
                     swal("添加成功!", "您已经添加成员，点击OK关闭窗口。", "success");
@@ -140,10 +96,10 @@ define(['bootstrap','avalon','jstree','jquery_select','sweet_alert','featurepack
                 }
             })
         },
-        refundMoney:function () {
+        downGift:function () {
             featurepack.pack.ajax(dataUrl.refundMoneyUrl, "get", postdata, function (result) {
                 if (result.code == 0) {
-                    swal("添加成功!", "您已经添加成员，点击OK关闭窗口。", "success");
+                    swal("下架成功!", "您已经成功下架此商品，点击OK关闭窗口。", "success");
                 } else {
                     swal(result.msg, "", "error");
                 }
@@ -153,7 +109,6 @@ define(['bootstrap','avalon','jstree','jquery_select','sweet_alert','featurepack
     var initStart = function (l) {
         dataUrl = l;
         featurepack.pack.toggleTops();
-        cloudMail.jsTreeInit();
         cloudMail.getResponse(postdata);
         cloudMail.avalonStart();
     };
