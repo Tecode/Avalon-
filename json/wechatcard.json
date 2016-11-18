@@ -1,0 +1,95 @@
+{
+  "code": 0,
+  "msg": "获取成功",
+  "data": {
+    "joincardlist": [
+      {
+        "joinname": "测试会员卡",
+        "logo_url": "http://paytest.51byod.cn/300.jpg",
+        "color": "Color010",
+        "title": "测试会员卡",
+        "notice": "使用须知",
+        "time": "2016/9/14 14:35:16",
+        "phone": "15856011424",
+        "cardsum": 1,
+        "prerogative": "测试会员卡",
+        "remark": "测试会员卡",
+        "balance": 1,
+        "bonus": 1,
+        "names": {
+          "rkname": "入口名称1,"
+        },
+        "tipss": {
+          "tips": "使用1,"
+        },
+        "joinurls": {
+          "joinurl": "www.cqyytx.com,"
+        },
+        "description": "测试会员卡",
+        "joinid": 56,
+        "actionurl": "www.cqyytx.com",
+        "cardid": "p4sPawAPal5g5Q3Mby_7L41aM0Lk",
+        "statecard": "0",
+        "cardmember": "940000000001"
+      },
+      {
+        "joinname": "测试审核",
+        "logo_url": "http://paytest.51byod.cn/300.jpg",
+        "color": "Color081",
+        "title": "测试审核会员卡3",
+        "notice": "使用须知ww",
+        "time": "2016/10/11 9:53:38",
+        "phone": "15860114102",
+        "cardsum": 100,
+        "prerogative": "特权说明",
+        "remark": "卡券说明",
+        "balance": 1,
+        "bonus": 1,
+        "names": {
+          "rkname": "入口一,"
+        },
+        "tipss": {
+          "tips": "引导,"
+        },
+        "joinurls": {
+          "joinurl": "www.cqyytx.com,"
+        },
+        "description": "卡券说明",
+        "joinid": 58,
+        "actionurl": "www.cqyytx.com",
+        "cardid": "p4sPawCk-nXrfhs8pSHUgzkb9T8I",
+        "statecard": "1",
+        "cardmember": "940000000003"
+      },
+      {
+        "joinname": "会员卡",
+        "logo_url": "http://paytest.51byod.cn/300.jpg",
+        "color": "Color010",
+        "title": "会员卡审核",
+        "notice": "使用须知。",
+        "time": "2016/9/26 14:53:45",
+        "phone": "15856001215",
+        "cardsum": 1,
+        "prerogative": "特权说明",
+        "remark": "卡券说明。",
+        "balance": 1,
+        "bonus": 1,
+        "names": {
+          "rkname": ""
+        },
+        "tipss": {
+          "tips": ""
+        },
+        "joinurls": {
+          "joinurl": ""
+        },
+        "description": "卡券说明。",
+        "joinid": 59,
+        "actionurl": "www.baidu.com",
+        "cardid": "p4sPawOWGRHDjVj6AiHtam1_oU_I",
+        "statecard": "0",
+        "cardmember": "940000000004"
+      }
+    ]
+  }
+}

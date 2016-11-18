@@ -62,12 +62,14 @@ define(['bootstrap','avalon','jstree','jquery_select','sweet_alert','featurepack
 
             avalon.scan(document.body)
         },
-        //分页插件封装的avalon需要传url
-        fn:function () {
-            wechatCard.wechatCardList = arguments[0].data.giftlist;
-        },
-        getResponse:function (data) {
-            featurepack.pack.pager(cloudMail.fn,data,dataUrl.getgiftmanageList);
+        getResponse:function (postdata) {
+            featurepack.pack.ajax(dataUrl.getwechatcadList, "get", postdata, function (result) {
+                if (result.code == 0) {
+                    wechatCard.wechatCardList = result.data.joincardlist;
+                } else {
+                    swal(result.msg, "", "error");
+                }
+            })
         },
         Judgment:function (type,value) {
             type==1?(function () {
@@ -87,7 +89,6 @@ define(['bootstrap','avalon','jstree','jquery_select','sweet_alert','featurepack
             })
         },
         addGift:function (postdata) {
-            console.info(postdata)
             featurepack.pack.ajax(dataUrl.addPayUrl, "get", postdata, function (result) {
                 if (result.code == 0) {
                     swal("添加成功!", "您已经添加成员，点击OK关闭窗口。", "success");

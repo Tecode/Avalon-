@@ -43,7 +43,7 @@
                 <td>颜色</td>
                 <td>会员logo</td>
                 <td>添加时间</td>
-                <td width="5%">卡券提醒</td>
+                <td>卡券提醒</td>
                 <td>特权</td>
                 <td>电话</td>
                 <td>说明</td>
@@ -53,23 +53,23 @@
             </thead>
             <tbody>
             <tr ms-for="key in ##wechatCardList">
-                <td>{{key.gift_name}}</td>
-                <td>{{key.gift_name}}</td>
-                <td>{{key.consume_credit}}</td>
-                <td>{{key.c_totalfee}}</td>
-                <td>{{key.description}}</td>
-                <td>{{key.gifttime}}</td>
-                <td>{{key.gifttime}}</td>
-                <td>{{key.gifttime}}</td>
-                <td>{{key.gifttime}}</td>
-                <td><a href="javascript:;" style="margin-right: 1em" ms-click="##editGift(key)">编辑</a><a href="javascript:;" ms-click="##downGift(key)">下架</a></td>
+                <td>{{key.joinname}}</td>
+                <td>{{key.color}}</td>
+                <td>
+                    <div class="imgDisplayBox">
+                        <img ms-attr="{src:key.gift_img}" height="auto" width="100%"/>
+                    </div>
+                </td>
+                <td>{{key.time}}</td>
+                <td>{{key.notice}}</td>
+                <td>{{key.prerogative}}</td>
+                <td>{{key.phone}}</td>
+                <td>{{key.remark}}</td>
+                <td><span class="color-down" ms-if="key.statecard==0">未审核</span><span class="color-up" ms-if="key.statecard==1">已审核</span></td>
+                <td><a href="javascript:;" style="margin-right: 1em" ms-click="##editGift(key)">编辑</a><a href="javascript:;" ms-click="##downGift(key)">删除</a></td>
             </tr>
             </tbody>
         </table>
-        <div class="isnullTips" ms-if="##wechatCardList.length==0">
-            <p class="text-center"><span class="fa fa-folder-open"></span></p>
-            <p class="text-center">这里什么也没有，您可以试试搜索一下。</p>
-        </div>
     </div>
     <!-- 弹出的大框框 -->
     <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
@@ -160,22 +160,11 @@
     </div>
     <button style="display: none" type="button" id="showBigBox" data-target="#myModal2" data-toggle="modal"></button>
 </div>
-<!--分页-->
-<div class="am-container text-center ms-controller" ms-controller="test" ms-if="##totalItems>0">
-    <p>共 {{##totalItems}} 条记录</p>
-    <ul class="pagination pagination-md">
-        <li><a href="javascript:;" ms-click="##changePage(1)">首页</a></li>
-        <li ms-class="{'am-disabled' : ##curPage == 1}"><a href="javascript:;" ms-click="##changePage(##curPage-1)">«</a></li>
-        <li ms-for="el in ##pageItems" ms-class="{'active' : ##curPage == el}" ms-click="##changePage(el)"><a href="javascript:;">{{el}}</a></li>
-        <li ms-class="{'am-disabled' : ##curPage == ##totalPages}"><a href="javascript:;" ms-click="##changePage(##curPage+1)">»</a></li>
-        <li><a href="javascript:;" ms-click="##changePage(##totalPages)">尾页</a></li>
-    </ul>
-</div>
 
 <script>
     require(['wechatcard'],function (wechatcard) {
         var url = {
-            getgiftmanageList:'json/gitmanage.json',
+            getwechatcadList:'json/wechatcard.json',
             getDeptTree:'json/treejson.json',
             editPayUrl:'json/offlinepaylist.json',
             addPayUrl:'json/offlinepaylist.json',
