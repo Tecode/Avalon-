@@ -1,0 +1,67 @@
+
+{
+  "code": 0,
+  "msg": "获取成功",
+  "data": {
+    "cardtend": [
+      {
+        "cardnumber": null,
+        "deadline": "2016/9/3 0:00:00",
+        "cardclomid": 16,
+        "cardname": "八折优惠卡3",
+        "cardtype": 1,
+        "arrivsum": "100",
+        "cardtime": "2016/8/4 16:22:58",
+        "cardsums": 10,
+        "reducesum": "0",
+        "discount": "8",
+        "cardreduce": "8"
+      },
+      {
+        "cardnumber": null,
+        "deadline": "2016/8/20 0:00:00",
+        "cardclomid": 15,
+        "cardname": "八折优惠卡",
+        "cardtype": 1,
+        "arrivsum": "100",
+        "cardtime": "2016/7/27 11:11:28",
+        "cardsums": 20,
+        "reducesum": "0",
+        "discount": "8",
+        "cardreduce": "15"
+      },
+      {
+        "cardnumber": null,
+        "deadline": "2016/6/30 0:00:00",
+        "cardclomid": 12,
+        "cardname": "优惠卡五折优惠",
+        "cardtype": 1,
+        "arrivsum": "200",
+        "cardtime": "2016/6/25 11:37:45",
+        "cardsums": 5,
+        "reducesum": "0",
+        "discount": "5",
+        "cardreduce": "4"
+      },
+      {
+        "cardnumber": null,
+        "deadline": "2016/6/24 0:00:00",
+        "cardclomid": 9,
+        "cardname": "全场买10送10",
+        "cardtype": 0,
+        "arrivsum": "10",
+        "cardtime": "2016/6/20 9:49:32",
+        "cardsums": 5,
+        "reducesum": "10",
+        "discount": "",
+        "cardreduce": "3"
+      }
+    ],
+    "pagejson": {
+      "pagesize": 20,
+      "pagecount": 6,
+      "pageindex": 0,
+      "totalcount":120
+    }
+  }
+}

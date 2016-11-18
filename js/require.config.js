@@ -27,7 +27,9 @@ var require = {
         storemanage:'component/storemanage',//门店管理
         offlinepay:'component/offlinepay',//线上商品
         giftmanage:'component/giftmanage',//礼品管理
-        card:'component/card'//卡券管理
+        card:'component/card',//卡券管理
+        cardmanage:'component/cardmanage',//
+        wechatcard:'component/wechatcard'//微信会员卡
 
     },
     shim:{

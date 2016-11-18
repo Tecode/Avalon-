@@ -1,16 +1,17 @@
 
+
 <div class="page-header">
-    <h1 class="title">收款统计</h1>
+    <h1 class="title">优惠卡设置</h1>
     <ol class="breadcrumb">
-        <li><a href="javascript:;">微信支付</a></li>
-        <li class="active">收款统计</li>
+        <li><a href="javascript:;">会员卡管理</a></li>
+        <li class="active">优惠卡设置</li>
     </ol>
 
     <!-- Start Page Header Right Div -->
     <div class="right">
         <div class="btn-group" role="group" aria-label="...">
             <a href="javascript:;" class="btn btn-light"><i class="fa fa-refresh"></i></a>
-            <a href="#" class="btn btn-light"><i class="fa fa-search"></i></a>
+            <a href="javascript:;" class="btn btn-light" id="search"><i class="fa fa-search"></i></a>
         </div>
     </div>
     <!-- End Page Header Right Div -->
@@ -18,48 +19,34 @@
 </div>
 
 <div class="row">
-    <div class="col-md-12 table-searchBox">
+    <div class="col-md-12 table-searchBox ms-controller" ms-controller="searchList">
         <div class="panel panel-default">
             <div class="panel-title">
-                订单查询
+                优惠卡查询
             </div>
             <div class="panel-body">
                 <form class="form-inline">
-                    <div class="controls form-group">
-                        <label for="example1" class="form-label">门店</label>
-                        <select class="selectpicker" style="display: none;">
-                            <optgroup label="Marketplace">
-                                <option>Themeforest</option>
-                                <option>Codecanyon</option>
-                                <option>Photodune</option>
-                                <option>Graphicriver</option>
-                                <option>Activeden</option>
-                            </optgroup>
-                            <optgroup label="Community">
-                                <option>Forums</option>
-                                <option>Blog</option>
-                                <option>Meetups</option>
-                            </optgroup>
-                        </select><div class="btn-group bootstrap-select"><button type="button" class="btn dropdown-toggle selectpicker btn-light" data-toggle="dropdown" title="Themeforest" aria-expanded="false"><span class="filter-option pull-left">Themeforest</span>&nbsp;<span class="caret"></span></button><div class="dropdown-menu open" style="max-height: 137px; overflow: hidden; min-height: 122px;"><ul class="dropdown-menu inner selectpicker" role="menu" style="max-height: 125px; overflow-y: auto; min-height: 110px;"><li class="dropdown-header" data-original-index="null"><span class="text">Marketplace</span></li><li data-original-index="0" class="selected"><a tabindex="0" class="opt " data-optgroup="1" data-normalized-text="&lt;span class=&quot;text&quot;&gt;Themeforest&lt;/span&gt;"><span class="text">Themeforest</span><span class="fa fa-check check-mark"></span></a></li><li data-original-index="1"><a tabindex="0" class="opt " data-optgroup="1" data-normalized-text="&lt;span class=&quot;text&quot;&gt;Codecanyon&lt;/span&gt;"><span class="text">Codecanyon</span><span class="fa fa-check check-mark"></span></a></li><li data-original-index="2"><a tabindex="0" class="opt " data-optgroup="1" data-normalized-text="&lt;span class=&quot;text&quot;&gt;Photodune&lt;/span&gt;"><span class="text">Photodune</span><span class="fa fa-check check-mark"></span></a></li><li data-original-index="3"><a tabindex="0" class="opt " data-optgroup="1" data-normalized-text="&lt;span class=&quot;text&quot;&gt;Graphicriver&lt;/span&gt;"><span class="text">Graphicriver</span><span class="fa fa-check check-mark"></span></a></li><li data-original-index="4"><a tabindex="0" class="opt " data-optgroup="1" data-normalized-text="&lt;span class=&quot;text&quot;&gt;Activeden&lt;/span&gt;"><span class="text">Activeden</span><span class="fa fa-check check-mark"></span></a></li><li class="divider" data-original-index="null"></li><li class="dropdown-header" data-original-index="null"><span class="text">Community</span></li><li data-original-index="5"><a tabindex="0" class="opt " data-optgroup="2" data-normalized-text="&lt;span class=&quot;text&quot;&gt;Forums&lt;/span&gt;"><span class="text">Forums</span><span class="fa fa-check check-mark"></span></a></li><li data-original-index="6"><a tabindex="0" class="opt " data-optgroup="2" data-normalized-text="&lt;span class=&quot;text&quot;&gt;Blog&lt;/span&gt;"><span class="text">Blog</span><span class="fa fa-check check-mark"></span></a></li><li data-original-index="7"><a tabindex="0" class="opt " data-optgroup="2" data-normalized-text="&lt;span class=&quot;text&quot;&gt;Meetups&lt;/span&gt;"><span class="text">Meetups</span><span class="fa fa-check check-mark"></span></a></li></ul></div></div>
-                    </div>
                     <div class="form-group">
-                        <label for="example1" class="form-label">收款人</label>
-                        <input type="text" class="form-control" id="example1" placeholder="Jane Doe">
+                        <label for="example1" class="form-label">卡券名称</label>
+                        <input type="text" class="form-control" name="cardname" id="example2" placeholder="卡券名称">
+                    </div>
+                    <div class="controls form-group">
+                        <label for="example1" class="form-label">类型</label>
+                        <select class="selectpicker" name="cardtype">
+                            <option value="满减" selected="selected">满减</option>
+                            <option value="1折优惠">1折优惠</option>
+                            <option value="5折优惠">5折优惠</option>
+                        </select>
                     </div>
                     <div class="controls form-group">
                         <label for="example1" class="form-label">时间</label>
-                            <div class="input-prepend input-group">
-                                <span class="add-on input-group-addon"><i class="fa fa-calendar"></i></span>
-                                <input type="text" id="date-range-picker" class="form-control active" value="03/18/2015 - 03/23/2015">
-                            </div>
+                        <div class="input-prepend input-group">
+                            <span class="add-on input-group-addon"><i class="fa fa-calendar"></i></span>
+                            <input type="text" id="date-range-picker" class="form-control active" placeholder="选择查询的时间" readonly="readonly">
+                        </div>
                     </div>
-                    <!--<div class="form-group">-->
-                        <!--<label for="example2" class="form-label">Email</label>-->
-                        <!--<input type="email" class="form-control" id="example2" placeholder="jane.doe@example.com">-->
-                    <!--</div>-->
-                    <button type="submit" class="btn btn-default submitbutton">查询订单</button>
-                    <button type="submit" class="btn btn-default submitbutton">下载订单</button>
-                    <button type="submit" class="btn btn-default submitbutton">Send</button>
+                    <button type="button" class="btn btn-default submitbutton" style="margin-right: 10px" ms-click="##searchButton">查询订单</button>
+                    <button type="button" class="btn btn-success submitbutton" ms-click="##addCard">添加卡券</button>
                 </form>
 
             </div>
@@ -67,56 +54,161 @@
         </div>
     </div>
 
-    <div class="panel-body">
-        <table class="table table-bordered table-striped" ms-controller="showList">
+    <div class="panel-body ms-controller" ms-controller="showList">
+        <table class="table table-bordered table-striped" ms-if="##listData.length > 0">
             <thead>
             <tr class="table-header">
-                <td>门店</td>
-                <td>收款人</td>
-                <td>订单号</td>
-                <td>交易金额(元)</td>
-                <td>时间</td>
-                <td>状态</td>
-                <td>支付描述</td>
-                <td>备注</td>
+                <td>卡券名称</td>
+                <td>类型</td>
+                <td>使用条件</td>
+                <td>添加时间</td>
+                <td>截至时间</td>
+                <td>数量</td>
+                <td>剩余数量</td>
                 <td>操作</td>
             </tr>
             </thead>
             <tbody>
-            <tr ms-for="el in @listData" ms-data-value="el">
-                <td>{{el.storename}}</td>
-                <td>{{el.username}}</td>
-                <td>{{el.out_trade_no}}</td>
-                <td>{{el.total_fee}}</td>
-                <td>{{el.time_start}}</td>
-                <td><span ms-if="el.paystate == 0">未支付</span><span ms-if="el.paystate == 1">收款成功</span></td>
-                <td>{{el.body}}</td>
-                <td>{{el.goods_tag}}</td>
-                <td><a ms-if="el.paystate == 0">查看</a><a ms-if="el.paystate == 1">退款</a></td>
+            <tr ms-for="card in ##listData">
+                <td>{{card.cardname}}</td>
+                <td><span ms-if="card.cardtype==1">打折</span><span ms-if="card.cardtype==2">满减</span></td>
+                <td>满{{card.arrivsum}}使用</td>
+                <td>{{card.cardtime}}</td>
+                <td>{{card.deadline}}</td>
+                <td>{{card.cardsums}}</td>
+                <td>{{card.cardreduce}}</td>
+                <td><a href="javascript:;" ms-click="##editCard(card)" style="margin-right: 1em">编辑</a><a href="javascript:;" ms-click="##deleteCard(card)">删除</a></td>
             </tr>
             </tbody>
         </table>
+        <div class="isnullTips" ms-if="##listData.length==0">
+            <p class="text-center"><span class="fa fa-folder-open"></span></p>
+            <p class="text-center">这里什么也没有，您可以试试搜索一下。</p>
+        </div>
+        <!-- 弹出的大框框 -->
+        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"><strong>卡券管理</strong></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <form class="form-horizontal" action="#/cardmanage" ms-validate="##validate">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label form-label">卡券名称</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" ms-focus="##clearAttr" ms-rules="{required:true}" ms-duplex="##filldata.cardname" data-required-message="卡券名称不能为空！" placeholder="取个名称，方便随时查看" class="form-control" id="input11">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label form-label">卡券类型</label>
+                                        <div class="col-sm-9">
+                                            <div class="radio radio-danger radio-inline" :click="##clearAttr">
+                                                <input type="radio" id="inlineRadio1" ms-rules="{required: true}" ms-duplex="##filldata.cardtype" value="1" >
+                                                <label for="inlineRadio1"> 满减 </label>
+                                            </div>
+                                            <div class="radio radio-danger radio-inline" :click="##clearAttr">
+                                                <input type="radio" id="inlineRadio2" ms-rules="{required: true}" ms-duplex="##filldata.cardtype" value="0" >
+                                                <label for="inlineRadio2"> 打折 </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label form-label">卡券数量</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" ms-focus="##clearAttr" ms-rules="{digits:true}" ms-duplex="##filldata.cardsums" data-digits-message="库存数量必须是整数！" placeholder="输入总的库存数量" class="form-control" id="input13">
+                                        </div>
+                                    </div>
+                                    <div class="form-group doubleinput">
+                                        <label class="col-sm-3 control-label form-label">使用条件</label>
+                                        <div class="col-sm-9">
+                                            满<input ms-duplex="##filldata.arrivsum" :focus="##clearAttr" ms-rules="{number:true}" data-number-message="输入的必须是数字！" />使用&nbsp;&nbsp;<span ms-visible="##filldata.cardtype==1">减<input :focus="##clearAttr" ms-duplex="##reducesum"/>元</span><span ms-visible="##filldata.cardtype==0">打<input ms-duplex="##discount" :focus="##clearAttr"/>折</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label form-label">截至时间</label>
+                                        <div class="col-sm-9">
+                                            <div class="controls">
+                                                <div class="input-prepend input-group">
+                                                    <span class="add-on input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="text" id="date-picker" ms-click="##clearAttr" class="form-control" ms-duplex="##deadline" readonly="readonly" placeholder="请选择截至时间"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-3 col-sm-9">
+                                            <button type="submit" class="btn btn-default">保存</button>
+                                        </div>
+                                    </div>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                        <!--<button type="button" class="btn btn-default" data-dismiss="modal">保存</button>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--是否要删除-->
+        <!--遮罩mask-->
+        <div class="sweet-overlay" tabindex="-1" style="opacity: -0.01; display: none;"></div>
+        <!--弹框-->
+        <div class="sweet-alert hideSweetAlert" tabindex="-1" data-custom-class="" data-has-cancel-button="true"
+             data-has-confirm-button="true" data-allow-ouside-click="false" data-has-done-function="true"
+             data-animation="pop" data-timer="null" style="display: none; margin-top: -204px; opacity: -0.02;">
+            <div class="sa-icon sa-error" style="display: none;"><span class="sa-x-mark"><span
+                    class="sa-line sa-left"></span><span class="sa-line sa-right"></span></span></div>
+            <div class="sa-icon sa-warning" style="display: block;"><span class="sa-body"></span> <span
+                    class="sa-dot"></span></div>
+            <div class="sa-icon sa-info" style="display: none;"></div>
+            <div class="sa-icon sa-success" style="display: none;"><span class="sa-line sa-tip"></span> <span
+                    class="sa-line sa-long"></span>
+                <div class="sa-placeholder"></div>
+                <div class="sa-fix"></div>
+            </div>
+            <div class="sa-icon sa-custom"
+                 style="display: none; background-image: url(&quot;img/profileimg.png&quot;); width: 80px; height: 80px;"></div>
+            <h2>Are you sure?</h2>
+            <p style="display: block;">You will not be able to recover this imaginary file!</p>
+            <button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;">Cancel</button>
+            <button class="confirm" tabindex="1"
+                    style="display: inline-block; background-color: rgb(221, 107, 85); box-shadow: none;">Yes, delete it!
+            </button>
+        </div>
+        <button style="display: none" type="button" id="showBigBox" data-target="#myModal2" data-toggle="modal"></button>
     </div>
 
-    <!--分页插件-->
-    <div class="am-container text-center ms-controller" ms-controller="test">
-        <p>共 {{@totalItems}} 条记录</p>
-            <ul class="pagination pagination-md">
-                <li><a href="javascript:;" ms-click="@changePage(1)">首页</a></li>
-                <li ms-class="{'am-disabled' : @curPage == 1}"><a href="javascript:;" ms-click="@changePage(@curPage-1)">«</a></li>
-                <li ms-for="el in @pageItems" ms-class="{'active' : @curPage == el}" ms-click="@changePage(el)"><a href="javascript:;">{{el}}</a></li>
-                <li ms-class="{'am-disabled' : @curPage == @totalPages}"><a href="javascript:;" ms-click="@changePage(@curPage+1)">»</a></li>
-                <li><a href="javascript:;" ms-click="@changePage(@totalPages)">尾页</a></li>
-            </ul>
+    <!--分页-->
+    <div class="am-container text-center ms-controller" ms-controller="test" ms-if="##totalItems>0">
+        <p>共 {{##totalItems}} 条记录</p>
+        <ul class="pagination pagination-md">
+            <li><a href="javascript:;" ms-click="##changePage(1)">首页</a></li>
+            <li ms-class="{'am-disabled' : ##curPage == 1}"><a href="javascript:;" ms-click="##changePage(##curPage-1)">«</a></li>
+            <li ms-for="el in ##pageItems" ms-class="{'active' : ##curPage == el}" ms-click="##changePage(el)"><a href="javascript:;">{{el}}</a></li>
+            <li ms-class="{'am-disabled' : ##curPage == ##totalPages}"><a href="javascript:;" ms-click="##changePage(##curPage+1)">»</a></li>
+            <li><a href="javascript:;" ms-click="##changePage(##totalPages)">尾页</a></li>
+        </ul>
     </div>
+
 
 </div>
-
 <script>
-    require(['paycount'],function (paycount) {
+    require(['cardmanage'],function (cardmanage) {
         var url = {
-            getpaycountList:'json/payCountList.json'
+            getcardcountList:'json/cardCountList.json',//查询和加载
+            editCardUrl:'json/cardCountList.json',//编辑卡券
+            addCardUrl:'json/cardCountList.json'//添加卡券
         };
-        paycount.init_start(url);
+        cardmanage.init_start(url);
     })
 </script>

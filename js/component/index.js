@@ -1,6 +1,6 @@
 require(['avalon', 'bootstrap', 'bootstrap_toggle', 'bootstrap_select', 'sammy', 'featurepack'], function (avalon, bootstrap, bootstrap_toggle, bootstrap_select, Sammy, featurepack) {
 
-
+    var indexList,messageList;
     var Fn = function () {
         this.init_evevt = function () {
             /* Sidebar Menu*/
@@ -39,6 +39,43 @@ require(['avalon', 'bootstrap', 'bootstrap_toggle', 'bootstrap_select', 'sammy',
             featurepack.pack.render(function () {
                 return true;
             })
+        };
+      this.getResponse = function (url,type) {
+              featurepack.pack.ajax(url, "get", null, function (result) {
+                  if (result.code == 0) {
+                      switch (type){
+                          case 1:
+                              indexList.listData = result.data.message;
+                              break;
+                          case 2:
+                              messageList.messagelistData = result.data.message;
+                              indexList.listData = result.data.message;
+                              break;
+                      }
+                  } else {
+                      swal(result.msg, "", "error");
+                  }
+              })
+      };
+      this.avalonStart = function () {
+          indexList = avalon.define({
+                $id:"indexList",
+                listData:[],
+                  showBox:function () {
+                      $(".sidepanel").toggle(100);
+                  }
+            });
+          messageList = avalon.define({
+              $id:"messageList",
+              messagelistData:[],
+              today:cloudMail.getNow()
+          });
+            avalon.scan(document.body);
+        };
+        this.getNow = function () {
+            return (
+                parseInt(new Date(new Date().toLocaleDateString()).getTime())
+            )
         }
     };
     var cloudMail = new Fn();
@@ -201,10 +238,11 @@ require(['avalon', 'bootstrap', 'bootstrap_toggle', 'bootstrap_select', 'sammy',
                 cloudMail.init_render();
         });
     });
-
-// start the application
     app.run('#/main');
 //调用初始化点击事件
+    //cloudMail.getResponse("json/index.json",1);
+    cloudMail.getResponse("json/index.json",2);
     cloudMail.init_evevt();
+    cloudMail.avalonStart();
 
 });
