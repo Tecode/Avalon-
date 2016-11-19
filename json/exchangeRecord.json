@@ -1,0 +1,13 @@
+
+{
+  "code": 0,
+  "msg": "获取成功",
+  "data": {
+    "giftrecord": [],
+    "pages": {
+      "pagesize": 20,
+      "pagecount": 1,
+      "pageindex": 0
+    }
+  }
+}

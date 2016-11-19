@@ -1,4 +1,213 @@
 {
   "code": 0,
-  "data": {}
+  "msg": "获取成功",
+  "data": {
+    "czlist": [
+      {
+        "vipname": "firstblood",
+        "out_trade_no": "1271483501201611030933427249",
+        "C_out_trade_no": null,
+        "czrecordid": 235,
+        "totalfee": "0.00",
+        "cztime": "2016/11/3 9:33:45",
+        "realfee": "0.00",
+        "obj1": ""
+      },
+      {
+        "vipname": "梁晓声",
+        "out_trade_no": "1271483501201611021417312931",
+        "C_out_trade_no": null,
+        "czrecordid": 232,
+        "totalfee": "0.00",
+        "cztime": "2016/11/2 14:17:33",
+        "realfee": "0.00",
+        "obj1": ""
+      },
+      {
+        "vipname": "何阳春",
+        "out_trade_no": "A127148350120161011143801738",
+        "C_out_trade_no": null,
+        "czrecordid": 219,
+        "totalfee": "1.00",
+        "cztime": "2016/10/11 14:38:09",
+        "realfee": "1.00",
+        "obj1": ""
+      },
+      {
+        "vipname": "何阳春",
+        "out_trade_no": "A127148350120161011004345311",
+        "C_out_trade_no": null,
+        "czrecordid": 217,
+        "totalfee": "1.00",
+        "cztime": "2016/10/11 0:43:52",
+        "realfee": "1.00",
+        "obj1": ""
+      },
+      {
+        "vipname": "吧小",
+        "out_trade_no": "1271483501201610091014362873",
+        "C_out_trade_no": null,
+        "czrecordid": 215,
+        "totalfee": "0.00",
+        "cztime": "2016/10/9 10:14:38",
+        "realfee": "0.00",
+        "obj1": ""
+      },
+      {
+        "vipname": "吧小",
+        "out_trade_no": "B127148350120160927154458721",
+        "C_out_trade_no": null,
+        "czrecordid": 213,
+        "totalfee": "0.00",
+        "cztime": "2016/9/27 15:45:05",
+        "realfee": "0.00",
+        "obj1": ""
+      },
+      {
+        "vipname": "梁晓声",
+        "out_trade_no": "1271483501201609121055415619",
+        "C_out_trade_no": null,
+        "czrecordid": 208,
+        "totalfee": "0.00",
+        "cztime": "2016/9/12 10:55:43",
+        "realfee": "0.00",
+        "obj1": ""
+      },
+      {
+        "vipname": "梁晓声",
+        "out_trade_no": "1271483501201609081603523136",
+        "C_out_trade_no": null,
+        "czrecordid": 206,
+        "totalfee": "0.00",
+        "cztime": "2016/9/8 16:03:53",
+        "realfee": "0.00",
+        "obj1": ""
+      },
+      {
+        "vipname": "梁晓声",
+        "out_trade_no": "1271483501201609071035447287",
+        "C_out_trade_no": null,
+        "czrecordid": 204,
+        "totalfee": "0.00",
+        "cztime": "2016/9/7 10:35:47",
+        "realfee": "0.00",
+        "obj1": ""
+      },
+      {
+        "vipname": "梁晓声",
+        "out_trade_no": "1271483501201609071021212488",
+        "C_out_trade_no": null,
+        "czrecordid": 203,
+        "totalfee": "0.00",
+        "cztime": "2016/9/7 10:21:25",
+        "realfee": "0.00",
+        "obj1": ""
+      },
+      {
+        "vipname": "梁晓声",
+        "out_trade_no": "C127148350120160903094425739",
+        "C_out_trade_no": null,
+        "czrecordid": 198,
+        "totalfee": "0.00",
+        "cztime": "2016/9/3 9:44:34",
+        "realfee": "0.00",
+        "obj1": ""
+      },
+      {
+        "vipname": "梁晓声",
+        "out_trade_no": "C127148350120160902090258905",
+        "C_out_trade_no": null,
+        "czrecordid": 196,
+        "totalfee": "0.00",
+        "cztime": "2016/9/2 9:03:07",
+        "realfee": "0.00",
+        "obj1": ""
+      },
+      {
+        "vipname": "小张",
+        "out_trade_no": "C127148350120160901140749979",
+        "C_out_trade_no": null,
+        "czrecordid": 194,
+        "totalfee": "0.00",
+        "cztime": "2016/9/1 14:08:02",
+        "realfee": "0.00",
+        "obj1": ""
+      },
+      {
+        "vipname": "明明",
+        "out_trade_no": "C127148350120160901120117445",
+        "C_out_trade_no": null,
+        "czrecordid": 193,
+        "totalfee": "0.00",
+        "cztime": "2016/9/1 12:01:32",
+        "realfee": "0.00",
+        "obj1": ""
+      },
+      {
+        "vipname": "边宁达",
+        "out_trade_no": "1271483501201609010159013019",
+        "C_out_trade_no": null,
+        "czrecordid": 192,
+        "totalfee": "0.00",
+        "cztime": "2016/9/1 1:59:05",
+        "realfee": "0.00",
+        "obj1": ""
+      },
+      {
+        "vipname": "边宁达",
+        "out_trade_no": "1271483501201608312056314462",
+        "C_out_trade_no": null,
+        "czrecordid": 191,
+        "totalfee": "0.00",
+        "cztime": "2016/8/31 20:56:37",
+        "realfee": "0.00",
+        "obj1": ""
+      },
+      {
+        "vipname": "边宁达",
+        "out_trade_no": "1271483501201608312045039786",
+        "C_out_trade_no": null,
+        "czrecordid": 190,
+        "totalfee": "0.00",
+        "cztime": "2016/8/31 20:45:08",
+        "realfee": "0.00",
+        "obj1": ""
+      },
+      {
+        "vipname": "边宁达",
+        "out_trade_no": "1271483501201608312043535937",
+        "C_out_trade_no": null,
+        "czrecordid": 189,
+        "totalfee": "0.00",
+        "cztime": "2016/8/31 20:44:00",
+        "realfee": "0.00",
+        "obj1": ""
+      },
+      {
+        "vipname": "边宁达",
+        "out_trade_no": "1271483501201608312040374354",
+        "C_out_trade_no": null,
+        "czrecordid": 188,
+        "totalfee": "0.00",
+        "cztime": "2016/8/31 20:40:43",
+        "realfee": "0.00",
+        "obj1": ""
+      },
+      {
+        "vipname": "边宁达",
+        "out_trade_no": "1271483501201608311829202635",
+        "C_out_trade_no": null,
+        "czrecordid": 187,
+        "totalfee": "0.00",
+        "cztime": "2016/8/31 18:29:30",
+        "realfee": "0.00",
+        "obj1": ""
+      }
+    ],
+    "pages": {
+      "pagesize": 20,
+      "pagecount": 10,
+      "pageindex": 0
+    }
+  }
 }

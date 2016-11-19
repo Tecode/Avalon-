@@ -1,0 +1,234 @@
+
+{
+  "code": 0,
+  "msg": "获取成功",
+  "data": {
+    "xflist": [
+      {
+        "vipname": "边宁达",
+        "uname": "冉勇",
+        "ddnumber": "1271483501201610311334504570",
+        "xfrecordid": 160,
+        "xffee": 0.01,
+        "xftime": "2016/10/31 13:34:50",
+        "xfcontent": null,
+        "realfee": 0.01,
+        "reducefee": 0
+      },
+      {
+        "vipname": "明明",
+        "uname": "11111",
+        "ddnumber": "1271483501201609021127125472",
+        "xfrecordid": 149,
+        "xffee": 0.01,
+        "xftime": "2016/9/2 11:27:12",
+        "xfcontent": null,
+        "realfee": 0.01,
+        "reducefee": 0
+      },
+      {
+        "vipname": "明明",
+        "uname": "11111",
+        "ddnumber": "1271483501201609021124007846",
+        "xfrecordid": 148,
+        "xffee": 0.01,
+        "xftime": "2016/9/2 11:24:00",
+        "xfcontent": null,
+        "realfee": 0.01,
+        "reducefee": 0
+      },
+      {
+        "vipname": "明明",
+        "uname": "11111",
+        "ddnumber": "1271483501201609021056241071",
+        "xfrecordid": 147,
+        "xffee": 0.01,
+        "xftime": "2016/9/2 10:56:24",
+        "xfcontent": null,
+        "realfee": 0.01,
+        "reducefee": 0
+      },
+      {
+        "vipname": "明明",
+        "uname": "11111",
+        "ddnumber": "1271483501201609021054305275",
+        "xfrecordid": 146,
+        "xffee": 0.01,
+        "xftime": "2016/9/2 10:54:30",
+        "xfcontent": null,
+        "realfee": 0.01,
+        "reducefee": 0
+      },
+      {
+        "vipname": "明明",
+        "uname": "11111",
+        "ddnumber": "1271483501201609021026578074",
+        "xfrecordid": 145,
+        "xffee": 0.01,
+        "xftime": "2016/9/2 10:26:57",
+        "xfcontent": null,
+        "realfee": 0.01,
+        "reducefee": 0
+      },
+      {
+        "vipname": "明明",
+        "uname": "11111",
+        "ddnumber": "1271483501201609021025247228",
+        "xfrecordid": 144,
+        "xffee": 0.01,
+        "xftime": "2016/9/2 10:25:24",
+        "xfcontent": null,
+        "realfee": 0.01,
+        "reducefee": 0
+      },
+      {
+        "vipname": "firstblood",
+        "uname": "qwe",
+        "ddnumber": "1271483501201609011840266919",
+        "xfrecordid": 143,
+        "xffee": 0.01,
+        "xftime": "2016/9/1 18:40:26",
+        "xfcontent": null,
+        "realfee": 0.01,
+        "reducefee": 0
+      },
+      {
+        "vipname": "firstblood",
+        "uname": "qwe",
+        "ddnumber": "1271483501201609011838238014",
+        "xfrecordid": 142,
+        "xffee": 0.01,
+        "xftime": "2016/9/1 18:38:23",
+        "xfcontent": null,
+        "realfee": 0.01,
+        "reducefee": 0
+      },
+      {
+        "vipname": "明明",
+        "uname": "11111",
+        "ddnumber": "1271483501201609011717009541",
+        "xfrecordid": 141,
+        "xffee": 1.01,
+        "xftime": "2016/9/1 17:17:00",
+        "xfcontent": null,
+        "realfee": 1,
+        "reducefee": 0.01
+      },
+      {
+        "vipname": "明明",
+        "uname": "11111",
+        "ddnumber": "1271483501201609011613588427",
+        "xfrecordid": 140,
+        "xffee": 0.02,
+        "xftime": "2016/9/1 16:13:58",
+        "xfcontent": null,
+        "realfee": 0.02,
+        "reducefee": 0
+      },
+      {
+        "vipname": "明明",
+        "uname": "11111",
+        "ddnumber": "1271483501201609011601193241",
+        "xfrecordid": 139,
+        "xffee": 0.01,
+        "xftime": "2016/9/1 16:01:19",
+        "xfcontent": null,
+        "realfee": 0.01,
+        "reducefee": 0
+      },
+      {
+        "vipname": "明明",
+        "uname": "11111",
+        "ddnumber": "1271483501201609011601068040",
+        "xfrecordid": 138,
+        "xffee": 0.01,
+        "xftime": "2016/9/1 16:01:06",
+        "xfcontent": null,
+        "realfee": 0.01,
+        "reducefee": 0
+      },
+      {
+        "vipname": "firstblood",
+        "uname": "qwe",
+        "ddnumber": "1271483501201609011531115309",
+        "xfrecordid": 137,
+        "xffee": 0.01,
+        "xftime": "2016/9/1 15:31:11",
+        "xfcontent": null,
+        "realfee": 0.01,
+        "reducefee": 0
+      },
+      {
+        "vipname": "明明",
+        "uname": "11111",
+        "ddnumber": "1271483501201609011527129074",
+        "xfrecordid": 136,
+        "xffee": 0.01,
+        "xftime": "2016/9/1 15:27:12",
+        "xfcontent": null,
+        "realfee": 0.01,
+        "reducefee": 0
+      },
+      {
+        "vipname": "明明",
+        "uname": "11111",
+        "ddnumber": "1271483501201609011446087006",
+        "xfrecordid": 135,
+        "xffee": 0.01,
+        "xftime": "2016/9/1 14:46:08",
+        "xfcontent": null,
+        "realfee": 0.01,
+        "reducefee": 0
+      },
+      {
+        "vipname": "明明",
+        "uname": "11111",
+        "ddnumber": "1271483501201609011445511073",
+        "xfrecordid": 134,
+        "xffee": 0.02,
+        "xftime": "2016/9/1 14:45:51",
+        "xfcontent": null,
+        "realfee": 0.02,
+        "reducefee": 0
+      },
+      {
+        "vipname": "明明",
+        "uname": "11111",
+        "ddnumber": "1271483501201609011442276616",
+        "xfrecordid": 133,
+        "xffee": 0.03,
+        "xftime": "2016/9/1 14:42:27",
+        "xfcontent": null,
+        "realfee": 0.03,
+        "reducefee": 0
+      },
+      {
+        "vipname": "明明",
+        "uname": "11111",
+        "ddnumber": "1271483501201609011440398042",
+        "xfrecordid": 132,
+        "xffee": 0.01,
+        "xftime": "2016/9/1 14:40:39",
+        "xfcontent": null,
+        "realfee": 0.01,
+        "reducefee": 0
+      },
+      {
+        "vipname": "firstblood",
+        "uname": "张超",
+        "ddnumber": "1271483501201608111930289166",
+        "xfrecordid": 131,
+        "xffee": 3,
+        "xftime": "2016/8/1119:30:28",
+        "xfcontent": null,
+        "realfee": 3,
+        "reducefee": 0
+      }
+    ],
+    "pages": {
+      "pagesize": 20,
+      "pagecount": 5,
+      "pageindex": 0
+    }
+  }
+}

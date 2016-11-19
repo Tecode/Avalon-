@@ -1,0 +1,174 @@
+
+{
+  "code": 0,
+  "msg": "获取成功",
+  "data": {
+    "qdrecord": [
+      {
+        "checkinid": 386,
+        "checktime": "2016/11/11 10:24:09",
+        "type": 0,
+        "content": "签到",
+        "uname": "吧小",
+        "integs": "1"
+      },
+      {
+        "checkinid": 384,
+        "checktime": "2016/11/8 13:53:14",
+        "type": 0,
+        "content": "签到",
+        "uname": "shsh",
+        "integs": "1"
+      },
+      {
+        "checkinid": 381,
+        "checktime": "2016/11/7 12:00:58",
+        "type": 0,
+        "content": "签到",
+        "uname": "大哥",
+        "integs": "1"
+      },
+      {
+        "checkinid": 374,
+        "checktime": "2016/11/3 9:48:36",
+        "type": 0,
+        "content": "签到",
+        "uname": "111",
+        "integs": "1"
+      },
+      {
+        "checkinid": 370,
+        "checktime": "2016/11/2 16:02:46",
+        "type": 0,
+        "content": "签到",
+        "uname": "firstblood",
+        "integs": "1"
+      },
+      {
+        "checkinid": 368,
+        "checktime": "2016/11/2 11:03:19",
+        "type": 0,
+        "content": "签到",
+        "uname": "吧小",
+        "integs": "1"
+      },
+      {
+        "checkinid": 364,
+        "checktime": "2016/10/31 13:42:00",
+        "type": 0,
+        "content": "签到",
+        "uname": "边宁达",
+        "integs": "1"
+      },
+      {
+        "checkinid": 360,
+        "checktime": "2016/10/28 13:41:40",
+        "type": 0,
+        "content": "签到",
+        "uname": "梁晓声",
+        "integs": "1"
+      },
+      {
+        "checkinid": 358,
+        "checktime": "2016/10/27 14:51:05",
+        "type": 0,
+        "content": "签到",
+        "uname": "梁晓声",
+        "integs": "1"
+      },
+      {
+        "checkinid": 355,
+        "checktime": "2016/10/14 17:34:36",
+        "type": 0,
+        "content": "签到",
+        "uname": "梁晓声",
+        "integs": "1"
+      },
+      {
+        "checkinid": 346,
+        "checktime": "2016/9/27 15:03:12",
+        "type": 0,
+        "content": "签到",
+        "uname": "吧小",
+        "integs": "1"
+      },
+      {
+        "checkinid": 340,
+        "checktime": "2016/9/20 10:51:19",
+        "type": 0,
+        "content": "签到",
+        "uname": "梁晓声",
+        "integs": "1"
+      },
+      {
+        "checkinid": 336,
+        "checktime": "2016/9/12 17:03:05",
+        "type": 0,
+        "content": "签到",
+        "uname": "梁晓声",
+        "integs": "1"
+      },
+      {
+        "checkinid": 327,
+        "checktime": "2016/9/6 18:35:56",
+        "type": 0,
+        "content": "签到",
+        "uname": "firstblood",
+        "integs": "1"
+      },
+      {
+        "checkinid": 322,
+        "checktime": "2016/9/5 14:45:53",
+        "type": 0,
+        "content": "签到",
+        "uname": "梁晓声",
+        "integs": "1"
+      },
+      {
+        "checkinid": 318,
+        "checktime": "2016/9/2 8:59:46",
+        "type": 0,
+        "content": "签到",
+        "uname": "梁晓声",
+        "integs": "1"
+      },
+      {
+        "checkinid": 314,
+        "checktime": "2016/9/1 10:14:48",
+        "type": 0,
+        "content": "签到",
+        "uname": "明明",
+        "integs": "1"
+      },
+      {
+        "checkinid": 278,
+        "checktime": "2016/8/15 10:30:47",
+        "type": 0,
+        "content": "签到",
+        "uname": "梁晓声",
+        "integs": "1"
+      },
+      {
+        "checkinid": 269,
+        "checktime": "2016/8/9 12:12:33",
+        "type": 0,
+        "content": "签到",
+        "uname": "梁晓声",
+        "integs": "1"
+      },
+      {
+        "checkinid": 249,
+        "checktime": "2016/8/4 14:59:01",
+        "type": 0,
+        "content": "签到",
+        "uname": "明明",
+        "integs": "1"
+      }
+    ],
+    "pages": {
+      "pagesize": 20,
+      "pagecount": 5,
+      "pageindex": 0
+    }
+  }
+}
