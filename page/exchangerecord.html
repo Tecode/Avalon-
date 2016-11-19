@@ -1,6 +1,7 @@
 
+
 <div class="page-header">
-    <h1 class="title">会员卡记录</h1>
+    <h1 class="title">礼品兑换记录</h1>
     <ol class="breadcrumb">
         <li><a href="javascript:;">会员卡记录</a></li>
         <li class="active">礼品兑换记录</li>
@@ -10,7 +11,7 @@
     <div class="right">
         <div class="btn-group" role="group" aria-label="...">
             <a href="javascript:;" class="btn btn-light"><i class="fa fa-refresh"></i></a>
-            <a href="#" class="btn btn-light"><i class="fa fa-search"></i></a>
+            <a href="javascript:;" class="btn btn-light" id="search"><i class="fa fa-search"></i></a>
         </div>
     </div>
     <!-- End Page Header Right Div -->
@@ -18,29 +19,29 @@
 </div>
 
 <div class="row">
-    <div class="col-md-12 table-searchBox">
+    <div class="col-md-12 table-searchBox ms-controller" ms-controller="searchList">
         <div class="panel panel-default">
             <div class="panel-title">
-                礼品兑换记录
+                礼品兑换记录查询
             </div>
             <div class="panel-body">
                 <form class="form-inline">
                     <div class="form-group">
                         <label for="example1" class="form-label">礼品名称</label>
-                        <input type="text" class="form-control" id="giftName" placeholder="礼品名称">
+                        <input type="text" class="form-control" name="giftname" id="example2" placeholder="礼品名称">
                     </div>
                     <div class="controls form-group">
                         <label for="example1" class="form-label">兑换时间</label>
                         <div class="input-prepend input-group">
                             <span class="add-on input-group-addon"><i class="fa fa-calendar"></i></span>
-                            <input type="text" id="date-picker" class="form-control active" value="03/18/2015">
+                            <input type="text" id="date-range-picker" class="form-control active" placeholder="选择查询的时间">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="example1" class="form-label">核销码</label>
-                        <input type="text" class="form-control" id="hxcode" placeholder="核销码">
+                        <input type="text" class="form-control" id="example1" name="hxcode" placeholder="充值用户">
                     </div>
-                    <button type="submit" class="btn btn-default submitbutton">查询订单</button>
+                    <button type="button" class="btn btn-default submitbutton" style="margin-right: 10px" ms-click="##searchButton">查询订单</button>
                 </form>
 
             </div>
@@ -48,8 +49,8 @@
         </div>
     </div>
 
-    <div class="panel-body">
-        <table class="table table-bordered table-striped" ms-controller="showList">
+    <div class="panel-body ms-controller table-responsive" ms-controller="showList">
+        <table class="table table-bordered table-striped" ms-if="##listData.length > 0">
             <thead>
             <tr class="table-header">
                 <td>礼品图片</td>
@@ -64,44 +65,134 @@
             </tr>
             </thead>
             <tbody>
-            <tr ms-for="el in @listData" ms-data-value="el">
+            <tr ms-for="el in ##listData">
                 <td>
                     <div class="imgDisplayBox">
-                        <img src="../img/example-logo.png" height="auto" width="100%">
+                        <img ms-attr="{src:el.gifturl}" height="auto" width="100%"/>
                     </div>
                 </td>
-                <td>{{el.username}}</td>
-                <td>{{el.out_trade_no}}</td>
-                <td>{{el.total_fee}}</td>
-                <td>{{el.time_start}}</td>
-                <td><span ms-if="el.paystate == 0">未支付</span><span ms-if="el.paystate == 1">收款成功</span></td>
-                <td>{{el.body}}</td>
-                <td>{{el.goods_tag}}</td>
-                <td><a ms-if="el.paystate == 0">查看</a><a ms-if="el.paystate == 1">退款</a></td>
+                <td>{{el.giftname}}</td>
+                <td>{{el.lqtime}}</td>
+                <td>{{el.vipname}}</td>
+                <td>{{el.totalfee}}</td>
+                <td>{{el.hxcode}}</td>
+                <td>{{el.totalfee}}</td>
+                <td><span ms-if="el.hxstate==1">核销成功</span><a ms-click="##check" ms-if="el.hxstate==0">现在核销</a></td>
+                <td><a href="javascript:;" ms-click="##readMore(el)">查看</a></td>
             </tr>
             </tbody>
         </table>
+        <div class="isnullTips" ms-if="##listData.length==0">
+            <p class="text-center"><span class="fa fa-folder-open"></span></p>
+            <p class="text-center">这里什么也没有，您可以试试搜索一下。</p>
+        </div>
+
+        <!-- 弹出的大框框 -->
+        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"><strong>详细信息</strong></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="panel panel-default">
+
+                            <div class="panel-body">
+                                <form ms-validate = "##validate" action="#/exchangerecord" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label form-label">礼品名称</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control">{{##filldata.giftname}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label form-label">兑换人姓名</label>
+                                            <div class="col-sm-9">
+                                                <p class="form-control">{{##filldata.vipname}}</p>
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label form-label">核销时间</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control">{{##filldata.hxtime}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label form-label">核销码</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control">{{##filldata.hxcode}}</p>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <br/>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label form-label">核销状态</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control"><span class="color-up" ms-if="##filldata.hxstate==1">已核销</span><span class="color-down" ms-if="##filldata.hxstate==0">未核销</span></p>
+                                        </div>
+                                    </div>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--弹出的小框-->
+        <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="panel-body">
+                            <form ms-validate = "##validate" action="#/exchangerecord">
+                                <div class="form-group errortips">
+                                    <label for="example1">输入核销码</label>
+                                    <input ms-rules="{required: true}" ms-focus="##clear" type="text" class="form-control" id="example6" ms-duplex="##editDepartment">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-default">核销</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button style="display: none" type="button" id="showBigBox" data-target="#myModal2" data-toggle="modal"></button>
+        <button style="display: none" type="button" id="showSmallbox" data-target="#myModal3" data-toggle="modal"></button>
     </div>
 
-    <!--分页插件-->
-    <div class="am-container text-center ms-controller" ms-controller="test">
-        <p>共 {{@totalItems}} 条记录</p>
+    <!--分页-->
+    <div class="am-container text-center ms-controller" ms-controller="test" ms-if="##totalItems>0">
+        <p>共 {{##totalItems}} 条记录</p>
         <ul class="pagination pagination-md">
-            <li><a href="javascript:;" ms-click="@changePage(1)">首页</a></li>
-            <li ms-class="{'am-disabled' : @curPage == 1}"><a href="javascript:;" ms-click="@changePage(@curPage-1)">«</a></li>
-            <li ms-for="el in @pageItems" ms-class="{'active' : @curPage == el}" ms-click="@changePage(el)"><a href="javascript:;">{{el}}</a></li>
-            <li ms-class="{'am-disabled' : @curPage == @totalPages}"><a href="javascript:;" ms-click="@changePage(@curPage+1)">»</a></li>
-            <li><a href="javascript:;" ms-click="@changePage(@totalPages)">尾页</a></li>
+            <li><a href="javascript:;" ms-click="##changePage(1)">首页</a></li>
+            <li ms-class="{'am-disabled' : ##curPage == 1}"><a href="javascript:;" ms-click="##changePage(##curPage-1)">«</a></li>
+            <li ms-for="el in ##pageItems" ms-class="{'active' : ##curPage == el}" ms-click="##changePage(el)"><a href="javascript:;">{{el}}</a></li>
+            <li ms-class="{'am-disabled' : ##curPage == ##totalPages}"><a href="javascript:;" ms-click="##changePage(##curPage+1)">»</a></li>
+            <li><a href="javascript:;" ms-click="##changePage(##totalPages)">尾页</a></li>
         </ul>
     </div>
-
 </div>
-
 <script>
-    require(['paycount'],function (paycount) {
+    require(['exchangerecord'],function (exchangerecord) {
         var url = {
-            getpaycountList:'json/payCountList.json'
+            getExchangeRecordList:'json/exchangeRecord.json',//查询和加载
+            checkCodeUrl:'json/exchangeRecord.json'//核销
         };
-        paycount.init_start(url);
+        exchangerecord.init_start(url);
     })
 </script>

@@ -30,7 +30,9 @@ var require = {
         card:'component/card',//卡券管理
         cardmanage:'component/cardmanage',//
         wechatcard:'component/wechatcard',//微信会员卡
-        rechargerecord:'component/rechargerecord'
+        rechargerecord:'component/rechargerecord',//充值记录
+        consumerecord:'component/consumerecord',//消费记录
+        exchangerecord:'component/exchangerecord'//礼品兑换记录
 
     },
     shim:{

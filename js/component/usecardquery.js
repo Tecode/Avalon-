@@ -8,7 +8,6 @@ define(['avalon','bootstrap','bootstrap_select','moment','daterangepicker','feat
     var postdata = {
         starttime:"",
         endtime:"",
-        out_trade_no:"",
         vipname:""
     };
     var Fn = function () {
@@ -31,10 +30,10 @@ define(['avalon','bootstrap','bootstrap_select','moment','daterangepicker','feat
         };
         //分页插件封装的avalon需要传url
         this.fn = function () {
-            showList.listData = arguments[0].data.czlist;
+            showList.listData = arguments[0].data.xflist;
         };
         this.getResponse = function (data) {
-            featurepack.pack.pager(this.fn,data,dataUrl.getRechargeRecordList);
+            featurepack.pack.pager(this.fn,data,dataUrl.getConsumeRecordList);
         };
         this.getTime = function () {
             postdata.starttime = arguments[0];

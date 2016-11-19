@@ -265,7 +265,7 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'sweet_alert', 'featur
                     var sel = ref.get_selected();
                     ref.rename_node(sel[0], checkMiniBox.editDepartment);
                     swal("修改成功!", "您已经修改了该成员，点击OK关闭窗口。", "success");
-                    console.info(postdata)
+                    $("#showBigBox").click();
                 } else {
                     swal(result.msg, "", "error");
                 }
@@ -282,6 +282,7 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'sweet_alert', 'featur
                             "icon": 'tree-icon fa fa-folder'
                         });
                     swal("添加成功!", "您已经添加成员，点击OK关闭窗口。", "success");
+                    $("#showBigBox").click();
                 } else {
                     swal(result.msg, "", "error");
                 }
@@ -291,6 +292,7 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'sweet_alert', 'featur
             featurepack.pack.ajax(dataUrl.addUserUrl, "get", postdata, function (result) {
                 if (result.code == 0) {
                     swal("添加成功!", "您已经添加成员，点击OK关闭窗口。", "success");
+                    $("#showBigBox").click();
                     cloudMail.getResponse({deptid:deptid});
                 } else {
                     swal(result.msg, "", "error");
@@ -301,6 +303,7 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'sweet_alert', 'featur
             featurepack.pack.ajax(dataUrl.editUserUrel, "get", postdata, function (result) {
                 if (result.code == 0) {
                     swal("修改成功!", "您已成功修改成员，点击OK关闭窗口。", "success");
+                    $("#showBigBox").click();
                     cloudMail.getResponse({deptid:deptid})
                 } else {
                     swal(result.msg, "", "error");

@@ -111,6 +111,7 @@ define(['avalon','bootstrap','bootstrap_select','moment','daterangepicker','feat
             featurepack.pack.ajax(dataUrl.editCardUrl,"get",postdata,function (result) {
                 if(result.code == 0){
                     swal("修改成功!", "您已经成功修改了卡券，点击OK关闭窗口。", "success");
+                    $("#showBigBox").click();
                     globalData = null;
                 }else{
                     swal(result.msg,"", "error");
@@ -121,6 +122,7 @@ define(['avalon','bootstrap','bootstrap_select','moment','daterangepicker','feat
             featurepack.pack.ajax(dataUrl.addCardUrl,"get",postdata,function (result) {
                 if(result.code == 0){
                     swal("添加成功!", "您已经添加该卡券成功了，点击OK关闭窗口。", "success");
+                    $("#showBigBox").click();
                     globalData = null;
                 }else{
                     swal(result.msg,"", "error");

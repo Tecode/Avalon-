@@ -135,6 +135,7 @@ define(['bootstrap','avalon','featurepack','sweet_alert'], function(bootstrap,av
                     if(result.code == 0){
                         swal("修改成功!", "您已经修改了这项配置，点击OK关闭窗口。", "success");
                         cloudMail.getAjax.getResponse();
+                        $("#showBigBox").click();
                         console.info(postdata)
                     }else{
                         swal(result.msg,"","error");
@@ -145,6 +146,7 @@ define(['bootstrap','avalon','featurepack','sweet_alert'], function(bootstrap,av
                 featurepack.pack.ajax(url.addPayConfig,"post",postdata,function (result) {
                     if(result.code == 0){
                         swal("添加成功!", "您已经添加了这项配置，点击OK关闭窗口。", "success");
+                        $("#showBigBox").click();
                         cloudMail.getAjax.getResponse();
                     }else{
                         swal(result.msg,"","error");

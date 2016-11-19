@@ -225,10 +225,11 @@
         "reducefee": 0
       }
     ],
-    "pages": {
+    "pagejson": {
       "pagesize": 20,
-      "pagecount": 5,
-      "pageindex": 0
+      "pagecount": 6,
+      "pageindex": 0,
+      "totalcount":500
     }
   }
 }

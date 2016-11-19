@@ -141,6 +141,7 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'featurepack', 'sweet_
             featurepack.pack.ajax(dataUrl.addStoreUrl, "post", postdata, function (result) {
                 if (result.code == 0) {
                     swal("添加成功!", "您已经成功添加了门店，点击OK关闭窗口。", "success");
+                    $("#showBigBox").click();
                 } else {
                     swal(result.msg, "", "error");
                 }
@@ -150,6 +151,7 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'featurepack', 'sweet_
             featurepack.pack.ajax(dataUrl.editStoreUrl, "post", postdata, function (result) {
                 if (result.code == 0) {
                     swal("修改成功!", "您已经修改了门店，点击OK关闭窗口。", "success");
+                    $("#showBigBox").click();
                 } else {
                     swal(result.msg, "", "error");
                 }

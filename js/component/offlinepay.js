@@ -133,6 +133,7 @@ define(['bootstrap','avalon','jstree','jquery_select','sweet_alert','featurepack
             featurepack.pack.ajax(dataUrl.editPayUrl, "post", postdata, function (result) {
                 if (result.code == 0) {
                     swal("修改成功!", "您已经修改了该成员，点击OK关闭窗口。", "success");
+                    $("#showBigBox").click();
                 } else {
                     swal(result.msg, "", "error");
                 }
@@ -142,6 +143,7 @@ define(['bootstrap','avalon','jstree','jquery_select','sweet_alert','featurepack
             featurepack.pack.ajax(dataUrl.addPayUrl, "get", postdata, function (result) {
                 if (result.code == 0) {
                     swal("添加成功!", "您已经添加成员，点击OK关闭窗口。", "success");
+                    $("#showBigBox").click();
                 } else {
                     swal(result.msg, "", "error");
                 }
@@ -150,7 +152,7 @@ define(['bootstrap','avalon','jstree','jquery_select','sweet_alert','featurepack
         refundMoney:function () {
             featurepack.pack.ajax(dataUrl.refundMoneyUrl, "get", postdata, function (result) {
                 if (result.code == 0) {
-                    swal("添加成功!", "您已经添加成员，点击OK关闭窗口。", "success");
+                    swal("退款成功!", "您已经添加成员，点击OK关闭窗口。", "success");
                 } else {
                     swal(result.msg, "", "error");
                 }
