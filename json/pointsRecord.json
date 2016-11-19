@@ -165,10 +165,11 @@
         "integs": "1"
       }
     ],
-    "pages": {
+    "pagejson": {
       "pagesize": 20,
-      "pagecount": 5,
-      "pageindex": 0
+      "pagecount": 36,
+      "pageindex": 0,
+      "totalcount":500
     }
   }
 }
