@@ -67,10 +67,10 @@ define(['avalon', 'bootstrap', 'bootstrap_select', 'moment', 'daterangepicker', 
             postdata.endtime = arguments[1];
         },
         checkCode: function (postdata) {
+            cos
             featurepack.pack.ajax(dataUrl.checkCodeUrl, "get", postdata, function (result) {
                 if (result.code == 0) {
                     swal("核销成功!", "您已经核销成功了，点击OK关闭窗口。", "success");
-                    $("#showSmallbox").click();
                 } else {
                     swal(result.msg, "", "error");
                 }

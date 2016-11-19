@@ -34,7 +34,8 @@ var require = {
         consumerecord:'component/consumerecord',//消费记录
         exchangerecord:'component/exchangerecord',//礼品兑换记录
         usecardquery:'component/usecardquery',//用户列表
-        pointsrecord:'component/pointsrecord'//活动记录
+        pointsrecord:'component/pointsrecord',//活动记录
+        membershipcard:'component/membershipcard'//会员查询办理
 
     },
     shim:{

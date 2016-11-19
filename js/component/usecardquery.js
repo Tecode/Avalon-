@@ -17,7 +17,6 @@ define(['avalon','bootstrap','bootstrap_select','moment','daterangepicker','feat
             $id:"showList",
             listData:[]
         });
-
         searchList = avalon.define({
             $id:"searchList",
             searchButton:function () {
