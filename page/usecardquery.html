@@ -1,10 +1,10 @@
 
 
 <div class="page-header">
-    <h1 class="title">消费记录</h1>
+    <h1 class="title">用户领取列表</h1>
     <ol class="breadcrumb">
         <li><a href="javascript:;">会员卡记录</a></li>
-        <li class="active">消费记录</li>
+        <li class="active">用户领取列表</li>
     </ol>
 
     <!-- Start Page Header Right Div -->
@@ -22,13 +22,21 @@
     <div class="col-md-12 table-searchBox ms-controller" ms-controller="searchList">
         <div class="panel panel-default">
             <div class="panel-title">
-                充值记录查询
+                用户领取列表查询
             </div>
             <div class="panel-body">
                 <form class="form-inline">
                     <div class="form-group">
-                        <label for="example1" class="form-label">订单编号</label>
-                        <input type="text" class="form-control" name="out_trade_no" id="example2" placeholder="订单编号">
+                        <label for="example1" class="form-label">用户名称</label>
+                        <input type="text" class="form-control" name="uname" id="example2" placeholder="用户名称">
+                    </div>
+                    <div class="controls form-group">
+                        <label for="example1" class="form-label">使用状态</label>
+                        <select class="selectpicker" name="usestatus">
+                            <option value="" selected="selected">全部状态</option>
+                            <option value="0">已使用</option>
+                            <option value="1">未使用</option>
+                        </select>
                     </div>
                     <div class="controls form-group">
                         <label for="example1" class="form-label">充值时间</label>
@@ -36,10 +44,6 @@
                             <span class="add-on input-group-addon"><i class="fa fa-calendar"></i></span>
                             <input type="text" id="date-range-picker" class="form-control active" placeholder="选择查询的时间">
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="example1" class="form-label">充值用户</label>
-                        <input type="text" class="form-control" id="example1" name="vipname" placeholder="充值用户">
                     </div>
                     <button type="button" class="btn btn-default submitbutton" style="margin-right: 10px" ms-click="##searchButton">查询订单</button>
                 </form>
@@ -53,26 +57,26 @@
         <table class="table table-bordered table-striped" ms-if="##listData.length > 0">
             <thead>
             <tr class="table-header">
-                <td>顾客名称</td>
-                <td>收款人</td>
-                <td>订单编号</td>
-                <td>消费时间</td>
-                <td>消费总充值金额（元）</td>
-                <td>实际金额（元）</td>
-                <td>优惠金额（元）</td>
-                <td>备注</td>
+                <td>卡券名称</td>
+                <td>用户名</td>
+                <td>使用类型</td>
+                <td>条件</td>
+                <td>数量</td>
+                <td>领取时间</td>
+                <td>使用时间</td>
+                <td>使用状态</td>
             </tr>
             </thead>
             <tbody>
             <tr ms-for="el in ##listData">
-                <td>{{el.vipname}}</td>
+                <td>{{el.cardname}}</td>
                 <td>{{el.uname}}</td>
-                <td>{{el.ddnumber}}</td>
-                <td>{{el.xftime}}</td>
-                <td>{{el.totalfee}}</td>
-                <td>{{el.xffee}}</td>
-                <td>{{el.realfee}}</td>
-                <td>{{el.xfcontent}}</td>
+                <td><span ms-if="el.type==1">打折</span><span ms-if="el.type==0">满减</span></td>
+                <td>满{{el.condition}}使用</td>
+                <td>{{el.count}}</td>
+                <td>{{el.gettime}}</td>
+                <td>{{el.usetime}}</td>
+                <td><span class="color-up" ms-if="el.isuse==1">已使用</span><span class="color-down" ms-if="el.isuse==0">未使用</span></td>
             </tr>
             </tbody>
         </table>
@@ -95,10 +99,10 @@
     </div>
 </div>
 <script>
-    require(['consumerecord'],function (consumerecord) {
+    require(['usecardquery'],function (usecardquery) {
         var url = {
-            getConsumeRecordList:'json/consumeRecord.json'//查询和加载
+            getUsecardList:'json/usecard.json'//查询和加载
         };
-        consumerecord.init_start(url);
+        usecardquery.init_start(url);
     })
 </script>

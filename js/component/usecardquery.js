@@ -8,50 +8,48 @@ define(['avalon','bootstrap','bootstrap_select','moment','daterangepicker','feat
     var postdata = {
         starttime:"",
         endtime:"",
-        vipname:""
+        uname:"",
+        usestatus:''
     };
-    var Fn = function () {
-        this.avalonStart = function () {
-            showList = avalon.define({
-                $id:"showList",
-                listData:[]
-            });
+    var cloudMail = {
+        avalonStart : function () {
+        showList = avalon.define({
+            $id:"showList",
+            listData:[]
+        });
 
-            searchList = avalon.define({
-                $id:"searchList",
-                searchButton:function () {
-                    $("form").serializeArray().map(function (child,index) {
-                        postdata[child.name] = child.value
-                    });
-                    cloudMail.getResponse(postdata);
-                }
-            });
-            avalon.scan(document.body);
-        };
-        //分页插件封装的avalon需要传url
-        this.fn = function () {
-            showList.listData = arguments[0].data.xflist;
-        };
-        this.getResponse = function (data) {
-            featurepack.pack.pager(this.fn,data,dataUrl.getConsumeRecordList);
-        };
-        this.getTime = function () {
-            postdata.starttime = arguments[0];
-            postdata.endtime = arguments[1];
-        };
-        this.getAjax = {
-            refundMoney:function (postdata) {
-                featurepack.pack.ajax(dataUrl.refundMoneyUrl,"get",postdata,function (result) {
-                    if(result.code == 0){
-                        swal("退款成功!", "您已经退款成功了，点击OK关闭窗口。", "success");
-                    }else{
-                        swal(result.msg,"", "error");
-                    }
-                })
+        searchList = avalon.define({
+            $id:"searchList",
+            searchButton:function () {
+                $("form").serializeArray().map(function (child,index) {
+                    postdata[child.name] = child.value
+                });
+                cloudMail.getResponse(postdata);
             }
-        }
+        });
+        avalon.scan(document.body);
+    },
+        refundMoney:function (postdata) {
+            featurepack.pack.ajax(dataUrl.refundMoneyUrl,"get",postdata,function (result) {
+                if(result.code == 0){
+                    swal("退款成功!", "您已经退款成功了，点击OK关闭窗口。", "success");
+                }else{
+                    swal(result.msg,"", "error");
+                }
+            })
+        },
+        getTime : function () {
+        postdata.starttime = arguments[0];
+        postdata.endtime = arguments[1];
+        },
+        //分页插件封装的avalon需要传url
+        fn : function () {
+        showList.listData = arguments[0].data.cardGettend;
+        },
+        getResponse : function (data) {
+        featurepack.pack.pager(cloudMail.fn,data,dataUrl.getUsecardList);
+    }
     };
-    var cloudMail = new Fn();
     var initStart = function (url) {
         dataUrl = url;
         //下拉选项初始化

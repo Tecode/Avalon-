@@ -225,10 +225,11 @@
         "count": 1
       }
     ],
-    "pages": {
+    "pagejson": {
       "pagesize": 20,
-      "pagecount": 2,
-      "pageindex": 0
+      "pagecount": 6,
+      "pageindex": 0,
+      "totalcount":500
     }
   }
 }
