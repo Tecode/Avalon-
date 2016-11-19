@@ -3159,6 +3159,7 @@ div[data-role="editor-toolbar"] {
   color: inherit;
   background-color: transparent;
   border-color: none;
+  width: 100%;
 }
 .panel-body .submitbutton{
     margin-top: 15px;
