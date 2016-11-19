@@ -29,7 +29,8 @@ var require = {
         giftmanage:'component/giftmanage',//礼品管理
         card:'component/card',//卡券管理
         cardmanage:'component/cardmanage',//
-        wechatcard:'component/wechatcard'//微信会员卡
+        wechatcard:'component/wechatcard',//微信会员卡
+        rechargerecord:'component/rechargerecord'
 
     },
     shim:{
