@@ -43,6 +43,7 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, d
             };
 
             ajax(ajaxdata);
+            console.info("搜索传的数据:"+JSON.stringify(ajaxdata));
         //让他初始化一次,不然点击就会一直渲染导致崩溃
             if(render){init();render = false;}
             function init() {
@@ -70,9 +71,7 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, d
                         for (key in data) {
                             changePage[key] = data[key]
                         }
-                        ajax(changePage);
-
-                        console.log(changePage);
+                        console.info("分页传的数据"+JSON.stringify(changePage));
                         if (this.totalPages <= 5) {
                             this.pageItems = avalon.range(1, this.totalPages + 1);
                         } else {

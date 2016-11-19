@@ -8,11 +8,8 @@ define(['avalon','bootstrap','bootstrap_select','moment','daterangepicker','feat
     var postdata = {
         starttime:"",
         endtime:"",
-        flagid:"",
-        merchantid:"",
         out_trade_no:"",
-        paystate:"",
-        username:""
+        vipname:""
     };
     var Fn = function () {
         this.avalonStart = function () {
@@ -41,8 +38,6 @@ define(['avalon','bootstrap','bootstrap_select','moment','daterangepicker','feat
 
             searchList = avalon.define({
                 $id:"searchList",
-                total:"0",//总笔数
-                sum:"0",//总收入
                 searchButton:function () {
                     $("form").serializeArray().map(function (child,index) {
                         postdata[child.name] = child.value
@@ -54,12 +49,10 @@ define(['avalon','bootstrap','bootstrap_select','moment','daterangepicker','feat
         };
         //分页插件封装的avalon需要传url
         this.fn = function () {
-            showList.listData = arguments[0].data.orderinfojson;
-            searchList.total = arguments[0].total;
-            searchList.sum = arguments[0].sum;
+            showList.listData = arguments[0].data.czlist;
         };
         this.getResponse = function (data) {
-            featurepack.pack.pager(this.fn,data,dataUrl.getpaycountList);
+            featurepack.pack.pager(this.fn,data,dataUrl.getRechargeRecordList);
         };
         this.getTime = function () {
             postdata.starttime = arguments[0];

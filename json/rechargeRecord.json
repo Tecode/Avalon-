@@ -10,7 +10,7 @@
         "czrecordid": 235,
         "totalfee": "0.00",
         "cztime": "2016/11/3 9:33:45",
-        "realfee": "0.00",
+        "realfee": "0.60",
         "obj1": ""
       },
       {
@@ -204,10 +204,11 @@
         "obj1": ""
       }
     ],
-    "pages": {
+    "pagejson": {
       "pagesize": 20,
-      "pagecount": 10,
-      "pageindex": 0
+      "pagecount": 30,
+      "pageindex": 0,
+      "totalcount":546
     }
   }
 }
