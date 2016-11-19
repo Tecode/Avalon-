@@ -1,0 +1,234 @@
+
+{
+  "code": 0,
+  "msg": "获取成功",
+  "data": {
+    "cardGettend": [
+      {
+        "cardnumber": null,
+        "isuse": 1,
+        "cardname": "八折优惠卡",
+        "uname": "梁晓声",
+        "usetime": "",
+        "gettime": "2016/8/15 10:30:07",
+        "condition": "100",
+        "type": 1,
+        "count": 1
+      },
+      {
+        "cardnumber": null,
+        "isuse": 1,
+        "cardname": "八折优惠卡3",
+        "uname": "梁晓声",
+        "usetime": "",
+        "gettime": "2016/8/15 10:30:06",
+        "condition": "100",
+        "type": 1,
+        "count": 1
+      },
+      {
+        "cardnumber": null,
+        "isuse": 1,
+        "cardname": "八折优惠卡3",
+        "uname": "firstblood",
+        "usetime": "",
+        "gettime": "2016/8/4 16:23:28",
+        "condition": "100",
+        "type": 1,
+        "count": 1
+      },
+      {
+        "cardnumber": null,
+        "isuse": 1,
+        "cardname": "八折优惠卡",
+        "uname": "喵喵",
+        "usetime": "",
+        "gettime": "2016/8/1 10:05:29",
+        "condition": "100",
+        "type": 1,
+        "count": 1
+      },
+      {
+        "cardnumber": null,
+        "isuse": 1,
+        "cardname": "八折优惠卡",
+        "uname": "",
+        "usetime": "",
+        "gettime": "2016/7/29 10:35:10",
+        "condition": "100",
+        "type": 1,
+        "count": 1
+      },
+      {
+        "cardnumber": null,
+        "isuse": 1,
+        "cardname": "八折优惠卡",
+        "uname": "边宁达",
+        "usetime": "",
+        "gettime": "2016/7/27 17:04:19",
+        "condition": "100",
+        "type": 1,
+        "count": 1
+      },
+      {
+        "cardnumber": null,
+        "isuse": 1,
+        "cardname": "八折优惠卡",
+        "uname": "firstblood",
+        "usetime": "",
+        "gettime": "2016/7/27 16:59:47",
+        "condition": "100",
+        "type": 1,
+        "count": 1
+      },
+      {
+        "cardnumber": null,
+        "isuse": 1,
+        "cardname": "优惠卡1（满100减5元）",
+        "uname": "颖子",
+        "usetime": "",
+        "gettime": "2016/7/13 10:33:53",
+        "condition": "100",
+        "type": 0,
+        "count": 1
+      },
+      {
+        "cardnumber": null,
+        "isuse": 1,
+        "cardname": "优惠卡1（满100减5元）",
+        "uname": "潇潇",
+        "usetime": "",
+        "gettime": "2016/7/13 10:12:23",
+        "condition": "100",
+        "type": 0,
+        "count": 1
+      },
+      {
+        "cardnumber": null,
+        "isuse": 1,
+        "cardname": "优惠卡1（满100减5元）",
+        "uname": "shsh",
+        "usetime": "",
+        "gettime": "2016/7/5 9:35:24",
+        "condition": "100",
+        "type": 0,
+        "count": 1
+      },
+      {
+        "cardnumber": null,
+        "isuse": 1,
+        "cardname": "优惠卡五折优惠",
+        "uname": "firstblood",
+        "usetime": "",
+        "gettime": "2016/6/26 13:31:53",
+        "condition": "200",
+        "type": 1,
+        "count": 1
+      },
+      {
+        "cardnumber": null,
+        "isuse": 1,
+        "cardname": "全场买10送10",
+        "uname": "",
+        "usetime": "",
+        "gettime": "2016/6/20 16:07:19",
+        "condition": "10",
+        "type": 0,
+        "count": 1
+      },
+      {
+        "cardnumber": null,
+        "isuse": 1,
+        "cardname": "全场买10送10",
+        "uname": "firstblood",
+        "usetime": "",
+        "gettime": "2016/6/20 11:43:08",
+        "condition": "10",
+        "type": 0,
+        "count": 1
+      },
+      {
+        "cardnumber": null,
+        "isuse": 1,
+        "cardname": "优惠卡",
+        "uname": "",
+        "usetime": "",
+        "gettime": "2016/6/17 14:57:39",
+        "condition": "1",
+        "type": 0,
+        "count": 1
+      },
+      {
+        "cardnumber": null,
+        "isuse": 1,
+        "cardname": "卡券",
+        "uname": "firstblood",
+        "usetime": "",
+        "gettime": "2016/6/16 9:59:44",
+        "condition": "200",
+        "type": 1,
+        "count": 1
+      },
+      {
+        "cardnumber": null,
+        "isuse": 1,
+        "cardname": "优惠卡",
+        "uname": "",
+        "usetime": "",
+        "gettime": "2016/6/15 10:05:37",
+        "condition": "1",
+        "type": 0,
+        "count": 1
+      },
+      {
+        "cardnumber": null,
+        "isuse": 1,
+        "cardname": "优惠卡1（满100减5元）",
+        "uname": "",
+        "usetime": "",
+        "gettime": "2016/6/14 17:31:33",
+        "condition": "100",
+        "type": 0,
+        "count": 1
+      },
+      {
+        "cardnumber": null,
+        "isuse": 1,
+        "cardname": "优惠卡",
+        "uname": "",
+        "usetime": "",
+        "gettime": "2016/6/14 10:59:43",
+        "condition": "1",
+        "type": 0,
+        "count": 1
+      },
+      {
+        "cardnumber": null,
+        "isuse": 1,
+        "cardname": "优惠卡(满200减15)",
+        "uname": "",
+        "usetime": "",
+        "gettime": "2016/6/13 15:06:44",
+        "condition": "200",
+        "type": 0,
+        "count": 1
+      },
+      {
+        "cardnumber": null,
+        "isuse": 1,
+        "cardname": "优惠卡1（满100减5元）",
+        "uname": "",
+        "usetime": "",
+        "gettime": "2016/6/13 14:34:17",
+        "condition": "100",
+        "type": 0,
+        "count": 1
+      }
+    ],
+    "pages": {
+      "pagesize": 20,
+      "pagecount": 2,
+      "pageindex": 0
+    }
+  }
+}
