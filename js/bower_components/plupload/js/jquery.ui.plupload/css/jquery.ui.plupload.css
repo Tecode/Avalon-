@@ -118,13 +118,8 @@
 	background-color: #eee;
 }
 
-.plupload_thumb_loading {
+.plupload_file_loading .plupload_file_thumb {
 	background: #eee url(../img/loading.gif) center no-repeat;
-}
-
-.plupload_thumb_loading .plupload_file_dummy,
-.plupload_thumb_embedded .plupload_file_dummy {
-	display: none;
 }
 
 .plupload_file_name {

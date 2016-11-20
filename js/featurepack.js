@@ -195,51 +195,18 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment','plupload'], function ($
             }
         };
         this.upload = function () {
-        //上传文件
-            var uploader = new plupload.Uploader({
-                runtimes : 'html5,flash,silverlight,html4',
-                browse_button : 'pickfiles', // you can pass an id...
-                //container: document.getElementById('container'), // ... or DOM Element itself
-                url : 'json/index.json',
-                //flash_swf_url : '../js/Moxie.swf',
-                //silverlight_xap_url : '../js/Moxie.xap',
-
-                filters : {
-                    max_file_size : '10mb',
-                    mime_types: [
-                        {title : "Image files", extensions : "jpg,gif,png"},
-                        {title : "Zip files", extensions : "zip"}
+            uploader = new plupload.Uploader({ //实例化一个plupload上传对象
+                browse_button: 'pickfiles',
+                url:'', //服务器端的上传页面地址
+                flash_swf_url : 'static/js/lib/plupload/Moxie.swf',
+                silverlight_xap_url : 'static/js/lib/plupload/Moxie.xap',
+                filters: {
+                    mime_types: [ //只允许上传图片文件
+                        { title: "图片文件", extensions: "jpg,gif,png" }
                     ]
                 },
-
-                init: {
-                    PostInit: function() {
-                        //document.getElementById('filelist').innerHTML = '';
-
-                        document.getElementById('uploadfiles').onclick = function() {
-                            uploader.start();
-                            return false;
-                        };
-                    },
-
-                    FilesAdded: function(up, files) {
-                        console.info(files);
-                        // plupload.each(files, function(file) {
-                        //     document.getElementById('filelist').innerHTML += '<div id="' + file.id + '">' + file.name + ' (' + plupload.formatSize(file.size) + ') <b></b></div>';
-                        // });
-                    },
-
-                    UploadProgress: function(up, file) {
-                        document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = '<span>' + file.percent + "%</span>";
-                    },
-
-                    Error: function(up, err) {
-                        document.getElementById('console').appendChild(document.createTextNode("\nError #" + err.code + ": " + err.message));
-                    }
-                }
             });
-            console.info(uploader);
-            uploader.init();
+            uploader.init(); //初始化
         }
     };
     var _featurepack = new pack();
