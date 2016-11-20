@@ -1,0 +1,25 @@
+
+{
+  "code": 0,
+  "msg": "操作成功",
+  "imgtitleInfolist": [
+    {
+      "ppUrl": "img/noimage.jpg",
+      "ppRemark": "衣服打折啦",
+      "ppdate": "2016-09-01 11:09:10",
+      "ppid": "157005"
+    },
+    {
+      "ppUrl": "img/example1.jpg",
+      "ppRemark": "苹果手机600块",
+      "ppdate": "2016-11-20 12:11:00",
+      "ppid": "157024"
+    },
+    {
+      "ppUrl": "img/example1.jpg",
+      "ppRemark": "女潮衣服19.9",
+      "ppdate": "2016-09-07 11:09:53",
+      "ppid": "157644"
+    }
+  ]
+}
