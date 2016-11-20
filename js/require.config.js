@@ -17,6 +17,7 @@ var require = {
         jquery_select:'jquery.select',
         sweet_alert:'sweet-alert/sweet-alert.min',
         es6promise:'bower_components/es6-promise/es6-promise.auto.js',
+        plupload:'bower_components/plupload/js/plupload.full.min',
 
 
         paycount:'component/paycount',//收款统计
@@ -35,7 +36,8 @@ var require = {
         exchangerecord:'component/exchangerecord',//礼品兑换记录
         usecardquery:'component/usecardquery',//用户列表
         pointsrecord:'component/pointsrecord',//活动记录
-        membershipcard:'component/membershipcard'//会员查询办理
+        membershipcard:'component/membershipcard',//会员查询办理
+        album:'component/album'//首页相册
 
     },
     shim:{

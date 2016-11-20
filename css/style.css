@@ -4278,3 +4278,43 @@ form .tips-msg{
     border-bottom: 1px solid #58666e;
     color: #d43f3a;
 }
+.alertCheckBox{
+  overflow: hidden;
+}
+.alertCheckBox .inmgbox img{
+    position: relative;
+}
+
+.alertCheckBox .deleteimg{
+    position: absolute;
+    top: 5px;
+    right: 1.3em;
+    font-size: 16px;
+    padding: 0 3px;
+    text-shadow: none;
+    outline: 0;
+    cursor: default;
+    color: #4c4c4c;
+    opacity: .5;
+}
+.alertCheckBox .imgbox:hover .deleteimg{
+    opacity: .9;
+    color: #fff;
+    background: #4c4c4c;
+    border-radius: 999px;
+}
+.alertCheckBox .uploadtips{
+    display: block;
+    position: absolute;
+    width: 70px;
+    top: 4em;
+    left: 50%;
+    margin-left: -35px;
+    background-color: #fff;
+    opacity: .8;
+    border-radius: 999px;
+}
+.alertCheckBox button{
+    margin-right: 1em;
+    margin-bottom: 1em;
+}

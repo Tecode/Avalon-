@@ -8,6 +8,7 @@
         您可以在本页设置商城的轮播图，显示的图片是以下添加的图片。
     </div>
 </div>
+<div class="ms-controller" ms-controller="showList">
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
@@ -18,31 +19,82 @@
 
             <div class="panel-body">
                 <h4>上传商城轮播图片时，为了使商城整体更加美观务必保证图片清晰。</h4>
-                <p><b>建议尺寸:</b>1280px*720px</p><p>
-                <a href="http://code.shutterstock.com/rickshaw/" target="_blank" class="btn btn-sm">Official documentation</a>
-            </p></div>
+                <p><b>建议尺寸:</b>1280px*720px</p>
+                <p>
+                    <a href="javascript:;" class="btn btn-sm btn-default" ms-click="##addImage"><i style="font-size: 12px" class="fa fa-plus"></i>新增banner图片</a>
+                </p></div>
 
         </div>
     </div>
-    <div class="col-md-6 col-lg-4">
+    <div class="col-md-6 col-lg-4" ms-for="key in ##listData">
         <div class="panel panel-default">
-            <div class="panel-body status">
+            <div class="status">
                 <ul class="panel-tools panel-tools-hover">
-                    <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
-                    <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
+                    <li><a class="icon closed-tool" ms-click="##deleteInfo(key)"><i class="fa fa-times"></i></a></li>
                 </ul>
                 <div class="who clearfix">
-                    <span class="name"><b>Egemem Ka</b> shared a photo</span>
-                    <span class="from"><b>1 days ago</b> via Mobile, New York</span>
+                    <span class="name"><b>{{key.ppRemark}}</b> </span>
+                    <span class="from">{{key.ppdate}}</span>
                 </div>
-                <div class="image"><img src="img/example1.jpg" alt="img"></div>
+                <div class="image"><img ms-attr="{src:key.ppUrl}" alt="banner图片"></div>
                 <ul class="links">
-                    <li><a href="#"><i class="fa fa-thumbs-o-up"></i> Like</a></li>
-                    <li><a href="#"><i class="fa fa-comment-o"></i> Comment</a></li>
-                    <li><a href="#"><i class="fa fa-share-square-o"></i> Share</a></li>
+                    <li><a href="javascript:;"><i class="fa fa-eye"></i>查看演示</a></li>
+                    <li><a href="javascript:;" ms-click="##editImage(key)"><i class="fa fa-edit"></i>编辑</a></li>
                 </ul>
             </div>
         </div>
-
     </div>
 </div>
+
+<!--图片上传弹出框&详情信息-->
+<div id="infomationBox" class="note-image-dialog modal in" aria-hidden="false" style="display:none;">
+    <div class="modal-backdrop in"></div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ms-click="##closeBox" aria-hidden="true" tabindex="-1">×</button>
+                <h4 class="modal-title">新增首页图片</h4></div>
+            <form class="note-modal-form">
+                <div class="modal-body">
+                    <div class="form-group row-fluid">
+                        <label>编辑描述</label>
+                        <input class="note-image-url form-control span12" type="text">
+                    </div>
+                    <div class="form-group row-fluid note-group-select-from-files">
+                        <label>图片上传</label>
+                        <div class="alertCheckBox" style="margin-right: -15px;margin-left: -15px;">
+                            <div class="col-xs-6 imgbox">
+                                <img src="img/noimage.jpg" alt="上传的图片" width="100%" />
+                                <span class="deleteimg" ms-click="##deleteImage">×</span>
+                                <span class="uploadtips text-center color-up">上传成功</span>
+                            </div>
+                            <div class="col-xs-6 buttonBox">
+                                <p class="color-down">1.上传图片失败可以重试。</p>
+                                <p class="color-down">2.每次只能上传一张图片。</p>
+                                <p class="color-down">3.如果想重新上传请先删除图片。</p>
+                                <button type="button" class="btn btn-xs btn-light" id="pickfiles">选择图片</button>
+                                <button type="button" class="btn btn-xs btn-default" id="uploadfiles">上传图片</button>
+                            </div>
+                            <div class="col-xs-12">
+                                <button type="button" class="btn btn-default">保存</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    require(['album'], function (album) {
+        var url = {
+            getAlbumList: 'json/album.json',
+            addBannerUrl:'',//新增图片
+            deleteBannerUrl:'',//删除图片（删除的只是图片）
+            editBanner:'',//编辑图片
+            deletBannerInfo:''//删除整条信息
+        };
+        album.init_start(url);
+    })
+</script>

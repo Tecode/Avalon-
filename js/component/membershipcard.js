@@ -1,10 +1,6 @@
 /**
  * Created by ASSOON on 2016/11/19.
  */
-/**
- * Created by ASSOON on 2016/11/9.
- */
-
 define(['avalon','bootstrap','bootstrap_select','moment','daterangepicker','featurepack','sweet_alert'], function(avalon,bootstrap,selectpicker,moment,daterangepicker,featurepack,swal) {
     var dataUrl = null;
     var showList,searchList;
@@ -67,7 +63,6 @@ define(['avalon','bootstrap','bootstrap_select','moment','daterangepicker','feat
             avalon.scan(document.body);
         },
         addMore:function (postdata) {
-            console.info(postdata)
             featurepack.pack.ajax(dataUrl.getembershipcardList,"get",postdata,function (result) {
                 if(result.code == 0){
                     swal("添加成功!", "您已经添加成功了，点击OK关闭窗口。", "success");
