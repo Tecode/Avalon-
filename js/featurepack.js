@@ -1,7 +1,7 @@
 /**
  * Created by ASSOON on 2016/11/6.
  */
-define(['jquery', 'avalon', 'daterangepicker', 'moment','plupload'], function ($, avalon, daterangepicker,moment,plupload) {
+define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, daterangepicker,moment) {
     var vm,data;
     var render = true;
     var pack = function () {
@@ -201,8 +201,8 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment','plupload'], function ($
                 browse_button : 'pickfiles', // you can pass an id...
                 //container: document.getElementById('container'), // ... or DOM Element itself
                 url : 'json/index.json',
-                //flash_swf_url : '../js/Moxie.swf',
-                //silverlight_xap_url : '../js/Moxie.xap',
+                flash_swf_url : 'js/bower_components/plupload/Moxie.swf',
+                silverlight_xap_url : 'js/bower_components/plupload/Moxie.xap',
 
                 filters : {
                     max_file_size : '10mb',
@@ -223,7 +223,24 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment','plupload'], function ($
                     },
 
                     FilesAdded: function(up, files) {
-                        console.info(files.getSource());
+                        for (var i = 0, len = files.length; i < len; i++) {
+                            if (files[i].size > 819200) {
+                                uploader.files.splice(i, 1);
+                                layer.msg("上传图片小于800K",{offset: 100});
+                            }else {
+                                !function (i) {
+                                    previewImage(files[i], function (imgsrc) {
+                                        alert(imgsrc)
+                                        // $('#file-list').html($('#file-list').html() +
+                                        //     '<div style="float:left" class="pic_list" id="' + files[i].id + '">'
+                                        //     + ' (' + plupload.formatSize(files[i].size) +
+                                        //     ')<a href="###" class="pic_delete" data-val=' + files[i].id +
+                                        //     '>删除</a><br/>' +
+                                        //     '<img class="listview" width="100" style="margin-right:10px;" src="' + imgsrc + '" name="' + files[i].name + '" /></div>');
+                                    });
+                                }(i);
+                            }
+                        }
                         // var fr = new mOxie.FileReader();
                         // fr.onload = function () {
                         //     callback(fr.result);
@@ -244,7 +261,29 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment','plupload'], function ($
                     }
                 }
             });
-            console.info(uploader);
+
+            var previewImage = function (file, callback) {//file为plupload事件监听函数参数中的file对象,callback为预览图片准备完成的回调函数
+                if (!file || !/image\//.test(file.type)) return; //确保文件是图片
+                if (file.type == 'image/gif') {//gif使用FileReader进行预览,因为mOxie.Image只支持jpg和png
+                    var fr = new mOxie.FileReader();
+                    fr.onload = function () {
+                        callback(fr.result);
+                        fr.destroy();
+                        fr = null;
+                    };
+                    fr.readAsDataURL(file.getSource());
+                } else {
+                    var preloader = new mOxie.Image();
+                    preloader.onload = function () {
+                        //preloader.downsize(550, 400);//先压缩一下要预览的图片,宽300，高300
+                        var imgsrc = preloader.type == 'image/jpeg' ? preloader.getAsDataURL('image/jpeg', 80) : preloader.getAsDataURL(); //得到图片src,实质为一个base64编码的数据
+                        callback && callback(imgsrc); //callback传入的参数为预览图片的url
+                        preloader.destroy();
+                        preloader = null;
+                    };
+                    preloader.load(file.getSource());
+                }
+            };
             uploader.init();
         }
     };
