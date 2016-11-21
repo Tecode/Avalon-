@@ -203,7 +203,6 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, d
                 url : 'json/index.json',
                 flash_swf_url : 'js/bower_components/plupload/Moxie.swf',
                 silverlight_xap_url : 'js/bower_components/plupload/Moxie.xap',
-
                 filters : {
                     max_file_size : '10mb',
                     mime_types: [

@@ -38,17 +38,17 @@
             <li class="arrow"></li>
             <li class="col-xs-6 col-lg-4">
                 <span class="title"><i class="fa fa-dot-circle-o"></i>商城今日收款</span>
-                <h3 class="color-down"><i class="fa fa-rmb"></i>{{'&nbsp;'+@payNowday}}</h3>
+                <h3 class="color-down"><i class="fa fa-rmb"></i>{{'&nbsp;'+##mallNowday}}</h3>
                 <span class="diff"><i class="fa fa-caret-right"></i>&nbsp;&nbsp;当日收款数据统计汇总</span>
             </li>
             <li class="col-xs-6 col-lg-4">
                 <span class="title"><i class="fa fa-shopping-cart"></i>商城当月收款</span>
-                <h3 class="color-down"><i class="fa fa-rmb"></i>{{'&nbsp;'+@payNowmonth}}</h3>
+                <h3 class="color-down"><i class="fa fa-rmb"></i>{{'&nbsp;'+##mallNowmonth}}</h3>
                 <span class="diff"><i class="fa fa-caret-right"></i>&nbsp;&nbsp;当月收款数据统计汇总</span>
             </li>
             <li class="col-xs-12 col-lg-4">
                 <span class="title"><i class="fa fa-clock-o"></i>商城总收款</span>
-                <h3 class="color-down"><i class="fa fa-rmb"></i>{{'&nbsp;'+@payNowcount}}</h3>
+                <h3 class="color-down"><i class="fa fa-rmb"></i>{{'&nbsp;'+##mallNowcount}}</h3>
                 <span class="diff"><i class="fa fa-caret-right"></i>&nbsp;&nbsp;统计到目前为止总收款金额</span>
             </li>
         </ul>
@@ -62,7 +62,7 @@
 
                 <div class="col-sm-12" style="height:450px;">
                     <h4 class="title">当月微信支付收款统计<small>最近更新: 1 小时以前</small></h4>
-                    <div class="top-label"><h2>128.14</h2><h4>今日总计</h4></div>
+                    <div class="top-label"><h2>{{##payNowday}}</h2><h4>今日总计</h4></div>
                     <div class="bigchart" id="payChart"></div>
                 </div>
                 <div class="right" style="height:450px;">
@@ -107,11 +107,11 @@
 
                 <div class="col-sm-12" style="height:450px;">
                     <h4 class="title">当月商城收款统计<small>最近更新: 1 小时以前</small></h4>
-                    <div class="top-label"><h2>128.14</h2><h4>今日总计</h4></div>
+                    <div class="top-label"><h2>{{##mallNowday}}</h2><h4>今日总计</h4></div>
                     <div class="bigchart" id="mallChart"></div>
                 </div>
                 <div class="right" style="height:450px;">
-                    <h4 class="title">PAGE VIEW</h4>
+                    <h4 class="title">概要信息</h4>
                     <!-- start stats -->
                     <ul class="widget-inline-list clearfix">
                         <li class="col-12"><span>962</span>Themeforest<i class="chart sparkline-green"></i></li>
@@ -155,7 +155,7 @@
         var url ={
             mallReport:"json/MallReport.json",//获取商城统计图
             reportNow:"json/ReportNow.json",//获取支付统计图
-            reportStoreAll:"json/ReportStoreAll.json"//获取所有
+            reportStoreAll:"json/ReportStoreAll.json"//获取所有数据
         };
         main.init_start(url);
     });

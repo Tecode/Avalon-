@@ -86,6 +86,12 @@
         "name": "默认门店地方",
         "money": 76.72
       }
-    ]
+    ],
+    "mallinfo":{
+      "todaytaltal":900
+    },
+    "payinfo":{
+      "todaytaltal":888
+    }
   }
 }
