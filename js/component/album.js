@@ -1,7 +1,7 @@
 /**
  * Created by ASSOON on 2016/11/20.
  */
-define(['avalon','bootstrap','moment','daterangepicker','featurepack','sweet_alert'], function(avalon,bootstrap,moment,daterangepicker,featurepack,swal) {
+define(['avalon','bootstrap','moment','daterangepicker','featurepack','plupload','sweet_alert'], function(avalon,bootstrap,moment,daterangepicker,featurepack,swal) {
     var dataUrl = null;
     var showList,searchList;
     var cloudMail = {

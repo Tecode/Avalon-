@@ -17,6 +17,7 @@ var require = {
         jquery_select:'jquery.select',
         sweet_alert:'sweet-alert/sweet-alert.min',
         es6promise:'bower_components/es6-promise/es6-promise.auto.js',
+       // mOxie:'bower_components/plupload/js/moxie.min',
         plupload:'bower_components/plupload/js/plupload.full.min',
 
 
