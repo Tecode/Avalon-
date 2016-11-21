@@ -10,9 +10,12 @@ define(['avalon','bootstrap','moment','daterangepicker','featurepack','plupload'
                 $id:"showList",
                 listData:[],
                 globalData:{},
-                filldata:{},
+                filldata:{
+                    ppUrl:'img/noimage.jpg'
+                },
                 addImage:function (el) {
                     cloudMail.judge(1,null);
+                    globalData = {type:1,data:null}
                 },
                 closeBox:function () {
                     $("#infomationBox").css("display",'none');
@@ -21,6 +24,7 @@ define(['avalon','bootstrap','moment','daterangepicker','featurepack','plupload'
                 },
                 editImage:function (el) {
                     cloudMail.judge(2,el);
+                    globalData = {type:2,data:el}
                 },
                 deleteInfo:function (el) {
                     swal({
@@ -54,11 +58,14 @@ define(['avalon','bootstrap','moment','daterangepicker','featurepack','plupload'
                 },
                 validate: {
                     onValidateAll: function (reasons) {
+                        var postdata = {imgesrc:showList.filldata.ppUrl};
                         reasons.length == 0 ? (function () {
-                            showList.globalData.type==1?(function () {
-                                cloudMail.addMore({xffee:showList.xffee})
+                            postdata.ids = "0";
+                            globalData.type==1?(function () {
+                                cloudMail.addBanner(postdata);
                             })():(function () {
-                                cloudMail.addMore({recharge:showList.recharge})
+                                postdata.ids = globalData.data.ppid;
+                                cloudMail.editBanner(postdata);
                             })()
                         })() : (function () {
                             $('.tip').remove();
@@ -73,33 +80,20 @@ define(['avalon','bootstrap','moment','daterangepicker','featurepack','plupload'
             });
             avalon.scan(document.body);
         },
-        deleteAlbumList:function (postdata) {
-            featurepack.pack.ajax(dataUrl.deletBannerInfo,"post",postdata,function (result) {
-                if(result.code == 0){
-                    swal("删除成功!", "您已经成功删除了这条banner图片，点击OK关闭窗口。", "success");
-                    $('#showSmallbox').click();
-                }else{
-                    swal(result.msg,"", "error");
-                }
-            })
-        },
         //回调函数预览图片
         callback:function () {
-            showList.filldata.ppUrl = arguments[0]
+            showList.filldata.ppUrl = arguments[0];
         },
+        //回调函数加载正式图片地址
         callBackGetUrl:function () {
             console.info(arguments[0]);
             showList.filldata.ppUrl = arguments[0].data.url;
+            globalData.url = true;
         },
-        //分页插件封装的avalon需要传url
-        getResponse:function () {
-            featurepack.pack.ajax(dataUrl.getAlbumList,"get",null,function (result) {
-                if(result.code == 0){
-                    showList.listData = result.imgtitleInfolist;
-                }else{
-                    swal(result.msg,"", "error");
-                }
-            })
+        callbackGetDeletimg:function () {
+            return (
+                showList.filldata.ppUrl.indexOf('noimage.jpg')==-1
+            )
         },
         judge:function (type,value) {
             type==1?(function () {
@@ -117,12 +111,54 @@ define(['avalon','bootstrap','moment','daterangepicker','featurepack','plupload'
             }();
             $("#infomationBox").css("display",'block')
         },
+        deleteAlbumList:function (postdata) {
+            featurepack.pack.ajax(dataUrl.deletBannerInfo,"post",postdata,function (result) {
+                if(result.code == 0){
+                    swal("删除成功!", "您已经成功删除了这条banner图片，点击OK关闭窗口。", "success");
+                    $('#showSmallbox').click();
+                }else{
+                    swal(result.msg,"", "error");
+                }
+            })
+        },
+        //分页插件封装的avalon需要传url
+        getResponse:function () {
+            featurepack.pack.ajax(dataUrl.getAlbumList,"get",null,function (result) {
+                if(result.code == 0){
+                    showList.listData = result.imgtitleInfolist;
+                }else{
+                    swal(result.msg,"", "error");
+                }
+            })
+        },
         //这个方法在修改里面删除已经上传的图片，只有删除了才可以重新上传不然后台图片会越来越多
-        deleteImage:function () {
-            featurepack.pack.ajax(dataUrl.deleteBannerUrl,"get",null,function (result) {
+        deleteImage:function (postdata) {
+            featurepack.pack.ajax(dataUrl.deleteBannerUrl,"get",postdata,function (result) {
                 if(result.code == 0){
                     showList.filldata.ppUrl = "img/noimage.jpg";
                     swal("删除成功!", "您已经成功删除了这张图片，点击OK关闭窗口。", "success");
+                    $("#deleteimg").hide();
+                }else{
+                    swal(result.msg,"", "error");
+                }
+            })
+        },
+        editBanner:function (postdata) {
+            featurepack.pack.ajax(dataUrl.editBannerUrl,"get",postdata,function (result) {
+                if(result.code == 0){
+                    showList.filldata.ppUrl = "img/noimage.jpg";
+                    swal("修改成功!", "您已经成功修改了这张图片，点击OK关闭窗口。", "success");
+                    $("#deleteimg").hide();
+                }else{
+                    swal(result.msg,"", "error");
+                }
+            })
+        },
+        addBanner:function (postdata) {
+            featurepack.pack.ajax(dataUrl.addBannerUrl,"get",postdata,function (result) {
+                if(result.code == 0){
+                    showList.filldata.ppUrl = "img/noimage.jpg";
+                    swal("添加成功!", "您已经成功添加了这张图片，点击OK关闭窗口。", "success");
                     $("#deleteimg").hide();
                 }else{
                     swal(result.msg,"", "error");
@@ -133,10 +169,16 @@ define(['avalon','bootstrap','moment','daterangepicker','featurepack','plupload'
 
     var initStart = function (url) {
         dataUrl = url;
-        featurepack.pack.upload(cloudMail.callback,cloudMail.callBackGetUrl,url.addBannerUrl);
         //分页和查询
         cloudMail.getResponse();
         cloudMail.avalonStart();
+        featurepack.pack.upload(
+            //获取本机地址
+            cloudMail.callback,
+            //获取服务器地址
+            cloudMail.callBackGetUrl,url.addBannerUrl,
+            //检查是否删除了图片，没有删除要提醒删除
+            cloudMail.callbackGetDeletimg);
 
     };
     return {

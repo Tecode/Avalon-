@@ -195,7 +195,7 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                 validateInKeyup: true
             }
         };
-        this.upload = function (fn,getUrl,url) {
+        this.upload = function (fn,getUrl,url,istrue) {
             //上传文件
             var uploader = new plupload.Uploader({
                 runtimes: 'html5,flash,silverlight,html4',
@@ -227,6 +227,16 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                         }
                     },
                     FilesAdded: function (up, files) {
+                            if(istrue.call(this,'')){
+                                swal(
+                                    {
+                                        title: "删除了才可以上传哦！!",
+                                        text: "点击图片上面的叉号可以删除图片！",
+                                        timer: 4500,
+                                        showConfirmButton: true
+                                    });
+                                return;
+                            }
                         //限制一次只能上传一张
                             $.each(up.files, function (i, file) {
                                 if (up.files.length <= 1) {
@@ -243,7 +253,6 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                                     showConfirmButton: true
                                 });
                         })() : (function () {
-
                             for (var i = 0, len = files.length; i < len; i++) {
                                 if (files[i].size > 819200) {
                                     uploader.files.splice(i, 1);
