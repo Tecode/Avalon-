@@ -4281,7 +4281,12 @@ form .tips-msg{
 .alertCheckBox{
   overflow: hidden;
 }
-.alertCheckBox .inmgbox img{
+.alertCheckBox .imgbox{
+    margin-bottom: 1em;
+    height: 125px;
+    overflow: hidden;
+}
+.alertCheckBox .imgbox img{
     position: relative;
 }
 
@@ -4300,16 +4305,16 @@ form .tips-msg{
 .alertCheckBox .imgbox:hover .deleteimg{
     opacity: .9;
     color: #fff;
-    background: #4c4c4c;
+    background: #ef4836;
     border-radius: 999px;
 }
 .alertCheckBox .uploadtips{
     display: block;
     position: absolute;
-    width: 70px;
+    width: 160px;
     top: 4em;
     left: 50%;
-    margin-left: -35px;
+    margin-left: -80px;
     background-color: #fff;
     opacity: .8;
     border-radius: 999px;

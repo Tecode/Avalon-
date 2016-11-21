@@ -55,29 +55,29 @@
             <div class="modal-header">
                 <button type="button" class="close" ms-click="##closeBox" aria-hidden="true" tabindex="-1">×</button>
                 <h4 class="modal-title">新增首页图片</h4></div>
-            <form class="note-modal-form">
+            <form class="note-modal-form" ms-validate="##validate" action="#/album">
                 <div class="modal-body">
                     <div class="form-group row-fluid">
                         <label>编辑描述</label>
-                        <input class="note-image-url form-control span12" type="text">
+                        <input class="note-image-url form-control span12" ms-rules="{required:true}" ms-focus="##clear" data-required-message="描述信息需要填写！" ms-duplex="##filldata.ppRemark" type="text">
                     </div>
                     <div class="form-group row-fluid note-group-select-from-files">
                         <label>图片上传</label>
                         <div class="alertCheckBox" style="margin-right: -15px;margin-left: -15px;">
                             <div class="col-xs-6 imgbox">
-                                <img src="img/noimage.jpg" alt="上传的图片" width="100%" />
-                                <span class="deleteimg" ms-click="##deleteImage">×</span>
-                                <span class="uploadtips text-center color-up">上传成功</span>
+                                <img id="viewimage" src="img/noimage.jpg" ms-attr="{src:##filldata.ppUrl}" alt="上传的图片" width="100%" />
+                                <span id="deleteimg" class="deleteimg" ms-click="##deleteImage" style="display: none">×</span>
+                                <span id="uploadtips" class="uploadtips text-center" style="display: none"></span>
                             </div>
                             <div class="col-xs-6 buttonBox">
-                                <p class="color-down">1.上传图片失败可以重试。</p>
-                                <p class="color-down">2.每次只能上传一张图片。</p>
-                                <p class="color-down">3.如果想重新上传请先删除图片。</p>
+                                <p class="color-down">1.每次只能上传一张图片。</p>
+                                <p class="color-down">2.上传的图片不能超过800KB。</p>
+                                <p class="color-down">3.上传失败请重新选择再上传。</p>
                                 <button type="button" class="btn btn-xs btn-light" id="pickfiles">选择图片</button>
-                                <button type="button" class="btn btn-xs btn-default" id="uploadfiles">上传图片</button>
+                                <button type="button" class="btn btn-xs btn-default" id="uploadfiles">开始上传</button>
                             </div>
                             <div class="col-xs-12">
-                                <button type="button" class="btn btn-default">保存</button>
+                                <button type="submit" class="btn btn-default">保存</button>
                             </div>
                         </div>
                     </div>
@@ -91,10 +91,10 @@
     require(['album'], function (album) {
         var url = {
             getAlbumList: 'json/album.json',
-            addBannerUrl:'',//新增图片
-            deleteBannerUrl:'',//删除图片（删除的只是图片）
-            editBanner:'',//编辑图片
-            deletBannerInfo:''//删除整条信息
+            addBannerUrl:'json/album.json',//新增图片
+            deleteBannerUrl:'json/album.json',//删除图片（删除的只是图片）
+            editBanner:'json/album.json',//编辑图片
+            deletBannerInfo:'json/album.json'//删除整条信息
         };
         album.init_start(url);
     })

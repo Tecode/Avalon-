@@ -1,13 +1,13 @@
 /**
  * Created by ASSOON on 2016/11/6.
  */
-define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, daterangepicker,moment) {
-    var vm,data;
+define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], function ($, avalon, daterangepicker, moment, swal) {
+    var vm, data;
     var render = true;
     var pack = function () {
         //定义ajax方法
         this.render = function (fn) {
-            render = fn.call(this,'');
+            render = fn.call(this, '');
         };
         this.ajax = function (url, type, postdata, fn) {
             $.ajax({
@@ -43,9 +43,12 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, d
             };
 
             ajax(ajaxdata);
-            console.info("搜索传的数据:"+JSON.stringify(ajaxdata));
+            console.info("搜索传的数据:" + JSON.stringify(ajaxdata));
             //让他初始化一次,不然点击就会一直渲染导致崩溃
-            if(render){init();render = false;}
+            if (render) {
+                init();
+                render = false;
+            }
             function init() {
                 vm = avalon.define({
                     $id: "test",
@@ -71,7 +74,7 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, d
                         for (key in data) {
                             changePage[key] = data[key]
                         }
-                        console.info("分页传的数据"+JSON.stringify(changePage));
+                        console.info("分页传的数据" + JSON.stringify(changePage));
                         if (this.totalPages <= 5) {
                             this.pageItems = avalon.range(1, this.totalPages + 1);
                         } else {
@@ -89,13 +92,11 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, d
             }
         };
         this.expand = function () {
-            $('.panel-tools .expand-tool').on('click', function(){
-                if($(this).parents(".panel").hasClass('panel-fullsize'))
-                {
+            $('.panel-tools .expand-tool').on('click', function () {
+                if ($(this).parents(".panel").hasClass('panel-fullsize')) {
                     $(this).parents(".panel").removeClass('panel-fullsize');
                 }
-                else
-                {
+                else {
                     $(this).parents(".panel").addClass('panel-fullsize');
 
                 }
@@ -111,12 +112,12 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, d
                 $(".panel").slideToggle(100);
             });
         };
-        this.datePicker = function (fn,id,type) {
+        this.datePicker = function (fn, id, type) {
             var dateUntil = moment();
-            type?(function () {
+            type ? (function () {
                 dateUntil = null;
-            })():(function () {
-                dateUntil= moment();
+            })() : (function () {
+                dateUntil = moment();
             });
             $(id).daterangepicker(
                 {
@@ -169,7 +170,7 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, d
             });
         };
         this.checkValue = function (fn) {
-            return{
+            return {
                 // onError: function (reasons) {
                 //     $('.tips-msg').remove();
                 //     reasons.forEach(function (child) {
@@ -177,86 +178,109 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, d
                 //     })
                 // },
                 onValidateAll: function (reasons) {
-                    reasons.length == 0?(function () {
-                        fn.call(this,'',reasons);
-                    })():(function () {
+                    reasons.length == 0 ? (function () {
+                        fn.call(this, '', reasons);
+                    })() : (function () {
                         $('.tips-msg').remove();
                         reasons.forEach(function (child) {
-                            if($(child.element).parent('div').hasClass('col-sm-9')){
-                                $(child.element).parent('div').after('<p class="col-sm-offset-3 tips-msg col-sm-9 color-down">'+child.message+'</p>');
-                            }else if($(child.element).parent('div').hasClass('col-sm-10')){
-                                $(child.element).parent('div').after('<p class="col-sm-offset-2 tips-msg col-sm-10 color-down">'+child.message+'</p>');
+                            if ($(child.element).parent('div').hasClass('col-sm-9')) {
+                                $(child.element).parent('div').after('<p class="col-sm-offset-3 tips-msg col-sm-9 color-down">' + child.message + '</p>');
+                            } else if ($(child.element).parent('div').hasClass('col-sm-10')) {
+                                $(child.element).parent('div').after('<p class="col-sm-offset-2 tips-msg col-sm-10 color-down">' + child.message + '</p>');
                             }
                         })
                     })();
                 },
-                validateInBlur:true,
-                validateInKeyup:true
+                validateInBlur: true,
+                validateInKeyup: true
             }
         };
-        this.upload = function () {
+        this.upload = function (fn,getUrl,url) {
             //上传文件
             var uploader = new plupload.Uploader({
-                runtimes : 'html5,flash,silverlight,html4',
-                browse_button : 'pickfiles', // you can pass an id...
-                //container: document.getElementById('container'), // ... or DOM Element itself
-                url : 'json/index.json',
-                flash_swf_url : 'js/bower_components/plupload/Moxie.swf',
-                silverlight_xap_url : 'js/bower_components/plupload/Moxie.xap',
-                filters : {
-                    max_file_size : '10mb',
+                runtimes: 'html5,flash,silverlight,html4',
+                browse_button: 'pickfiles',
+                url: url,
+                flash_swf_url: 'js/bower_components/plupload/Moxie.swf',
+                silverlight_xap_url: 'js/bower_components/plupload/Moxie.xap',
+                filters: {
+                    max_file_size: '800kb',
                     mime_types: [
-                        {title : "Image files", extensions : "jpg,gif,png"},
-                        {title : "Zip files", extensions : "zip"}
+                        {title: "Image files", extensions: "jpg,gif,png"},
+                        {title: "Zip files", extensions: "zip"}
                     ]
                 },
 
                 init: {
-                    PostInit: function() {
-                        //document.getElementById('filelist').innerHTML = '';
-
-                        document.getElementById('uploadfiles').onclick = function() {
-                            uploader.start();
-                            return false;
-                        };
-                    },
-
-                    FilesAdded: function(up, files) {
-                        for (var i = 0, len = files.length; i < len; i++) {
-                            if (files[i].size > 819200) {
-                                uploader.files.splice(i, 1);
-                                layer.msg("上传图片小于800K",{offset: 100});
-                            }else {
-                                !function (i) {
-                                    previewImage(files[i], function (imgsrc) {
-                                        alert(imgsrc)
-                                        // $('#file-list').html($('#file-list').html() +
-                                        //     '<div style="float:left" class="pic_list" id="' + files[i].id + '">'
-                                        //     + ' (' + plupload.formatSize(files[i].size) +
-                                        //     ')<a href="###" class="pic_delete" data-val=' + files[i].id +
-                                        //     '>删除</a><br/>' +
-                                        //     '<img class="listview" width="100" style="margin-right:10px;" src="' + imgsrc + '" name="' + files[i].name + '" /></div>');
-                                    });
-                                }(i);
+                    PostInit: function () {
+                        document.getElementById('uploadfiles').onclick = function () {
+                            if (uploader.files.length == 0) {
+                                $('#uploadtips').fadeIn(100).text('您还没有选择图片哦！').removeClass('color-up').addClass('color-down');
+                                timer();
+                            } else {
+                                uploader.start();
+                                return false;
                             }
+                        };
+                        document.getElementById('pickfiles').onclick = function () {
+
                         }
-                        // var fr = new mOxie.FileReader();
-                        // fr.onload = function () {
-                        //     callback(fr.result);
-                        //     fr.destroy();
-                        //     fr = null;
-                        // };
-                        // plupload.each(files, function(file) {
-                        //     document.getElementById('filelist').innerHTML += '<div id="' + file.id + '">' + file.name + ' (' + plupload.formatSize(file.size) + ') <b></b></div>';
-                        // });
                     },
+                    FilesAdded: function (up, files) {
+                        //限制一次只能上传一张
+                            $.each(up.files, function (i, file) {
+                                if (up.files.length <= 1) {
+                                    return;
+                                }
+                                up.removeFile(file);
+                            });
+                            files.length > 1 ? (function () {
+                            swal(
+                                {
+                                    title: "只能上传一张图片哦！!",
+                                    text: "选择的图片太多啦！",
+                                    timer: 4500,
+                                    showConfirmButton: true
+                                });
+                        })() : (function () {
 
-                    UploadProgress: function(up, file) {
-                        document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = '<span>' + file.percent + "%</span>";
+                            for (var i = 0, len = files.length; i < len; i++) {
+                                if (files[i].size > 819200) {
+                                    uploader.files.splice(i, 1);
+                                    swal(
+                                        {
+                                            title: "上传的图片过大!",
+                                            text: "上传的图片不能超过800KB",
+                                            timer: 4500,
+                                            showConfirmButton: true
+                                        });
+                                } else {
+                                    !function (i) {
+                                        previewImage(files[i], function (imgsrc) {
+                                            fn.call(this,imgsrc);
+                                            $('#uploadtips').fadeIn().text('添加成功').removeClass('color-down').addClass('color-up');
+                                            timer();
+                                        });
+                                    }(i);
+                                }
+                            }
+                        })();
                     },
-
-                    Error: function(up, err) {
-                        document.getElementById('console').appendChild(document.createTextNode("\nError #" + err.code + ": " + err.message));
+                    UploadProgress: function (up, file) {
+                        $('#uploadtips').fadeIn(100).text("上传进度" + file.percent + "%").addClass('color-up');
+                    },
+                    FileUploaded: function (up, file, info) {
+                        var resule = JSON.parse(info.response);
+                        if (resule.code == 0) {
+                            $('#uploadtips').fadeIn().text('上传成功').addClass('color-up');
+                            $('#deleteimg').show();
+                            timer();
+                            getUrl.call(this,resule)
+                        }
+                    },
+                    Error: function (up, err) {
+                        $('#uploadtips').fadeIn().text(err.code).addClass('color-down');
+                        timer();
                     }
                 }
             });
@@ -282,6 +306,11 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment'], function ($, avalon, d
                     };
                     preloader.load(file.getSource());
                 }
+            };
+            var timer = function () {
+                setTimeout(function () {
+                    $('#uploadtips').fadeOut()
+                }, 3000)
             };
             uploader.init();
         }

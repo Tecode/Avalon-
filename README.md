@@ -13,6 +13,10 @@ cloudMail:实例化对象名称
 main:已完成参数需要增加
 payConfig:需不需要验证
 paycount:查看需要显示那些信息
+图片单张上传已经封装好
+
+变更：
+album页面的ids是一个json数组，不再是一串字符串
 
 分页名称格式统一为：
     "pagejson": {

@@ -3,7 +3,7 @@
  */
 define(['avalon','bootstrap','moment','daterangepicker','featurepack','plupload','sweet_alert'], function(avalon,bootstrap,moment,daterangepicker,featurepack,plupload,swal) {
     var dataUrl = null;
-    var showList,searchList;
+    var showList;
     var cloudMail = {
         avalonStart : function () {
             showList = avalon.define({
@@ -12,15 +12,17 @@ define(['avalon','bootstrap','moment','daterangepicker','featurepack','plupload'
                 globalData:{},
                 filldata:{},
                 addImage:function (el) {
-                    $("#infomationBox").css("display",'block')
+                    cloudMail.judge(1,null);
                 },
                 closeBox:function () {
-                    $("#infomationBox").css("display",'none')
+                    $("#infomationBox").css("display",'none');
+                    $("#deleteimg").hide();
+                    showList.filldata.ppUrl = 'img/noimage.jpg';
                 },
                 editImage:function (el) {
-                    $("#infomationBox").css("display",'block')
+                    cloudMail.judge(2,el);
                 },
-                deleteInfo:function () {
+                deleteInfo:function (el) {
                     swal({
                             title: "确定删除吗?",
                             text: "您将会此条首页图片所有信息!",
@@ -32,7 +34,7 @@ define(['avalon','bootstrap','moment','daterangepicker','featurepack','plupload'
                             closeOnConfirm: false
                         },
                         function () {
-                            cloudMail.downGift(el.giftid);
+                            cloudMail.deleteAlbumList({ids:el.ppid});
                         });
                 },
                 deleteImage:function () {
@@ -47,7 +49,7 @@ define(['avalon','bootstrap','moment','daterangepicker','featurepack','plupload'
                             closeOnConfirm: false
                         },
                         function () {
-                            cloudMail.downGift(el.giftid);
+                            cloudMail.deleteImage({url:showList.filldata.ppUrl});
                         });
                 },
                 validate: {
@@ -60,7 +62,7 @@ define(['avalon','bootstrap','moment','daterangepicker','featurepack','plupload'
                             })()
                         })() : (function () {
                             $('.tip').remove();
-                            $(reasons[0].element).parents('.errortips').after('<p class="color-down tip">' + reasons[0].message + '</p>')
+                            $(reasons[0].element).parents('.row-fluid').after('<p class="color-down tip">' + reasons[0].message + '</p>')
                         })();
                     },
                     validateInBlur: true
@@ -71,15 +73,23 @@ define(['avalon','bootstrap','moment','daterangepicker','featurepack','plupload'
             });
             avalon.scan(document.body);
         },
-        addMore:function (postdata) {
-            featurepack.pack.ajax(dataUrl.getembershipcardList,"get",postdata,function (result) {
+        deleteAlbumList:function (postdata) {
+            featurepack.pack.ajax(dataUrl.deletBannerInfo,"post",postdata,function (result) {
                 if(result.code == 0){
-                    swal("添加成功!", "您已经添加成功了，点击OK关闭窗口。", "success");
+                    swal("删除成功!", "您已经成功删除了这条banner图片，点击OK关闭窗口。", "success");
                     $('#showSmallbox').click();
                 }else{
                     swal(result.msg,"", "error");
                 }
             })
+        },
+        //回调函数预览图片
+        callback:function () {
+            showList.filldata.ppUrl = arguments[0]
+        },
+        callBackGetUrl:function () {
+            console.info(arguments[0]);
+            showList.filldata.ppUrl = arguments[0].data.url;
         },
         //分页插件封装的avalon需要传url
         getResponse:function () {
@@ -93,17 +103,37 @@ define(['avalon','bootstrap','moment','daterangepicker','featurepack','plupload'
         },
         judge:function (type,value) {
             type==1?(function () {
-                $(".tips").text("新增会员线下消费金额")
+                $("#infomationBox .modal-title").text("新增banner信息");
+                showList.filldata = {
+                    ppUrl:"img/noimage.jpg",
+                    ppRemark:""
+                }
             })():function () {
-                $(".tips").text("新增会员线下充值金额")
+                value.ppUrl.indexOf('noimage.jpg')==-1?(function () {
+                    $("#deleteimg").show();
+                })():'';
+                $("#infomationBox .modal-title").text("修改banner信息");
+                showList.filldata = value;
             }();
-            $('#showSmallbox').click()
+            $("#infomationBox").css("display",'block')
+        },
+        //这个方法在修改里面删除已经上传的图片，只有删除了才可以重新上传不然后台图片会越来越多
+        deleteImage:function () {
+            featurepack.pack.ajax(dataUrl.deleteBannerUrl,"get",null,function (result) {
+                if(result.code == 0){
+                    showList.filldata.ppUrl = "img/noimage.jpg";
+                    swal("删除成功!", "您已经成功删除了这张图片，点击OK关闭窗口。", "success");
+                    $("#deleteimg").hide();
+                }else{
+                    swal(result.msg,"", "error");
+                }
+            })
         }
     };
 
     var initStart = function (url) {
         dataUrl = url;
-        featurepack.pack.upload();
+        featurepack.pack.upload(cloudMail.callback,cloudMail.callBackGetUrl,url.addBannerUrl);
         //分页和查询
         cloudMail.getResponse();
         cloudMail.avalonStart();
