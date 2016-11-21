@@ -273,8 +273,7 @@ strong {
   margin: -20px -30px 0 -30px;
 }
 .container-mail {
-  padding: 0px;
-  margin: -20px -30px 0 -30px;
+  margin: -20px 0 0 0;
 }
 /* =================================================================================
 Top
@@ -1298,6 +1297,8 @@ Mailbox
 .mailbox-menu .menu {
   padding: 11px 0;
   margin-bottom: 0;
+    border-left: 1px solid #dedede;
+    border-right: 1px solid #dedede;
 }
 .mailbox-menu .menu li {
   display: inline;

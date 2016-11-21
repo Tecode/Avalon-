@@ -8,56 +8,93 @@
         <a href="#" class="btn btn-danger"><i class="fa fa-pencil"></i> 新增配送</a>
     </div>
 </div>
-<div class="container-mail">
-    <div class="mailbox clearfix">
-        <div class="mailbox-menu">
-            <ul class="menu">
-                <li><a href="#"><i class="fa fa-inbox"></i> Inbox</a></li>
-                <li><a href="#"><i class="fa fa-flag-o"></i> Important</a></li>
-                <li><a href="#"><i class="fa fa-paper-plane-o"></i> Sent</a></li>
-                <li><a href="#"><i class="fa fa-trash"></i> Trash</a></li>
-                <li class="search-component"><a href="#"><i class="fa fa-search"></i></a><input type="text" placeholder="按下回车或搜索键"/></li>
-            </ul>
 
-        </div>
+
+<div class="row">
+    <div class="col-md-12 table-searchBox">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                配送方式
+            </div>
+            <div class="panel-body">
+                <div class="mailbox clearfix">
+                    <div class="mailbox-menu">
+                        <ul class="menu">
+                            <li><a href="javascript:;"><i class="fa fa-inbox"></i> 新增配送方式</a></li>
+                            <li><a href="javascript:;"><i class="fa fa-circle-o"></i> 全选</a></li>
+                            <li><a href="javascript:;"><i class="fa fa-trash"></i> 删除</a></li>
+                            <!--<li class="search-component"><a href="#"><i class="fa fa-search"></i></a><input type="text" placeholder="按下回车或搜索键"/></li>-->
+                        </ul>
+
+                    </div>
+
+                </div>
 
             </div>
-    <br/>
-                <div class="panel-body table-responsive teble-margin">
-                    <table class="table table-bordered table-striped" ms-controller="showList">
-                        <thead>
-                        <tr class="table-header">
-                            <td>选择</td>
-                            <td>物流名称</td>
-                            <td>配送费用</td>
-                            <td>是否启用</td>
-                            <td>操作</td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ms-for="el in @listData" ms-data-value="el">
-                            <td>{{el.storename}}</td>
-                            <td>{{el.username}}</td>
-                            <td>{{el.out_trade_no}}</td>
-                            <td>{{el.total_fee}}</td>
-                            <td>{{el.time_start}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
 
-                <!--分页插件-->
-                <div class="am-container text-center ms-controller" ms-controller="test">
-                    <p>共 {{@totalItems}} 条记录</p>
-                    <ul class="pagination pagination-md">
-                        <li><a href="javascript:;" ms-click="@changePage(1)">首页</a></li>
-                        <li ms-class="{'am-disabled' : @curPage == 1}"><a href="javascript:;" ms-click="@changePage(@curPage-1)">«</a></li>
-                        <li ms-for="el in @pageItems" ms-class="{'active' : @curPage == el}" ms-click="@changePage(el)"><a href="javascript:;">{{el}}</a></li>
-                        <li ms-class="{'am-disabled' : @curPage == @totalPages}"><a href="javascript:;" ms-click="@changePage(@curPage+1)">»</a></li>
-                        <li><a href="javascript:;" ms-click="@changePage(@totalPages)">尾页</a></li>
-                    </ul>
-                </div>
+        </div>
+    </div>
 
-    <!-- End Mailbox -->
+    <div class="container-mail">
+        <br/>
+        <div class="panel-body table-responsive teble-margin">
+            <table class="table table-bordered table-striped" ms-controller="showList">
+                <thead>
+                <tr class="table-header">
+                    <td>选择</td>
+                    <td>物流名称</td>
+                    <td>配送费用</td>
+                    <td>是否启用</td>
+                    <td>操作</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ms-for="el in ##listData">
+                    <td>{{el.storename}}</td>
+                    <td>{{el.username}}</td>
+                    <td>{{el.out_trade_no}}</td>
+                    <td>{{el.total_fee}}</td>
+                    <td>{{el.time_start}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="isnullTips" ms-if="##listData.length==0">
+                <p class="text-center"><span class="fa fa-folder-open"></span></p>
+                <p class="text-center">这里什么也没有，您可以试试搜索一下。</p>
+            </div>
+        </div>
 
+        <!--分页插件-->
+        <div class="am-container text-center ms-controller" ms-controller="test">
+            <p>共 {{@totalItems}} 条记录</p>
+            <ul class="pagination pagination-md">
+                <li><a href="javascript:;" ms-click="@changePage(1)">首页</a></li>
+                <li ms-class="{'am-disabled' : @curPage == 1}"><a href="javascript:;" ms-click="@changePage(@curPage-1)">«</a></li>
+                <li ms-for="el in @pageItems" ms-class="{'active' : @curPage == el}" ms-click="@changePage(el)"><a href="javascript:;">{{el}}</a></li>
+                <li ms-class="{'am-disabled' : @curPage == @totalPages}"><a href="javascript:;" ms-click="@changePage(@curPage+1)">»</a></li>
+                <li><a href="javascript:;" ms-click="@changePage(@totalPages)">尾页</a></li>
+            </ul>
+        </div>
+    </div>
 </div>
+
+<!--分页-->
+<div class="am-container text-center ms-controller" ms-controller="test" ms-if="##totalItems>0">
+    <p>共 {{##totalItems}} 条记录</p>
+    <ul class="pagination pagination-md">
+        <li><a href="javascript:;" ms-click="##changePage(1)">首页</a></li>
+        <li ms-class="{'am-disabled' : ##curPage == 1}"><a href="javascript:;" ms-click="##changePage(##curPage-1)">«</a></li>
+        <li ms-for="el in ##pageItems" ms-class="{'active' : ##curPage == el}" ms-click="##changePage(el)"><a href="javascript:;">{{el}}</a></li>
+        <li ms-class="{'am-disabled' : ##curPage == ##totalPages}"><a href="javascript:;" ms-click="##changePage(##curPage+1)">»</a></li>
+        <li><a href="javascript:;" ms-click="##changePage(##totalPages)">尾页</a></li>
+    </ul>
+</div>
+
+<script>
+    require(['distribution'],function (distribution) {
+        var url = {
+            getDistributionList:'json/membershipcard.json'//查询和加载
+        };
+        distribution.init_start(url);
+    })
+</script>
