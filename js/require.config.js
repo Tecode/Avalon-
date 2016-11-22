@@ -17,8 +17,8 @@ var require = {
         jquery_select:'jquery.select',
         sweet_alert:'sweet-alert/sweet-alert.min',
         es6promise:'bower_components/es6-promise/es6-promise.auto.js',
-       // mOxie:'bower_components/plupload/js/moxie.min',
         plupload:'bower_components/plupload/plupload.min',
+        niceScroll:'bower_components/jquery.nicescroll/jquery.nicescroll.min',
 
 
         paycount:'component/paycount',//收款统计
@@ -40,7 +40,9 @@ var require = {
         membershipcard:'component/membershipcard',//会员查询办理
         album:'component/album',//首页相册
         distribution:'component/distribution',//配送方式设置
+        attribute:'component/attribute',//配送方式设置
         arrangement:'component/arrangement'//商城支付配置
+
 
     },
     shim:{
@@ -57,6 +59,7 @@ var require = {
         mmRouter:{deps:['avalon']},
         jstree:{deps:['jquery']},
         layer:{deps:['jquery']},
-        metisMenu:{deps:['jquery']}
+        metisMenu:{deps:['jquery']},
+        niceScroll:{deps:['jquery']}
     }
 };
