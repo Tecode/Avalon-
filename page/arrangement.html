@@ -21,9 +21,7 @@
             <div class="panel-title">
                 商城支付配置编辑
                 <ul class="panel-tools">
-                    <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
                     <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
-                    <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
                 </ul>
             </div>
 
@@ -89,3 +87,12 @@
         </div>
     </div>
 </div>
+
+<script>
+    require(['arrangement'],function (arrangement) {
+        var url = {
+            getDistributionList:'json/arrangement.json'//查询和加载
+        };
+        arrangement.init_start(url);
+    })
+</script>

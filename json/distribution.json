@@ -1,0 +1,64 @@
+
+{
+  "code": 0,
+  "msg": "获取成功.",
+  "data": {
+    "deliver": [
+      {
+        "mdid": 9,
+        "mdTitle": "汇通",
+        "mdLogiInformat": null,
+        "mdLogiNet": null,
+        "mdFulfilExpenses": 5,
+        "mdIsNew": 0,
+        "mdSortNumber": 0,
+        "mdAdjectDescr": "",
+        "mdReserve": 0,
+        "introduce": ""
+      },
+      {
+        "mdid": 30,
+        "mdTitle": "汇通",
+        "mdLogiInformat": null,
+        "mdLogiNet": null,
+        "mdFulfilExpenses": 5,
+        "mdIsNew": 0,
+        "mdSortNumber": 0,
+        "mdAdjectDescr": "",
+        "mdReserve": 0,
+        "introduce": ""
+      },
+      {
+        "mdid": 69,
+        "mdTitle": "是是",
+        "mdLogiInformat": null,
+        "mdLogiNet": null,
+        "mdFulfilExpenses": 5,
+        "mdIsNew": 0,
+        "mdSortNumber": 0,
+        "mdAdjectDescr": "",
+        "mdReserve": 0,
+        "introduce": ""
+      },
+      {
+        "mdid": "f41",
+        "mdTitle": "都是",
+        "mdLogiInformat": null,
+        "mdLogiNet": null,
+        "mdFulfilExpenses": 5,
+        "mdIsNew": 1,
+        "mdSortNumber": 0,
+        "mdAdjectDescr": "",
+        "mdReserve": 0,
+        "introduce": ""
+      }
+    ],
+    "pagejson":
+    {
+      "pagecount": 20,
+      "pageindex": 1,
+      "pagesize": 20,
+      "totalcount": 357
+    }
+    }
+  }

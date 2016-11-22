@@ -38,7 +38,9 @@ var require = {
         usecardquery:'component/usecardquery',//用户列表
         pointsrecord:'component/pointsrecord',//活动记录
         membershipcard:'component/membershipcard',//会员查询办理
-        album:'component/album'//首页相册
+        album:'component/album',//首页相册
+        distribution:'component/distribution',//配送方式设置
+        arrangement:'component/arrangement'//商城支付配置
 
     },
     shim:{
