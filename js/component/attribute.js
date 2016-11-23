@@ -14,24 +14,25 @@ define(['avalon','bootstrap','featurepack','sweet_alert','niceScroll'], function
                 filldata:{},
                 edit:function (el) {
                     cloudMail.judge(2,el);
-                    globalData ={type:2,data:el}
+                    globalData = {type:2,data:el};
                 },
                 visiblePage:function (el) {
+                    showList2.attr = el.username;
+                    searchList2.attr = el.username;
+                    tid = el.tid;
                     cloudMail.getPageResponse({tid:el.tid});
                     $(".childPages,.childPages .page-header").fadeIn(100).css("top","60px");
                 },
                 validate: featurepack.pack.checkValue(function () {
                     var postdata = {
-                        introduce:showList.filldata.introduce,
-                        mdIsNew:showList.filldata.mdIsNew,
-                        mdFulfilExpenses:showList.filldata.mdFulfilExpenses,
-                        mdTitle:showList.filldata.mdTitle
+                        introduce:showList.filldata.username,
+                        mdIsNew:showList.filldata.discript
                     };
                     globalData.type==1?(function () {
-                        postdata.mdid = 0;
+                        postdata.tid = 0;
                         cloudMail.addAjaxPost(postdata)
                     })():(function () {
-                        postdata.mdid = globalData.data.mdid;
+                        postdata.tid = globalData.data.tid;
                         cloudMail.editAjaxPost(postdata)
                     })()
                 }),
@@ -72,7 +73,19 @@ define(['avalon','bootstrap','featurepack','sweet_alert','niceScroll'], function
                     if(showList.select<=0){
                         swal("先选一个呗","请先选择要删除的选项。", "error");
                     }else {
-                        cloudMail.deleteAjaxPost({ids:showList.select.toString()})
+                        swal({
+                                title: "确定删除选中的商品属性?",
+                                text: "删除以后将不会恢复!",
+                                type: "warning",
+                                showCancelButton: true,
+                                cancelButtonText:"取消",
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "确定",
+                                closeOnConfirm: false
+                            },
+                            function(){
+                                cloudMail.deleteAjaxPost({ids:showList.select.toString()})
+                            });
                     }
                 }
             });
@@ -82,27 +95,24 @@ define(['avalon','bootstrap','featurepack','sweet_alert','niceScroll'], function
                 listData:[],
                 select:[],
                 filldata:{},
+                attr:"",
                 edit:function (el) {
-                    cloudMail.judge(2,el);
-                    globalData ={type:2,data:el}
-                },
-                visiblePage:function (el) {
-                    cloudMail.getPageResponse({tid:el.tid});
-                    $(".childPages,.childPages .page-header").fadeIn(100).css("top","60px");
+                    cloudMail.judgeChildPage(2,el);
+                    globalDataChild ={type:2,data:el}
                 },
                 validate: featurepack.pack.checkValue(function () {
                     var postdata = {
-                        introduce:showList.filldata.introduce,
-                        mdIsNew:showList.filldata.mdIsNew,
-                        mdFulfilExpenses:showList.filldata.mdFulfilExpenses,
-                        mdTitle:showList.filldata.mdTitle
+                        checkvalue:showList2.attr,
+                        commodityAttributeName:showList2.filldata.commodityAttributeName,
+                        attributeValues:showList2.filldata.attributeValues,
+                        tid:tid
                     };
-                    globalData.type==1?(function () {
-                        postdata.mdid = 0;
-                        cloudMail.addAjaxPost(postdata)
+                    globalDataChild.type==1?(function () {
+                        postdata.cpmid = 0;
+                        cloudMail.addChildPageAjaxPost(postdata)
                     })():(function () {
-                        postdata.mdid = globalData.data.mdid;
-                        cloudMail.editAjaxPost(postdata)
+                        postdata.cpmid = globalDataChild.data.cpmid;
+                        cloudMail.editChildPageAjaxPost(postdata)
                     })()
                 }),
                 clearAttr: function () {
@@ -111,19 +121,20 @@ define(['avalon','bootstrap','featurepack','sweet_alert','niceScroll'], function
             });
             searchList2 = avalon.define({
                 $id:"searchListpage",
+                attr:"",
                 getBack:function () {
                     $(".childPages,.childPages .page-header").css("top","260px").fadeOut(100);
                 },
                 add:function () {
-                    cloudMail.judge(1,null);
-                    globalData ={type:1,data:null}
+                    cloudMail.judgeChildPage(1,null);
+                    globalDataChild ={type:1,data:null}
                 },
                 choiceAll:function (e) {
                     if ($(e.target).attr('data') == 0 && $(e.target).html() == '<i class="fa fa-circle-o"></i>全部选中') {
                         $(e.target).html('<i class="fa fa-circle"></i>取消全选');
                         $(e.target).attr('data', 1);
                         for (var i = 0; i < showList2.listData.length; i++) {
-                            showList2.select.push(showList2.listData[i].tid.toString())
+                            showList2.select.push(showList2.listData[i].cpmid.toString())
                         }
                     } else if ($(e.target).attr('data') == 1 && $(e.target).html() == '<i class="fa fa-circle"></i>取消全选') {
                         $(e.target).html('<i class="fa fa-circle-o"></i>全部选中');
@@ -132,10 +143,22 @@ define(['avalon','bootstrap','featurepack','sweet_alert','niceScroll'], function
                     }
                 },
                 delete:function () {
-                    if(showList.select<=0){
+                    if(showList2.select<=0){
                         swal("先选一个呗","请先选择要删除的选项。", "error");
                     }else {
-                        cloudMail.deleteAjaxPost({ids:showList.select.toString()})
+                        swal({
+                                title: "确定删除选中的属性?",
+                                text: "删除以后将不会恢复!",
+                                type: "warning",
+                                showCancelButton: true,
+                                cancelButtonText:"取消",
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "确定",
+                                closeOnConfirm: false
+                            },
+                            function(){
+                                cloudMail.deleteAjaxPost({ids:showList2.select.toString()})
+                            });
                     }
                 }
             });
@@ -150,7 +173,6 @@ define(['avalon','bootstrap','featurepack','sweet_alert','niceScroll'], function
         },
         //获取子页面数据
         getPageResponse:function (postdata) {
-            console.info(postdata)
             featurepack.pack.ajax(dataUrl.getChildAttributeUrl,"get",postdata,function (result) {
                 if(result.code == 0){
                     showList2.listData = result.data.commInfo;
@@ -172,8 +194,20 @@ define(['avalon','bootstrap','featurepack','sweet_alert','niceScroll'], function
             }();
             $('#showBigBox').click()
         },
+        judgeChildPage:function (type,value) {
+            type==1?(function () {
+                showList2.filldata = {
+                    commodityAttributeName:"",
+                    attributeValues:""
+                };
+                $(".modal-title strong").text("新增商品类型")
+            })():function () {
+                showList2.filldata = value;
+                $(".modal-title strong").text("修改商品类型")
+            }();
+            $('#showBigBox2').click()
+        },
         addAjaxPost:function (postdata) {
-            console.info(postdata)
             featurepack.pack.ajax(dataUrl.addAttributeUrl,"post",postdata,function (result) {
                 if(result.code == 0){
                     swal("添加成功!", "您已经成功添加了配送方式，点击OK关闭窗口。", "success");
@@ -202,7 +236,40 @@ define(['avalon','bootstrap','featurepack','sweet_alert','niceScroll'], function
                 if(result.code == 0){
                     swal("修改成功!", "您已经成功修改了配送方式，点击OK关闭窗口。", "success");
                     globalData = null;
-                    cloudMail.getResponse();
+                    cloudMail.getPageResponse();
+                }else{
+                    swal(result.msg,"", "error");
+                }
+            })
+        },
+        deleteChildPageAjaxPost:function (postdata) {
+            featurepack.pack.ajax(dataUrl.deleteChildPageAjaxPost,"post",postdata,function (result) {
+                if(result.code == 0){
+                    swal("修改成功!", "您已经成功修改了配送方式，点击OK关闭窗口。", "success");
+                    globalDataChild = null;
+                    cloudMail.getPageResponse({tid:tid});
+                }else{
+                    swal(result.msg,"", "error");
+                }
+            })
+        },
+        addChildPageAjaxPost:function (postdata) {
+            featurepack.pack.ajax(dataUrl.addChildPageAjaxPost,"post",postdata,function (result) {
+                if(result.code == 0){
+                    swal("修改成功!", "您已经成功修改了配送方式，点击OK关闭窗口。", "success");
+                    globalDataChild = null;
+                    cloudMail.getPageResponse({tid:tid});
+                }else{
+                    swal(result.msg,"", "error");
+                }
+            })
+        },
+        editChildPageAjaxPost:function (postdata) {
+            featurepack.pack.ajax(dataUrl.editChildPageAjaxPost,"post",postdata,function (result) {
+                if(result.code == 0){
+                    swal("修改成功!", "您已经成功修改了配送方式，点击OK关闭窗口。", "success");
+                    globalDataChild = null;
+                    cloudMail.getPageResponse({tid:tid});
                 }else{
                     swal(result.msg,"", "error");
                 }
