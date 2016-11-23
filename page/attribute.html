@@ -91,7 +91,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label form-label">备注</label>
                                             <div class="col-sm-9">
-                                                <textarea ms-focus="##clearAttr" ms-rules="{norequired:true,min:5}" ms-duplex="##filldata.discript" data-min-message="描述不能少于5个字符！" placeholder="描述信息（选填）" class="form-control" id="input14"></textarea>
+                                                <textarea ms-focus="##clearAttr" ms-rules="{norequired:true,minlength:5}" ms-duplex="##filldata.discript" data-minlength-message="描述不能少于5个字符！" placeholder="描述信息（选填）" class="form-control" id="input14"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -156,9 +156,8 @@
 </div>
 
 <!--子页-->
-<div class="childPages panel-fullsize" style="display: none" id="content">
-
-    <div class="page-header" ms-controller="searchListpage">
+<div class="childPages panel-fullsize" style="display: none" id="content" ms-controller="searchListpage">
+    <div class="page-header">
         <h1 class="title">商品属性管理</h1>
         <ol class="breadcrumb">
             <li><a href="javascript:;" ms-click="##getBack"> 商品属性类型管理 </a></li>
@@ -168,7 +167,7 @@
             <div class="btn-group" role="group" aria-label="...">
                 <a href="javascript:;" class="btn btn-light" ms-click="##getBack"><i class="fa fa-mail-reply"></i>返回</a>
                 <a href="javascript:;" class="btn btn-light" ms-click="##add">商品属性管理</a>
-                <a href="javascript:;" class="btn btn-light" id="search2"><i class="fa fa-level-down"></i></a>
+                <a href="javascript:;" class="btn btn-light color-down" id="search2">{{##attr}}</a>
             </div>
         </div>
     </div>
@@ -184,7 +183,7 @@
                     <div class="mailbox clearfix">
                         <div class="mailbox-menu">
                             <ul class="menu">
-                                <li><a href="javascript:;" ms-click="##add"><i class="fa fa-inbox"></i>新增商品属性类型</a></li>
+                                <li><a href="javascript:;" ms-click="##add"><i class="fa fa-inbox"></i>新增商品类型</a></li>
                                 <li><a href="javascript:;" ms-click="##choiceAll" data="0"><i class="fa fa-circle-o"></i>全部选中</a></li>
                                 <li><a href="javascript:;" ms-click="##delete"><i class="fa fa-trash"></i>删除</a></li>
                                 <!--<li class="search-component"><a href="javascript:void(0);"><i ms-click="##search" class="fa fa-search"></i></a><input ms-keydown="##search" type="text" ms-duplex="##value" placeholder="按下回车或搜索键"/></li>-->
@@ -209,8 +208,8 @@
                     <tr ms-for="el in ##listData">
                         <td class="sorting_1">
                             <div class="checkbox checkbox-inline">
-                                <input type="checkbox" ms-duplex="##select" ms-attr="{value:el.tid,id:el.tid}">
-                                <label ms-attr="{for:el.tid}"></label>
+                                <input type="checkbox" ms-duplex="##select" ms-attr="{value:el.cpmid,id:el.cpmid}">
+                                <label ms-attr="{for:el.cpmid}"></label>
                             </div>
                         </td>
                         <td>{{el.commodityAttributeName}}</td>
@@ -237,15 +236,21 @@
                                     <div class="panel-body">
                                         <form class="form-horizontal" action="#/attribute" ms-validate="##validate">
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label form-label">商品属性类型名称</label>
+                                                <label class="col-sm-3 control-label form-label">商品属性名称</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" ms-focus="##clearAttr" ms-rules="{required:true}" ms-duplex="##filldata.username" placeholder="商品属性类型名称" class="form-control" id="input12">
+                                                    <input type="text" ms-focus="##clearAttr" ms-rules="{required:true}" ms-duplex="##filldata.commodityAttributeName" data-required-message="商品属性类型名称必须填写！" placeholder="商品属性类型名称" class="form-control" id="input12">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label form-label">备注</label>
+                                                <label class="col-sm-3 control-label form-label">所属商品类型</label>
                                                 <div class="col-sm-9">
-                                                    <textarea ms-focus="##clearAttr" ms-rules="{norequired:true,min:5}" ms-duplex="##filldata.discript" data-min-message="描述不能少于5个字符！" placeholder="描述信息（选填）" class="form-control" id="input13"></textarea>
+                                                    <p class="form-control">{{##attr}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label form-label">属性值</label>
+                                                <div class="col-sm-9">
+                                                    <textarea style="height: 10em" ms-focus="##clearAttr" ms-rules="{required:true}" ms-duplex="##filldata.attributeValues" data-required-message="属性值必须填写，请预设属性值(多个属性值以@符号隔开); 可预设多个属性值，以便于添加商品时从中选择一个。" placeholder="请预设属性值(多个属性值以@符号隔开); 可预设多个属性值，以便于添加商品时从中选择一个。" class="form-control" id="input13"></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -299,6 +304,7 @@
     </div>
     </div>
     </div>
+
 </div>
 <script>
     require(['attribute'],function (attribute) {
@@ -307,7 +313,10 @@
             addAttributeUrl:'json/attribute.json',//添加配送方式
             editAttributeUrl:'json/attribute.json',//修改配送方式
             deleteAttributeUrl:'json/attribute.json',//删除配送方式
-            getChildAttributeUrl:'json/attributeChild.json'//获取子页面数据
+            getChildAttributeUrl:'json/attributeChild.json',//获取子页面数据
+            deleteChildPageAjaxPost:'json/attributeChild.json',//删除子页面数据
+            editChildAttributeUrl:'json/attributeChild.json',//修改子页面数据
+            addChildPageAjaxPost:'json/attributeChild.json'//增加子页面数据
         };
         attribute.init_start(url);
     })
