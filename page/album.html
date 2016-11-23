@@ -66,7 +66,7 @@
                         <div class="alertCheckBox" style="margin-right: -15px;margin-left: -15px;">
                             <div class="col-xs-6 imgbox">
                                 <img id="viewimage" src="img/noimage.jpg" ms-attr="{src:##filldata.ppUrl}" alt="上传的图片" width="100%" />
-                                <span id="deleteimg" class="deleteimg" ms-click="##deleteImage" style="display: none">×</span>
+                                <span id="deleteimg" class="deleteimg" style="display: none">×</span>
                                 <span id="uploadtips" class="uploadtips text-center" style="display: none"></span>
                             </div>
                             <div class="col-xs-6 buttonBox">
@@ -92,7 +92,6 @@
         var url = {
             getAlbumList: 'json/album.json',
             addBannerUrl:'json/album.json',//新增图片
-            deleteBannerUrl:'json/album.json',//删除图片（删除的只是图片）
             editBannerUrl:'json/album.json',//编辑图片
             deletBannerInfo:'json/album.json'//删除整条信息
         };

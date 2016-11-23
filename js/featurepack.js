@@ -195,7 +195,7 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                 validateInKeyup: true
             }
         };
-        this.upload = function (fn,getUrl,url,istrue) {
+        this.upload = function (fn,getUrl,url) {
             //上传文件
             var uploader = new plupload.Uploader({
                 runtimes: 'html5,flash,silverlight,html4',
@@ -204,7 +204,7 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                 flash_swf_url: 'js/bower_components/plupload/Moxie.swf',
                 silverlight_xap_url: 'js/bower_components/plupload/Moxie.xap',
                 filters: {
-                    max_file_size: '800kb',
+                    max_file_size: '10mb',
                     mime_types: [
                         {title: "Image files", extensions: "jpg,gif,png"},
                         {title: "Zip files", extensions: "zip"}
@@ -227,28 +227,33 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                         }
                     },
                     FilesAdded: function (up, files) {
-                            if(istrue.call(this,'')){
-                                swal(
-                                    {
-                                        title: "删除了才可以上传哦！!",
-                                        text: "点击图片上面的叉号可以删除图片！",
-                                        timer: 4500,
-                                        showConfirmButton: true
-                                    });
-                                return;
-                            }
+                        // 判断是否删除
+                            // if(istrue.call(this,'')){
+                            //     swal(
+                            //         {
+                            //             title: "删除了才可以上传哦！!",
+                            //             text: "点击图片上面的叉号可以删除图片！",
+                            //             timer: 4500,
+                            //             showConfirmButton: true
+                            //         });
+                            //     return;
+                            // }
                         //限制一次只能上传一张
                             $.each(up.files, function (i, file) {
                                 if (up.files.length <= 1) {
                                     return;
                                 }
-                                up.removeFile(file);
+                                    try {
+                                        console.info(file.id)
+                                    }catch (e){
+                                        up.removeFile(file);
+                                    }
                             });
                             files.length > 1 ? (function () {
                             swal(
                                 {
-                                    title: "只能上传一张图片哦！!",
-                                    text: "选择的图片太多啦！",
+                                    title: "选择的图片太多啦！",
+                                    text: "只能选择一张图片上传哦！",
                                     timer: 4500,
                                     showConfirmButton: true
                                 });
@@ -288,7 +293,7 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                         }
                     },
                     Error: function (up, err) {
-                        $('#uploadtips').fadeIn().text(err.code).addClass('color-down');
+                        $('#uploadtips').fadeIn().text(err.message).addClass('color-down');
                         timer();
                     }
                 }
