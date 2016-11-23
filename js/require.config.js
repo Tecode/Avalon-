@@ -18,7 +18,7 @@ var require = {
         sweet_alert:'sweet-alert/sweet-alert.min',
         es6promise:'bower_components/es6-promise/es6-promise.auto.js',
         plupload:'bower_components/plupload/plupload.min',
-        niceScroll:'bower_components/jquery.nicescroll/jquery.nicescroll.min',
+        niceScroll:'bower_components/jquery.nicescroll/jquery.nicescroll',
 
 
         paycount:'component/paycount',//收款统计

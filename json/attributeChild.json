@@ -1,0 +1,30 @@
+{
+  "code": 0,
+  "msg": "获取成功.",
+  "name": "分类1",
+  "data": {
+    "commInfo": [
+      {
+        "cpmid": 221,
+        "commodityAttributeName": "尺寸",
+        "theUseOfProperty": "",
+        "attributeValues": "4.0@4.7@5.0@5.7@",
+        "sort": null
+      },
+      {
+        "cpmid": 222,
+        "commodityAttributeName": "颜色",
+        "theUseOfProperty": "",
+        "attributeValues": "土豪金@天空灰@钛合金@白色@",
+        "sort": null
+      },
+      {
+        "cpmid": 223,
+        "commodityAttributeName": "内存",
+        "theUseOfProperty": "",
+        "attributeValues": "8G@16G@32G@64G@128G@",
+        "sort": null
+      }
+    ]
+  }
+}

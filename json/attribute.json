@@ -1,4 +1,42 @@
+
 {
   "code": 0,
-  "data": {}
+  "msg": "获取成功.",
+  "data": {
+    "list": [
+      {
+        "tid": 217,
+        "username": "溜达",
+        "discript": "前期成交",
+        "tData": "2016/11/22 16:15:34"
+      },
+      {
+        "tid": 216,
+        "username": "流氓兔",
+        "discript": "玩具",
+        "tData": "2016/11/22 16:15:24"
+      },
+      {
+        "tid": 211,
+        "username": "手机",
+        "discript": "手机备注",
+        "tData": "2016/9/1 16:20:52"
+      },
+      {
+        "tid": 208,
+        "username": "衣服",
+        "discript": "衣服备注",
+        "tData": "2016/9/1 1:47:00"
+      }
+    ],
+    "orstring": [
+
+    ],
+    "pagejson": {
+      "pagesize": 20,
+      "pagecount": 1,
+      "pageindex": 0,
+      "totalcount":1
+    }
+  }
 }

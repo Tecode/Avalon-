@@ -61,7 +61,7 @@
                     <td>{{el.username}}</td>
                     <td>{{el.discript}}</td>
                     <td>{{el.tData}}</td>
-                    <td><a href="javascript:void(0);" style="margin-right: 1em" ms-click="##edit(el)">编辑</a><a href="javascript:void(0);" ms-click="##child(el)">属性管理</a></td>
+                    <td><a href="javascript:void(0);" style="margin-right: 1em" ms-click="##edit(el)">编辑</a><a href="javascript:void(0);" ms-click="##visiblePage(el)">属性管理</a></td>
                 </tr>
                 </tbody>
             </table>
@@ -156,19 +156,24 @@
 </div>
 
 <!--子页-->
-<div class="childPages panel-fullsize" style="display: block">
-    <div class="page-header" id="content">
-        <h1 class="title">商品类型管理 </h1>
+<div class="childPages panel-fullsize" style="display: none" id="content">
+
+    <div class="page-header" ms-controller="searchListpage">
+        <h1 class="title">商品属性管理</h1>
         <ol class="breadcrumb">
-            <li class="active">通过 <span class="label label-danger">商品属性</span>或<span class="label label-danger">商品属性</span> 进行查询。</li>
+            <li><a href="javascript:;" ms-click="##getBack"> 商品属性类型管理 </a></li>
+            <li class="active">商品属性管理</li>
         </ol>
         <div class="right">
             <div class="btn-group" role="group" aria-label="...">
-                <a href="javascript:;" class="btn btn-light" id="search"><i class="fa fa-search"></i></a>
-                <a href="javascript:;" class="btn btn-light" ms-click="##add">商品类型管理 </a>
+                <a href="javascript:;" class="btn btn-light" ms-click="##getBack"><i class="fa fa-mail-reply"></i>返回</a>
+                <a href="javascript:;" class="btn btn-light" ms-click="##add">商品属性管理</a>
+                <a href="javascript:;" class="btn btn-light" id="search2"><i class="fa fa-level-down"></i></a>
             </div>
         </div>
     </div>
+    <div class="childbody">
+    <div class="container-fluid">
     <div class="row">
         <div class="col-md-12 table-searchBox">
             <div class="panel panel-default">
@@ -182,7 +187,7 @@
                                 <li><a href="javascript:;" ms-click="##add"><i class="fa fa-inbox"></i>新增商品属性类型</a></li>
                                 <li><a href="javascript:;" ms-click="##choiceAll" data="0"><i class="fa fa-circle-o"></i>全部选中</a></li>
                                 <li><a href="javascript:;" ms-click="##delete"><i class="fa fa-trash"></i>删除</a></li>
-                                <li class="search-component"><a href="javascript:void(0);"><i ms-click="##search" class="fa fa-search"></i></a><input ms-keydown="##search" type="text" ms-duplex="##value" placeholder="按下回车或搜索键"/></li>
+                                <!--<li class="search-component"><a href="javascript:void(0);"><i ms-click="##search" class="fa fa-search"></i></a><input ms-keydown="##search" type="text" ms-duplex="##value" placeholder="按下回车或搜索键"/></li>-->
                             </ul>
                         </div>
                     </div>
@@ -190,14 +195,13 @@
             </div>
         </div>
         <div class="container-mail">
-            <div class="panel-body table-responsive teble-margin" ms-controller="showList">
+            <div class="panel-body table-responsive teble-margin" ms-controller="showListpage">
                 <table class="table table-bordered table-striped" ms-if="##listData.length>0">
                     <thead>
                     <tr class="table-header">
                         <td style="width: 5%">选择</td>
-                        <td style="width: 20%">商品属性类型和名称</td>
-                        <td>描述</td>
-                        <td>添加时间</td>
+                        <td style="width: 20%">属性的使用方式</td>
+                        <td>属性值</td>
                         <td style="width: 20%">操作</td>
                     </tr>
                     </thead>
@@ -209,10 +213,9 @@
                                 <label ms-attr="{for:el.tid}"></label>
                             </div>
                         </td>
-                        <td>{{el.username}}</td>
-                        <td>{{el.discript}}</td>
-                        <td>{{el.tData}}</td>
-                        <td><a href="javascript:void(0);" style="margin-right: 1em" ms-click="##edit(el)">编辑</a><a href="javascript:void(0);" ms-click="##child(el)">属性管理</a></td>
+                        <td>{{el.commodityAttributeName}}</td>
+                        <td>{{el.attributeValues}}</td>
+                        <td><a href="javascript:void(0);" style="margin-right: 1em" ms-click="##edit(el)">编辑</a></td>
                     </tr>
                     </tbody>
                 </table>
@@ -221,7 +224,7 @@
                     <p class="text-center">这里什么也没有,搜索一下试一试！</p>
                 </div>
                 <!-- 弹出的大框框 -->
-                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-md">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -236,13 +239,13 @@
                                             <div class="form-group">
                                                 <label class="col-sm-3 control-label form-label">商品属性类型名称</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" ms-focus="##clearAttr" ms-rules="{required:true}" ms-duplex="##filldata.username" placeholder="商品属性类型名称" class="form-control" id="input11">
+                                                    <input type="text" ms-focus="##clearAttr" ms-rules="{required:true}" ms-duplex="##filldata.username" placeholder="商品属性类型名称" class="form-control" id="input12">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-3 control-label form-label">备注</label>
                                                 <div class="col-sm-9">
-                                                    <textarea ms-focus="##clearAttr" ms-rules="{norequired:true,min:5}" ms-duplex="##filldata.discript" data-min-message="描述不能少于5个字符！" placeholder="描述信息（选填）" class="form-control" id="input14"></textarea>
+                                                    <textarea ms-focus="##clearAttr" ms-rules="{norequired:true,min:5}" ms-duplex="##filldata.discript" data-min-message="描述不能少于5个字符！" placeholder="描述信息（选填）" class="form-control" id="input13"></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -290,20 +293,11 @@
                             style="display: inline-block; background-color: rgb(221, 107, 85); box-shadow: none;">Yes, delete it!
                     </button>
                 </div>
-                <button style="display: none" type="button" id="showBigBox" data-target="#myModal2" data-toggle="modal"></button>
+                <button style="display: none" type="button" id="showBigBox2" data-target="#myModal3" data-toggle="modal"></button>
             </div>
         </div>
     </div>
-    <!--分页-->
-    <div class="am-container text-center ms-controller" ms-controller="test" ms-if="##totalItems>0">
-        <p>共 {{##totalItems}} 条记录</p>
-        <ul class="pagination pagination-md">
-            <li><a href="javascript:;" ms-click="##changePage(1)">首页</a></li>
-            <li ms-class="{'am-disabled' : ##curPage == 1}"><a href="javascript:;" ms-click="##changePage(##curPage-1)">«</a></li>
-            <li ms-for="el in ##pageItems" ms-class="{'active' : ##curPage == el}" ms-click="##changePage(el)"><a href="javascript:;">{{el}}</a></li>
-            <li ms-class="{'am-disabled' : ##curPage == ##totalPages}"><a href="javascript:;" ms-click="##changePage(##curPage+1)">»</a></li>
-            <li><a href="javascript:;" ms-click="##changePage(##totalPages)">尾页</a></li>
-        </ul>
+    </div>
     </div>
 </div>
 <script>
@@ -312,7 +306,8 @@
             getAttributeUrl:'json/attribute.json',//查询和加载
             addAttributeUrl:'json/attribute.json',//添加配送方式
             editAttributeUrl:'json/attribute.json',//修改配送方式
-            deleteAttributeUrl:'json/attribute.json'//删除配送方式
+            deleteAttributeUrl:'json/attribute.json',//删除配送方式
+            getChildAttributeUrl:'json/attributeChild.json'//获取子页面数据
         };
         attribute.init_start(url);
     })
