@@ -1,0 +1,255 @@
+
+{
+  "code": 0,
+  "msg": "获取成功.",
+  "data": {
+    "orderlist": [
+      {
+        "orderID": "1035",
+        "orderNumber": "901504408703596426",
+        "uid": 5031,
+        "username": "崔灿",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 0.03,
+        "orderDate": "2016-11-14 09:30:35",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "1034",
+        "orderNumber": "901504408700614932",
+        "uid": 5031,
+        "username": "崔灿",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 0.03,
+        "orderDate": "2016-11-14 09:30:06",
+        "zffs": " 支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "1033",
+        "orderNumber": "901504401952317112",
+        "uid": 5031,
+        "username": "崔灿",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 0.03,
+        "orderDate": "2016-11-13 14:45:23",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "1027",
+        "orderNumber": "901001422518942348",
+        "uid": 1,
+        "username": "Linda",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 0.02,
+        "orderDate": "2016-11-04 10:06:29",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "1026",
+        "orderNumber": "901001422517745865",
+        "uid": 1,
+        "username": "Linda",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 0.02,
+        "orderDate": "2016-11-04 10:06:17",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "997",
+        "orderNumber": "901506307413779965",
+        "uid": 5050,
+        "username": "匆匆",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 0.03,
+        "orderDate": "2016-11-0216:08:57",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "996",
+        "orderNumber": "901506307411633668",
+        "uid": 5050,
+        "username": "匆匆",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 0.02,
+        "orderDate": "2016-11-02 16:08:36",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "993",
+        "orderNumber": "901498107383254840",
+        "uid": 4968,
+        "username": "dd",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 0.02,
+        "orderDate": "2016-11-02 16:03:52",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "992",
+        "orderNumber": "901498407324159719",
+        "uid": 4971,
+        "username": "阿明",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 1130,
+        "orderDate": "2016-11-02 15:54:01",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "991",
+        "orderNumber": "901498407319827978",
+        "uid": 4971,
+        "username": "阿明",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 0.03,
+        "orderDate": "2016-11-02 15:53:18",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "990",
+        "orderNumber": "901498107308892008",
+        "uid": 4968,
+        "username": "dd",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 0.03,
+        "orderDate": "2016-11-02 15:51:28",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "989",
+        "orderNumber": "901498107306443261",
+        "uid": 4968,
+        "username": "dd",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 0.03,
+        "orderDate": "2016-11-0215:51:04",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "988",
+        "orderNumber": "901498407287547136",
+        "uid": 4971,
+        "username": "阿明",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 10.01,
+        "orderDate": "2016-11-02 15:47:55",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "987",
+        "orderNumber": "901498407283924019",
+        "uid": 4971,
+        "username": "阿明",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 20.01,
+        "orderDate": "2016-11-02 15:47:19",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "986",
+        "orderNumber": "901498407282539351",
+        "uid": 4971,
+        "username": "阿明",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 0.01,
+        "orderDate": "2016-11-02 15:47:05",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "985",
+        "orderNumber": "901504407274319728",
+        "uid": 5031,
+        "username": "崔灿",
+        "wxorderNumber": "C127148350120161102154543954",
+        "orderStatus": "待收货",
+        "oprice": 0.03,
+        "orderDate": "2016-11-02 15:45:43",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "982",
+        "orderNumber": "901498406783024479",
+        "uid": 4971,
+        "username": "阿明",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 0.02,
+        "orderDate": "2016-11-02 14:23:50",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "980",
+        "orderNumber": "901498406774880722",
+        "uid": 4971,
+        "username": "阿明",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 10.01,
+        "orderDate": "2016-11-02 14:22:28",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "979",
+        "orderNumber": "901498406770065083",
+        "uid": 4971,
+        "username": "阿明",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 10.01,
+        "orderDate": "2016-11-0214:21:40",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "978",
+        "orderNumber": "901498406766472396",
+        "uid": 4971,
+        "username": "阿明",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 0.01,
+        "orderDate": "2016-11-02 14:21:04",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      }
+    ],
+    "pagejson": {
+      "pagesize": 20,
+      "pagecount": 689,
+      "pageindex": 0,
+      "totalcount":1600
+    }
+  }
+}

@@ -1,0 +1,24 @@
+
+{
+  "code": 0,
+  "msg": "获取成功.",
+  "data": [
+    {
+      "goodsname": "小米5",
+      "value": "颜色:白色,内存:64G,尺寸:5.7,",
+      "price": "0.01",
+      "count": "1",
+      "gprice": 0
+    }
+  ],
+  "dorderInfo": {
+    "orderNumber": "901498407282539351",
+    "oprice": "0.01"
+  },
+  "oaddress": {
+    "aid": "197",
+    "addresseesName": "shdb",
+    "addrDetail": "北京 东城区  hsuxh",
+    "phone": "13275468956"
+  }
+}

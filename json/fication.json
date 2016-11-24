@@ -1,0 +1,68 @@
+{
+  "code": 0,
+  "msg": "获取成功.",
+  "data":{
+    "data": [
+      {
+        "cmid": 144,
+        "classname": "配饰管",
+        "cmImages": "img/example1.jpg",
+        "cmurl": "",
+        "cmid1": "0",
+        "introduce": ""
+      },
+      {
+        "cmid": 143,
+        "classname": "超酷",
+        "cmImages": "img/example1.jpg",
+        "cmurl": "",
+        "cmid1": "0",
+        "introduce": ""
+      },
+      {
+        "cmid": 142,
+        "classname": "其他",
+        "cmImages": "img/example1.jpg",
+        "cmurl": "",
+        "cmid1": "0",
+        "introduce": ""
+      },
+      {
+        "cmid": 141,
+        "classname": "衣服",
+        "cmImages": "img/example1.jpg",
+        "cmurl": "",
+        "cmid1": "0",
+        "introduce": ""
+      }
+    ],
+    "fenlei": [
+      {
+        "cmid": 141,
+        "cmclassName": "衣服"
+      },
+      {
+        "cmid": 142,
+        "cmclassName": "其他"
+      },
+      {
+        "cmid": 143,
+        "cmclassName": "超酷"
+      },
+      {
+        "cmid": 144,
+        "cmclassName": "配饰管"
+      },
+      {
+        "cmid": 147,
+        "cmclassName": "154"
+      }
+    ],
+    "pagejson": {
+      "pagesize": 20,
+      "pagecount": 9,
+      "pageindex": 0,
+      "totalcount":560
+    }
+  }
+}

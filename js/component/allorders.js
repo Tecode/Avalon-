@@ -15,9 +15,25 @@ define(['avalon','bootstrap','bootstrap_select','moment','daterangepicker','feat
             orderInfo:{},
             readmore:function (el) {
                 cloudMail.readMore({oid:el.uid});
+                globalData = el;
             },
             getBack:function () {
                 $(".childPages,.childPages .page-header").css("top","260px").fadeOut(100);
+            },
+            cancel:function () {
+                swal({
+                        title: "确定作废此订单吗?",
+                        text: "作废订单将不会恢复!",
+                        type: "warning",
+                        showCancelButton: true,
+                        cancelButtonText:"取消",
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "确定",
+                        closeOnConfirm: false
+                    },
+                    function(){
+                        cloudMail.cancel({oid:globalData.uid})
+                    });
             }
         });
 
@@ -47,6 +63,20 @@ define(['avalon','bootstrap','bootstrap_select','moment','daterangepicker','feat
                     showList.childList = result.data;
                     showList.address = result.oaddress;
                     showList.orderInfo = result.dorderInfo;
+                }else{
+                    swal(result.msg,"", "error");
+                }
+            })
+        },
+        cancel:function (postdata) {
+            featurepack.pack.ajax(dataUrl.cancelOrderUrl,"get",postdata,function (result) {
+                if(result.code == 0){
+                    swal("作废成功!", "您已经成功将此订单作废，点击OK关闭窗口。", "success");
+                    setTimeout(function () {
+                        $(".childPages,.childPages .page-header").css("top","260px").fadeOut(100);
+                        swal.close();
+                    },1200);
+                    globalData = null;
                 }else{
                     swal(result.msg,"", "error");
                 }
