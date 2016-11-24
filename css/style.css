@@ -4418,3 +4418,7 @@ form .tips-msg{
   top: calc(40% - 1.25em);
   left: calc(50% - 1.25em);
 }
+.payconfig .imgbox{
+    width: 60%;
+    margin-top: 10px;
+}

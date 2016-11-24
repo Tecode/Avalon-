@@ -1,13 +1,18 @@
 /**
  * Created by ASSOON on 2016/11/11.
  */
-define(['bootstrap','avalon','featurepack','sweet_alert'], function(bootstrap,avalon,featurepack,swal) {
+define(['bootstrap','avalon','featurepack','plupload','sweet_alert'], function(bootstrap,avalon,featurepack,plupload,swal) {
     var overallSituation,url,type;
 
     var initStart = function (l) {
         url = l;
         cloudMail.getAjax.getResponse();
         cloudMail.avalonStart();
+        featurepack.pack.upload(
+            //转成64位编码
+            cloudMail.callback,
+            //获取服务器地址
+            cloudMail.callBackGetUrl,url.addimgUrl);
     };
 
     var Fn = function () {
@@ -118,8 +123,16 @@ define(['bootstrap','avalon','featurepack','sweet_alert'], function(bootstrap,av
                 avalon.scan(document.body);
 
         };
-
-        this.getAjax = {
+        //回调函数预览图片
+        thiscallback = function () {
+            overallSituation.sslcert_path = arguments[0];
+        };
+        //回调函数加载正式图片地址
+        this.callBackGetUrl = function () {
+            overallSituation.sslcert_path = arguments[0].data.url;
+            globalData.url = true;
+        };
+            this.getAjax = {
             getResponse:function (postdata) {
                 featurepack.pack.ajax(url.payConfigRetrun,"get",postdata,function (result) {
                     if(result.code == 0){

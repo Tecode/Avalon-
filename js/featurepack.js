@@ -74,6 +74,7 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                         for (key in data) {
                             changePage[key] = data[key]
                         }
+                        ajax(changePage);
                         console.info("分页传的数据" + JSON.stringify(changePage));
                         if (this.totalPages <= 5) {
                             this.pageItems = avalon.range(1, this.totalPages + 1);
@@ -213,6 +214,7 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
 
                 init: {
                     PostInit: function () {
+                        alert("is ok")
                         document.getElementById('uploadfiles').onclick = function () {
                             if (uploader.files.length == 0) {
                                 $('#uploadtips').fadeIn(100).text('您还没有选择图片哦！').removeClass('color-up').addClass('color-down');

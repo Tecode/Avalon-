@@ -93,11 +93,14 @@
                                 </div>
                                 <div class="form-group" ms-if="##type==2">
                                     <label class="col-sm-3 control-label form-label">支付证书</label>
-                                    <div class="col-sm-9">
-                                        <img ms-attr="{src:##sslcert_path}" style="margin-bottom: 1.5em" width="100%"/>
+                                    <div class="col-sm-9 payconfig">
+                                        <div class="imgbox">
+                                        <img ms-attr="{src:##sslcert_path}" style="margin-bottom: 1.5em" src="img/noimage.jpg" width="100%"/>
+                                        </div>
                                     </div>
                                     <div class="col-sm-offset-3 col-sm-9">
-                                        <a href="javascript:;" class="btn btn-light">选择证书</a>
+                                        <button type="button" class="btn btn-light btn-sm" id="pickfiles" style="margin-right: 1em">选择证书</button>
+                                        <button type="button" class="btn btn-default btn-sm" id="uploadfiles">开始上传</button>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -148,6 +151,7 @@
     <button style="display: none" type="button" id="showBigBox" data-target="#myModal2" data-toggle="modal"></button>
     <button style="display: none" type="button" id="showSmallbox" data-target="#myModal3" data-toggle="modal"></button>
     <button style="display: none" type="button" id="showDialog" data-target="#myModal" data-toggle="modal"></button>
+
 </div>
 <script>
     require(['payconfig'], function (payconfig) {
@@ -155,7 +159,8 @@
             payConfigRetrun:"json/payConfigList.json",
             deletepayConfig:'json/PayConfigDelete.json',
             addPayConfig:'json/PayConfigDelete.json',
-            editPayConfig:'json/PayConfigDelete.json'
+            editPayConfig:'json/PayConfigDelete.json',
+            addimgUrl:"json/PayConfigDelete.json"//图片地址
         };
         payconfig.init_start(url);
     })

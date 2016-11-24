@@ -59,6 +59,7 @@
                         <td>{{value.position}}</td>
                         <td>{{value.mobile}}</td>
                         <td>{{value.storename}}</td>
+                        <!--ms-if会会出问题-->
                         <td><span ms-if="value.isenable==0">正常</span><span ms-if="value.isenable==1" class="color-down">错误</span></td>
                         <td class="sorting_1"><a href="javascript:;" ms-click="##editTree(value)">编辑</a></td>
                     </tr>

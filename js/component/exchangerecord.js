@@ -56,7 +56,7 @@ define(['avalon', 'bootstrap', 'bootstrap_select', 'moment', 'daterangepicker', 
             avalon.scan(document.body);
         },
         //分页插件封装的avalon需要传url
-        fn: function () {
+        fn: function () {alert(101010);
             showList.listData = arguments[0].data.giftrecord;
         },
         getResponse: function (data) {

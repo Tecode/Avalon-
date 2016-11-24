@@ -22,7 +22,13 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'sweet_alert', 'featur
                     "check_callback": true,
                     'data': {
                         "url": dataUrl.getJstreeUrl,
-                        "dataType": "json"
+                        "dataType": "json",
+                        //回调函数展开树
+                        "data": function (node) {
+                            return {
+                                "id": node.id
+                            };
+                        }
                     }
                 },
                 "types": {
@@ -78,13 +84,13 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'sweet_alert', 'featur
 
                 }
 
-            });
-                // .on("changed.jstree", function (e, data) {
-                //
-                // })
-                // .on('open_node.jstree', function (e, data) {
-                //
-                // });
+            })
+                .on("changed.jstree", function (e, data) {
+                    cloudMail.getResponse({deptid:data.node.id});
+                })
+                .on('open_node.jstree', function (e, data) {
+                    // alert(data.node.id)
+                });
         },
         avalonStart: function () {
             overallSituation = avalon.define({
@@ -242,6 +248,15 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'sweet_alert', 'featur
                 if (result.code == 0) {
                     overallSituation.userList = result.data;
                     console.log(overallSituation.userList)
+                } else {
+                    swal(result.msg, "", "error");
+                }
+            })
+        },
+        getNode:function () {
+            featurepack.pack.ajax(dataUrl.getNodeUrl, "post", postdata, function (result) {
+                if (result.code == 0) {
+
                 } else {
                     swal(result.msg, "", "error");
                 }

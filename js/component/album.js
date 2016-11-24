@@ -157,7 +157,7 @@ define(['avalon','bootstrap','moment','daterangepicker','featurepack','plupload'
         cloudMail.getResponse();
         cloudMail.avalonStart();
         featurepack.pack.upload(
-            //获取本机地址
+            //转成64位编码
             cloudMail.callback,
             //获取服务器地址
             cloudMail.callBackGetUrl,url.addBannerUrl);
