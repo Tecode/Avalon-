@@ -338,7 +338,38 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                 cursorborderradius: "5px",//以像素为光标边界半径
                 autohidemode: false //是否隐藏滚动条
             });
-        }
+        };
+        this.cropimage = function (fn) {
+                var options ={imageBox: '.imageBox',thumbBox: '.thumbBox',spinner: '.spinner',imgSrc: 'img/example1.jpg'};
+                var cropper = new cropbox(options);
+                document.querySelector('#file').addEventListener('change', function(){
+                    var reader = new FileReader();
+                    console.info(this.files[0]);
+                    if(this.files[0].size>819200){
+                        swal("图片太大了！","图片不能大于800KB,请重新选择。", "error");
+                    }else if(this.files[0].type.indexOf("image")==-1){
+
+                        swal("上传的不是图片哦！","上传的图片支持jpg,png,gif图像类型", "error");
+                    }else{
+                        $(".cropbox").show();
+                        $(".cropimg").hide().children('img').remove();
+                        reader.onload = function(e) {
+                            $('#modalicon').click();
+                            options.imgSrc = e.target.result;
+                            cropper = new cropbox(options);
+                        };
+                        reader.readAsDataURL(this.files[0]);
+                        //是一个伪数组
+                        this.files.length=[];
+                    }
+                });
+                document.querySelector('#btnCrop').addEventListener('click', function(){
+                    var img = cropper.getDataURL();
+                    fn.call(this,img);
+                    $(".cropbox").hide();
+                    $(".cropimg button").before('<img src="'+img+'">').parent().fadeIn();
+                });
+            };
     };
     var _featurepack = new pack();
     return {

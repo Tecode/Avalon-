@@ -1,99 +1,84 @@
 /**
  * Created by ASSOON on 2016/11/22.
  */
-define(['avalon','bootstrap','featurepack','sweet_alert'], function(avalon,bootstrap,featurepack,swal) {
+define(['avalon','bootstrap','featurepack','niceScroll','cropbox','sweet_alert'], function(avalon,bootstrap,featurepack,niceScroll,cropbox,swal) {
     var dataUrl = null;
-    var showList,searchList;
-    var postdata = {
-        starttime:"",
-        endtime:"",
-        uname:"",
-        usestatus:''
-    };
+    var showList;
+    var Data = {oldurl:""};
     var cloudMail = {
         avalonStart : function () {
             showList = avalon.define({
                 $id:"showList",
                 listData:[],
-                globalData:{},
-                select:[],
                 filldata:{},
-                edit:function (el) {
-                    cloudMail.judge(2,el);
-                    showList.globalData ={type:2,data:el}
+                validate: featurepack.pack.checkValue(function () {
+                    $("form").serializeArray().map(function (child,index) {
+                        Data[child.name] = child.value
+                    });
+                    Data.newUrl = showList.filldata.logo;
+                    cloudMail.saveData(Data);
+                }),
+                selected:{selected:'selected'},
+                clearAttr: function () {
+                    $('.tips-msg').remove();
                 },
-                detail:function (el) {
-                    showList.filldata = el;
-                    $('#showBigBox').click();
-                },
-                validate: {
-                    onValidateAll: function (reasons) {
-                        reasons.length == 0 ? (function () {
-                            showList.globalData.type==1?(function () {
-                                cloudMail.addMore({xffee:showList.xffee})
-                            })():(function () {
-                                cloudMail.addMore({recharge:showList.recharge})
-                            })()
-                        })() : (function () {
-                            $('.tip').remove();
-                            $(reasons[0].element).parents('.errortips').after('<p class="color-down tip">' + reasons[0].message + '</p>')
-                        })();
-                    },
-                    validateInBlur: true
-                },
-                clear: function () {
-                    $('.tip').remove();
-                }
-            });
-
-            searchList = avalon.define({
-                $id:"searchList",
-                add:function () {
-
+                uploadimg:function () {
+                    $("#file").click();
                 }
             });
             avalon.scan(document.body);
         },
-        addMore:function (postdata) {
-            featurepack.pack.ajax(dataUrl.getembershipcardList,"get",postdata,function (result) {
+        getResponse:function (postdata) {
+            featurepack.pack.ajax(dataUrl.getArrangementList,"get",postdata,function (result) {
                 if(result.code == 0){
-                    swal("添加成功!", "您已经添加成功了，点击OK关闭窗口。", "success");
-                    $('#showSmallbox').click();
+                    showList.listData = result.merchantlist;
+                    showList.filldata = result.data;
+                    Data.oldurl = result.data.logo;
+                    featurepack.pack.option();
                 }else{
                     swal(result.msg,"", "error");
                 }
             })
         },
-        getTime : function () {
-            postdata.starttime = arguments[0];
-            postdata.endtime = arguments[1];
+        getdata:function () {
+            imgData64 = arguments[0];
         },
-        //分页插件封装的avalon需要传url
-        fn:function () {
-            showList.listData = arguments[0].data.deliver;
+        savaimage:function (postdata) {
+            featurepack.pack.ajax(dataUrl.saveImageUrl,"post",postdata,function (result) {
+                if(result.code == 0){
+                        $('.loader').fadeOut(200);
+                        showList.filldata.logo = result.data.url;
+                        imgData64 = null;
+                        $('#modalicon').click();
+                        swal("保存成功!", "您已经成功修改了这张图片，点击OK关闭窗口。", "success");
+                }else{
+                    swal(result.msg,"", "error");
+                }
+            })
         },
-        getResponse:function (data) {
-            featurepack.pack.pager(cloudMail.fn,data,dataUrl.getDistributionList);
-        },
-        judge:function (type,value) {
-            showList.xffee="0";
-            showList.recharge="0";
-            type==1?(function () {
-                $(".tips").text("新增会员线下消费金额")
-            })():function () {
-                $(".tips").text("新增会员线下充值金额")
-            }();
-            $('#showSmallbox').click()
+        saveData:function (postdata) {
+            featurepack.pack.ajax(dataUrl.saveDataUrl,"post",postdata,function (result) {
+                console.info(postdata)
+                if(result.code == 0){
+                    swal("保存成功!", "您已经成功支付配置，点击OK关闭窗口。", "success");
+                    Data = {oldurl:""};
+                    cloudMail.getResponse();
+                }else{
+                    swal(result.msg,"", "error");
+                }
+            })
         }
     };
 
     var initStart = function (url) {
+        $('#saveimg').on('click',function () {cloudMail.savaimage({imageData:imgData64});$('.loader').fadeIn(100)});
         dataUrl = url;
         featurepack.pack.expand();
-        //分页和查询
-        //cloudMail.getResponse(postdata);
-        //cloudMail.avalonStart();
-
+        featurepack.pack.toggleTops();
+        featurepack.pack.noScroll();
+        cloudMail.getResponse();
+        cloudMail.avalonStart();
+        featurepack.pack.cropimage(cloudMail.getdata);
     };
     return {
         init_start: initStart

@@ -1,0 +1,38 @@
+{
+  "code": 0,
+  "data": {
+    "sid": "13",
+    "entid": 13,
+    "name": "微信商城",
+    "logo": "img/profileimg.png",
+    "backgroundImg": "",
+    "tell": "13526849526",
+    "address": "重庆市",
+    "sopyright": "",
+    "merchantid": "424",
+    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8b47edba1a8f1392\u0026redirect_uri=http://pay.51byod.cn/PayWeiXinMobile/MicroMall/OAuthcenter/Centerindex\u0026response_type=code\u0026scope=snsapi_userinfo\u0026state=4315097F05383C59#wechat_redirect"
+  },
+  "msg": "操作成功.",
+  "merchantlist": [
+    {
+      "merchantid": "60",
+      "merchantname": "默认收款方式"
+    },
+    {
+      "merchantid": "266",
+      "merchantname": "默认收款方式1"
+    },
+    {
+      "merchantid": "313",
+      "merchantname": "dd"
+    },
+    {
+      "merchantid": "321",
+      "merchantname": "快办商户通"
+    },
+    {
+      "merchantid": "424",
+      "merchantname": "v2.0.0"
+    }
+  ]
+}
