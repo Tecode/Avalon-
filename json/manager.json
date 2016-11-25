@@ -1,0 +1,70 @@
+
+{
+  "code": 0,
+  "data": [
+    {
+      "aid": 93,
+      "name": "df",
+      "loginname": "dsfas@10013",
+      "auth": {
+        "deptauth": [
+          {
+            "id": 896,
+            "text": "艾丝凡",
+            "meun": ""
+          },
+          {
+            "id": 990,
+            "text": "子部门1",
+            "meun": ""
+          },
+          {
+            "id": 1215,
+            "text": "123",
+            "meun": ""
+          },
+          {
+            "id": 1399,
+            "text": "科院",
+            "meun": ""
+          }
+        ],
+        "storeauth": [
+          {
+            "id": 70,
+            "text": "默认门店地方",
+            "meun": "5"
+          },
+          {
+            "id": 517,
+            "text": "默认门店",
+            "meun": "5"
+          },
+          {
+            "id": 586,
+            "text": "123",
+            "meun": "5"
+          },
+          {
+            "id": 736,
+            "text": "科院",
+            "meun": "5"
+          }
+        ],
+        "merchantauth": [
+          {
+            "id": 60,
+            "text": "默认收款方式",
+            "meun": "4"
+          },
+          {
+            "id": 266,
+            "text": "默认收款方式1",
+            "meun": "4"
+          }
+        ],
+        "specialauth": "7,8"
+      }
+    }
+  ]
+}

@@ -4,7 +4,8 @@
 define(['bootstrap','avalon','d3','rickshaw','featurepack'], function(bootstrap,avalon,d3,rickshaw,featurepack) {
 
     var initStart = function () {
-        alert(111);
+        featurepack.pack.expand();
+        $(".modalicon2").click();
     };
     return {
         init_start: initStart

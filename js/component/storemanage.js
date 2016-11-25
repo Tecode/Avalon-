@@ -94,7 +94,10 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'featurepack', 'sweet_
             });
             selectPayType = $('.select-paytype').select({
                 multiple: false,
-                jsonData: []
+                jsonData: [],
+                jstree: {
+                    'url': dataUrl.getPayType
+                }
             });
             //清除提示
             $('.choose-input-list').on('click',function () {

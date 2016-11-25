@@ -280,7 +280,7 @@ Top
 ================================================================================= */
 #top {
   height: 60px;
-  background-color: #38aee3;
+  background-color: #399bff;
   color: #fff;
   width: 100%;
   position: fixed;
@@ -2962,7 +2962,7 @@ div[data-role="editor-toolbar"] {
 }
 .nav-tabs {
   border-bottom: none;
-  background: #E9E9E9;
+  background: #399bff;
   padding: 0;
 }
 .nav-tabs > li {
@@ -3940,7 +3940,7 @@ Widgets
   display: block;
   position: relative;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  padding: 11px 0;
+  padding: 15px 0;
 }
 .basic-list li:last-child {
   border-bottom: none;
@@ -4433,4 +4433,11 @@ form .tips-msg{
     top:20%;
     left: 50%;
     margin-left: -90px;
+}
+.manager .basic-list li{
+    font-size: 15px;
+}
+.manager .basic-list li i{
+    font-size: 20px;
+    margin-right: .4em;
 }
