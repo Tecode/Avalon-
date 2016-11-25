@@ -214,7 +214,6 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
 
                 init: {
                     PostInit: function () {
-                        alert("is ok")
                         document.getElementById('uploadfiles').onclick = function () {
                             if (uploader.files.length == 0) {
                                 $('#uploadtips').fadeIn(100).text('您还没有选择图片哦！').removeClass('color-up').addClass('color-down');
@@ -289,7 +288,7 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                         var resule = JSON.parse(info.response);
                         if (resule.code == 0) {
                             $('#uploadtips').fadeIn().text('上传成功').addClass('color-up');
-                            $('#deleteimg').show();
+                            //$('#deleteimg').show();
                             timer();
                             getUrl.call(this,resule)
                         }

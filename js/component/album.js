@@ -28,37 +28,26 @@ define(['avalon','bootstrap','moment','daterangepicker','featurepack','plupload'
                     cloudMail.judge(2,el);
                     globalData = {type:2,data:el}
                 },
-                deleteInfo:function (el) {
-                    swal({
-                            title: "确定删除吗?",
-                            text: "您将会此条首页图片所有信息!",
-                            type: "warning",
-                            showCancelButton: true,
-                            confirmButtonColor: "#DD6B55",
-                            confirmButtonText: "确定",
-                            cancelButtonText: "取消",
-                            closeOnConfirm: false
-                        },
-                        function () {
-                            cloudMail.deleteAlbumList({ids:el.ppid});
-                        });
-                },
                 validate: {
                     onValidateAll: function (reasons) {
-                        postdata.imgesrc = showList.filldata.ppUrl;
-                        postdata.ppRemark = showList.filldata.ppRemark;
-                        reasons.length == 0 ? (function () {
-                            postdata.ids = "0";
-                            globalData.type==1?(function () {
-                                cloudMail.addBanner(postdata);
-                            })():(function () {
-                                postdata.ids = globalData.data.ppid;
-                                cloudMail.editBanner(postdata);
-                            })()
-                        })() : (function () {
-                            $('.tip').remove();
-                            $(reasons[0].element).parents('.row-fluid').after('<p class="color-down tip">' + reasons[0].message + '</p>')
-                        })();
+                        if(showList.filldata.ppUrl.length>100){
+                            swal("图片未上传！","请点击开始上传按钮上传图片。","error");
+                        }else {
+                            postdata.imgesrc = showList.filldata.ppUrl;
+                            postdata.ppRemark = showList.filldata.ppRemark;
+                            reasons.length == 0 ? (function () {
+                                postdata.ids = "0";
+                                globalData.type==1?(function () {
+                                    cloudMail.addBanner(postdata);
+                                })():(function () {
+                                    postdata.ids = globalData.data.ppid;
+                                    cloudMail.editBanner(postdata);
+                                })()
+                            })() : (function () {
+                                $('.tip').remove();
+                                $(reasons[0].element).parents('.row-fluid').after('<p class="color-down tip">' + reasons[0].message + '</p>')
+                            })();
+                        }
                     },
                     validateInBlur: true
                 },
@@ -74,9 +63,8 @@ define(['avalon','bootstrap','moment','daterangepicker','featurepack','plupload'
         },
         //回调函数加载正式图片地址
         callBackGetUrl:function () {
-            console.info(arguments[0]);
             showList.filldata.ppUrl = arguments[0].data.url;
-            globalData.url = true;
+            // globalData.url = true;
         },
         judge:function (type,value) {
             type==1?(function () {
@@ -114,18 +102,6 @@ define(['avalon','bootstrap','moment','daterangepicker','featurepack','plupload'
                 }
             })
         },
-        //这个方法在修改里面删除已经上传的图片，只有删除了才可以重新上传不然后台图片会越来越多
-        // deleteImage:function (postdata) {
-        //     featurepack.pack.ajax(dataUrl.deleteBannerUrl,"get",postdata,function (result) {
-        //         if(result.code == 0){
-        //             showList.filldata.ppUrl = "img/noimage.jpg";
-        //             swal("删除成功!", "您已经成功删除了这张图片，点击OK关闭窗口。", "success");
-        //             $("#deleteimg").hide();
-        //         }else{
-        //             swal(result.msg,"", "error");
-        //         }
-        //     })
-        // },
         editBanner:function (postdata) {
             featurepack.pack.ajax(dataUrl.editBannerUrl,"get",postdata,function (result) {
                 if(result.code == 0){

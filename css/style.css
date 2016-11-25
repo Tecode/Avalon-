@@ -4421,4 +4421,16 @@ form .tips-msg{
 .payconfig .imgbox{
     width: 60%;
     margin-top: 10px;
+    position: relative;
+}
+.payconfig .imgbox .uploadtips{
+    position: absolute;
+    display: block;
+    width: 180px;
+    background-color: #fff;
+    opacity: .8;
+    border-radius: 4px;
+    top:20%;
+    left: 50%;
+    margin-left: -90px;
 }

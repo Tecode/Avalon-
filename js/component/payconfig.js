@@ -2,7 +2,7 @@
  * Created by ASSOON on 2016/11/11.
  */
 define(['bootstrap','avalon','featurepack','plupload','sweet_alert'], function(bootstrap,avalon,featurepack,plupload,swal) {
-    var overallSituation,url,type;
+    var overallSituation,url;
 
     var initStart = function (l) {
         url = l;
@@ -37,28 +37,36 @@ define(['bootstrap','avalon','featurepack','plupload','sweet_alert'], function(b
                         list:{},
                         //验证表达式
                         validate: featurepack.pack.checkValue(function () {
-                            var postdata = {
-                                merchantname:overallSituation.merchantname,
-                                repost_levenl:overallSituation.repost_levenl,
-                                appid:overallSituation.appid,
-                                mch_id:overallSituation.mch_id,
-                                appsecret:overallSituation.appsecret,
-                                sslcert_path:overallSituation.sslcert_path,
-                                type:overallSituation.type
-                            };
-                                postdata.type==1?(function () {
+                            if(overallSituation.sslcert_path.length>100){
+                                swal("图片未上传！","请点击开始上传按钮上传图片。","error");
+                            }else {
+                                var postdata = {
+                                    merchantname: overallSituation.merchantname,
+                                    repost_levenl: overallSituation.repost_levenl,
+                                    appid: overallSituation.appid,
+                                    mch_id: overallSituation.mch_id,
+                                    appsecret: overallSituation.appsecret,
+                                    sslcert_path: overallSituation.sslcert_path,
+                                    type: overallSituation.type,
+                                    oldurl: globalData.oldurl
+                                };
+                                postdata.type == 1 ? (function () {
                                     delete postdata.sslcert_path;
-                                })():'';
-                                type == 1?(function () {
+                                    delete postdata.oldUrl;
+                                })() : '';
+                                globalData.type == 1 ? (function () {
                                     //添加
+                                    postdata.merchantid = 0;
                                     cloudMail.getAjax.addPayConfig(postdata)
-                                })():(function () {
+                                })() : (function () {
                                     //修改
+                                    postdata.merchantid = globalData.data.merchantid;
                                     cloudMail.getAjax.postPayConfig(postdata)
                                 })()
+                            }
                         }),
                         addPayConfig:function () {
-                            type = 1;
+                            globalData = {type:1,oldurl:"",data:null};
                             overallSituation.common = false;
                             overallSituation.server = true;
                             $("#showBigBox").click();
@@ -75,7 +83,7 @@ define(['bootstrap','avalon','featurepack','plupload','sweet_alert'], function(b
                             $('.tips-msg').remove();
                         },
                         editPayConfig:function (el) {
-                            type = 2;
+                            globalData = {type:2,oldurl:el.sslcert_path,data:el};
                             $("#showBigBox").click();
 
                             overallSituation.merchantname = el.merchantname;
@@ -124,13 +132,12 @@ define(['bootstrap','avalon','featurepack','plupload','sweet_alert'], function(b
 
         };
         //回调函数预览图片
-        thiscallback = function () {
+        this.callback = function () {
             overallSituation.sslcert_path = arguments[0];
         };
         //回调函数加载正式图片地址
         this.callBackGetUrl = function () {
             overallSituation.sslcert_path = arguments[0].data.url;
-            globalData.url = true;
         };
             this.getAjax = {
             getResponse:function (postdata) {
@@ -143,23 +150,25 @@ define(['bootstrap','avalon','featurepack','plupload','sweet_alert'], function(b
                 })
             },
             postPayConfig:function (postdata) {
+                console.info(postdata)
                 featurepack.pack.ajax(url.editPayConfig,"post",postdata,function (result) {
-                    console.info(postdata);
                     if(result.code == 0){
                         swal("修改成功!", "您已经修改了这项配置，点击OK关闭窗口。", "success");
                         cloudMail.getAjax.getResponse();
                         $("#showBigBox").click();
-                        console.info(postdata)
+                        globalData = null;
                     }else{
                         swal(result.msg,"","error");
                     }
                 })
             },
             addPayConfig:function (postdata) {
+                console.info(postdata)
                 featurepack.pack.ajax(url.addPayConfig,"post",postdata,function (result) {
                     if(result.code == 0){
                         swal("添加成功!", "您已经添加了这项配置，点击OK关闭窗口。", "success");
                         $("#showBigBox").click();
+                        globalData = null;
                         cloudMail.getAjax.getResponse();
                     }else{
                         swal(result.msg,"","error");

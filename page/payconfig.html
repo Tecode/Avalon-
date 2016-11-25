@@ -91,11 +91,12 @@
                                         <input type="text" ms-rules="{pattern:/^\d{10}$/}" data-pattern-message="商户号必须填写或商户号格式错误！" placeholder="10位数字" ms-focus="##clear" ms-duplex="##mch_id" class="form-control">
                                     </div>
                                 </div>
-                                <div class="form-group" ms-if="##type==2">
+                                <div class="form-group" ms-visible="##type==2">
                                     <label class="col-sm-3 control-label form-label">支付证书</label>
                                     <div class="col-sm-9 payconfig">
                                         <div class="imgbox">
                                         <img ms-attr="{src:##sslcert_path}" style="margin-bottom: 1.5em" src="img/noimage.jpg" width="100%"/>
+                                        <span id="uploadtips" class="uploadtips text-center" style="display: none">您还没有选择图片哦!</span>
                                         </div>
                                     </div>
                                     <div class="col-sm-offset-3 col-sm-9">
@@ -160,7 +161,7 @@
             deletepayConfig:'json/PayConfigDelete.json',
             addPayConfig:'json/PayConfigDelete.json',
             editPayConfig:'json/PayConfigDelete.json',
-            addimgUrl:"json/PayConfigDelete.json"//图片地址
+            addimgUrl:"json/payConfigList.json"//图片地址
         };
         payconfig.init_start(url);
     })

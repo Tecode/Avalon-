@@ -297,7 +297,7 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'sweet_alert', 'featur
                             "icon": 'tree-icon fa fa-folder'
                         });
                     swal("添加成功!", "您已经添加成员，点击OK关闭窗口。", "success");
-                    $("#showBigBox").click();
+                    $("#showSmallbox").click();
                 } else {
                     swal(result.msg, "", "error");
                 }
@@ -307,7 +307,7 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'sweet_alert', 'featur
             featurepack.pack.ajax(dataUrl.addUserUrl, "get", postdata, function (result) {
                 if (result.code == 0) {
                     swal("添加成功!", "您已经添加成员，点击OK关闭窗口。", "success");
-                    $("#showBigBox").click();
+                    $("#showSmallbox").click();
                     cloudMail.getResponse({deptid:deptid});
                 } else {
                     swal(result.msg, "", "error");
