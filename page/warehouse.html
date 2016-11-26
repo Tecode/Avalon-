@@ -5,59 +5,189 @@
         <li class="active">通过 <span class="label label-danger">商品属性</span>或<span class="label label-danger">商品属性</span> 进行查询。</li>
     </ol>
     <div class="right">
-        <a href="#" class="btn btn-danger"><i class="fa fa-pencil"></i> 新增配送</a>
+        <div class="btn-group" role="group" aria-label="...">
+            <a href="javascript:;" class="btn btn-light" id="search"><i class="fa fa-search"></i></a>
+            <a href="javascript:;" class="btn btn-light" ms-click="##add">配送方式</a>
+        </div>
     </div>
 </div>
-<div class="container-mail">
-    <div class="mailbox clearfix">
-        <div class="mailbox-menu">
-            <ul class="menu">
-                <li><a href="#"><i class="fa fa-inbox"></i> Inbox</a></li>
-                <li><a href="#"><i class="fa fa-flag-o"></i> Important</a></li>
-                <li><a href="#"><i class="fa fa-paper-plane-o"></i> Sent</a></li>
-                <li><a href="#"><i class="fa fa-trash"></i> Trash</a></li>
-                <li class="search-component"><a href="#"><i class="fa fa-search"></i></a><input type="text" placeholder="按下回车或搜索键"/></li>
-            </ul>
 
-        </div>
+
+<div class="row">
+    <div class="col-md-12 table-searchBox ms-controller" ms-controller="searchList">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                配送方式
+            </div>
+            <div class="panel-body">
+                <div class="mailbox clearfix">
+                    <div class="mailbox-menu">
+                        <ul class="menu">
+                            <li><a href="javascript:;" ms-click="##add"><i class="fa fa-inbox"></i>新增配送方式</a></li>
+                            <li><a href="javascript:;" ms-click="##choiceAll" data="0"><i class="fa fa-circle-o"></i>全部选中</a></li>
+                            <li><a href="javascript:;" ms-click="##delete"><i class="fa fa-trash"></i>删除</a></li>
+                            <li><a href="javascript:;"><i class="fa fa-trash"></i>切换
+                                <input type="checkbox" checked data-toggle="toggle" data-on="Ready" data-off="Not Ready">
+                            </a>
+                            </li>
+                            <li class="search-component"><a href="#"><i class="fa fa-search"></i></a><input type="text" placeholder="按下回车或搜索键"/></li>
+                        </ul>
+
+                    </div>
+
+                </div>
 
             </div>
-    <br/>
-                <div class="panel-body table-responsive teble-margin">
-                    <table class="table table-bordered table-striped" ms-controller="showList">
-                        <thead>
-                        <tr class="table-header">
-                            <td>选择</td>
-                            <td>物流名称</td>
-                            <td>配送费用</td>
-                            <td>是否启用</td>
-                            <td>操作</td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ms-for="el in @listData" ms-data-value="el">
-                            <td>{{el.storename}}</td>
-                            <td>{{el.username}}</td>
-                            <td>{{el.out_trade_no}}</td>
-                            <td>{{el.total_fee}}</td>
-                            <td>{{el.time_start}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
+
+        </div>
+    </div>
+
+    <div class="container-mail">
+        <div class="panel-body table-responsive teble-margin ms-controller" ms-controller="showList">
+            <table class="table table-bordered table-striped" ms-if="##listData.length>0">
+                <thead>
+                <tr class="table-header">
+                    <td style="width: 5%">选择</td>
+                    <td>物流名称</td>
+                    <td>配送费用</td>
+                    <td>是否启用</td>
+                    <td>描述</td>
+                    <td>操作</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ms-for="el in ##listData">
+                    <td class="sorting_1">
+                        <div class="checkbox checkbox-inline">
+                            <input type="checkbox" ms-duplex="##select" ms-attr="{value:el.mdid,id:el.mdid}">
+                            <label ms-attr="{for:el.mdid}"></label>
+                        </div>
+                    </td>
+                    <td>{{el.mdTitle}}</td>
+                    <td>{{el.mdFulfilExpenses}}</td>
+                    <td><span ms-if="el.mdIsNew==0">否</span><span ms-if="el.mdIsNew==1">是</span></td>
+                    <td>{{el.introduce}}</td>
+                    <td><a href="javascript:;" ms-click="##edit(el)">修改</a></td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="isnullTips" ms-if="##listData.length==0">
+                <p class="text-center"><span class="fa fa-folder-open"></span></p>
+                <p class="text-center">这里什么也没有,刷新试一试！</p>
+            </div>
+            <!-- 弹出的大框框 -->
+            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title"><strong>配送方式</strong></h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <form class="form-horizontal" action="#/distribution" ms-validate="##validate">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label form-label">物流名称</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" ms-focus="##clearAttr" ms-rules="{required:true,chs:true}" ms-duplex="##filldata.mdTitle" data-chs-message="必须是中文名称！" placeholder="物流公司的中文名称" class="form-control" id="input11">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label form-label">配送费用</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" ms-focus="##clearAttr" ms-rules="{number:true}" ms-duplex="##filldata.mdFulfilExpenses" data-number-message="必须是数字！" placeholder="货币格式，单位为元" class="form-control" id="input12">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label form-label">是否启用</label>
+                                            <div class="col-sm-9">
+                                                <div class="radio radio-danger radio-inline" :click="##clearAttr">
+                                                    <input type="radio" id="inlineRadio1" ms-rules="{required: true}" ms-duplex="##filldata.mdIsNew" value="1" >
+                                                    <label for="inlineRadio1"> 是 </label>
+                                                </div>
+                                                <div class="radio radio-danger radio-inline" :click="##clearAttr">
+                                                    <input type="radio" id="inlineRadio2" ms-rules="{required: true}" ms-duplex="##filldata.mdIsNew" value="0" >
+                                                    <label for="inlineRadio2"> 否 </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label form-label">描述说明</label>
+                                            <div class="col-sm-9">
+                                                <textarea ms-focus="##clearAttr" ms-rules="{norequired:true,min:5}" ms-duplex="##filldata.introduce" data-min-message="描述不能少于5个字符！" placeholder="描述信息（选填）" class="form-control" id="input14"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-3 col-sm-9">
+                                                <button type="submit" class="btn btn-default">保存</button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                            <!--<button type="button" class="btn btn-default" data-dismiss="modal">保存</button>-->
+                        </div>
+                    </div>
                 </div>
-
-                <!--分页插件-->
-                <div class="am-container text-center ms-controller" ms-controller="test">
-                    <p>共 {{@totalItems}} 条记录</p>
-                    <ul class="pagination pagination-md">
-                        <li><a href="javascript:;" ms-click="@changePage(1)">首页</a></li>
-                        <li ms-class="{'am-disabled' : @curPage == 1}"><a href="javascript:;" ms-click="@changePage(@curPage-1)">«</a></li>
-                        <li ms-for="el in @pageItems" ms-class="{'active' : @curPage == el}" ms-click="@changePage(el)"><a href="javascript:;">{{el}}</a></li>
-                        <li ms-class="{'am-disabled' : @curPage == @totalPages}"><a href="javascript:;" ms-click="@changePage(@curPage+1)">»</a></li>
-                        <li><a href="javascript:;" ms-click="@changePage(@totalPages)">尾页</a></li>
-                    </ul>
+            </div>
+            <!--是否要删除-->
+            <!--遮罩mask-->
+            <div class="sweet-overlay" tabindex="-1" style="opacity: -0.01; display: none;"></div>
+            <!--弹框-->
+            <div class="sweet-alert hideSweetAlert" tabindex="-1" data-custom-class="" data-has-cancel-button="true"
+                 data-has-confirm-button="true" data-allow-ouside-click="false" data-has-done-function="true"
+                 data-animation="pop" data-timer="null" style="display: none; margin-top: -204px; opacity: -0.02;">
+                <div class="sa-icon sa-error" style="display: none;"><span class="sa-x-mark"><span
+                        class="sa-line sa-left"></span><span class="sa-line sa-right"></span></span></div>
+                <div class="sa-icon sa-warning" style="display: block;"><span class="sa-body"></span> <span
+                        class="sa-dot"></span></div>
+                <div class="sa-icon sa-info" style="display: none;"></div>
+                <div class="sa-icon sa-success" style="display: none;"><span class="sa-line sa-tip"></span> <span
+                        class="sa-line sa-long"></span>
+                    <div class="sa-placeholder"></div>
+                    <div class="sa-fix"></div>
                 </div>
-
-    <!-- End Mailbox -->
-
+                <div class="sa-icon sa-custom"
+                     style="display: none; background-image: url(&quot;img/profileimg.png&quot;); width: 80px; height: 80px;"></div>
+                <h2>Are you sure?</h2>
+                <p style="display: block;">You will not be able to recover this imaginary file!</p>
+                <button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;">Cancel</button>
+                <button class="confirm" tabindex="1"
+                        style="display: inline-block; background-color: rgb(221, 107, 85); box-shadow: none;">Yes, delete it!
+                </button>
+            </div>
+            <button style="display: none" type="button" id="showBigBox" data-target="#myModal2" data-toggle="modal"></button>
+        </div>
+    </div>
 </div>
+<!--分页-->
+<div class="am-container text-center ms-controller" ms-controller="test" ms-if="##totalItems>0">
+    <p>共 {{##totalItems}} 条记录</p>
+    <ul class="pagination pagination-md">
+        <li><a href="javascript:;" ms-click="##changePage(1)">首页</a></li>
+        <li ms-class="{'am-disabled' : ##curPage == 1}"><a href="javascript:;" ms-click="##changePage(##curPage-1)">«</a></li>
+        <li ms-for="el in ##pageItems" ms-class="{'active' : ##curPage == el}" ms-click="##changePage(el)"><a href="javascript:;">{{el}}</a></li>
+        <li ms-class="{'am-disabled' : ##curPage == ##totalPages}"><a href="javascript:;" ms-click="##changePage(##curPage+1)">»</a></li>
+        <li><a href="javascript:;" ms-click="##changePage(##totalPages)">尾页</a></li>
+    </ul>
+</div>
+
+<script>
+    require(['warehouse'],function (warehouse) {
+        var url = {
+            getDistributionList:'json/distribution.json',//查询和加载
+            addDistributionList:'json/distribution.json',//添加配送方式
+            editDistributionList:'json/distribution.json',//修改配送方式
+            deleteDistributionList:'json/distribution.json'//删除配送方式
+        };
+        warehouse.init_start(url);
+    })
+</script>

@@ -12,7 +12,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row pointseting">
     <div class="col-md-12 col-lg-12 padding-0">
         <div class="panel panel-transparent">
 
@@ -21,24 +21,268 @@
             <div class="panel-body">
                 <div role="tabpanel">
                     <ul class="nav nav-tabs tabcolor5-bg" role="tablist">
-                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" aria-expanded="false" class="">积分配置</a></li>
+                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" aria-expanded="true" class="">积分配置</a></li>
                         <li role="presentation" class=""><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" class="" aria-expanded="false">会员等级积分配置</a></li>
-                        <li role="presentation" class=""><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" class="active" aria-expanded="true">会员卡基础配置</a></li>
+                        <li role="presentation" class=""><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" class="active" aria-expanded="false">会员卡基础配置</a></li>
                     </ul>
                     <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane" id="home">
+                        <div role="tabpanel" class="tab-pane active row" id="home">
                             <div class="col-md-6">
-                                45
+                                <div class="panel panel-default">
+                                    <div class="panel-title">
+                                        会员卡使用说明
+                                    </div>
+                                    <div class="panel-body">
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label form-label">说明</label>
+                                                <div class="col-sm-10">
+                                                    <textarea class="form-control" rows="3"></textarea>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
                             </div>
                             <div class="col-md-6">
-                                49
+                                <div class="panel panel-default">
+                                    <div class="panel-title">
+                                        积分规则说明
+                                    </div>
+                                    <div class="panel-body">
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label form-label">说明</label>
+                                                <div class="col-sm-10">
+                                                    <textarea class="form-control" rows="3"></textarea>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="panel panel-default table-responsive">
+
+                                    <div class="panel-title">
+                                        积分设置
+                                    </div>
+
+                                    <div class="panel-body">
+                                        <table class="table table-bordered table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>序号</th>
+                                                <th>策略名称</th>
+                                                <th>积分奖励</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <th scope="row">
+                                                    1
+                                                </th>
+                                                <td>充值<input style="width: 4em; margin: 0 .5em;background-color: #f9f9f9" class="form-control-line text-center" placeholder="" />元奖励</td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon"><i class="fa fa-leaf"></i></div>
+                                                        <input type="text" class="form-control" id="exampleInputAmount0" placeholder="积分奖励">
+                                                        <div class="input-group-addon">分</div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    2
+                                                </th>
+                                                <td>每日签到奖励</td>
+                                                <td>
+                                                    <div class="input-group">
+                                                    <div class="input-group-addon"><i class="fa fa-leaf"></i></div>
+                                                    <input type="text" class="form-control" id="exampleInputAmount1" placeholder="积分奖励">
+                                                    <div class="input-group-addon">分</div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    3
+                                                </th>
+                                                <td>每日分享奖励</td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon"><i class="fa fa-leaf"></i></div>
+                                                        <input type="text" class="form-control" id="exampleInputAmount2" placeholder="积分奖励">
+                                                        <div class="input-group-addon">分</div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-default">提交保存</button>
                             </div>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="profile">
-                            <p>Ut in leo ut libero sodales feugiat</p>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="panel panel-default table-responsive">
+
+                                        <div class="panel-title">
+                                            会员等级折扣设置
+                                        </div>
+
+                                        <div class="panel-body">
+                                            <table class="table table-bordered table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th>序号</th>
+                                                    <th>会员等级</th>
+                                                    <th>积分设置</th>
+                                                    <th>消费折扣率</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <th scope="row">
+                                                        1
+                                                    </th>
+                                                    <td>充值<input style="width: 4em; margin: 0 .5em;background-color: #f9f9f9" class="form-control-line text-center" placeholder="" />元奖励</td>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon"><i class="fa fa-leaf"></i></div>
+                                                            <input type="text" class="form-control" id="exampleInputAmount0" placeholder="积分奖励">
+                                                            <div class="input-group-addon">分</div>
+                                                        </div>
+                                                    </td>
+                                                    <td>45</td>
+                                                    <td><a href="javascript:void(0);">删除</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">
+                                                        2
+                                                    </th>
+                                                    <td>每日签到奖励</td>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon"><i class="fa fa-leaf"></i></div>
+                                                            <input type="text" class="form-control" id="exampleInputAmount1" placeholder="积分奖励">
+                                                            <div class="input-group-addon">分</div>
+                                                        </div>
+                                                    </td>
+                                                    <td>45</td>
+                                                    <td><a href="javascript:void(0);">删除</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">
+                                                        3
+                                                    </th>
+                                                    <td>每日分享奖励</td>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon"><i class="fa fa-leaf"></i></div>
+                                                            <input type="text" class="form-control" id="exampleInputAmount2" placeholder="积分奖励">
+                                                            <div class="input-group-addon">分</div>
+                                                        </div>
+                                                    </td>
+                                                    <td>45</td>
+                                                    <td><a href="javascript:void(0);">删除</a></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-default">提交保存</button>
+                                </div>
+                            </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane active" id="messages">
-                            <p>Duis ac enim diam</p>
+                        <div role="tabpanel" class="tab-pane" id="messages">
+                            <div class="row">
+                                <div class="col-md-12 col-lg-7">
+                                    <div class="panel panel-default">
+
+                                        <div class="panel-title">
+                                            商城支付配置编辑
+                                            <ul class="panel-tools">
+                                                <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="panel-body">
+                                            <form class="form-horizontal" ms-validate="##validate" action="#/arrangement">
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label form-label">商城名称</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" ms-focus="##clearAttr" placeholder="商城的标题" ms-duplex="##filldata.name" name="name" ms-rules="{required:true}" data-required-message="商城名字必须填写！" id="input11">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label form-label">联系电话</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" placeholder="13位手机号码" ms-focus="clearAttr" ms-duplex="##filldata.tell" name="tell" ms-rules="{pattern:/^0{0,1}(13[4-9]|15[7-9]|15[0-2]|18[7-8])[0-9]{8}$/}" data-pattern-message="请填写正确的手机号码！" class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label form-label">联系地址</label>
+                                                    <div class="col-sm-10">
+                                                        <textarea ms-rules="{required:true}" ms-focus="clearAttr" placeholder="留个地址呗，方便找到你。" ms-duplex="##filldata.address" name="address" data-required-message="联系地址需要填写！" class="form-control" rows="3"></textarea>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label form-label">支付配置</label>
+                                                    <div class="col-sm-10">
+                                                        <select class="selectpicker" name="merchantid">
+                                                            <option ms-for="el in ##listData" ms-attr="[{value:el.merchantid},(el.merchantid==##filldata.merchantid?true:false) && ##selected]">{{el.merchantname}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label form-label">商家LOGO</label>
+                                                    <div class="col-sm-10">
+                                                        <div style="width: 108px;height: 108px;border: 1px solid #f1f1f1;border-radius: 3px;margin-bottom: 15px;">
+                                                            <img width="100%" src="img/cobe_img.jpg" ms-attr="{src:##filldata.logo}" alt="商家logo">
+                                                        </div>
+                                                        <button type="button" class="btn btn-sm btn-light" ms-click="##uploadimg">上传LOGO</button>
+                                                        <input type="file" id="file" style="display: none">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label form-label">商城网址</label>
+                                                    <div class="col-sm-10">
+                                                        <textarea class="form-control" ms-rules="{required:true}" ms-duplex="##filldata.url" data-required-message="商城网站需要填写！" placeholder="输入商城的网址" rows="3" id="content"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label form-label">会员卡网址</label>
+                                                    <div class="col-sm-10">
+                                                        <textarea class="form-control" ms-rules="{required:true}" ms-duplex="##filldata.url" data-required-message="商城网站需要填写！" placeholder="输入商城的网址" rows="3" id="content"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-sm-offset-2 col-sm-10">
+                                                        <button type="submit" class="btn btn-default">保存</button>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
