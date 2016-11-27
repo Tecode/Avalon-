@@ -20,7 +20,8 @@ define(['bootstrap','avalon','jstree','jquery_select', 'sweet_alert','featurepac
                 managementScope:[],//管理范围
                 paymentAuthority:[],//支付配置权限
                 storeuthorityA:[],//门店管理权限
-                select:[],
+                check:null,//查看选项
+                manager:null,//管理选项
                 administratorsInfo:{},
                 clearAttr: function (e) {$(e.target).parents('.col-sm-10').siblings('.tips-msg').remove();},
                 amend:function (value,index,event) {cloudMail.judge(index,1);},
@@ -75,6 +76,7 @@ define(['bootstrap','avalon','jstree','jquery_select', 'sweet_alert','featurepac
             });
         },
         judge:function (index,type) {
+            var isOK =true;
             //type2 保存type1修改或添加
             type ==1?(function () {
                 switch (index){
@@ -99,11 +101,21 @@ define(['bootstrap','avalon','jstree','jquery_select', 'sweet_alert','featurepac
                     case 2:
                         break;
                     case 3:
-
+                    //保存新建管理员
+                        var selectDepts = $('.add .selectdept').select('getSelected');
+                        var selectUser = $('.panel-body .select-user').select('getSelected');
+                        // if(!(selectUser.length>0 && selectDepts.length>0)){
+                        //     $('.panel-body .selectdept').after('<p class="tips-msg color-down">请选择管理员和管理范围</p>');
+                        //     isOK = false;
+                        //     return;
+                        // }
+                        // var userid = selectUser[0].id.replace('user_','');
                         break;
                 }
             })();
-            $(".modalicon"+index).click();
+            isOK?(function () {
+                $(".modalicon"+index).click();
+            })():''
         },
         getResponse:function (d) {
             featurepack.pack.ajax(dataUrl.getAdministratorsUrl, "get", d, function (result) {
