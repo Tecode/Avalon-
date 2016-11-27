@@ -53,7 +53,7 @@ var require = {
     shim:{
         bootstrap:{deps:['jquery']},
         avalon: {exports: "avalon"},
-        bootstrap_toggle:{deps:['jquery']},
+        bootstrap_toggle:{deps:['jquery','bootstrap']},
         rickshaw:{deps:['d3']},
         sammy:{deps:['jquery']},
         daterangepicker:{deps:['bootstrap']},

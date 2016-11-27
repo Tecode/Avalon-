@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="js/bower_components/jstree/dist/themes/default/style.css">
 <div class="page-header">
     <h1 class="title">权限管理</h1>
     <ol class="breadcrumb">
@@ -14,30 +15,29 @@
     <!-- End Page Header Right Div -->
 
 </div>
-<div class="row">
+<div class="row ms-controller" ms-controller="controlAllView">
     <div class="col-md-9">
-        <div class="panel panel-default">
+        <div class="panel panel-default" ms-visible="##dataList.length>0">
             <div class="panel-title">
                 详细信息
                 <ul class="panel-tools">
                     <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
                 </ul>
             </div>
-
             <div class="panel-body">
                 <form class="form-horizontal">
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label form-label">管理员名称</label>
                         <div class="col-sm-10">
-                            <p class="form-control form-control-line">email@example.com</p>
+                            <p class="form-control form-control-line">{{##administratorsInfo.name}}</p>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="input002" class="col-sm-2 control-label form-label">管理员登录帐号</label>
                         <div class="col-sm-10">
-                            <p class="form-control form-control-line">email@example.com</p>
+                            <p class="form-control form-control-line">{{##administratorsInfo.loginname}}</p>
                         </div>
                     </div>
 
@@ -46,36 +46,19 @@
                         <div class="col-sm-10">
                             <p class="form-control-static clearfix">
                                 <span class="pull-left color-down">管理员对指定的组织架构，查看和管理的权限</span>
-                                <a class="pull-right" href="javascript:void(0);">修改</a>
+                                <a class="pull-right" href="javascript:void(0);" ms-click="##amend(el,0,$event)">修改</a>
                             </p>
                             <div class="panel-body table-responsive">
                                 <table class="table table-bordered table-striped">
-                                    <tbody>
-                                    <tr>
-                                        <td>62626</td>
-                                        <td>Applies the hover color to a particular row or cell</td>
+                                    <tr ms-for="(index,el) in ##managementScope">
+                                        <td width="60%"><i class="fa fa-leaf" style="margin-right: .5em"></i>{{el.text}}</td>
+                                        <td>
+                                            <span ms-if="el.meun == ''">未选择</span>
+                                            <span ms-if="el.meun == '1'">查看</span>
+                                            <span ms-if="el.meun == '2'">管理</span>
+                                            <span ms-if="el.meun == '1,2'">查看和管理</span>
+                                        </td>
                                     </tr>
-                                    <tr>
-                                        <td>Indicates a successful or positive action</td>
-                                        <td>Indicates a successful or positive action</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Indicates a successful or positive action</td>
-                                        <td>Indicates a neutral informative change or action</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <code>.warning</code>
-                                        </th>
-                                        <td>Indicates a warning that might need attention</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <code>.danger</code>
-                                        </th>
-                                        <td>Indicates a dangerous or potentially negative action</td>
-                                    </tr>
-                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -85,34 +68,19 @@
                         <div class="col-sm-10">
                             <p class="form-control-static clearfix">
                                 <span class="color-down pull-left">管理员对指定的支付配置，查看和管理的权限 </span>
-                                <a class="pull-right" href="javascript:void(0);">修改</a>
+                                <a class="pull-right" href="javascript:void(0);" ms-click="##amend(el,1,$event)">修改</a>
                             </p>
                             <div class="panel-body table-responsive">
                                 <table class="table table-bordered table-striped">
                                     <tbody>
-                                    <tr>
-                                        <td>62626</td>
-                                        <td>Applies the hover color to a particular row or cell</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Indicates a successful or positive action</td>
-                                        <td>Indicates a successful or positive action</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Indicates a successful or positive action</td>
-                                        <td>Indicates a neutral informative change or action</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <code>.warning</code>
-                                        </th>
-                                        <td>Indicates a warning that might need attention</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <code>.danger</code>
-                                        </th>
-                                        <td>Indicates a dangerous or potentially negative action</td>
+                                    <tr ms-for="(index,el) in ##paymentAuthority">
+                                        <td width="60%">{{el.text}}</td>
+                                        <td>
+                                            <span ms-if="el.meun == ''">未选择</span>
+                                            <span ms-if="el.meun == '3'">查看</span>
+                                            <span ms-if="el.meun == '4'">管理</span>
+                                            <span ms-if="el.meun == '3,4'">查看和管理</span>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -124,34 +92,18 @@
                         <div class="col-sm-10">
                             <p class="form-control-static clearfix">
                                 <span class="pull-left color-down">管理员对指定的门店，查看和管理的权限</span>
-                                <a class="pull-right" href="javascript:void(0);">修改</a>
+                                <a class="pull-right" href="javascript:void(0);" ms-click="##amend(el,2,$event)">修改</a>
                             </p>
                             <div class="panel-body table-responsive">
                                 <table class="table table-bordered table-striped">
                                     <tbody>
-                                    <tr>
-                                        <td>62626</td>
-                                        <td>Applies the hover color to a particular row or cell</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Indicates a successful or positive action</td>
-                                        <td>Indicates a successful or positive action</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Indicates a successful or positive action</td>
-                                        <td>Indicates a neutral informative change or action</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <code>.warning</code>
-                                        </th>
-                                        <td>Indicates a warning that might need attention</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <code>.danger</code>
-                                        </th>
-                                        <td>Indicates a dangerous or potentially negative action</td>
+                                    <tr ms-for="(index,el) in ##storeuthorityA">
+                                        <td width="60%"> {{el.text}}</td>
+                                        <td>
+                                            <span ms-if="el.meun == ''">未选择</span>
+                                            <span ms-if="el.meun == '5'">查看</span>
+                                            <span ms-if="el.meun == '6'">管理</span>
+                                            <span ms-if="el.meun =='5,6'">查看和管理</span></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -186,48 +138,26 @@
             </div>
 
         </div>
+        <div class="panel panel-default" ms-if="##dataList.length==0">
+            <div class="isnullTips">
+                <p class="text-center"><span class="fa fa-folder-open"></span></p>
+                <p class="text-center">请选择分级管理员或者新建管理员。</p>
+            </div>
+        </div>
     </div>
     <div class="col-md-3">
         <div class="panel widget panel-widget">
             <div class="panel-title">
-                <button type="button" class="btn-sm btn btn-default">新增管理员</button>
+                <button type="button" class="btn-sm btn btn-default" ms-click="##addAdministrators">新增管理员</button>
             </div>
             <div class="panel-body">
-                <ul class="mailbox-inbox">
-
-                    <li>
-                        <a href="#" class="item clearfix">
+                <ul class="mailbox-inbox" style="padding-bottom: 2em">
+                    <li ms-for="el in ##administratorsList">
+                        <a href="javascript:void(0);" class="item clearfix" ms-click="##getAdministratorsInfo(el)">
                             <img src="img/profileimg.png" alt="img" class="img">
-                            <span class="from">Jonathan Doe</span>
-                            Hello, m8 how is goin ?
-                            <span class="date">22 May</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="item clearfix">
-                            <img src="img/profileimg2.png" alt="img" class="img">
-                            <span class="from">Egemem Ka</span>
-                            Problems look mighty small...
-                            <span class="date">22 May</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="item clearfix">
-                            <img src="img/profileimg3.png" alt="img" class="img">
-                            <span class="from">James Throwing</span>
-                            New job offer ?
-                            <span class="date">22 May</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="item clearfix">
-                            <img src="img/profileimg4.png" alt="img" class="img">
-                            <span class="from">Timmy Jefsin</span>
-                            Tonight Party
-                            <span class="date">22 May</span>
+                            <span class="from">{{el.name}}</span>
+                            更多管理员信息
+                            <span class="date">{{el.date|date("yyyy-MM-dd")}}</span>
                         </a>
                     </li>
                 </ul>
@@ -268,7 +198,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-default">保存</button>
+                    <button type="button" class="btn btn-default" ms-click="##save(el,0,$event)">保存</button>
                 </div>
             </div>
         </div>
@@ -307,7 +237,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-default">保存</button>
+                    <button type="button" class="btn btn-default" ms-click="##save(el,1,$event)">保存</button>
                 </div>
             </div>
         </div>
@@ -318,7 +248,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title">设置门店管理</h4>
+                    <h4 class="modal-title">设置门店权限</h4>
                 </div>
                 <div class="modal-body">
                     <div class="panel-body manager">
@@ -346,18 +276,51 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-default">保存</button>
+                    <button type="button" class="btn btn-default" ms-click="##save(el,2,$event)">保存</button>
                 </div>
             </div>
         </div>
     </div>
     <button style="display: none" class="modalicon2" data-toggle="modal" data-target="#myModal2"></button>
+    <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">新增管理员</h4>
+                </div>
+                <div class="modal-body">
+                <div class="panel-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="input1" class="form-label">管理员</label>
+                            <div class="select-user form-control editdept-select-dept"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="input2" class="form-label">管理范围</label>
+                            <div class="selectdept form-control editdept-select-dept"></div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-default" ms-click="##save(el,3,$event)">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button style="display: none" class="modalicon3" data-toggle="modal" data-target="#myModal3"></button>
 </div>
 <script>
     requirejs(['manager'], function (manager) {
         //define返回一个对象在当前页面调用该方法执行操作
         var url = {
-            getReaponseUserList: "json/manager.json"//获取数据
+            getAdministratorsUrl:"json/managerUser.json",//获取管理员
+            getDeptTree: "json/treejson.json",//获取部门jstree
+            addNewAdministratorsUrl:"json/manager.json",//新增管理员
+            getAdministratorsInfoUrl:"json/manager.json"//获取管理员信息
         };
         manager.init_start(url);
     });
