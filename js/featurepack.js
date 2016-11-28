@@ -371,6 +371,15 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                     $(".cropimg button").before('<img src="'+img+'">').parent().fadeIn();
                 });
             };
+        this.progress = function () {
+            NProgress.start();
+            setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
+
+            $("#b-0").click(function() { NProgress.start(); });
+            $("#b-40").click(function() { NProgress.set(0.4); });
+            $("#b-inc").click(function() { NProgress.inc(); });
+            $("#b-100").click(function() { NProgress.done(); });
+        }
     };
     var _featurepack = new pack();
     return {

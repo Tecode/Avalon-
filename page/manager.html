@@ -26,7 +26,6 @@
             </div>
             <div class="panel-body">
                 <form class="form-horizontal">
-
                     <div class="form-group">
                         <label class="col-sm-2 control-label form-label">管理员名称</label>
                         <div class="col-sm-10">
@@ -35,7 +34,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="input002" class="col-sm-2 control-label form-label">管理员登录帐号</label>
+                        <label class="col-sm-2 control-label form-label">管理员登录帐号</label>
                         <div class="col-sm-10">
                             <p class="form-control form-control-line">{{##administratorsInfo.loginname}}</p>
                         </div>
@@ -97,7 +96,7 @@
                             <div class="panel-body table-responsive">
                                 <table class="table table-bordered table-striped">
                                     <tbody>
-                                    <tr ms-for="(index,el) in ##storeuthorityA">
+                                    <tr ms-for="(index,el) in ##storeuthority">
                                         <td width="60%"> {{el.text}}</td>
                                         <td>
                                             <span ms-if="el.meun == ''">未选择</span>
@@ -111,24 +110,25 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="input2" class="col-sm-2 control-label form-label">其它权限</label>
+                        <label class="col-sm-2 control-label form-label">其它权限</label>
                         <div class="col-sm-10">
-                            <div class="form-control-static">
+                            <div class="form-control-static specialauth">
                                 <div class="checkbox checkbox-inline" style="padding-top: 2px">
-                                    <input type="checkbox" id="inlineCheckbox11" value="option1">
-                                    <label for="inlineCheckbox11"> 下载报表 </label>
+                                    <input type="checkbox" id="Checkbox11" ms-attr="[{value:7},(##specialauth.indexOf(7)>=0) && ##checked]">
+                                    <label for="Checkbox11"> 下载报表 </label>
                                 </div>
                                 <div class="checkbox checkbox-inline" style="padding-top: 2px">
-                                    <input type="checkbox" id="inlineCheckbox12" value="option1">
-                                    <label for="inlineCheckbox12"> 退款权限 </label>
+                                    <input type="checkbox" id="Checkbox12" ms-attr="[{value:8},(##specialauth.indexOf(8)>=0) && ##checked]">
+                                    <label for="Checkbox12"> 退款权限 </label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="input3" class="col-sm-2 control-label form-label"></label>
+                            <label class="col-sm-2 control-label form-label"></label>
                             <div class="col-sm-10">
                                 <p class="form-control-static text-center">
-                                    <button type="button" class="btn btn-danger btn-sm">删除管理员</button>
+                                    <button type="button" class="btn btn-danger btn-sm" ms-click="##deleteAdministrator">删除管理员</button>
+                                    <button style="margin-left: .5em" type="button" class="btn btn-default btn-sm" ms-click="##saveAdministrator">保存修改的信息</button>
                                 </p>
                             </div>
                         </div>
@@ -175,20 +175,20 @@
                 <div class="modal-body">
                     <div class="panel-body">
                         <form>
-                            <div class="form-group">
+                            <div class="form-group deptauth">
                                 <label for="input1" class="form-label">权限管理</label>
-                                <div>
+                                <div ms-for="el in ##managementScope | limitBy(1)">
                                     <div class="checkbox checkbox-inline" style="padding-top: 2px">
-                                        <input type="checkbox" id="inlineCheckbox13" value="option1">
+                                        <input type="checkbox" id="inlineCheckbox13" ms-attr="[{value:1},(el.meun.indexOf(1)>=0) && ##checked]">
                                         <label for="inlineCheckbox13"> 查看 </label>
                                     </div>
                                     <div class="checkbox checkbox-inline" style="padding-top: 2px">
-                                        <input type="checkbox" id="inlineCheckbox14" value="option1">
+                                        <input type="checkbox" id="inlineCheckbox14" ms-attr="[{value:2},(el.meun.indexOf(2)>=0) && ##checked]">
                                         <label for="inlineCheckbox14"> 管理 </label>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group scope">
                                 <label for="input2" class="form-label">管辖范围</label>
                                 <div class="selectdept form-control editdept-select-dept"></div>
                             </div>
@@ -213,22 +213,22 @@
                 </div>
                 <div class="modal-body">
                     <div class="panel-body manager">
-                        <ul class="basic-list">
+                        <ul class="basic-list merchantauth">
                             <li><i class="fa fa-leaf"></i>收款方式
                                 <div class="right">
                                     <div class="checkbox checkbox-inline" style="padding-top: 2px">查看</div>
                                     <div class="checkbox checkbox-inline" style="padding-top: 2px;padding-left: 0;margin-left: 5px"> 管理</div>
                                 </div>
                             </li>
-                            <li><i class="fa fa-leaf"></i>默认收款方式
+                            <li class="items" ms-for="(index,el) in ##paymentAuthority" ms-attr="{data_info:el.id}"><i class="fa fa-leaf"></i>{{el.text}}
                                 <div class="right">
                                     <div class="checkbox checkbox-inline" style="padding-top: 2px">
-                                        <input type="checkbox" id="inlineCheckbox16" value="option1">
-                                        <label for="inlineCheckbox16"> </label>
+                                        <input type="checkbox" placeholder="" ms-attr="[{value:3},{id:'inlineCheckboxo'+index},(el.meun.indexOf(3)>=0) && ##checked]">
+                                        <label ms-attr="{for:'inlineCheckboxo'+index}"> </label>
                                     </div>
                                     <div class="checkbox checkbox-inline" style="padding-top: 2px">
-                                        <input type="checkbox" id="inlineCheckbox17" value="option1">
-                                        <label for="inlineCheckbox17"> </label>
+                                        <input type="checkbox" placeholder="" ms-attr="[{value:4},{id:'inlineCheckbox'+index},(el.meun.indexOf(4)>=0) && ##checked]">
+                                        <label ms-attr="{for:'inlineCheckbox'+index}"> </label>
                                     </div>
                                 </div>
                             </li>
@@ -250,7 +250,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                     <h4 class="modal-title">设置门店权限</h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body storeauth">
                     <div class="panel-body manager">
                         <ul class="basic-list">
                             <li><i class="fa fa-shopping-cart"></i>收款方式
@@ -259,15 +259,15 @@
                                     <div class="checkbox checkbox-inline" style="padding-top: 2px;padding-left: 0;margin-left: 5px"> 管理</div>
                                 </div>
                             </li>
-                            <li><i class="fa fa-shopping-cart"></i>默认收款方式
+                            <li class="items" ms-for="(index,el) in ##storeuthority"><i class="fa fa-shopping-cart"></i>{{el.text}}
                                 <div class="right">
                                     <div class="checkbox checkbox-inline" style="padding-top: 2px">
-                                        <input type="checkbox" id="inlineCheckbox18" value="option1">
-                                        <label for="inlineCheckbox18"> </label>
+                                        <input type="checkbox" placeholder="" ms-attr="[{value:5},{id:'inlineCheckboxoo'+index},(el.meun.indexOf(5)>=0) && ##checked]">
+                                        <label ms-attr="{for:'inlineCheckboxoo'+index}"> </label>
                                     </div>
                                     <div class="checkbox checkbox-inline" style="padding-top: 2px">
-                                        <input type="checkbox" id="inlineCheckbox19" value="option1">
-                                        <label for="inlineCheckbox19"> </label>
+                                        <input type="checkbox" id="inlineCheckbox19" ms-attr="[{value:6},{id:'inlineCheckboxox'+index},(el.meun.indexOf(6)>=0) && ##checked]">
+                                        <label ms-attr="{for:'inlineCheckboxox'+index}"> </label>
                                     </div>
                                 </div>
                             </li>
@@ -289,12 +289,12 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                     <h4 class="modal-title">新增管理员</h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" ms-click="##clearAttr">
                 <div class="panel-body add">
                     <form>
                         <div class="form-group">
                             <label for="input1" class="form-label">管理员</label>
-                            <div class="select-user form-control editdept-select-dept"></div>
+                            <div class="select-user form-control editdept-select-dept iamuser"></div>
                         </div>
                         <div class="form-group">
                             <label for="input2" class="form-label">管理范围</label>
@@ -320,7 +320,13 @@
             getAdministratorsUrl:"json/managerUser.json",//获取管理员
             getDeptTree: "json/treejson.json",//获取部门jstree
             addNewAdministratorsUrl:"json/manager.json",//新增管理员
-            getAdministratorsInfoUrl:"json/manager.json"//获取管理员信息
+            deleteAdministratorUrl:"json/manager.json",//删除管理员
+            getAdministratorsInfoUrl:"json/manager.json",//获取管理员信息
+            editDeptauthUrl:"json/manager.json",//修改管理范围
+            editMerchantauthUrl:"json/manager.json",//修改支付权限
+            editStoreauthUrl:"json/manager.json",//修改门店权限
+            saveAdministratorInfoUrl:"json/manager.json"//保存底部复选框修改的信息
+
         };
         manager.init_start(url);
     });

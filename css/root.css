@@ -5,6 +5,10 @@ Main Css
 /* Bootstrap Main Css File (unedited) */
 @import url('bootstrap.css');
 
+/*nprogress*/
+/*@import url('plugin/nprogress/extras.css');*/
+/*@import url('plugin/nprogress/style.css');*/
+
 /* Theme Style */
 @import url('style.css');
 
