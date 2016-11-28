@@ -1,14 +1,13 @@
 
-<script src="js/bootstrap-toggle/bootstrap-toggle.min.js"></script>
 <div class="page-header">
-    <h1 class="title">配送方式设置</h1>
+    <h1 class="title">商品信息</h1>
     <ol class="breadcrumb">
         <li class="active">通过 <span class="label label-danger">商品属性</span>或<span class="label label-danger">商品属性</span> 进行查询。</li>
     </ol>
     <div class="right">
         <div class="btn-group" role="group" aria-label="...">
             <a href="javascript:;" class="btn btn-light" id="search"><i class="fa fa-search"></i></a>
-            <a href="javascript:;" class="btn btn-light" ms-click="##add">配送方式</a>
+            <a href="javascript:;" class="btn btn-light" ms-click="##add">商品管理</a>
         </div>
     </div>
 </div>
@@ -26,12 +25,21 @@
                         <ul class="menu">
                             <li><a href="javascript:;" ms-click="##add"><i class="fa fa-inbox"></i>新增配送方式</a></li>
                             <li><a href="javascript:;" ms-click="##choiceAll" data="0"><i class="fa fa-circle-o"></i>全部选中</a></li>
+                            <li><a href="javascript:;" ms-click="##delete"><i class="fa fa-cloud-upload"></i>上架商品</a></li>
                             <li><a href="javascript:;" ms-click="##delete"><i class="fa fa-trash"></i>删除</a></li>
-                            <li><a href="javascript:;"><i class="fa fa-trash"></i>切换
-                                <input type="checkbox" checked data-toggle="toggle" data-on="Ready" data-off="Not Ready">
-                            </a>
-                            </li>
                             <li class="search-component"><a href="#"><i class="fa fa-search"></i></a><input type="text" placeholder="按下回车或搜索键"/></li>
+                            <li class="col-md-hidden">
+                                <a href="javascript:;">
+                                    <div class="radio radio-info radio-inline">
+                                        <input type="radio" ms-change="##choice" style="bottom: 4px" id="inlineRadio1" value="1" name="radioInline" checked="">
+                                        <label for="inlineRadio1"> 仓库中的商品 </label>
+                                    </div>
+                                    <div class="radio radio-warning radio-inline">
+                                        <input type="radio" ms-change="##choice" style="bottom: 4px" id="inlineRadio2" value="2" name="radioInline">
+                                        <label for="inlineRadio2"> 出售中的商品 </label>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
 
                     </div>
@@ -49,26 +57,41 @@
                 <thead>
                 <tr class="table-header">
                     <td style="width: 5%">选择</td>
-                    <td>物流名称</td>
-                    <td>配送费用</td>
-                    <td>是否启用</td>
-                    <td>描述</td>
-                    <td>操作</td>
+                    <td>货号</td>
+                    <td>商品名称</td>
+                    <td>库存</td>
+                    <td>销售价</td>
+                    <td class="text-center">最新</td>
+                    <td class="text-center">最热</td>
+                    <td class="text-center">特价</td>
+                    <td class="text-center">操作</td>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ms-for="el in ##listData">
                     <td class="sorting_1">
                         <div class="checkbox checkbox-inline">
-                            <input type="checkbox" ms-duplex="##select" ms-attr="{value:el.mdid,id:el.mdid}">
-                            <label ms-attr="{for:el.mdid}"></label>
+                            <input type="checkbox" ms-duplex="##select" ms-attr="{value:el.gid,id:el.gid}">
+                            <label ms-attr="{for:el.gid}"></label>
                         </div>
                     </td>
-                    <td>{{el.mdTitle}}</td>
-                    <td>{{el.mdFulfilExpenses}}</td>
-                    <td><span ms-if="el.mdIsNew==0">否</span><span ms-if="el.mdIsNew==1">是</span></td>
-                    <td>{{el.introduce}}</td>
-                    <td><a href="javascript:;" ms-click="##edit(el)">修改</a></td>
+                    <td>{{el.itemNo}}</td>
+                    <td>{{el.productName}}</td>
+                    <td>{{el.repertory}}</td>
+                    <td>{{el.sellingPrice}}</td>
+                    <td class="text-center">
+                        <span ms-if="el.newest==1" class="fa fa-check color-up"></span>
+                        <span ms-if="el.newest==0" class="fa fa-remove color-down"></span>
+                    </td>
+                    <td class="text-center">
+                        <span ms-if="el.sale==1" class="fa fa-check color-up"></span>
+                        <span ms-if="el.sale==0" class="fa fa-remove color-down"></span>
+                    </td>
+                    <td class="text-center">
+                        <span ms-if="el.specialOffer==1" class="fa fa-check color-up"></span>
+                        <span ms-if="el.specialOffer==0" class="fa fa-remove color-down"></span>
+                    </td>
+                    <td class="text-center"><a href="javascript:;" ms-click="##edit(el)">编辑</a></td>
                 </tr>
                 </tbody>
             </table>
@@ -184,7 +207,7 @@
 <script>
     require(['warehouse'],function (warehouse) {
         var url = {
-            getDistributionList:'json/distribution.json',//查询和加载
+            getWareHouseList:'json/ware.json',//查询和加载
             addDistributionList:'json/distribution.json',//添加配送方式
             editDistributionList:'json/distribution.json',//修改配送方式
             deleteDistributionList:'json/distribution.json'//删除配送方式

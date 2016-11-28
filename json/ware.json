@@ -1,0 +1,124 @@
+{
+  "code": 0,
+  "msg": "获取成功.",
+  "data": {
+    "productName": [
+      {
+        "gid": 394,
+        "itemNo": "701608674129659164",
+        "productName": "测试_衣服",
+        "repertory": 20,
+        "sellingPrice": "0.01",
+        "newest": 0,
+        "sale": 1,
+        "specialOffer": 1,
+        "sort": 0
+      },
+      {
+        "gid": 391,
+        "itemNo": "548131329859653124",
+        "productName": "苹果",
+        "repertory": 130,
+        "sellingPrice": "1000.00",
+        "newest": 0,
+        "sale": 1,
+        "specialOffer": 0,
+        "sort": 0
+      },
+      {
+        "gid": 385,
+        "itemNo": "330146386209742504",
+        "productName": "休闲百搭打底衫女",
+        "repertory": 60,
+        "sellingPrice": "0.01",
+        "newest": 1,
+        "sale": 1,
+        "specialOffer": 1,
+        "sort": 0
+      },
+      {
+        "gid": 378,
+        "itemNo": "427936731085341726",
+        "productName": "测试",
+        "repertory": 60,
+        "sellingPrice": "0.01",
+        "newest": 1,
+        "sale": 1,
+        "specialOffer": 1,
+        "sort": 0
+      },
+      {
+        "gid": 376,
+        "itemNo": "104270218381468474",
+        "productName": "小米5",
+        "repertory": 130,
+        "sellingPrice": "0.01",
+        "newest": 1,
+        "sale": 1,
+        "specialOffer": 1,
+        "sort": 0
+      },
+      {
+        "gid": 373,
+        "itemNo": "569733413839578679",
+        "productName": "苹果6P",
+        "repertory": 250,
+        "sellingPrice": "4599.00",
+        "newest": 1,
+        "sale": 1,
+        "specialOffer": 1,
+        "sort": 0
+      },
+      {
+        "gid": 372,
+        "itemNo": "837899340751916576",
+        "productName": "男衣服",
+        "repertory": 17,
+        "sellingPrice": "0.01",
+        "newest": 1,
+        "sale": 1,
+        "specialOffer": 1,
+        "sort": 0
+      },
+      {
+        "gid": 371,
+        "itemNo": "998741237948457479",
+        "productName": "测试商品",
+        "repertory": 400,
+        "sellingPrice": "18.00",
+        "newest": 1,
+        "sale": 1,
+        "specialOffer": 1,
+        "sort": 0
+      },
+      {
+        "gid": 370,
+        "itemNo": "879105769451156591",
+        "productName": "男士T恤",
+        "repertory": 55,
+        "sellingPrice": "15.00",
+        "newest": 1,
+        "sale": 1,
+        "specialOffer": 1,
+        "sort": 0
+      },
+      {
+        "gid": 366,
+        "itemNo": "834178550747457145",
+        "productName": "女衣服",
+        "repertory": 54,
+        "sellingPrice": "0.01",
+        "newest": 1,
+        "sale": 1,
+        "specialOffer": 1,
+        "sort": 0
+      }
+    ],
+    "pagejson": {
+      "pagesize": 20,
+      "pagecount": 6,
+      "pageindex": 0,
+      "totalcount":537
+    }
+  }
+}

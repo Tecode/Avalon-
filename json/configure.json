@@ -1,0 +1,14 @@
+{
+  "code": 0,
+  "msg": "获取成功",
+  "data": {
+    "configid": 1,
+    "bglogo": "20160907/636088383822548896.png",
+    "bgtital": "成都企邮会员卡",
+    "sellphone": "028-88888888",
+    "selladdress": "成都市武侯区科华中路139号科华天成1703",
+    "merchantid": "60",
+    "configurl": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8b47edba1a8f1392\u0026redirect_uri=http://pay.51byod.cn/PayWeiXinMobile/VIPuser/OAuthcenter/Centerindex\u0026response_type=code\u0026scope=snsapi_userinfo\u0026state=4315097F05383C59#wechat_redirect",
+    "stroeurl": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8b47edba1a8f1392\u0026redirect_uri=http://pay.51byod.cn/PayWeiXinMobile/VIPuser/OAuthcenter/Centerindex\u0026response_type=code\u0026scope=snsapi_userinfo\u0026state=4315097F05383C59#wechat_redirect"
+  }
+}

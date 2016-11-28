@@ -46,7 +46,8 @@ var require = {
         fication:'component/fication',//商品分类管理
         allorders:'component/allorders',//全部订单
         manager:'component/manager',//权限管理
-        warehouse:'component/warehouse'//商品信息
+        warehouse:'component/warehouse',//商品信息
+        pointssetting:'component/pointssetting'//会员卡积分设置
 
 
     },

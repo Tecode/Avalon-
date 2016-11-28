@@ -1,12 +1,84 @@
 /**
+ * Created by ASSOON on 2016/11/28.
+ */
+/**
  * Created by ASSOON on 2016/11/26.
  */
 define(['avalon','bootstrap','featurepack','sweet_alert'], function(avalon,bootstrap,featurepack,swal) {
     var dataUrl = null;
-    var showList,searchList;
+    var fullPage,integral,cardLevel,cardConfigure;
     var postdata ={type:1};
     var cloudMail = {
         avalonStart : function () {
+            fullPage = avalon.define({
+                $id:"fullPage"
+            });
+            integral = avalon.define({
+                $id:"integral",
+                integralData:{},
+                strategyList:[],
+                saveintegral:function () {
+                    var p_data ={
+                        instructions:integral.integralData.instructions,
+                        integid:integral.integralData.integid,
+                        ruleDescription:integral.integralData.ruleDescription,
+                        strategyList:JSON.stringify(integral.strategyList),
+                        type:1
+                    };
+                    cloudMail.getIntegral(p_data);
+                }
+            });
+            cardLevel = avalon.define({
+                $id:"cardLevel",
+                levelListData:[],
+                saveLevel:function () {
+                    var p_data ={
+                        settingList:JSON.stringify(cardLevel.levelListData),
+                        type:2
+                    };
+                    cloudMail.getLevelList(p_data);
+                },
+                addLevel:function () {
+                    if(cardLevel.levelListData.length>=10){
+                        swal("新增失败!", "您的会员等级个数已达上线。")
+                    }else {
+                        cardLevel.levelListData.push({
+                            "levelid": 0,"vipGrade": "","pontsstart": "","pontsend": "","discount": ""
+                        })
+                    }
+                },
+                deleteLevel:function (el) {
+                    swal({
+                            title: "确定删除此会员等级配置吗?",
+                            text: "删除以后将不会恢复!",
+                            type: "warning",
+                            showCancelButton: true,
+                            cancelButtonText:"取消",
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "确定",
+                            closeOnConfirm: false
+                        },
+                        function(){
+                            cardLevel.levelListData.remove(el);
+                            swal("删除成功!", "您已成功删除此会员等级配置，点击OK关闭窗口。", "success");
+                        });
+                }
+            });
+            cardConfigure = avalon.define({
+                $id:"cardConfigure",
+                configureinfo:{},
+                saveintegral:function () {
+                    var p_data ={
+                        instructions:integral.integralData.instructions,
+                        integid:integral.integralData.integid,
+                        ruleDescription:integral.integralData.ruleDescription,
+                        strategyList:JSON.stringify(integral.strategyList),
+                        type:1
+                    };
+                    cloudMail.getIntegral(p_data);
+                },
+                selected:{'selected':'selected'}
+            });
             showList = avalon.define({
                 $id:"showList",
                 listData:[],
@@ -72,8 +144,33 @@ define(['avalon','bootstrap','featurepack','sweet_alert'], function(avalon,boots
         fn:function () {
             showList.listData = arguments[0].data.productName;
         },
-        getResponse:function (data) {
-            featurepack.pack.pager(cloudMail.fn,data,dataUrl.getWareHouseList);
+        getIntegral:function (d) {
+            featurepack.pack.ajax(dataUrl.getIntegralUrl,"get",d,function (result) {
+                if(result.code == 0){
+                    integral.integralData = result.data;
+                    integral.strategyList = result.data.strategyList;
+                }else{
+                    swal(result.msg,"", "error");
+                }
+            })
+        },
+        getLevelList:function (d) {
+            featurepack.pack.ajax(dataUrl.getCardLevelUrl,"get",d,function (result) {
+                if(result.code == 0){
+                    cardLevel.levelListData = result.data;
+                }else{
+                    swal(result.msg,"", "error");
+                }
+            })
+        },
+        getConfigure:function (d) {
+            featurepack.pack.ajax(dataUrl.getConfigureUrl,"get",d,function (result) {
+                if(result.code == 0){
+                    cardConfigure.configureinfo = result.data;
+                }else{
+                    swal(result.msg,"", "error");
+                }
+            })
         },
         judge:function (type,value) {
             type==1?(function () {
@@ -132,13 +229,11 @@ define(['avalon','bootstrap','featurepack','sweet_alert'], function(avalon,boots
 
     var initStart = function (url) {
         dataUrl = url;
-
         featurepack.pack.option();
-        //下拉选项初始化
-        featurepack.pack.toggleTops();
-        featurepack.pack.datePicker(cloudMail.getTime,"#date-range-picker",false);
         //分页和查询
-        cloudMail.getResponse(postdata);
+        cloudMail.getIntegral();
+        cloudMail.getLevelList();
+        cloudMail.getConfigure();
         cloudMail.avalonStart();
 
     };
@@ -146,4 +241,5 @@ define(['avalon','bootstrap','featurepack','sweet_alert'], function(avalon,boots
         init_start: initStart
     };
 });
+
 

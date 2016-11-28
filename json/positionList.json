@@ -1,0 +1,71 @@
+
+{
+  "code": 0,
+  "msg": "获取成功",
+  "data": [
+    {
+      "index": 1,
+      "levelid": 86,
+      "vipGrade": "白银会员",
+      "pontsstart": "0",
+      "pontsend": "100",
+      "discount": "9.9"
+    },
+    {
+      "index": 2,
+      "levelid": 0,
+      "vipGrade": null,
+      "pontsstart": null,
+      "pontsend": null,
+      "discount": null
+    },
+    {
+      "index": 3,
+      "levelid": 0,
+      "vipGrade": null,
+      "pontsstart": null,
+      "pontsend": null,
+      "discount": null
+    },
+    {
+      "index": 4,
+      "levelid": 0,
+      "vipGrade": null,
+      "pontsstart": null,
+      "pontsend": null,
+      "discount": null
+    },
+    {
+      "index": 5,
+      "levelid": 0,
+      "vipGrade": null,
+      "pontsstart": null,
+      "pontsend": null,
+      "discount": null
+    },
+    {
+      "index": 6,
+      "levelid": 0,
+      "vipGrade": null,
+      "pontsstart": null,
+      "pontsend": null,
+      "discount": null
+    },
+    {
+      "index": 7,
+      "levelid": 0,
+      "vipGrade": null,
+      "pontsstart": null,
+      "pontsend": null,
+      "discount": null
+    },
+    {
+      "index": 8,
+      "levelid": 0,
+      "vipGrade": null,
+      "pontsstart": null,
+      "pontsend": null,
+      "discount": null
+    }
+  ]
+}

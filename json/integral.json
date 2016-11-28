@@ -1,0 +1,19 @@
+
+{
+  "code": 0,
+  "msg": "获取成功",
+  "data": {
+    "integid": 1,
+    "instructions": "成都企邮会员卡\n",
+    "ruleDescription": "充值1元获得1分",
+    "strategyList": [
+      {
+        "index": 1,
+        "monetary": 1,
+        "bonusPoints": 1,
+        "checkinteg": 1,
+        "shareinteg": 2
+      }
+    ]
+  }
+}
