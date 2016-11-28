@@ -18,24 +18,28 @@ define(['avalon','bootstrap','bootstrap_select','moment','daterangepicker','feat
         this.avalonStart = function () {
                 showList = avalon.define({
                     $id:"showList",
+                    rfMoney:'0',
                     listData:[],
                     see:function (el) {
                         $('#showDialog').click();
                     },
                     refund:function (el) {
-                        swal({
-                                title: "确定要退款吗？?",
-                                text: "退款以后将不会恢复!",
-                                type: "warning",
-                                showCancelButton: true,
-                                cancelButtonText:"取消",
-                                confirmButtonColor: "#DD6B55",
-                                confirmButtonText: "确定",
-                                closeOnConfirm: false
-                            },
-                            function(){
-                                cloudMail.getAjax.refundMoney({id:el.out_trade_no});
-                            });
+                        $("#showSmallbox").click();
+                        globalData = el;
+                    },
+                    validate: {
+                        onValidateAll: function (reasons) {
+                            reasons.length == 0 ? (function () {
+                                cloudMail.getAjax.refundMoney({id:globalData.out_trade_no,money:showList.rfMoney})
+                            })() : (function () {
+                                $('.tip').remove();
+                                $(reasons[0].element).parents('.errortips').after('<p class="color-down tip">' + reasons[0].message + '</p>')
+                            })();
+                        },
+                        validateInBlur: true
+                    },
+                    clear:function () {
+                        $('.tip').remove();
                     }
                 });
 
@@ -67,6 +71,7 @@ define(['avalon','bootstrap','bootstrap_select','moment','daterangepicker','feat
                 };
                 this.getAjax = {
                     refundMoney:function (postdata) {
+                        console.info(postdata);
                         featurepack.pack.ajax(dataUrl.refundMoneyUrl,"get",postdata,function (result) {
                             if(result.code == 0){
                                 swal("退款成功!", "您已经退款成功了，点击OK关闭窗口。", "success");

@@ -116,6 +116,30 @@
             <p class="text-center"><span class="fa fa-folder-open"></span></p>
             <p class="text-center">这里什么也没有，您可以试试搜索一下。</p>
         </div>
+        <!--输入退款金额-->
+        <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="panel-body">
+                            <form ms-validate = "##validate" action="#/paycount">
+                                <div class="form-group errortips">
+                                    <label class="tips">输入退款金额</label>
+                                    <input ms-rules="{number: true}" ms-focus="##clear" ms-duplex="##rfMoney" data-number-message="输入的必须是数字！" type="text" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-default">确定</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button style="display: none" type="button" id="showSmallbox" data-target="#myModal3" data-toggle="modal"></button>
     </div>
 
     <!--分页-->
