@@ -12,10 +12,11 @@ define(['avalon','bootstrap','featurepack','niceScroll','cropbox','sweet_alert']
                 listData:[],
                 filldata:{},
                 validate: featurepack.pack.checkValue(function () {
-                    $("form").serializeArray().map(function (child,index) {
-                        Data[child.name] = child.value
-                    });
-                    Data.newUrl = showList.filldata.logo;
+                        Data.Datamerchantid = $('.selectpicker').val();
+                        Data.name = showList.filldata.name;
+                        Data.address =showList.filldata.address;
+                        Data.tell = showList.filldata.tell;
+                        Data.imgsrc = showList.filldata.url;
                     cloudMail.saveData(Data);
                 }),
                 selected:{selected:'selected'},
@@ -53,6 +54,7 @@ define(['avalon','bootstrap','featurepack','niceScroll','cropbox','sweet_alert']
                         swal("保存成功!", "您已经成功修改了这张图片，点击OK关闭窗口。", "success");
                 }else{
                     swal(result.msg,"", "error");
+                    $('.loader').fadeOut(200);
                 }
             })
         },

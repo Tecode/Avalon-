@@ -1,4 +1,4 @@
-<div ms-controller="fullPage">
+<link rel="stylesheet" href="js/bower_components/cropbox/javascript/example/style.css">
 <div class="page-header">
     <h1 class="title">会员卡管理</h1>
     <ol class="breadcrumb">
@@ -24,7 +24,7 @@
                         <li role="presentation" class=""><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" class="active" aria-expanded="false">会员卡基础配置</a></li>
                     </ul>
                     <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active row ms-controller" id="home" ms-important="integral">
+                        <div role="tabpanel" class="tab-pane active row ms-controller" id="home" ms-controller="integral">
                             <div class="col-md-6">
                                 <div class="panel panel-default">
                                     <div class="panel-title">
@@ -123,7 +123,7 @@
                                 <button type="button" class="btn btn-default" ms-click="##saveintegral">提交保存</button>
                             </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane ms-controller" id="profile" ms-important="cardLevel">
+                        <div role="tabpanel" class="tab-pane ms-controller" id="profile" ms-controller="cardLevel">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="panel panel-default table-responsive">
@@ -187,7 +187,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane" id="messages" ms-important="cardConfigure">
+                        <div role="tabpanel" class="tab-pane" id="messages" ms-controller="cardConfigure">
                             <div class="row">
                                 <div class="col-md-12 col-lg-7">
                                     <div class="panel panel-default">
@@ -200,35 +200,35 @@
                                         </div>
 
                                         <div class="panel-body">
-                                            <form class="form-horizontal" ms-validate="##validate" action="#/arrangement">
+                                            <form class="form-horizontal" ms-validate="##validate" action="#/pointssetting">
                                                 <div class="form-group">
                                                     <label class="col-sm-3 control-label form-label">标题</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" ms-focus="##clearAttr" placeholder="会员卡的标题" ms-duplex="##configureinfo.bgtital" name="bgtital" ms-rules="{required:true}" data-required-message="会员卡名称必须填写！" id="input11">
+                                                        <input type="text" class="form-control" ms-focus="##clearAttr" placeholder="会员卡的标题" ms-duplex="##configureinfo.bgtital" ms-rules="{required:true}" data-required-message="会员卡名称必须填写！" id="input11">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-3 control-label form-label">商家联系电话</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" placeholder="13位手机号码" ms-focus="clearAttr" ms-duplex="##configureinfo.sellphone" name="sellphone" ms-rules="{required:true}" data-required-message="请填写正确的号码！" class="form-control">
+                                                        <input type="text" placeholder="手机号码或电话号码" ms-focus="clearAttr" ms-duplex="##configureinfo.sellphone" ms-rules="{required:true}" data-required-message="请填写正确的号码！" class="form-control">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-3 control-label form-label">商家联系地址</label>
                                                     <div class="col-sm-9">
-                                                        <textarea ms-rules="{required:true}" ms-focus="clearAttr" placeholder="留个地址呗，方便找到你。" ms-duplex="##configureinfo.selladdress" name="selladdress" data-required-message="联系地址需要填写！" class="form-control" rows="3"></textarea>
+                                                        <textarea ms-rules="{required:true}" ms-focus="clearAttr" placeholder="留个地址呗，方便找到你。" ms-duplex="##configureinfo.selladdress" data-required-message="联系地址需要填写！" class="form-control" rows="3"></textarea>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-sm-3 control-label form-label">支付配置</label>
                                                     <div class="col-sm-9">
-                                                        <select class="selectpicker" name="merchantid">
-                                                            <option value="10">4545</option>
-                                                            <option value="120">45122245</option>
-                                                            <option value="60">98444</option>
+                                                        <select class="selectpicker">
+                                                            <option value="10">打包价</option>
+                                                            <option value="120">我的天</option>
+                                                            <option value="60">哈哈哈</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -237,7 +237,7 @@
                                                     <label class="col-sm-3 control-label form-label">商家LOGO</label>
                                                     <div class="col-sm-9">
                                                         <div style="width: 108px;height: 108px;border: 1px solid #f1f1f1;border-radius: 3px;margin-bottom: 15px;">
-                                                            <img width="100%" src="img/cobe_img.jpg" ms-attr="{src:##filldata.logo}" alt="商家logo">
+                                                            <img width="100%" src="img/cobe_img.jpg" ms-attr="{src:##configureinfo.bglogo}" alt="商家logo">
                                                         </div>
                                                         <button type="button" class="btn btn-sm btn-light" ms-click="##uploadimg">上传LOGO</button>
                                                         <input type="file" id="file" style="display: none">
@@ -246,13 +246,13 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-3 control-label form-label">商城网址</label>
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" ms-rules="{required:true}" ms-duplex="##filldata.url" data-required-message="商城网站需要填写！" placeholder="输入商城的网址" rows="3" id="content"></textarea>
+                                                        <textarea class="form-control" ms-rules="{required:true}" ms-duplex="##configureinfo.stroeurl" data-required-message="商城网址需要填写！" placeholder="输入商城的网址" rows="3" id="contentStroe"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-sm-3 control-label form-label">会员卡网址</label>
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" ms-rules="{required:true}" ms-duplex="##filldata.url" data-required-message="商城网站需要填写！" placeholder="输入商城的网址" rows="3" id="content"></textarea>
+                                                        <textarea class="form-control" ms-rules="{required:true}" ms-duplex="##configureinfo.configurl" data-required-message="会员卡网址需要填写！" placeholder="输入会员卡的网址" rows="3" id="contentCard"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -260,7 +260,6 @@
                                                         <button type="submit" class="btn btn-default">保存</button>
                                                     </div>
                                                 </div>
-
                                             </form>
 
                                         </div>
@@ -269,6 +268,38 @@
                                 </div>
                             </div>
                         </div>
+
+
+                        <!--弹出裁剪框-->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <h4 class="modal-title">裁切图像</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="cropbox">
+                                            <div class="imageBox">
+                                                <div class="thumbBox"></div>
+                                                <div class="spinner" style="display: none">Loading...</div>
+                                            </div>
+                                            <div class="action">
+                                                <input type="button" id="btnCrop" value="裁剪" class="btn btn-default btn-block" style="margin: 0 auto;margin-top: 20px;width: 78%;">
+                                            </div>
+                                        </div>
+                                        <div class="cropimg" style="display: none">
+                                            <button type="button" id="saveimg"  class="btn btn-default btn-block" style="margin: 0 auto;margin-top: 10px;width: 78%;">提交并保存</button>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="loader" style="display: none"></div>
+                        <button style="display: none" id="modalicon" data-toggle="modal" data-target="#myModal"></button>
+
                     </div>
 
                 </div>
@@ -278,13 +309,13 @@
         </div>
     </div>
 </div>
-</div>
 <script>
     require(['pointssetting'],function (pointssetting) {
         var url = {
             getIntegralUrl:'json/integral.json',//获取积分
             getCardLevelUrl:'json/positionList.json',//获取会员卡等级
-            getConfigureUrl:'json/configure.json'//作废订单
+            getConfigureUrl:'json/configure.json',//获取配置
+            saveImageUrl:'json/configure.json'//保存图片
         };
         pointssetting.init_start(url);
     })

@@ -4,10 +4,10 @@
 /**
  * Created by ASSOON on 2016/11/26.
  */
-define(['avalon','bootstrap','featurepack','sweet_alert'], function(avalon,bootstrap,featurepack,swal) {
+define(['avalon','bootstrap','niceScroll','featurepack','cropbox','sweet_alert'], function(avalon,bootstrap,niceScroll,featurepack,cropbox,swal) {
     var dataUrl = null;
     var fullPage,integral,cardLevel,cardConfigure;
-    var postdata ={type:1};
+    var configureData = {oldurl:""};
     var cloudMail = {
         avalonStart : function () {
             fullPage = avalon.define({
@@ -67,77 +67,26 @@ define(['avalon','bootstrap','featurepack','sweet_alert'], function(avalon,boots
             cardConfigure = avalon.define({
                 $id:"cardConfigure",
                 configureinfo:{},
-                saveintegral:function () {
-                    var p_data ={
-                        instructions:integral.integralData.instructions,
-                        integid:integral.integralData.integid,
-                        ruleDescription:integral.integralData.ruleDescription,
-                        strategyList:JSON.stringify(integral.strategyList),
-                        type:1
-                    };
-                    cloudMail.getIntegral(p_data);
-                },
-                selected:{'selected':'selected'}
-            });
-            showList = avalon.define({
-                $id:"showList",
-                listData:[],
-                select:[],
-                filldata:{},
-                edit:function (el) {
-                    cloudMail.judge(2,el);
-                    globalData ={type:2,data:el}
-                },
                 validate: featurepack.pack.checkValue(function () {
-                    var postdata = {
-                        introduce:showList.filldata.introduce,
-                        mdIsNew:showList.filldata.mdIsNew,
-                        mdFulfilExpenses:showList.filldata.mdFulfilExpenses,
-                        mdTitle:showList.filldata.mdTitle
-                    };
-                    globalData.type==1?(function () {
-                        postdata.mdid = 0;
-                        cloudMail.addAjaxPost(postdata)
-                    })():(function () {
-                        postdata.mdid = globalData.data.mdid;
-                        cloudMail.editAjaxPost(postdata)
-                    })()
+                    configureData.bgtital = cardConfigure.configureinfo.bgtital;
+                    configureData.sellphone = cardConfigure.configureinfo.sellphone;
+                    configureData.selladdress = cardConfigure.configureinfo.selladdress;
+                    configureData.merchantid = $('.selectpicker').val();
+                    configureData.newUrl = cardConfigure.configureinfo.bglogo;
+                    configureData.stroeurl = cardConfigure.configureinfo.stroeurl;
+                    configureData.configurl = cardConfigure.configureinfo.configurl;
+                    configureData.type = 3;
+                    cloudMail.getConfigure(configureData);
                 }),
+                selected:{selected:'selected'},
                 clearAttr: function () {
                     $('.tips-msg').remove();
+                },
+                uploadimg:function () {
+                    $("#file").click();
                 }
             });
 
-            searchList = avalon.define({
-                $id:"searchList",
-                add:function () {
-                    cloudMail.judge(1,null);
-                    globalData ={type:1,data:null}
-                },
-                choice:function (e) {
-                    alert($(e.target).val())
-                },
-                choiceAll:function (e) {
-                    if ($(e.target).attr('data') == 0 && $(e.target).html() == '<i class="fa fa-circle-o"></i>全部选中') {
-                        $(e.target).html('<i class="fa fa-circle"></i>取消全选');
-                        $(e.target).attr('data', 1);
-                        for (var i = 0; i < showList.listData.length; i++) {
-                            showList.select.push(showList.listData[i].gid.toString())
-                        }
-                    } else if ($(e.target).attr('data') == 1 && $(e.target).html() == '<i class="fa fa-circle"></i>取消全选') {
-                        $(e.target).html('<i class="fa fa-circle-o"></i>全部选中');
-                        $(e.target).attr('data', 0);
-                        showList.select = [];
-                    }
-                },
-                delete:function () {
-                    if(showList.select<=0){
-                        swal("先选一个呗","请先选择要删除的选项。", "error");
-                    }else {
-                        cloudMail.deleteAjaxPost({ids:showList.select.toString()})
-                    }
-                }
-            });
             avalon.scan(document.body);
         },
         //分页插件封装的avalon需要传url
@@ -164,9 +113,18 @@ define(['avalon','bootstrap','featurepack','sweet_alert'], function(avalon,boots
             })
         },
         getConfigure:function (d) {
+            console.info(d);
             featurepack.pack.ajax(dataUrl.getConfigureUrl,"get",d,function (result) {
                 if(result.code == 0){
                     cardConfigure.configureinfo = result.data;
+                    configureData.oldurl = result.data.bglogo;
+                    $('.selectpicker option').each(function (index,child) {
+                        if($(child).val()==result.data.merchantid){
+                            $(child).attr("selected","selected")
+                        }
+                    });
+                    //select选择框
+                    featurepack.pack.option();
                 }else{
                     swal(result.msg,"", "error");
                 }
@@ -187,40 +145,22 @@ define(['avalon','bootstrap','featurepack','sweet_alert'], function(avalon,boots
             }();
             $('#showBigBox').click()
         },
-        addAjaxPost:function (postdata) {
-            console.info(postdata)
-            featurepack.pack.ajax(dataUrl.addDistributionList,"post",postdata,function (result) {
-                if(result.code == 0){
-                    swal("添加成功!", "您已经成功添加了配送方式，点击OK关闭窗口。", "success");
-                    globalData = null;
-                    $('#showBigBox').click();
-                    cloudMail.getResponse();
-                }else{
-                    swal(result.msg,"", "error");
-                }
-            })
+        getdata:function () {
+            imgData64 = arguments[0];
         },
-        editAjaxPost:function (postdata) {
-            console.info(postdata)
-            featurepack.pack.ajax(dataUrl.editDistributionList,"post",postdata,function (result) {
+        savaimage:function (postdata) {
+            featurepack.pack.ajax(dataUrl.saveImageUrl,"post",postdata,function (result) {
                 if(result.code == 0){
-                    swal("修改成功!", "您已经成功修改了配送方式，点击OK关闭窗口。", "success");
-                    globalData = null;
-                    $('#showBigBox').click();
-                    cloudMail.getResponse();
+                    $('.loader').fadeOut(200);
+                    cardConfigure.filldata.bglogo = result.data.url;
+                    imgData64 = null;
+                    $('#modalicon').click();
+                    swal("保存成功!", "您已经成功修改了这张图片，点击OK关闭窗口。", "success");
                 }else{
+                    $('#modalicon').click();
                     swal(result.msg,"", "error");
-                }
-            })
-        },
-        deleteAjaxPost:function (postdata) {
-            featurepack.pack.ajax(dataUrl.deleteDistributionList,"post",postdata,function (result) {
-                if(result.code == 0){
-                    swal("修改成功!", "您已经成功修改了配送方式，点击OK关闭窗口。", "success");
-                    globalData = null;
-                    cloudMail.getResponse();
-                }else{
-                    swal(result.msg,"", "error");
+                    $('.loader').fadeOut(200);
+
                 }
             })
         }
@@ -229,13 +169,13 @@ define(['avalon','bootstrap','featurepack','sweet_alert'], function(avalon,boots
 
     var initStart = function (url) {
         dataUrl = url;
-        featurepack.pack.option();
-        //分页和查询
+        $('#saveimg').on('click',function () {cloudMail.savaimage({imageData:imgData64});$('.loader').fadeIn(100)});
+        cloudMail.avalonStart();
         cloudMail.getIntegral();
         cloudMail.getLevelList();
         cloudMail.getConfigure();
-        cloudMail.avalonStart();
-
+        featurepack.pack.noScroll();
+        featurepack.pack.cropimage(cloudMail.getdata);
     };
     return {
         init_start: initStart

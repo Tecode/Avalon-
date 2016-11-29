@@ -31,28 +31,28 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label form-label">商城名称</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" ms-focus="##clearAttr" placeholder="商城的标题" ms-duplex="##filldata.name" name="name" ms-rules="{required:true}" data-required-message="商城名字必须填写！" id="input11">
+                            <input type="text" class="form-control" ms-focus="##clearAttr" placeholder="商城的标题" ms-duplex="##filldata.name" ms-rules="{required:true}" data-required-message="商城名字必须填写！" id="input11">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label form-label">联系电话</label>
                         <div class="col-sm-10">
-                            <input type="text" placeholder="13位手机号码" ms-focus="clearAttr" ms-duplex="##filldata.tell" name="tell" ms-rules="{pattern:/^0{0,1}(13[4-9]|15[7-9]|15[0-2]|18[7-8])[0-9]{8}$/}" data-pattern-message="请填写正确的手机号码！" class="form-control">
+                            <input type="text" placeholder="13位手机号码" ms-focus="clearAttr" ms-duplex="##filldata.tell" ms-rules="{pattern:/^0{0,1}(13[4-9]|15[7-9]|15[0-2]|18[7-8])[0-9]{8}$/}" data-pattern-message="请填写正确的手机号码！" class="form-control">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label form-label">联系地址</label>
                         <div class="col-sm-10">
-                            <textarea ms-rules="{required:true}" ms-focus="clearAttr" placeholder="留个地址呗，方便找到你。" ms-duplex="##filldata.address" name="address" data-required-message="联系地址需要填写！" class="form-control" rows="3"></textarea>
+                            <textarea ms-rules="{required:true}" ms-focus="clearAttr" placeholder="留个地址呗，方便找到你。" ms-duplex="##filldata.address" data-required-message="联系地址需要填写！" class="form-control" rows="3"></textarea>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label form-label">支付配置</label>
                         <div class="col-sm-10">
-                                <select class="selectpicker" name="merchantid">
+                                <select class="selectpicker">
                                     <option ms-for="el in ##listData" ms-attr="[{value:el.merchantid},(el.merchantid==##filldata.merchantid?true:false) && ##selected]">{{el.merchantname}}</option>
                                 </select>
                         </div>
