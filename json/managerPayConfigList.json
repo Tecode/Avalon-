@@ -1,0 +1,101 @@
+
+{
+  "code": "0",
+  "msg": "获取成功",
+  "data": {
+    "pagejson": [
+      {
+        "pagecount": 1,
+        "pageindex": 1,
+        "pagesize": 10000,
+        "totalcount": 0
+      }
+    ],
+    "merchant": [
+      {
+        "merchantid": "60",
+        "mch_id": "1271483501",
+        "appid": "wx8b47edba1a8f1392",
+        "appkey": "",
+        "appsecret": "cd57bab2cf391880a33cd97abcb16d39",
+        "sslcert_path": "130904882182884933_apiclient_cert.p12",
+        "notify_url": null,
+        "repost_levenl": "微信支付",
+        "type": "1",
+        "merchantname": "默认收款方式",
+        "is_default": "0",
+        "goods_tag": "ew"
+      },
+      {
+        "merchantid": "266",
+        "mch_id": "",
+        "appid": "",
+        "appkey": "",
+        "appsecret": "",
+        "sslcert_path": "",
+        "notify_url": null,
+        "repost_levenl": "",
+        "type": "0",
+        "merchantname": "默认收款方式1",
+        "is_default": "0",
+        "goods_tag": ""
+      },
+      {
+        "merchantid": "313",
+        "mch_id": "1271483501",
+        "appid": "wx3f6f855aa469000f",
+        "appkey": "",
+        "appsecret": "a54829c6b4b45a122e32d551975d95db",
+        "sslcert_path": "",
+        "notify_url": null,
+        "repost_levenl": "dd",
+        "type": "0",
+        "merchantname": "dd",
+        "is_default": "1",
+        "goods_tag": ""
+      },
+      {
+        "merchantid": "321",
+        "mch_id": "1390808702",
+        "appid": "",
+        "appkey": "",
+        "appsecret": "",
+        "sslcert_path": "",
+        "notify_url": null,
+        "repost_levenl": "最新",
+        "type": "1",
+        "merchantname": "快办商户通",
+        "is_default": "1",
+        "goods_tag": ""
+      },
+      {
+        "merchantid": "424",
+        "mch_id": "",
+        "appid": "1254411",
+        "appkey": "2544111",
+        "appsecret": "22222",
+        "sslcert_path": "",
+        "notify_url": null,
+        "repost_levenl": "付款",
+        "type": "0",
+        "merchantname": "v2.0.0",
+        "is_default": "1",
+        "goods_tag": ""
+      },
+      {
+        "merchantid": "479",
+        "mch_id": "",
+        "appid": "",
+        "appkey": "",
+        "appsecret": "",
+        "sslcert_path": "",
+        "notify_url": null,
+        "repost_levenl": "",
+        "type": "0",
+        "merchantname": "",
+        "is_default": "1",
+        "goods_tag": ""
+      }
+    ]
+  }
+}

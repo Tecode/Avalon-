@@ -59,6 +59,25 @@ define(['avalon','bootstrap','niceScroll','featurepack','sweet_alert','summernot
             addImage = avalon.define({
                 $id:"addImage",
                 postImageData:[],
+                removeImage:function (el) {
+                    swal({
+                            title: "确定移除这张图片?",
+                            text: "移除以后将不会恢复!",
+                            type: "warning",
+                            showCancelButton: true,
+                            cancelButtonText: "取消",
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "确定",
+                            closeOnConfirm: false
+                        },
+                        function () {
+                            $('.fade-slide').css('opacity',0);
+                            setTimeout(function () {
+                                addImage.postImageData.remove(el);
+                                swal("移除成功!", "您已经成功移除了这张图片，点击OK关闭窗口。", "success");
+                            },200);
+                        });
+                },
                 validate: featurepack.pack.checkValue(function () {
                     alert("isOk")
                 })
@@ -91,10 +110,13 @@ define(['avalon','bootstrap','niceScroll','featurepack','sweet_alert','summernot
                 imageUrl:arguments[0],
                 imageSize:arguments[1],
                 imageName:arguments[2]
-            })
+            });
+            setTimeout(function () {
+                $('.fade-slide').css('opacity',1)
+            },150)
         },
         getUploadError:function () {
-            swal(arguments[0],"上传图片支持jpg,gif,png格式。", "error");
+            swal(arguments[0],"上传图片出错了。", "error");
         }
     };
 

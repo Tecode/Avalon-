@@ -12,8 +12,6 @@
             <a href="javascript:;" class="btn btn-light"><i class="fa fa-refresh"></i></a>
         </div>
     </div>
-    <!-- End Page Header Right Div -->
-
 </div>
 <div class="row ms-controller" ms-controller="controlAllView">
     <div class="col-md-9">
@@ -220,7 +218,7 @@
                                     <div class="checkbox checkbox-inline" style="padding-top: 2px;padding-left: 0;margin-left: 5px"> 管理</div>
                                 </div>
                             </li>
-                            <li class="items" ms-for="(index,el) in ##paymentAuthority" ms-attr="{data_info:el.id}"><i class="fa fa-leaf"></i>{{el.text}}
+                            <li class="items" ms-for="(index,el) in ##allpaymentAuthority" ms-attr="{data_info:el.merchantid}"><i class="fa fa-leaf"></i>{{el.merchantname}}
                                 <div class="right">
                                     <div class="checkbox checkbox-inline" style="padding-top: 2px">
                                         <input type="checkbox" placeholder="" ms-attr="[{value:3},{id:'inlineCheckboxo'+index},(el.meun.indexOf(3)>=0) && ##checked]">
@@ -259,14 +257,14 @@
                                     <div class="checkbox checkbox-inline" style="padding-top: 2px;padding-left: 0;margin-left: 5px"> 管理</div>
                                 </div>
                             </li>
-                            <li class="items" ms-for="(index,el) in ##storeuthority"><i class="fa fa-shopping-cart"></i>{{el.text}}
+                            <li class="items" ms-for="(index,el) in ##allstoreuthority" ms-attr="{data_info:el.branchid}"> <i class="fa fa-shopping-cart"></i>{{el.branchname}}
                                 <div class="right">
                                     <div class="checkbox checkbox-inline" style="padding-top: 2px">
                                         <input type="checkbox" placeholder="" ms-attr="[{value:5},{id:'inlineCheckboxoo'+index},(el.meun.indexOf(5)>=0) && ##checked]">
                                         <label ms-attr="{for:'inlineCheckboxoo'+index}"> </label>
                                     </div>
                                     <div class="checkbox checkbox-inline" style="padding-top: 2px">
-                                        <input type="checkbox" id="inlineCheckbox19" ms-attr="[{value:6},{id:'inlineCheckboxox'+index},(el.meun.indexOf(6)>=0) && ##checked]">
+                                        <input type="checkbox" id="inlineCheckbox19" placeholder="" ms-attr="[{value:6},{id:'inlineCheckboxox'+index},(el.meun.indexOf(6)>=0) && ##checked]">
                                         <label ms-attr="{for:'inlineCheckboxox'+index}"> </label>
                                     </div>
                                 </div>
@@ -322,6 +320,8 @@
             addNewAdministratorsUrl:"json/manager.json",//新增管理员
             deleteAdministratorUrl:"json/manager.json",//删除管理员
             getAdministratorsInfoUrl:"json/manager.json",//获取管理员信息
+            getPayconfig:"json/managerPayConfigList.json",//获取支付配置权限
+            getStroe:"json/manager.stroe.json",//获取门店管理权限
             editDeptauthUrl:"json/manager.json",//修改管理范围
             editMerchantauthUrl:"json/manager.json",//修改支付权限
             editStoreauthUrl:"json/manager.json",//修改门店权限

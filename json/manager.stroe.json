@@ -1,0 +1,116 @@
+{
+  "code": 0,
+  "msg": "获取成功",
+  "data": [
+    {
+      "branchid": 70,
+      "branchmanage": [
+        {
+          "id": 2310,
+          "text": "qwe"
+        }
+      ],
+      "branchname": "默认门店地方",
+      "branchpaydes": "门店描述fs",
+      "isonline": 1,
+      "branchpay": [
+        {
+          "id": 321,
+          "text": "快办商户通"
+        }
+      ],
+      "branchdept": [
+        {
+          "id": 131,
+          "text": "企业号体验32144488"
+        }
+      ]
+    },
+    {
+      "branchid": 517,
+      "branchmanage": [
+        {
+          "id": 2310,
+          "text": "qwe"
+        }
+      ],
+      "branchname": "默认门店",
+      "branchpaydes": "得到",
+      "isonline": 0,
+      "branchpay": [
+        {
+          "id": 60,
+          "text": "默认收款方式"
+        }
+      ],
+      "branchdept": [
+        {
+          "id": 131,
+          "text": "企业号体验32144488"
+        }
+      ]
+    },
+    {
+      "branchid": 586,
+      "branchmanage": [
+        {
+          "id": 2298,
+          "text": "123"
+        }
+      ],
+      "branchname": "123",
+      "branchpaydes": "123",
+      "isonline": 1,
+      "branchpay": [
+        {
+          "id": 60,
+          "text": "默认收款方式"
+        }
+      ],
+      "branchdept": [
+        {
+          "id": 1215,
+          "text": "123"
+        }
+      ]
+    },
+    {
+      "branchid": 639,
+      "branchmanage": [
+        {
+          "id": 2362,
+          "text": "qwer"
+        }
+      ],
+      "branchname": "子部门2",
+      "branchpaydes": "微信支付",
+      "isonline": 1,
+      "branchpay": [
+        {
+          "id": 313,
+          "text": "dd"
+        }
+      ],
+      "branchdept": []
+    },
+    {
+      "branchid": 736,
+      "branchmanage": [],
+      "branchname": "科院",
+      "branchpaydes": "微信支付",
+      "isonline": 1,
+      "branchpay": [
+        {
+          "id": 321,
+          "text": "快办商户通"
+        }
+      ],
+      "branchdept": [
+        {
+          "id": 1399,
+          "text": "科院"
+        }
+      ]
+    }
+  ]
+}

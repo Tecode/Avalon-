@@ -214,19 +214,18 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
 
                 init: {
                     PostInit: function () {
-                        if(more==2){
-                            return;
-                        }else {
-                            document.getElementById('uploadfiles').onclick = function () {
+                       document.getElementById('uploadfiles').onclick = function () {
                                 if (uploader.files.length == 0) {
                                     $('#uploadtips').fadeIn(100).text('您还没有选择图片哦！').removeClass('color-up').addClass('color-down');
                                     timer();
                                 } else {
+                                    if(more!=2){
+                                        uploader.files.splice(uploader.files.length-1, 1);
+                                    }
                                     uploader.start();
                                     return false;
                                 }
                             };
-                        }
                         document.getElementById('pickfiles').onclick = function () {
 
                         }
@@ -249,7 +248,7 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                                     return;
                                 }
                                     try {
-                                        console.info(file.id)
+
                                     }catch (e){
                                         up.removeFile(file);
                                     }
@@ -298,9 +297,12 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                         }
                     },
                     Error: function (up, err) {
-                        errtip.call(this,err.message);
-                        $('#uploadtips').fadeIn().text(err.message).addClass('color-down');
-                        timer();
+                        more==2?(function () {
+                            errtip.call(this,err.message);
+                        })():(function () {
+                            $('#uploadtips').fadeIn().text(err.message).addClass('color-down');
+                            timer();
+                        })();
                     }
                 }
             });

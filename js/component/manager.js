@@ -21,6 +21,8 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'sweet_alert', 'featur
                 managementScope: [],//管理范围
                 paymentAuthority: [],//支付配置权限
                 storeuthority: [],//门店管理权限
+                allpaymentAuthority: [],//拉取全部支付配置权限
+                allstoreuthority: [],//拉取全部门店管理权限
                 specialauth:'',//底部复选框
                 administratorsInfo: {},
                 clearAttr: function (e) {
@@ -92,6 +94,7 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'sweet_alert', 'featur
             });
             avalon.scan(document.body)
         },
+        //一些判断初始化和循环方法
         initSelect: function () {
             selectUser = $('.panel-body .select-user').select({
                 url: '',
@@ -124,10 +127,10 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'sweet_alert', 'featur
                         $('.scope .selectdept').select('setSelected',detp);
                         break;
                     case 1:
-
+                        cloudMail.getAllPayconfig();
                         break;
                     case 2:
-
+                        cloudMail.getAllStoreauth();
                         break;
                     case 3:
                         //清理
@@ -218,7 +221,7 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'sweet_alert', 'featur
 
             }
         },
-        //获取管理员列表
+        //获取管理员列表ajax方法
         getResponse: function (d) {
             featurepack.pack.ajax(dataUrl.getAdministratorsUrl, "get", d, function (result) {
                 if (result.code == 0) {
@@ -306,6 +309,49 @@ define(['bootstrap', 'avalon', 'jstree', 'jquery_select', 'sweet_alert', 'featur
                 if (result.code == 0) {
                     swal("修改其它权限成功!", "您已成功修改了其它权限设置，点击OK关闭窗口。", "success");
                     cloudMail.getAdministratorsInfoUrl({aid: globalData.aid})
+                } else {
+                    swal(result.msg, "", "error");
+                }
+            })
+        },
+        //获取全部支付配置
+        getAllPayconfig:function (d) {
+            featurepack.pack.ajax(dataUrl.getPayconfig, "get", d, function (result) {
+                if (result.code == 0) {
+                    var allpaymentAuthority = result.data.merchant;
+                    //这里循环为了在页面中不会undefined
+                    $.each(allpaymentAuthority,function (i) {
+                        allpaymentAuthority[i].meun ="";
+                    });
+                    $.each(allpaymentAuthority,function (index,child) {
+                        $.each(manager.paymentAuthority,function (i,value) {
+                            if(child.merchantid == value.id){
+                                allpaymentAuthority[index].meun = manager.paymentAuthority[i].meun
+                            }
+                        })
+                    });
+                    manager.allpaymentAuthority = allpaymentAuthority;
+                } else {
+                    swal(result.msg, "", "error");
+                }
+            })
+        },
+        //获取全部门店权限
+        getAllStoreauth:function (d) {
+            featurepack.pack.ajax(dataUrl.getStroe, "get", d, function (result) {
+                if (result.code == 0) {
+                    var allstoreuthority = result.data;
+                    $.each(allstoreuthority,function (i) {
+                        allstoreuthority[i].meun ="";
+                    });
+                    $.each(allstoreuthority,function (index,child) {
+                        $.each(manager.storeuthority,function (i,value) {
+                            if(child.branchid == value.id){
+                                allstoreuthority[index].meun = manager.storeuthority[i].meun
+                            }
+                        })
+                    });
+                    manager.allstoreuthority = allstoreuthority;
                 } else {
                     swal(result.msg, "", "error");
                 }
