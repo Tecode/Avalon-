@@ -1,0 +1,112 @@
+{
+  "code": 0,
+  "msg": "显示成功.",
+  "data": [
+    {
+      "name": "尺寸",
+      "attrInfo": [
+        {
+          "id": "672",
+          "attributeValue": "4.0",
+          "isemploy": 0,
+          "stock": 0,
+          "price": 0
+        },
+        {
+          "id": "673",
+          "attributeValue": "4.7",
+          "isemploy": 0,
+          "stock": 0,
+          "price": 0
+        },
+        {
+          "id": "674",
+          "attributeValue": "5.0",
+          "isemploy": 0,
+          "stock": 0,
+          "price": 0
+        },
+        {
+          "id": "675",
+          "attributeValue": "5.7",
+          "isemploy": 0,
+          "stock": 0,
+          "price": 0
+        }
+      ]
+    },
+    {
+      "name": "颜色",
+      "attrInfo": [
+        {
+          "id": "654",
+          "attributeValue": "土豪金",
+          "isemploy": 0,
+          "stock": 0,
+          "price": 0
+        },
+        {
+          "id": "655",
+          "attributeValue": "天空灰",
+          "isemploy": 0,
+          "stock": 0,
+          "price": 0
+        },
+        {
+          "id": "656",
+          "attributeValue": "钛合金",
+          "isemploy": 0,
+          "stock": 0,
+          "price": 0
+        },
+        {
+          "id": "657",
+          "attributeValue": "白色",
+          "isemploy": 0,
+          "stock": 0,
+          "price": 0
+        }
+      ]
+    },
+    {
+      "name": "内存",
+      "attrInfo": [
+        {
+          "id": "663",
+          "attributeValue": "8G",
+          "isemploy": 0,
+          "stock": 0,
+          "price": 0
+        },
+        {
+          "id": "664",
+          "attributeValue": "16G",
+          "isemploy": 0,
+          "stock": 0,
+          "price": 0
+        },
+        {
+          "id": "665",
+          "attributeValue": "32G",
+          "isemploy": 0,
+          "stock": 0,
+          "price": 0
+        },
+        {
+          "id": "666",
+          "attributeValue": "64G",
+          "isemploy": 0,
+          "stock": 0,
+          "price": 0
+        },
+        {
+          "id": "667",
+          "attributeValue": "128G",
+          "isemploy": 0,
+          "stock": 0,
+          "price": 0
+        }
+      ]
+    }
+  ]
+}

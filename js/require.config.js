@@ -20,6 +20,8 @@ var require = {
         plupload:'bower_components/plupload/plupload.min',
         niceScroll:'bower_components/jquery.nicescroll/jquery.nicescroll',
         cropbox:'bower_components/cropbox/javascript/cropbox-min',
+        summernote:'summernote/summernote.min',
+        language:'summernote/summernote-zh-CN',
 
 
         paycount:'component/paycount',//收款统计
@@ -47,7 +49,8 @@ var require = {
         allorders:'component/allorders',//全部订单
         manager:'component/manager',//权限管理
         warehouse:'component/warehouse',//商品信息
-        pointssetting:'component/pointssetting'//会员卡积分设置
+        pointssetting:'component/pointssetting',//会员卡积分设置
+        entry:'component/entry'//商品录入
 
 
     },
@@ -66,6 +69,7 @@ var require = {
         jstree:{deps:['jquery']},
         layer:{deps:['jquery']},
         metisMenu:{deps:['jquery']},
-        niceScroll:{deps:['jquery']}
+        niceScroll:{deps:['jquery']},
+        language:{deps:['summernote']}
     }
 };

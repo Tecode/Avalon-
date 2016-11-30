@@ -24,7 +24,8 @@
                         <li role="presentation" class=""><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" class="active" aria-expanded="false">会员卡基础配置</a></li>
                     </ul>
                     <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active row ms-controller" id="home" ms-controller="integral">
+                        <div role="tabpanel" class="tab-pane active row" id="home">
+                            <div class="ms-controller" ms-controller="integral">
                             <div class="col-md-6">
                                 <div class="panel panel-default">
                                     <div class="panel-title">
@@ -122,9 +123,10 @@
                             <div class="col-md-12">
                                 <button type="button" class="btn btn-default" ms-click="##saveintegral">提交保存</button>
                             </div>
+                            </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane ms-controller" id="profile" ms-controller="cardLevel">
-                            <div class="row">
+                        <div role="tabpanel" class="tab-pane" id="profile">
+                            <div class="row ms-controller" ms-controller="cardLevel">
                                 <div class="col-md-12">
                                     <div class="panel panel-default table-responsive">
 
@@ -187,8 +189,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane" id="messages" ms-controller="cardConfigure">
-                            <div class="row">
+                        <div role="tabpanel" class="tab-pane" id="messages">
+                            <div class="row ms-controller" ms-controller="cardConfigure">
                                 <div class="col-md-12 col-lg-7">
                                     <div class="panel panel-default">
 

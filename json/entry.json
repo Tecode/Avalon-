@@ -1,0 +1,47 @@
+{
+  "code": 0,
+  "msg": "获取成功.",
+  "data": {
+    "leixings": [
+      {
+        "tid": 208,
+        "commodityTypeName": "衣服"
+      },
+      {
+        "tid": 211,
+        "commodityTypeName": "手机"
+      },
+      {
+        "tid": 216,
+        "commodityTypeName": "流氓兔"
+      },
+      {
+        "tid": 217,
+        "commodityTypeName": "溜达"
+      }
+    ],
+    "fenleis": [
+      {
+        "cmid": 141,
+        "cmclassName": "衣服"
+      },
+      {
+        "cmid": 142,
+        "cmclassName": "其他"
+      },
+      {
+        "cmid": 143,
+        "cmclassName": "超酷"
+      },
+      {
+        "cmid": 144,
+        "cmclassName": "配饰管"
+      },
+      {
+        "cmid": 147,
+        "cmclassName": "154"
+      }
+    ]
+  },
+  "number": "793154380765977144"
+}

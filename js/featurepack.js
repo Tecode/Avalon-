@@ -196,7 +196,7 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                 validateInKeyup: true
             }
         };
-        this.upload = function (fn,getUrl,url) {
+        this.upload = function (fn,getUrl,url,more,errtip) {
             //上传文件
             var uploader = new plupload.Uploader({
                 runtimes: 'html5,flash,silverlight,html4',
@@ -214,15 +214,19 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
 
                 init: {
                     PostInit: function () {
-                        document.getElementById('uploadfiles').onclick = function () {
-                            if (uploader.files.length == 0) {
-                                $('#uploadtips').fadeIn(100).text('您还没有选择图片哦！').removeClass('color-up').addClass('color-down');
-                                timer();
-                            } else {
-                                uploader.start();
-                                return false;
-                            }
-                        };
+                        if(more==2){
+                            return;
+                        }else {
+                            document.getElementById('uploadfiles').onclick = function () {
+                                if (uploader.files.length == 0) {
+                                    $('#uploadtips').fadeIn(100).text('您还没有选择图片哦！').removeClass('color-up').addClass('color-down');
+                                    timer();
+                                } else {
+                                    uploader.start();
+                                    return false;
+                                }
+                            };
+                        }
                         document.getElementById('pickfiles').onclick = function () {
 
                         }
@@ -272,7 +276,7 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                                 } else {
                                     !function (i) {
                                         previewImage(files[i], function (imgsrc) {
-                                            fn.call(this,imgsrc);
+                                            fn.call(this,imgsrc,files[i].size,files[i].name);
                                             $('#uploadtips').fadeIn().text('添加成功').removeClass('color-down').addClass('color-up');
                                             timer();
                                         });
@@ -294,6 +298,7 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                         }
                     },
                     Error: function (up, err) {
+                        errtip.call(this,err.message);
                         $('#uploadtips').fadeIn().text(err.message).addClass('color-down');
                         timer();
                     }
@@ -379,7 +384,7 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
             $("#b-40").click(function() { NProgress.set(0.4); });
             $("#b-inc").click(function() { NProgress.inc(); });
             $("#b-100").click(function() { NProgress.done(); });
-        }
+        };
     };
     var _featurepack = new pack();
     return {
