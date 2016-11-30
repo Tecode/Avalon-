@@ -231,16 +231,19 @@
                                             </ul>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-6 col-lg-4" ms-for="el in ##postImageData">
+                                            <div class="col-md-6 col-lg-4 fade-slide" ms-for="el in ##postImageData">
                                                 <div class="panel panel-default">
                                                     <div class="status">
                                                         <ul class="panel-tools panel-tools-hover">
-                                                            <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
+                                                            <li><a class="icon closed-tool" ms-click="##removeImage(el)"><i class="fa fa-times"></i></a></li>
                                                         </ul>
                                                         <div class="who clearfix">
-                                                            <span class="from">图片名称：{{el.imageName | truncate(20,'...')}}</span>
+                                                            <span class="from">图片名称：{{el.imageName | truncate(30,'...')}}</span>
                                                         </div>
-                                                        <div class="image"><img ms-attr="{src:el.imageUrl}" alt="img"></div>
+                                                        <div class="image">
+                                                            <img ms-attr="{src:el.imageUrl}" alt="img">
+                                                            <div id="uploadtips">454</div>
+                                                        </div>
                                                         <ul class="links">
                                                             <li><a href="#">图片大小： {{el.imageSize/1024 | number(0)}}KB</a></li>
                                                         </ul>
@@ -255,7 +258,7 @@
                                                         </div>
                                                         <div class="image">
                                                             <button type="button" id="pickfiles" class="btn btn-light btn-lg btn-block">添加图片</button>
-                                                            <button type="button" class="btn btn-default btn-lg btn-block">上传图片</button>
+                                                            <button type="button" id="uploadfiles" class="btn btn-default btn-lg btn-block">上传图片</button>
                                                         </div>
                                                     </div>
                                                 </div>

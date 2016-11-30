@@ -1635,7 +1635,10 @@ Mailbox
   line-height: 1.82em;
 }
 .status .image {
+    height: 180px;
+    margin-bottom: 20px;
   padding: 20px;
+  overflow: hidden;
 }
 .status .image img {
   width: 100%;
@@ -4440,4 +4443,10 @@ form .tips-msg{
 .manager .basic-list li i{
     font-size: 20px;
     margin-right: .4em;
+}
+.fade-slide{
+    opacity: 0;
+    -webkit-transition: opacity .15s linear;
+    -o-transition: opacity .15s linear;
+    transition: opacity .15s linear
 }
