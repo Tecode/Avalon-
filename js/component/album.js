@@ -28,6 +28,21 @@ define(['avalon','bootstrap','moment','daterangepicker','featurepack','plupload'
                     cloudMail.judge(2,el);
                     globalData = {type:2,data:el}
                 },
+                deleteInfo:function (el) {
+                    swal({
+                        title: "确定删除这条信息吗?",
+                        text: "删除以后不会恢复!",
+                        type: "warning",
+                        showCancelButton: true,
+                        cancelButtonText: "取消",
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "确定",
+                        closeOnConfirm: false
+                    },
+                    function () {
+                        cloudMail.deleteAlbumList({ids:el.ppid})
+                    });
+                },
                 validate: {
                     onValidateAll: function (reasons) {
                         if(showList.filldata.ppUrl.length>100){
@@ -83,6 +98,7 @@ define(['avalon','bootstrap','moment','daterangepicker','featurepack','plupload'
             $("#infomationBox").css("display",'block')
         },
         deleteAlbumList:function (postdata) {
+            console.info(postdata)
             featurepack.pack.ajax(dataUrl.deletBannerInfo,"post",postdata,function (result) {
                 if(result.code == 0){
                     swal("删除成功!", "您已经成功删除了这条banner图片，点击OK关闭窗口。", "success");
@@ -97,6 +113,7 @@ define(['avalon','bootstrap','moment','daterangepicker','featurepack','plupload'
             featurepack.pack.ajax(dataUrl.getAlbumList,"get",null,function (result) {
                 if(result.code == 0){
                     showList.listData = result.imgtitleInfolist;
+                    console.info(showList.listData)
                 }else{
                     swal(result.msg,"", "error");
                 }
@@ -107,19 +124,18 @@ define(['avalon','bootstrap','moment','daterangepicker','featurepack','plupload'
                 if(result.code == 0){
                     showList.filldata.ppUrl = "img/noimage.jpg";
                     swal("修改成功!", "您已经成功修改了这张图片，点击OK关闭窗口。", "success");
-                    $("#deleteimg").hide();
+                    cloudMail.getResponse();
                 }else{
                     swal(result.msg,"", "error");
                 }
             })
         },
         addBanner:function (postdata) {
-            console.log(postdata)
             featurepack.pack.ajax(dataUrl.addBannerUrl,"get",postdata,function (result) {
                 if(result.code == 0){
                     showList.filldata.ppUrl = "img/noimage.jpg";
                     swal("添加成功!", "您已经成功添加了这张图片，点击OK关闭窗口。", "success");
-                    $("#deleteimg").hide();
+                    cloudMail.getResponse();
                 }else{
                     swal(result.msg,"", "error");
                 }
@@ -130,8 +146,8 @@ define(['avalon','bootstrap','moment','daterangepicker','featurepack','plupload'
     var initStart = function (url) {
         dataUrl = url;
         //分页和查询
-        cloudMail.getResponse();
         cloudMail.avalonStart();
+        cloudMail.getResponse();
         featurepack.pack.upload(
             //转成64位编码
             cloudMail.callback,
