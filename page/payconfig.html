@@ -94,10 +94,7 @@
                                 <div class="form-group" ms-visible="##type==2">
                                     <label class="col-sm-3 control-label form-label">支付证书</label>
                                     <div class="col-sm-9 payconfig">
-                                        <div class="imgbox">
-                                        <img ms-attr="{src:##sslcert_path}" style="margin-bottom: 1.5em" src="img/noimage.jpg" width="100%"/>
-                                        <span id="uploadtips" class="uploadtips text-center" style="display: none">您还没有选择图片哦!</span>
-                                        </div>
+                                        <p class="form-control">{{##sslcert_path | truncate(25,'...')}}</p>
                                     </div>
                                     <div class="col-sm-offset-3 col-sm-9">
                                         <button type="button" class="btn btn-light btn-sm" id="pickfiles" style="margin-right: 1em">选择证书</button>

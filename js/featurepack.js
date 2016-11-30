@@ -208,7 +208,8 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                     max_file_size: '10mb',
                     mime_types: [
                         {title: "Image files", extensions: "jpg,gif,png"},
-                        {title: "Zip files", extensions: "zip"}
+                        {title: "Zip files", extensions: "zip"},
+                        {title: "证书文件", extensions: "xmp"}
                     ]
                 },
 
@@ -220,8 +221,12 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                                     timer();
                                 } else {
                                     if(more!=2){
-                                        uploader.files.splice(uploader.files.length-1, 1);
+                                        uploader.files.length>1?(function () {
+                                            uploader.files.splice(0,uploader.files.length-1);
+                                        })():''
                                     }
+
+                                    console.info(uploader.files);
                                     uploader.start();
                                     return false;
                                 }
@@ -256,30 +261,44 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                             files.length > 1 ? (function () {
                             swal(
                                 {
-                                    title: "选择的图片太多啦！",
-                                    text: "只能选择一张图片上传哦！",
+                                    title: "选择的文件太多啦！",
+                                    text: "每次只能选择一个文件上传哦！",
                                     timer: 4500,
                                     showConfirmButton: true
                                 });
                         })() : (function () {
                             for (var i = 0, len = files.length; i < len; i++) {
+                                if(files[i].type.indexOf('image')>=0&&more==3){
+                                    uploader.files.splice(i, 1);
+                                    swal(
+                                        {
+                                            title: "上传文件格式错误！",
+                                            text: "上传的不是支付证书格式，请重新选择",
+                                            timer: 4000,
+                                            showConfirmButton: true
+                                        });
+                                }
                                 if (files[i].size > 819200) {
                                     uploader.files.splice(i, 1);
                                     swal(
                                         {
-                                            title: "上传的图片过大!",
-                                            text: "上传的图片不能超过800KB",
+                                            title: "上传的文件过大!",
+                                            text: "上传的文件不能超过800KB",
                                             timer: 4500,
                                             showConfirmButton: true
                                         });
                                 } else {
-                                    !function (i) {
-                                        previewImage(files[i], function (imgsrc) {
-                                            fn.call(this,imgsrc,files[i].size,files[i].name);
-                                            $('#uploadtips').fadeIn().text('添加成功').removeClass('color-down').addClass('color-up');
-                                            timer();
-                                        });
-                                    }(i);
+                                    if(files[i].type.indexOf('image')>=0){
+                                        !function (i) {
+                                            previewImage(files[i], function (imgsrc) {
+                                                fn.call(this,imgsrc,files[i].size,files[i].name);
+                                                $('#uploadtips').fadeIn().text('添加成功').removeClass('color-down').addClass('color-up');
+                                                timer();
+                                            });
+                                        }(i);
+                                    }else {
+                                        fn.call(this,files[i].size,files[i].name);
+                                    }
                                 }
                             }
                         })();
@@ -297,12 +316,12 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                         }
                     },
                     Error: function (up, err) {
-                        more==2?(function () {
+                        if(more==2||more==3){
                             errtip.call(this,err.message);
-                        })():(function () {
+                        }else {
                             $('#uploadtips').fadeIn().text(err.message).addClass('color-down');
                             timer();
-                        })();
+                        }
                     }
                 }
             });

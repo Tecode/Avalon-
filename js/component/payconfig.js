@@ -12,7 +12,7 @@ define(['bootstrap','avalon','featurepack','plupload','sweet_alert'], function(b
             //转成64位编码
             cloudMail.callback,
             //获取服务器地址
-            cloudMail.callBackGetUrl,url.addimgUrl);
+            cloudMail.callBackGetUrl,url.addimgUrl,3,cloudMail.errorTips);
     };
 
     var Fn = function () {
@@ -27,7 +27,7 @@ define(['bootstrap','avalon','featurepack','plupload','sweet_alert'], function(b
                         merchantname:"",
                         payTypeChange:"",
                         repost_levenl:"",
-                        sslcert_path:"",
+                        sslcert_path:"请选择证书",
                         type:"1",
 
                         common:false,
@@ -37,7 +37,7 @@ define(['bootstrap','avalon','featurepack','plupload','sweet_alert'], function(b
                         list:{},
                         //验证表达式
                         validate: featurepack.pack.checkValue(function () {
-                            if(overallSituation.sslcert_path.length>100){
+                            if(overallSituation.sslcert_path=="请选择证书"){
                                 swal("图片未上传！","请点击开始上传按钮上传图片。","error");
                             }else {
                                 var postdata = {
@@ -133,11 +133,14 @@ define(['bootstrap','avalon','featurepack','plupload','sweet_alert'], function(b
         };
         //回调函数预览图片
         this.callback = function () {
-            overallSituation.sslcert_path = arguments[0];
+            overallSituation.sslcert_path = arguments[1];
+        };
+        this.errorTips = function () {
+            swal(arguments[0],"上传文件出错了,关闭以后重新选择。", "error");
         };
         //回调函数加载正式图片地址
         this.callBackGetUrl = function () {
-            overallSituation.sslcert_path = arguments[0].data.url;
+            swal("上传成功!", "您已经成功上传了文件，点击OK关闭窗口。", "success");
         };
             this.getAjax = {
             getResponse:function (postdata) {
@@ -150,7 +153,6 @@ define(['bootstrap','avalon','featurepack','plupload','sweet_alert'], function(b
                 })
             },
             postPayConfig:function (postdata) {
-                console.info(postdata)
                 featurepack.pack.ajax(url.editPayConfig,"post",postdata,function (result) {
                     if(result.code == 0){
                         swal("修改成功!", "您已经修改了这项配置，点击OK关闭窗口。", "success");
