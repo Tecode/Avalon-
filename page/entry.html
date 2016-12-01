@@ -241,7 +241,7 @@
                                                             <li><a class="icon closed-tool" ms-click="##removeImage(el,1,$event)"><i class="fa fa-times"></i></a></li>
                                                         </ul>
                                                         <div class="who clearfix">
-                                                            <span class="from">图片名称：{{el.imageName | truncate(30,'...')}}</span>
+                                                            <span class="from">图片名称：{{el.imageName | truncate(25,'...')}}</span>
                                                         </div>
                                                         <div class="image">
                                                             <img ms-attr="{src:el.imageUrl}" alt="img">
@@ -256,7 +256,7 @@
                                                 <div class="panel panel-default">
                                                     <div class="status">
                                                         <div class="who clearfix">
-                                                            <span class="from color-down">最多上传5张，还可以选择0张。</span>
+                                                            <span class="from color-down">已经选择了{{##postImageData.length}}张图片。</span>
                                                         </div>
                                                         <div class="image">
                                                             <button type="button" id="pickfiles" class="btn btn-light btn-lg btn-block">添加图片</button>
