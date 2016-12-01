@@ -35,6 +35,8 @@ define(['avalon','bootstrap','niceScroll','featurepack','sweet_alert','summernot
                     for(key in basicInfo.basicInfoData){
                         pData[key] = basicInfo.basicInfoData[key];
                     }
+                    pData.tid = $('.commodityType').val();
+                    pData.cmid = $('.fengleiType').val();
                     cloudMail.saveBasicInfo(pData)
                 })
             });

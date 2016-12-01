@@ -1,0 +1,124 @@
+{
+  "code": 0,
+  "msg": "商品操作失败",
+  "lxfl": {
+    "leixings": [
+      {
+        "tid": 208,
+        "commodityTypeName": "衣服"
+      },
+      {
+        "tid": 211,
+        "commodityTypeName": "手机"
+      },
+      {
+        "tid": 216,
+        "commodityTypeName": "流氓兔"
+      },
+      {
+        "tid": 217,
+        "commodityTypeName": "溜达"
+      }
+    ],
+    "fenleis": [
+      {
+        "cmid": 141,
+        "cmclassName": "衣服"
+      },
+      {
+        "cmid": 142,
+        "cmclassName": "其他"
+      },
+      {
+        "cmid": 143,
+        "cmclassName": "超酷"
+      },
+      {
+        "cmid": 144,
+        "cmclassName": "配饰管"
+      },
+      {
+        "cmid": 147,
+        "cmclassName": "154"
+      }
+    ]
+  },
+  "waremessage": {
+
+    "wid": 0,
+    "productName": "哈哈哈",
+    "itemNo": "667283702892855994",
+    "putaway": "1",
+    "newest": "1",
+    "sale": "1",
+    "recommend": "1",
+    "specialOffer": "0",
+    "costPrice": 100,
+    "marketPrice": 30,
+    "sellingPrice": 10,
+
+    "sort": 0,
+    "productDescription": "",
+    "description": "",
+    "tid": 0,
+    "cmid": 0,
+    "imgs": []
+  },
+  "gcommodity": {
+    "tid": "208",
+    "commodityTypeName": "衣服",
+    "cmid": "143",
+    "className": "超酷",
+    "attribut": []
+  },
+
+  "attrvals": [
+    {
+      "name": "颜色",
+      "attrInfo": [
+        {
+          "id": "632",
+          "attributeValue": "红色",
+          "isemploy": 0,
+          "stock": 0,
+          "price": 0
+        },
+        {
+          "id": "633",
+          "attributeValue": "白色",
+          "isemploy": 0,
+          "stock": 0,
+          "price": 0
+        },
+        {
+          "id": "634",
+          "attributeValue": "黑色",
+          "isemploy": 0,
+          "stock": 0,
+          "price": 0
+        },
+        {
+          "id": "682",
+          "attributeValue": "红色",
+          "isemploy": 1,
+          "stock": 0,
+          "price": 0
+        },
+        {
+          "id": "683",
+          "attributeValue": "白色",
+          "isemploy": 1,
+          "stock": 33,
+          "price": 10
+        },
+        {
+          "id": "684",
+          "attributeValue": "黑色",
+          "isemploy": 1,
+          "stock": 600,
+          "price": 200
+        }
+      ]
+    }
+  ]
+}
