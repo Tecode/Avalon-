@@ -34,8 +34,8 @@ Plugin Css
 @import url('plugin/bootstrap-wysihtml5/bootstrap-wysihtml5.css');
 
 /* Summernote */
-@import url('plugin/summernote/summernote.css');
 @import url('plugin/summernote/summernote-bs3.css');
+@import url('plugin/summernote/dist/summernote.css');
 
 /* Sweet Alert */
 @import url('plugin/sweet-alert/sweet-alert.css');

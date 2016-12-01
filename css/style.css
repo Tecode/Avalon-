@@ -2326,6 +2326,23 @@ fieldset[disabled] .btn {
   color: #399bff;
   background-color: #fff;
 }
+.note-btn-group .btn-default{
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+.note-btn-group .btn-default:hover{
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+.note-btn-group .btn-sm{
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+    border: 1px solid #dedede;
+}
 /* Button Primary */
 .btn-primary {
   background-color: #33577b;
