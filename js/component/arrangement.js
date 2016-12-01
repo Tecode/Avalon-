@@ -60,7 +60,6 @@ define(['avalon','bootstrap','featurepack','niceScroll','cropbox','sweet_alert']
         },
         saveData:function (postdata) {
             featurepack.pack.ajax(dataUrl.saveDataUrl,"post",postdata,function (result) {
-                console.info(postdata)
                 if(result.code == 0){
                     swal("保存成功!", "您已经成功支付配置，点击OK关闭窗口。", "success");
                     Data = {oldurl:""};

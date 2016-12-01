@@ -196,7 +196,10 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                 validateInKeyup: true
             }
         };
-        this.upload = function (fn,getUrl,url,more,errtip) {
+        this.removeUpLoadimg = function (value) {
+            return value;
+        };
+        this.upload = function (fn,getUrl,url,more,errtip,removeData) {
             //上传文件
             var uploader = new plupload.Uploader({
                 runtimes: 'html5,flash,silverlight,html4',
@@ -223,10 +226,18 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                                     if(more!=2){
                                         uploader.files.length>1?(function () {
                                             uploader.files.splice(0,uploader.files.length-1);
-                                        })():''
+                                        })():'';
+                                        //判断上传多张是否在上传时删除了，如果删除了要在提交前移除他
+                                    }else if(more==2||removeData.call(this,'').length>0){
+                                        var rData = removeData.call(this,'');
+                                        for (var i = 0;i < uploader.files.length; i++) {
+                                            for(var j=0;j<rData.length;j++){
+                                                if(uploader.files[i].id==rData[j].id){
+                                                    uploader.files.splice(i, 1);
+                                                }
+                                            }
+                                        }
                                     }
-
-                                    console.info(uploader.files);
                                     uploader.start();
                                     return false;
                                 }
@@ -236,18 +247,6 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                         }
                     },
                     FilesAdded: function (up, files) {
-                        // 判断是否删除
-                            // if(istrue.call(this,'')){
-                            //     swal(
-                            //         {
-                            //             title: "删除了才可以上传哦！!",
-                            //             text: "点击图片上面的叉号可以删除图片！",
-                            //             timer: 4500,
-                            //             showConfirmButton: true
-                            //         });
-                            //     return;
-                            // }
-                        //限制一次只能上传一张
                             $.each(up.files, function (i, file) {
                                 if (up.files.length <= 1) {
                                     return;
@@ -291,7 +290,7 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                                     if(files[i].type.indexOf('image')>=0){
                                         !function (i) {
                                             previewImage(files[i], function (imgsrc) {
-                                                fn.call(this,imgsrc,files[i].size,files[i].name);
+                                                fn.call(this,imgsrc,files[i].size,files[i].name,files[i]);
                                                 $('#uploadtips').fadeIn().text('添加成功').removeClass('color-down').addClass('color-up');
                                                 timer();
                                             });
@@ -371,7 +370,6 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                 var cropper = new cropbox(options);
                 document.querySelector('#file').addEventListener('change', function(){
                     var reader = new FileReader();
-                    console.info(this.files[0]);
                     if(this.files[0].size>819200){
                         swal("图片太大了！","图片不能大于800KB,请重新选择。", "error");
                     }else if(this.files[0].type.indexOf("image")==-1){

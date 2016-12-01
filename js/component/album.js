@@ -113,7 +113,6 @@ define(['avalon','bootstrap','moment','daterangepicker','featurepack','plupload'
             featurepack.pack.ajax(dataUrl.getAlbumList,"get",null,function (result) {
                 if(result.code == 0){
                     showList.listData = result.imgtitleInfolist;
-                    console.info(showList.listData)
                 }else{
                     swal(result.msg,"", "error");
                 }

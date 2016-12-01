@@ -17,7 +17,7 @@
             <div class="panel-body">
                 <div role="tabpanel">
                     <ul class="nav nav-tabs tabcolor5-bg" role="tablist">
-                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" aria-expanded="true" class="">基本信息</a></li>
+                        <li role="presentation" class="active basic"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" aria-expanded="true" class="">基本信息</a></li>
                         <li role="presentation" class=""><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" class="" aria-expanded="false">商品描述</a></li>
                         <li role="presentation" class=""><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" class="active" aria-expanded="false">商品属性</a></li>
                         <li role="presentation" class=""><a href="#attr" aria-controls="attr" role="tab" data-toggle="tab" class="" aria-expanded="false">商品相册</a></li>
@@ -41,7 +41,7 @@
                                                     <input type="text" class="form-control" ms-focus="##clearAttr" placeholder="商品名称" ms-duplex="##basicInfoData.tradename" ms-rules="{required:true}" data-required-message="商品名称必须填写！">
                                                 </div>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group controls">
                                                 <label class="col-sm-3 control-label form-label">商品类型</label>
                                                 <div class="col-sm-9">
                                                     <select class="selectpicker commodityType">
@@ -144,7 +144,7 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label form-label">商品简介</label>
                                                     <div class="col-sm-10">
-                                                        <textarea class="form-control" rows="3"></textarea>
+                                                        <textarea placeholder="商品描述信息" class="form-control" ms-duplex="##description" rows="3"></textarea>
                                                     </div>
                                                 </div>
                                             </form>
@@ -159,9 +159,9 @@
                                             商品图文介绍
                                         </div>
                                         <div class="panel-body">
-                                            <form>
-                                                <div id="summernote">你好，在这里添加商品的描述信息。</div>
-                                                <button class="btn btn-default">保存商品信息</button>
+                                            <form action="">
+                                                <div id="summernote"></div>
+                                                <button class="btn btn-default" type="button" ms-click="##saveDescription">保存商品信息</button>
                                             </form>
                                         </div>
                                     </div>
@@ -170,7 +170,7 @@
                         </div>
                         <div role="tabpanel" class="tab-pane" id="messages">
                             <div class="row ms-controller" ms-controller="attribute">
-                                <div class="col-md-12" ms-for="elme in ##attributeData" ms-if="##attributeData.length>0">
+                                <div class="col-md-12" ms-for="(id,elme) in ##attributeData" ms-if="##attributeData.length>0">
                                     <div class="panel panel-default table-responsive">
                                         <div class="panel-title">
                                             {{elme.name}}
@@ -186,11 +186,11 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr ms-for="el in elme.attrInfo">
+                                                <tr ms-for="(index,el) in elme.attrInfo">
                                                     <th scope="row">
                                                         <div class="checkbox checkbox-inline">
-                                                            <input placeholder="" type="checkbox" ms-attr="{id:'inlineCheckbox'+el.id,value:el.id}" />
-                                                            <label ms-attr="{for:'inlineCheckbox'+el.id}"></label>
+                                                            <input placeholder="" type="checkbox" ms-duplex="##select" ms-attr="{id:'inlineCheck'+el.id+id,value:el.id}" />
+                                                            <label ms-attr="{for:'inlineCheck'+el.id+id}"></label>
                                                         </div>
                                                     </th>
                                                     <td>{{el.attributeValue}}</td>
@@ -214,6 +214,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="text-center">
+                                    <button type="button" class="btn btn-default" ms-if="##attributeData.length>0" ms-click="##saveAttribute">保存商品属性</button>
+                                </div>
                                 <div class="isnullTips" ms-if="##attributeData.length==0">
                                     <p class="text-center"><span class="fa fa-folder-open"></span></p>
                                     <p class="text-center">这里什么也没有，先去选择商品类型吧！</p>
@@ -235,14 +238,13 @@
                                                 <div class="panel panel-default">
                                                     <div class="status">
                                                         <ul class="panel-tools panel-tools-hover">
-                                                            <li><a class="icon closed-tool" ms-click="##removeImage(el)"><i class="fa fa-times"></i></a></li>
+                                                            <li><a class="icon closed-tool" ms-click="##removeImage(el,1,$event)"><i class="fa fa-times"></i></a></li>
                                                         </ul>
                                                         <div class="who clearfix">
                                                             <span class="from">图片名称：{{el.imageName | truncate(30,'...')}}</span>
                                                         </div>
                                                         <div class="image">
                                                             <img ms-attr="{src:el.imageUrl}" alt="img">
-                                                            <div id="uploadtips">454</div>
                                                         </div>
                                                         <ul class="links">
                                                             <li><a href="#">图片大小： {{el.imageSize/1024 | number(0)}}KB</a></li>
@@ -283,7 +285,11 @@
             getBasicInfoUrl:'json/entry.json',//基本信息下拉框和编号
             getAttributeDataUrl:'json/entry.type.json',//获取商品属性
             getConfigureUrl:'json/configure.json',//获取配置
-            uploadImageUrl:'json/configure.json'//保存图片
+            uploadImageUrl:'json/entry.json',//上传图片的地址添加图片
+            saveBasicInfoUrl:'json/entry.json',//保存基本信息
+            sendFile:'json/entry.json',//保存编辑框的图片
+            saveDescriptionUrl:'json/entry.json',//保存编辑器里面的内容
+            saveAttributeUrl:'json/entry.type.json'//保存修改的属性
         };
         entry.init_start(url);
     })

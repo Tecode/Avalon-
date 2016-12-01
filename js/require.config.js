@@ -20,8 +20,8 @@ var require = {
         plupload:'bower_components/plupload/plupload.min',
         niceScroll:'bower_components/jquery.nicescroll/jquery.nicescroll',
         cropbox:'bower_components/cropbox/javascript/cropbox-min',
-        summernote:'summernote/summernote.min',
-        language:'summernote/summernote-zh-CN',
+        summernote:'bower_components/summernote/dist/summernote.min',
+        language:'bower_components/summernote/dist/lang/summernote-zh-CN.min',
 
 
         paycount:'component/paycount',//收款统计
