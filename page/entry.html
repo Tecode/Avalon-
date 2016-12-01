@@ -170,7 +170,7 @@
                         </div>
                         <div role="tabpanel" class="tab-pane" id="messages">
                             <div class="row ms-controller" ms-controller="attribute">
-                                <div class="col-md-12" ms-for="(id,elme) in ##attributeData" ms-if="##attributeData.length>0">
+                                <div class="col-md-12" ms-for="elme in ##attributeData" ms-if="##attributeData.length>0">
                                     <div class="panel panel-default table-responsive">
                                         <div class="panel-title">
                                             {{elme.name}}
@@ -186,11 +186,11 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr ms-for="(index,el) in elme.attrInfo">
+                                                <tr ms-for="el in elme.attrInfo">
                                                     <th scope="row">
                                                         <div class="checkbox checkbox-inline">
-                                                            <input placeholder="" type="checkbox" ms-duplex="##select" ms-attr="{id:'inlineCheck'+el.id+id,value:el.id}" />
-                                                            <label ms-attr="{for:'inlineCheck'+el.id+id}"></label>
+                                                            <input placeholder="" type="checkbox" ms-attr="{id:'inlineCheckbox'+el.id,value:el.id}" />
+                                                            <label ms-attr="{for:'inlineCheckbox'+el.id}"></label>
                                                         </div>
                                                     </th>
                                                     <td>{{el.attributeValue}}</td>
@@ -215,7 +215,7 @@
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <button type="button" class="btn btn-default" ms-if="##attributeData.length>0" ms-click="##saveAttribute">保存商品属性</button>
+                                    <button type="button" class="btn btn-default" ms-click="##saveAttribute">保存商品属性</button>
                                 </div>
                                 <div class="isnullTips" ms-if="##attributeData.length==0">
                                     <p class="text-center"><span class="fa fa-folder-open"></span></p>
@@ -241,7 +241,7 @@
                                                             <li><a class="icon closed-tool" ms-click="##removeImage(el,1,$event)"><i class="fa fa-times"></i></a></li>
                                                         </ul>
                                                         <div class="who clearfix">
-                                                            <span class="from">图片名称：{{el.imageName | truncate(25,'...')}}</span>
+                                                            <span class="from">图片名称：{{el.imageName | truncate(30,'...')}}</span>
                                                         </div>
                                                         <div class="image">
                                                             <img ms-attr="{src:el.imageUrl}" alt="img">
@@ -256,7 +256,7 @@
                                                 <div class="panel panel-default">
                                                     <div class="status">
                                                         <div class="who clearfix">
-                                                            <span class="from color-down">已经选择了{{##postImageData.length}}张图片。</span>
+                                                            <span class="from color-down">最多上传5张，还可以选择0张。</span>
                                                         </div>
                                                         <div class="image">
                                                             <button type="button" id="pickfiles" class="btn btn-light btn-lg btn-block">添加图片</button>
