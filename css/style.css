@@ -4006,7 +4006,6 @@ Widgets
   min-height: 100px;
   border-radius: 3px;
   top: 0;
-  opacity: 0.2;
 }
 .blog-post .title {
   position: absolute;
@@ -4015,29 +4014,34 @@ Widgets
   padding: 10px;
   margin: 0;
   line-height: normal;
-  font-size: 34px;
   font-weight: 300;
 }
 .blog-post .author {
   position: relative;
   padding-left: 50px;
-  border-top: 1px solid #ededed;
-  padding-top: 20px;
-  margin-top: 15px;
+  padding-top: 10px;
   margin-bottom: 0;
 }
 .blog-post .author img {
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   border-radius: 999px;
   position: absolute;
   left: 0;
+}
+.blog-post .card-number{
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    color: #fff;
+    font-size: 14px;
 }
 .blog-post .author .text {
   margin-bottom: 20px;
 }
 .blog-post .author span {
   display: block;
+  font-size: 15px;
   color: #37363e;
   font-weight: 600;
 }

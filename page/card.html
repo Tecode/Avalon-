@@ -1,1 +1,240 @@
-微信会员卡
+
+<div class="page-header">
+    <h1 class="title">微信会员卡</h1>
+    <ol class="breadcrumb">
+        <li><a href="javascript:;">会员卡管理</a></li>
+        <li class="javascript:;">会员卡</li>
+    </ol>
+
+    <div class="right">
+        <div class="btn-group" role="group" aria-label="...">
+            <a href="index.html" class="btn btn-light">Dashboard</a>
+            <a href="#" class="btn btn-light"><i class="fa fa-refresh"></i></a>
+            <a href="#" class="btn btn-light"><i class="fa fa-search"></i></a>
+            <a href="#" class="btn btn-light" id="topstats"><i class="fa fa-line-chart"></i></a>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                会员卡配置
+                <ul class="panel-tools">
+                    <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
+                    <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
+                    <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
+                </ul>
+            </div>
+
+            <div class="panel-body">
+                <form class="form-horizontal">
+                    <div class="form-group has-success">
+                        <p class="help-block form-control form-control-line text-center">基础信息</p>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label form-label">商户名称</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static">云邮天下有限公司</p>
+                            <div style="width: 108px;height: 108px;border: 1px solid #f1f1f1;border-radius: 3px;margin-bottom: 15px;">
+                                <img width="100%" src="img/cobe_img.jpg" ms-attr="{src:##logoUrl}" alt="门店logo">
+                            </div>
+                            <span class="help-block">如商户信息由变更，请在<a href="javascript:;">卡券商户资料更新</a>。</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label form-label">卡券颜色</label>
+                        <div class="col-sm-10">
+                            <div class="checkbox checkbox-inline checkbox-warning">
+                                <input type="checkbox" id="inlineCheckbox11" value="option1">
+                                <label for="inlineCheckbox11"> 图片 </label>
+                            </div>
+                            <div class="checkbox checkbox-success checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox12" value="option1" checked="">
+                                <label for="inlineCheckbox12"> 颜色 </label>
+                            </div>
+                            <div style="margin-top: .5em">
+                                <button type="button" class="btn btn-light btn-sm">选择会员卡背景图片</button>
+                                <button type="button" class="btn btn-success btn-sm">上传会员卡背景图片</button>
+                                <button type="button" class="btn btn-success btn-sm">选择会员卡背景颜色</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="input002" class="col-sm-2 control-label form-label">制卷数量</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="input002">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="input002" class="col-sm-2 control-label form-label">会员卡标题</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="input003">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="input2" class="col-sm-2 control-label form-label">有效期</label>
+                        <div class="col-sm-6">
+                            <div class="checkbox checkbox-inline checkbox-warning">
+                                <input type="checkbox" id="inlineCheckbox1" value="option1">
+                                <label for="inlineCheckbox1"> 图片 </label>
+                            </div>
+                            <div class="checkbox checkbox-success checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox2" value="option1" checked="">
+                                <label for="inlineCheckbox2"> 颜色 </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="input3" class="col-sm-2 control-label form-label">可用时段</label>
+                        <div class="col-sm-10">
+                            <div class="checkbox checkbox-inline checkbox-warning">
+                                <input type="checkbox" id="inlineCheckbox110" value="option1">
+                                <label for="inlineCheckbox110"> 图片 </label>
+                            </div>
+                            <div class="checkbox checkbox-success checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox120" value="option1" checked="">
+                                <label for="inlineCheckbox120"> 颜色 </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="input4" class="col-sm-2 control-label form-label">会员卡优惠</label>
+                        <div class="col-sm-10">
+                            <div class="checkbox checkbox-inline checkbox-warning">
+                                <input type="checkbox" id="inlineCheckbox111" value="option1">
+                                <label for="inlineCheckbox111"> 图片 </label>
+                            </div>
+                            <div class="checkbox checkbox-success checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox121" value="option1" checked="">
+                                <label for="inlineCheckbox121"> 颜色 </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group has-warning">
+                        <p class="help-block form-control form-control-line text-center">会员卡详情</p>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label form-label">Textarea</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="3" id="textarea1" placeholder="Type your message..."></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label form-label">Textarea</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="3" id="textarea1" placeholder="Type your message..."></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group has-error">
+                        <p class="help-block form-control form-control-line text-center">商户介绍</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="input002" class="col-sm-2 control-label form-label">制卷数量</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="input002">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="input002" class="col-sm-2 control-label form-label">会员卡标题</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="input003">
+                        </div>
+                    </div>
+                    <div class="form-group has-warning">
+                        <p class="help-block form-control form-control-line text-center">功能设置</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label form-label">使用须知</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="3" id="textarea1" placeholder="Type your message..."></textarea>
+                        </div>
+                    </div>
+                    <div class="enter">
+                        <div class="form-group">
+                            <p class="help-block form-control form-control-line text-center">入口1</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label form-label">入口名称</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" placeholder="入口名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label form-label">引导语</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="input003">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label form-label">网页链接</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="input003">
+                            </div>
+                        </div>
+                    </div>
+                        <div class="form-group text-center" style="margin-bottom: 0">
+                            <button type="button" class="btn btn-light btn-sm">添加自定义入口</button>
+                            <p style="margin-top: 1em">可配置图文消息、货架、网页链接用户可查看详情或领取卡券。</p>
+                        </div>
+
+                    <div class="form-group">
+                        <p class="help-block form-control form-control-line text-center"></p>
+                    </div>
+                    <div class="form-group text-center">
+                        <button class="btn btn-default">保存提交</button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-widget blog-post">
+            <div class="panel-body">
+                <div class="image-div color10-bg">
+                    <img src="img/example1.jpg" style="visibility:visible" class="image" alt="img">
+                    <div class="title">
+                        <p class="author">
+                            <img src="img/profileimg.png" alt="img">
+                            <span>重庆云邮天下会员卡</span>
+                            <span style="font-size: 14px;margin-top: 5px;color: #4c4c4c">铂金会员卡</span>
+                        </p>
+                    </div>
+                    <p class="card-number">No.2514524154</p>
+                </div>
+                <p class="text">There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally...</p>
+                <a href="#">Read More</a>
+                <p class="author">
+                    <img src="img/profileimg.png" alt="img">
+                    <span>Jonathan Doe</span>
+                    Designer
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    require(['card'],function (card) {
+        var url = {
+            getOfflinepayList:'json/offlinepaylist.json',
+            getDeptTree:'json/treejson.json',
+            editPayUrl:'json/offlinepaylist.json',
+            addPayUrl:'json/offlinepaylist.json',
+            refundMoneyUrl:'',
+            logoUrl:'json/offlinepaylist.json'//上传logo地址
+        };
+        card.init_start(url);
+    })
+</script>
