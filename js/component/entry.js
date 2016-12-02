@@ -50,7 +50,7 @@ define(['avalon','bootstrap','niceScroll','featurepack','sweet_alert','summernot
                     isSave?(function () {
                         var pData = {
                             gid:basicInfo.basicInfoData.gid,
-                            description:'',
+                            description:description.description,
                             detailInfo:$('#summernote').summernote('code')
                         };
                         cloudMail.saveDescription(pData)
@@ -78,7 +78,7 @@ define(['avalon','bootstrap','niceScroll','featurepack','sweet_alert','summernot
                                 })
                             })
                         });
-                        postD.data =pData.toString();
+                        postD.data =JSON.stringify(pData);
                         postD.gid = basicInfo.basicInfoData.gid;
                         cloudMail.saveAttribute(postD)
                     })():(function () {
@@ -265,7 +265,7 @@ define(['avalon','bootstrap','niceScroll','featurepack','sweet_alert','summernot
         data = new FormData();
         data.append("file", file);
         $.ajax({
-            data: data,
+            data: {imgData:data,git:basicInfo.basicInfoData.gid},
             type: "POST",
             url: entryUrl.sendFile,//上传地址
             cache: false,

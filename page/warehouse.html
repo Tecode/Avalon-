@@ -328,6 +328,36 @@
                             </div>
                             <div role="tabpanel" class="tab-pane" id="attr">
                                 <div class="row ms-controller" ms-controller="addImage">
+                                    <div class="col-md-12" ms-if="##uploadedImage.length>0">
+                                        <div class="panel panel-default">
+                                            <div class="panel-title">
+                                                已经添加的图片
+                                                <ul class="panel-tools">
+                                                    <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4 col-lg-3 fade-slide" ms-for="el in ##uploadedImage">
+                                                    <div class="panel panel-default">
+                                                        <div class="status">
+                                                            <ul class="panel-tools panel-tools-hover">
+                                                                <li><a class="icon closed-tool" ms-click="##deleteImage(el,1,$event)"><i class="fa fa-times"></i></a></li>
+                                                            </ul>
+                                                            <div class="who clearfix">
+                                                                <span class="from">图片名称：{{el.imageName | truncate(25,'...')}}</span>
+                                                            </div>
+                                                            <div class="image">
+                                                                <img ms-attr="{src:el.imageUrl}" alt="img">
+                                                            </div>
+                                                            <ul class="links">
+                                                                <li><a href="#">图片大小： {{el.imageSize/1024 | number(0)}}KB</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-md-12">
                                         <div class="panel panel-default">
                                             <div class="panel-title">
@@ -439,7 +469,8 @@
             saveBasicInfoUrl:'json/entry.json',//保存基本信息
             sendFile:'json/entry.json',//保存编辑框的图片
             saveDescriptionUrl:'json/entry.json',//保存编辑器里面的内容
-            saveAttributeUrl:'json/entry.type.json'//保存修改的属性
+            saveAttributeUrl:'json/entry.type.json',//保存修改的属性
+            deleteUploadedImageUrl:'json/entry.type.json'//删除已经上传的图片
         };
         warehouse.init_start(url,entryUrl);
     })

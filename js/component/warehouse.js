@@ -13,10 +13,11 @@ define(['avalon','bootstrap','niceScroll','featurepack','sweet_alert','summernot
             showList = avalon.define({
                 $id:"showList",
                 listData:[],
+                gid:'0',
                 select:[],
-                filldata:{},
                 edit:function (el) {
                     cloudMail.getEntry({type:postdata.type,gid:el.gid});
+                    showList.gid = el.gid;
                     $(".childPages,.childPages .page-header").fadeIn(100).css("top","60px");
                 },
                 clearAttr: function () {
@@ -85,6 +86,7 @@ define(['avalon','bootstrap','niceScroll','featurepack','sweet_alert','summernot
                     }
                     pData.tid = $('.commodityType').val();
                     pData.cmid = $('.fengleiType').val();
+                    pData.gid = showList.gid;
                         delete pData.sort;
                         delete pData.productDescription;
                         delete pData.description;
@@ -101,8 +103,8 @@ define(['avalon','bootstrap','niceScroll','featurepack','sweet_alert','summernot
                 saveDescription:function () {
                     isSave?(function () {
                         var pData = {
-                            gid:basicInfo.basicInfoData.gid,
-                            description:'',
+                            gid:showList.gid,
+                            description:description.description,
                             detailInfo:$('#summernote').summernote('code')
                         };
                         cloudMail.saveDescription(pData)
@@ -130,8 +132,8 @@ define(['avalon','bootstrap','niceScroll','featurepack','sweet_alert','summernot
                                 })
                             })
                         });
-                        postD.data =pData.toString();
-                        postD.gid = basicInfo.basicInfoData.gid;
+                        postD.data =JSON.stringify(pData);
+                        postD.gid = showList.gid;
                         cloudMail.saveAttribute(postD)
                     })():(function () {
                         swal("请先保存基本信息！","如果未填写基本信息所有商品信息将不会被保存！", "error");
@@ -144,6 +146,7 @@ define(['avalon','bootstrap','niceScroll','featurepack','sweet_alert','summernot
             });
             addImage = avalon.define({
                 $id:"addImage",
+                uploadedImage:[],
                 postImageData:[],
                 removeData:[],//上传删除的文件，如果上传中途删除了文件要在上传时把删除的移除掉
                 removeImage:function (el,value,event) {
@@ -165,6 +168,21 @@ define(['avalon','bootstrap','niceScroll','featurepack','sweet_alert','summernot
                                 addImage.postImageData.remove(el);
                                 swal("移除成功!", "您已经成功移除了这张图片，点击OK关闭窗口。", "success");
                             },200);
+                        });
+                },
+                deleteImage:function (el,value,event) {//删除已经上传的图片
+                    swal({
+                            title: "确定移除这张图片?",
+                            text: "移除以后将不会恢复!",
+                            type: "warning",
+                            showCancelButton: true,
+                            cancelButtonText: "取消",
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "确定",
+                            closeOnConfirm: false
+                        },
+                        function () {
+                        cloudMail.deleteUploadedImage({gid:showList.gid,url:el.imageUrl},removedata);//删除已经上传的图片
                         });
                 }
             });
@@ -249,11 +267,13 @@ define(['avalon','bootstrap','niceScroll','featurepack','sweet_alert','summernot
         getEntry:function (d) {
             featurepack.pack.ajax(dataUrl.getEntry,"get",d,function (result) {
                 if(result.code == 0){
-                    basicInfo.leixings = result.lxfl.leixings;
-                    basicInfo.fenleis = result.lxfl.fenleis;
-                    attribute.attributeData = result.attrvals;
-                    basicInfo.basicInfoData = result.waremessage;
-                    console.info(result.waremessage)
+                    basicInfo.leixings = result.lxfl.leixings;//获取类型下拉菜单
+                    basicInfo.fenleis = result.lxfl.fenleis;//获取分类下拉菜单
+                    attribute.attributeData = result.attrvals;//获取商品属性
+                    basicInfo.basicInfoData = result.waremessage;//获取基本信息填充数据
+                    description.description = result.waremessage.description;//描述信息
+                    $('#summernote').summernote('code', result.waremessage.productDescription);//填充商品图文描述
+                    addImage = 1;//预览的图片
                     featurepack.pack.option();
                 }else{
                     swal(result.msg,"", "error");
@@ -407,7 +427,7 @@ define(['avalon','bootstrap','niceScroll','featurepack','sweet_alert','summernot
             data = new FormData();
             data.append("file", file);
             $.ajax({
-                data: data,
+                data: {imgData:data,git:showList.gid},
                 type: "POST",
                 url: entryUrl.sendFile,//上传地址
                 cache: false,
@@ -434,6 +454,16 @@ define(['avalon','bootstrap','niceScroll','featurepack','sweet_alert','summernot
             $(".controls").on("click",".selectpicker a",function () {
                 cloudMail.getAttributeData({tid:$('.commodityType').val()});
             });
+        },
+        deleteUploadedImage:function (d,data) {
+            featurepack.pack.ajax(entryUrl.deleteUploadedImageUrl,"post",d,function (result) {
+                if(result.code == 0){
+                    swal("删除成功!", "图片删除成功，点击OK关闭窗口。", "success");
+                    showList.uploadedImage.remove(data);
+                }else{
+                    swal(result.msg,"", "error");
+                }
+            })
         }
 
     };
@@ -448,7 +478,7 @@ define(['avalon','bootstrap','niceScroll','featurepack','sweet_alert','summernot
         featurepack.pack.toggleTops();
         featurepack.pack.datePicker(cloudMail.getTime,"#date-range-picker",false);
         featurepack.pack.noScroll();
-        featurepack.pack.expand();
+        // featurepack.pack.expand();
         //输入框
         cloudMail.initSummernote();
         //分页和查询
