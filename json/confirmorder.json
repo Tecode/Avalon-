@@ -1,0 +1,123 @@
+
+{
+  "code": 0,
+  "msg": "获取成功.",
+  "data": {
+    "orderlist": [
+      {
+        "orderID": "1021",
+        "orderNumber": "901023565522327441",
+        "uid": 67,
+        "username": "崔灿",
+        "wxorderNumber": "1381414702201612021307039503",
+        "orderStatus": "待确认",
+        "oprice": 0.01,
+        "orderDate": "2016-12-02 13:07:03",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "1020",
+        "orderNumber": "901023565070516624",
+        "uid": 67,
+        "username": "崔灿",
+        "wxorderNumber": "1381414702201612021151451640",
+        "orderStatus": "待确认",
+        "oprice": 0.01,
+        "orderDate": "2016-12-02 11:51:45",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "1019",
+        "orderNumber": "901023565054315825",
+        "uid": 67,
+        "username": "崔灿",
+        "wxorderNumber": "1381414702201612021149039491",
+        "orderStatus": "待确认",
+        "oprice": 0.01,
+        "orderDate": "2016-12-02 11:49:03",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "1017",
+        "orderNumber": "901023264462638534",
+        "uid": 64,
+        "username": "匆匆",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 0.01,
+        "orderDate": "2016-12-0210:10:26",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "1016",
+        "orderNumber": "901023264281357599",
+        "uid": 64,
+        "username": "匆匆",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 0.01,
+        "orderDate": "2016-12-02 09:40:13",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "1015",
+        "orderNumber": "901023264224990928",
+        "uid": 64,
+        "username": "匆匆",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 0.01,
+        "orderDate": "2016-12-02 09:30:49",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "1014",
+        "orderNumber": "901023564162910830",
+        "uid": 67,
+        "username": "崔灿",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 0.02,
+        "orderDate": "2016-12-02 09:20:29",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "1013",
+        "orderNumber": "901023259982474024",
+        "uid": 64,
+        "username": "匆匆",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 0.01,
+        "orderDate": "2016-12-01 21:43:44",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      },
+      {
+        "orderID": "1012",
+        "orderNumber": "901023259973168995",
+        "uid": 64,
+        "username": "匆匆",
+        "wxorderNumber": "",
+        "orderStatus": "待付款",
+        "oprice": 0.01,
+        "orderDate": "2016-12-0121:42:11",
+        "zffs": "支付方式",
+        "psfs": "自配"
+      }
+    ],
+    "pagejson": {
+      "pagesize": 20,
+      "pagecount": 6,
+      "pageindex": 0,
+      "totalcount":500
+    }
+  }
+}

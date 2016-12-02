@@ -50,7 +50,8 @@ var require = {
         manager:'component/manager',//权限管理
         warehouse:'component/warehouse',//商品信息
         pointssetting:'component/pointssetting',//会员卡积分设置
-        entry:'component/entry'//商品录入
+        entry:'component/entry',//商品录入
+        confirmorder:'component/confirmorder'//待确认订单
 
 
     },
