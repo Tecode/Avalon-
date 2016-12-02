@@ -390,7 +390,7 @@ define(['jquery', 'avalon', 'daterangepicker', 'moment', 'sweet_alert'], functio
                 });
                 document.querySelector('#btnCrop').addEventListener('click', function(){
                     var img = cropper.getDataURL();
-                    fn.call(this,img);
+                    fn.call(this,img,cropper);
                     $(".cropbox").hide();
                     $(".cropimg button").before('<img src="'+img+'">').parent().fadeIn();
                 });

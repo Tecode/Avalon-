@@ -1,4 +1,6 @@
 
+
+<link rel="stylesheet" href="js/bower_components/cropbox/javascript/example/style.css">
 <link rel="stylesheet" href="js/bower_components/jstree/dist/themes/default/style.css">
 <div class="page-header">
     <h1 class="title">线下支付</h1>
@@ -147,9 +149,13 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label form-label">门店Logo</label>
+                                    <label class="col-sm-3 control-label form-label">门店logo</label>
                                     <div class="col-sm-9">
-                                        <div class="select-dept form-control"></div>
+                                        <div style="width: 108px;height: 108px;border: 1px solid #f1f1f1;border-radius: 3px;margin-bottom: 15px;">
+                                            <img width="100%" src="img/cobe_img.jpg" ms-attr="{src:##logoUrl}" alt="门店logo">
+                                        </div>
+                                        <button type="button" class="btn btn-sm btn-light" ms-click="##uploadimg">上传门店logo</button>
+                                        <input type="file" id="file" style="display: none">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -159,7 +165,35 @@
                                 </div>
 
                             </form>
-
+                            <!--弹出裁剪框-->
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>-->
+                                            <h4 class="modal-title">裁切图像</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="cropbox">
+                                                <div class="imageBox">
+                                                    <div class="thumbBox"></div>
+                                                    <div class="spinner" style="display: none">Loading...</div>
+                                                </div>
+                                                <div class="action">
+                                                    <input type="button" id="btnCrop" value="裁剪" class="btn btn-default btn-block" style="margin: 0 auto;margin-top: 20px;width: 78%;">
+                                                </div>
+                                            </div>
+                                            <div class="cropimg" style="display: none">
+                                                <button type="button" id="saveimg"  class="btn btn-default btn-block" style="margin: 0 auto;margin-top: 10px;width: 78%;">提交并保存</button>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="loader" style="display: none"></div>
+                            <button style="display: none" id="modalicon" data-toggle="modal" data-target="#myModal"></button>
                         </div>
 
                     </div>
@@ -207,7 +241,8 @@
             getDeptTree:'json/treejson.json',
             editPayUrl:'json/offlinepaylist.json',
             addPayUrl:'json/offlinepaylist.json',
-            refundMoneyUrl:''
+            refundMoneyUrl:'',
+            logoUrl:'json/offlinepaylist.json'//上传logo地址
         };
         offlinepay.init_start(url);
     })
