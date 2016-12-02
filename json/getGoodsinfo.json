@@ -58,8 +58,8 @@
     "sellingPrice": 10,
 
     "sort": 0,
-    "productDescription": "",
-    "description": "",
+    "productDescription": "<div class='image'><img ms-attr='{src:key.ppUrl}' alt='banner图片' src='img/example1.jpg'>商品描述信息</div>",
+    "description": "50块的商品",
     "tid": 0,
     "cmid": 0,
     "imgs": []

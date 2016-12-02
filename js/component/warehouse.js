@@ -454,6 +454,14 @@ define(['avalon','bootstrap','niceScroll','featurepack','sweet_alert','summernot
             $(".controls").on("click",".selectpicker a",function () {
                 cloudMail.getAttributeData({tid:$('.commodityType').val()});
             });
+            //点击菜单栏隐藏弹出窗
+            $(".sidebar-open-button").on('click',function () {
+                $(".childPages,.childPages .page-header").css("top","260px").fadeOut(100);
+            });
+            //返回按钮
+            $('.getBack').on('click',function () {
+                $(".childPages,.childPages .page-header").css("top","260px").fadeOut(100);
+            });
         },
         deleteUploadedImage:function (d,data) {
             featurepack.pack.ajax(entryUrl.deleteUploadedImageUrl,"post",d,function (result) {
@@ -471,14 +479,13 @@ define(['avalon','bootstrap','niceScroll','featurepack','sweet_alert','summernot
     var initStart = function (url,l) {
         dataUrl = url;
         entryUrl = l;
-        $('.getBack').on('click',function () {
-            $(".childPages,.childPages .page-header").css("top","260px").fadeOut(100);
-        });
         //下拉选项初始化
         featurepack.pack.toggleTops();
         featurepack.pack.datePicker(cloudMail.getTime,"#date-range-picker",false);
         featurepack.pack.noScroll();
         // featurepack.pack.expand();
+        cloudMail.init();
+
         //输入框
         cloudMail.initSummernote();
         //分页和查询
