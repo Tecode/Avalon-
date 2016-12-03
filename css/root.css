@@ -21,7 +21,9 @@ Main Css
 /* ================================================
 Plugin Css
 ================================================ */
+/*@import url('plugin/nprogress/style.css');*/
 /* Awesome Bootstrap Checkbox */
+
 @import url('plugin/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css');
 
 /* Bootstrap Select */

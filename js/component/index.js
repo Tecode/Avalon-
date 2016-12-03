@@ -1,5 +1,6 @@
-require(['avalon', 'bootstrap', 'bootstrap_toggle', 'bootstrap_select', 'sammy', 'featurepack'], function (avalon, bootstrap, bootstrap_toggle, bootstrap_select, Sammy, featurepack) {
+require(['avalon', 'bootstrap', 'bootstrap_toggle', 'bootstrap_select', 'sammy', 'featurepack','nprogress'], function (avalon, bootstrap, bootstrap_toggle, bootstrap_select, Sammy, featurepack,NProgress) {
 
+    NProgress.start();
     var indexList,messageList;
     var Fn = function () {
         this.init_evevt = function () {

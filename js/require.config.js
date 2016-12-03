@@ -22,6 +22,7 @@ var require = {
         cropbox:'bower_components/cropbox/javascript/cropbox-min',
         summernote:'bower_components/summernote/dist/summernote.min',
         language:'bower_components/summernote/dist/lang/summernote-zh-CN.min',
+        nprogress:'bower_components/nprogress/nprogress',
 
 
         paycount:'component/paycount',//收款统计
@@ -51,7 +52,7 @@ var require = {
         warehouse:'component/warehouse',//商品信息
         pointssetting:'component/pointssetting',//会员卡积分设置
         entry:'component/entry',//商品录入
-        confirmorder:'component/confirmorder'//待确认订单
+        confirmorder:'component/confirmorder',//待确认订单
 
 
     },
