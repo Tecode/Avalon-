@@ -216,6 +216,7 @@
 <script>
     require(['card'],function (card) {
         var url = {
+            getResponseUrl:'json/wechatcard.json',//获取编辑的数据地址栏有参数才会请求
             addBackgroundImageUrl:'json/offlinepaylist.json'//上传背景图片
         };
         card.init_start(url);

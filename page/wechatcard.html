@@ -1,5 +1,4 @@
 
-<link rel="stylesheet" href="js/bower_components/jstree/dist/themes/default/style.css">
 <div class="page-header">
     <h1 class="title">微信会员卡</h1>
     <ol class="breadcrumb">
@@ -27,7 +26,7 @@
                         <input type="text" class="form-control" id="joinname" ms-duplex="##joinname" placeholder="会员卡名称">
                     </div>
                     <button type="button" class="btn btn-default submitbutton" style="margin-right: 1em" ms-click="##searchButton">查询订单</button>
-                    <button type="button" class="btn btn-success submitbutton" ms-click="##addGift">新增会员卡</button>
+                    <a href="#/card" type="button" class="btn btn-success submitbutton">新增会员卡</a>
                 </form>
 
             </div>
@@ -54,7 +53,10 @@
             <tbody>
             <tr ms-for="key in ##wechatCardList">
                 <td>{{key.joinname}}</td>
-                <td>{{key.color}}</td>
+                <td>
+                    <div class="imgDisplayBox" style="border: none" ms-css="{backgroundColor:key.color}">
+                    </div>
+                </td>
                 <td>
                     <div class="imgDisplayBox">
                         <img ms-attr="{src:key.gift_img}" height="auto" width="100%"/>
@@ -66,73 +68,12 @@
                 <td>{{key.phone}}</td>
                 <td>{{key.remark}}</td>
                 <td><span class="color-down" ms-if="key.statecard==0">未审核</span><span class="color-up" ms-if="key.statecard==1">已审核</span></td>
-                <td><a href="javascript:;" style="margin-right: 1em" ms-click="##editGift(key)">编辑</a><a href="javascript:;" ms-click="##downGift(key)">删除</a></td>
+                <td><a href="javascript:;" style="margin-right: 1em" ms-click="##editCard(key)">编辑</a><a href="javascript:;" ms-click="##deleteCard(key)">删除</a></td>
             </tr>
             </tbody>
         </table>
     </div>
-    <!-- 弹出的大框框 -->
-    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-md">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><strong>礼品管理</strong></h4>
-                </div>
-                <div class="modal-body">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <form class="form-horizontal" action="#/giftmanage" ms-validate="##validate">
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label form-label">礼品名称</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" ms-focus="##clearAttr" ms-rules="{required:true}" ms-duplex="##filldata.gift_name" data-required-message="礼品名称不能为空！" placeholder="取个名称，方便随时查看" class="form-control" id="input11">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label form-label">所需积分</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" ms-focus="##clearAttr" ms-rules="{digits:true}" ms-duplex="##filldata.c_totalfee" data-digits-message="积分必须是整数！" placeholder="输入兑换所需的积分数量" class="form-control" id="input12">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label form-label">库存（个）</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" ms-focus="##clearAttr" ms-rules="{digits:true}" ms-duplex="##filldata.gift_stock" data-digits-message="库存数量必须是整数！" placeholder="输入总的库存数量" class="form-control" id="input13">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label form-label">描述</label>
-                                    <div class="col-sm-9">
-                                        <textarea class="form-control" rows="3" ms-rules="{norequired:true,minlength:5}" ms-duplex="##filldata.description" :focus="##clearAttr" data-minlength-message="描述不能少于5个字符！" placeholder="输入该商品的描述" id="textarea1"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label form-label">商品图片</label>
-                                    <div class="col-sm-9">
-                                        <div class="select-dept form-control"></div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-9">
-                                        <button type="submit" class="btn btn-default">保存</button>
-                                    </div>
-                                </div>
 
-                            </form>
-
-                        </div>
-
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
-                    <!--<button type="button" class="btn btn-default" data-dismiss="modal">保存</button>-->
-                </div>
-            </div>
-        </div>
-    </div>
     <!--是否要删除-->
     <!--遮罩mask-->
     <div class="sweet-overlay" tabindex="-1" style="opacity: -0.01; display: none;"></div>
