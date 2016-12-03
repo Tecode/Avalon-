@@ -4471,3 +4471,64 @@ form .tips-msg{
     -o-transition: opacity .15s linear;
     transition: opacity .15s linear
 }
+/*颜色块*/
+.popover-content .colors {
+  width: 130px;
+  height: 55px;
+}
+
+.colors .topColors, .colors .bottomColors {
+  clear: both;
+}
+
+.colors .topColors div, .colors .bottomColors div {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  margin-top: 5px;
+  float: left;
+}
+
+.colors .bottomColors div {
+  margin-bottom: 5px;
+}
+
+.popover-content .color-top-1 {
+  background-color: #63b359;
+}
+
+.popover-content .color-top-2 {
+  background-color: #2c9f67;
+}
+
+.popover-content .color-top-3 {
+  background-color: #509fc9;
+}
+
+.popover-content .color-top-4 {
+  background-color: #5885cf;
+}
+
+.popover-content .color-top-5 {
+  background-color: #9062c0;
+}
+
+.popover-content .color-bottom-1 {
+  background-color: #d09a45;
+}
+
+.popover-content .color-bottom-2 {
+  background-color: #e4b138;
+}
+
+.popover-content .color-bottom-3 {
+  background-color: #ee903c;
+}
+
+.popover-content .color-bottom-4 {
+  background-color: #f08500;
+}
+
+.popover-content .color-bottom-5 {
+  background-color: #a9d92d;
+}

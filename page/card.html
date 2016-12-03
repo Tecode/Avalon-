@@ -3,43 +3,35 @@
     <h1 class="title">微信会员卡</h1>
     <ol class="breadcrumb">
         <li><a href="javascript:;">会员卡管理</a></li>
-        <li class="javascript:;">会员卡</li>
+        <li>会员卡</li>
     </ol>
 
     <div class="right">
         <div class="btn-group" role="group" aria-label="...">
-            <a href="index.html" class="btn btn-light">Dashboard</a>
-            <a href="#" class="btn btn-light"><i class="fa fa-refresh"></i></a>
-            <a href="#" class="btn btn-light"><i class="fa fa-search"></i></a>
-            <a href="#" class="btn btn-light" id="topstats"><i class="fa fa-line-chart"></i></a>
+            <a href="javascript:;" class="btn btn-light">会员卡</a>
+            <a href="javascript:;" class="btn btn-light"><i class="fa fa-refresh"></i></a>
         </div>
     </div>
 
 </div>
 
-<div class="row">
+<div class="row ms-controller" ms-controller="vipcard">
     <div class="col-md-8">
         <div class="panel panel-default">
             <div class="panel-title">
                 会员卡配置
-                <ul class="panel-tools">
-                    <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
-                    <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
-                    <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
-                </ul>
             </div>
-
             <div class="panel-body">
-                <form class="form-horizontal">
-                    <div class="form-group has-success">
+                <form class="form-horizontal" ms-validate="##validate" action="#/card">
+                    <div class="form-group">
                         <p class="help-block form-control form-control-line text-center">基础信息</p>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label form-label">商户名称</label>
                         <div class="col-sm-10">
-                            <p class="form-control-static">云邮天下有限公司</p>
+                            <p class="form-control-static">{{##vipData.c_joinName}}</p>
                             <div style="width: 108px;height: 108px;border: 1px solid #f1f1f1;border-radius: 3px;margin-bottom: 15px;">
-                                <img width="100%" src="img/cobe_img.jpg" ms-attr="{src:##logoUrl}" alt="门店logo">
+                                <img width="100%" src="img/cobe_img.jpg" ms-attr="{src:##vipData.c_joinLogoUrl}" alt="门店logo">
                             </div>
                             <span class="help-block">如商户信息由变更，请在<a href="javascript:;">卡券商户资料更新</a>。</span>
                         </div>
@@ -47,143 +39,137 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label form-label">卡券颜色</label>
                         <div class="col-sm-10">
-                            <div class="checkbox checkbox-inline checkbox-warning">
-                                <input type="checkbox" id="inlineCheckbox11" value="option1">
-                                <label for="inlineCheckbox11"> 图片 </label>
+                            <div class="radio radio-info radio-inline">
+                                <input type="radio" id="inlineRadio1" value="1" ms-change="##toggleBg" ms-duplex="##vipData.c_cardType">
+                                <label for="inlineRadio1"> 图片 </label>
                             </div>
-                            <div class="checkbox checkbox-success checkbox-inline">
-                                <input type="checkbox" id="inlineCheckbox12" value="option1" checked="">
-                                <label for="inlineCheckbox12"> 颜色 </label>
+                            <div class="radio radio-inline radio-warning">
+                                <input type="radio" id="inlineRadio2" value="2" ms-change="##toggleBg" ms-duplex="##vipData.c_cardType">
+                                <label for="inlineRadio2"> 颜色 </label>
                             </div>
                             <div style="margin-top: .5em">
-                                <button type="button" class="btn btn-light btn-sm">选择会员卡背景图片</button>
-                                <button type="button" class="btn btn-success btn-sm">上传会员卡背景图片</button>
-                                <button type="button" class="btn btn-success btn-sm">选择会员卡背景颜色</button>
+                                <button type="button" ms-visible="##vipData.c_cardType==1" id="pickfiles" class="btn btn-light btn-sm" style="margin-right: 1em">选择会员卡背景图片</button>
+                                <button type="button" ms-visible="##vipData.c_cardType==1" id="uploadfiles" class="btn btn-info btn-sm">上传会员卡背景图片</button>
+                                <button type="button" ms-visible="##vipData.c_cardType==2" class="btn btn-warning btn-sm" data-container="body" data-toggle="popover" data-placement="top" data-content="	<div class='colors'>
+    	<div class='topColors'>
+        	<div class='color-top-1' data='Color010' ms-click='##choiceColor'></div>
+        	<div class='color-top-2' data='Color020'></div>
+        	<div class='color-top-3' data='Color030'></div>
+        	<div class='color-top-4' data='Color040'></div>
+        	<div class='color-top-5' data='Color050'></div>
+        </div>
+        <div class='bottomColors'>
+        	<div class='color-bottom-1' data='Color060'></div>
+        	<div class='color-bottom-2' data='Color070'></div>
+        	<div class='color-bottom-3' data='Color080'></div>
+        	<div class='color-bottom-4' data='Color081'></div>
+        	<div class='color-bottom-5' data='Color082'></div>
+        </div>
+    </div>" data-original-title="" title="">
+                                    选择会员卡背景颜色
+                                </button>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="input002" class="col-sm-2 control-label form-label">制卷数量</label>
+                        <label for="input03" class="col-sm-2 control-label form-label">会员卡标题</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="input002">
+                            <input type="text" ms-focus="##clearAttr" class="form-control" placeholder="最多9个字符(必填)" ms-rules="{required:true,maxlength:9}" data-required-message="必须填写会员卡标题！" data-maxlength-message="不能超过9个字符！" ms-duplex="##vipData.c_joinTitle">
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="input002" class="col-sm-2 control-label form-label">会员卡标题</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="input003">
-                        </div>
-                    </div>
-
                     <div class="form-group">
                         <label for="input2" class="col-sm-2 control-label form-label">有效期</label>
                         <div class="col-sm-6">
-                            <div class="checkbox checkbox-inline checkbox-warning">
-                                <input type="checkbox" id="inlineCheckbox1" value="option1">
-                                <label for="inlineCheckbox1"> 图片 </label>
-                            </div>
-                            <div class="checkbox checkbox-success checkbox-inline">
-                                <input type="checkbox" id="inlineCheckbox2" value="option1" checked="">
-                                <label for="inlineCheckbox2"> 颜色 </label>
-                            </div>
+                            <p class="form-control-static">永久有效</p>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="input3" class="col-sm-2 control-label form-label">可用时段</label>
                         <div class="col-sm-10">
-                            <div class="checkbox checkbox-inline checkbox-warning">
-                                <input type="checkbox" id="inlineCheckbox110" value="option1">
-                                <label for="inlineCheckbox110"> 图片 </label>
-                            </div>
-                            <div class="checkbox checkbox-success checkbox-inline">
-                                <input type="checkbox" id="inlineCheckbox120" value="option1" checked="">
-                                <label for="inlineCheckbox120"> 颜色 </label>
-                            </div>
+                            <p class="form-control-static">全部时段</p>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="input4" class="col-sm-2 control-label form-label">会员卡优惠</label>
                         <div class="col-sm-10">
-                            <div class="checkbox checkbox-inline checkbox-warning">
-                                <input type="checkbox" id="inlineCheckbox111" value="option1">
-                                <label for="inlineCheckbox111"> 图片 </label>
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox111" value="1" checked="checked" disabled="disabled">
+                                <label for="inlineCheckbox111"> 显示积分 </label>
                             </div>
-                            <div class="checkbox checkbox-success checkbox-inline">
-                                <input type="checkbox" id="inlineCheckbox121" value="option1" checked="">
-                                <label for="inlineCheckbox121"> 颜色 </label>
+                            <div class="checkbox checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox121" value="2" checked="checked" disabled="disabled">
+                                <label for="inlineCheckbox121"> 支持储值 </label>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group has-warning">
+                    <div class="form-group">
+                        <label for="input02" class="col-sm-2 control-label form-label">制卷数量</label>
+                        <div class="col-sm-6">
+                            <input type="text" ms-focus="##clearAttr"  placeholder="制券数量（必填）" class="form-control" ms-rules="{required:true}" data-required-message="必须填写制券数量！" ms-duplex="##vipData.c_joinQuantity">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <p class="help-block form-control form-control-line text-center">会员卡详情</p>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label form-label">Textarea</label>
+                        <label class="col-sm-2 control-label form-label" for="textarea3">特权说明</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" rows="3" id="textarea1" placeholder="Type your message..."></textarea>
+                            <textarea class="form-control" ms-focus="##clearAttr"  ms-rules="{required:true}" data-required-message="特权说明需要填写！" ms-duplex="##vipData.c_joinObj6" rows="3" id="textarea3" placeholder="特权说明（必填）"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label form-label">Textarea</label>
+                        <label class="col-sm-2 control-label form-label" for="textarea2">卡券说明</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" rows="3" id="textarea1" placeholder="Type your message..."></textarea>
+                            <textarea class="form-control" rows="3" ms-focus="##clearAttr"  id="textarea2" ms-rules="{required:true}" data-required-message="卡券说明需要填写！" ms-duplex="##vipData.c_joinDescription" placeholder="卡券说明（必填）"></textarea>
                         </div>
                     </div>
-                    <div class="form-group has-error">
+                    <div class="form-group">
                         <p class="help-block form-control form-control-line text-center">商户介绍</p>
                     </div>
                     <div class="form-group">
-                        <label for="input002" class="col-sm-2 control-label form-label">制卷数量</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input002">
+                        <label for="input002" class="col-sm-2 control-label form-label">电话</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" ms-focus="##clearAttr"  ms-duplex="##vipData.c_joinTel" placeholder="手机或固定电话" ms-rules="{required:true}" data-required-message="手机或固定电话需要填写！" id="input002">
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label for="input002" class="col-sm-2 control-label form-label">会员卡标题</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input003">
-                        </div>
-                    </div>
-                    <div class="form-group has-warning">
                         <p class="help-block form-control form-control-line text-center">功能设置</p>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label form-label">使用须知</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" rows="3" id="textarea1" placeholder="Type your message..."></textarea>
+                        <div class="col-sm-6">
+                            <input class="form-control" ms-focus="##clearAttr" ms-duplex="##vipData.c_joinNotice" ms-rules="{required:true,maxlength:16}" data-required-message="使用须知必须填写！" data-maxlength-message="最多输入16个字符！" placeholder="最多输入16个字符"/>
                         </div>
                     </div>
-                    <div class="enter">
+                    <div class="enter" ms-for="(index,el) in ##enterdata">
                         <div class="form-group">
-                            <p class="help-block form-control form-control-line text-center">入口1</p>
+                            <p class="help-block form-control form-control-line text-center">入口{{index+1}}<a ms-click="##deletEnter(el)" style="margin-left: 1em">删除</a></p>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label form-label">入口名称</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" placeholder="入口名称">
+                                <input type="text" ms-focus="##clearAttr" class="form-control" ms-rules="{required:true}" data-required-message="入口名称需要填写！" ms-duplex="el.rkname" placeholder="入口名称">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label form-label">引导语</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" id="input003">
+                                <input type="text" ms-focus="##clearAttr" class="form-control" ms-rules="{required:true}" data-required-message="引导语需要填写！" placeholder="引导语" ms-duplex="el.tips">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label form-label">网页链接</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" id="input003">
+                                <input type="text" ms-focus="##clearAttr" placeholder="例如:http://www.cqyytx.com" ms-rules="{url:true}" data-url-message="网页链接错误请检查！" class="form-control" ms-duplex="el.joinUrl">
                             </div>
                         </div>
                     </div>
                         <div class="form-group text-center" style="margin-bottom: 0">
-                            <button type="button" class="btn btn-light btn-sm">添加自定义入口</button>
+                            <button type="button" class="btn btn-light btn-sm" ms-click="##addEnter">添加自定义入口</button>
                             <p style="margin-top: 1em">可配置图文消息、货架、网页链接用户可查看详情或领取卡券。</p>
                         </div>
 
@@ -191,7 +177,7 @@
                         <p class="help-block form-control form-control-line text-center"></p>
                     </div>
                     <div class="form-group text-center">
-                        <button class="btn btn-default">保存提交</button>
+                        <button type="submit" class="btn btn-default">保存提交</button>
                     </div>
                 </form>
 
@@ -200,26 +186,28 @@
         </div>
     </div>
     <div class="col-md-4">
-        <div class="panel panel-widget blog-post">
-            <div class="panel-body">
-                <div class="image-div color10-bg">
-                    <img src="img/example1.jpg" style="visibility:visible" class="image" alt="img">
-                    <div class="title">
-                        <p class="author">
-                            <img src="img/profileimg.png" alt="img">
-                            <span>重庆云邮天下会员卡</span>
-                            <span style="font-size: 14px;margin-top: 5px;color: #4c4c4c">铂金会员卡</span>
-                        </p>
+        <div class="panel-widget blog-post">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="image-div" ms-css="{background:##bgColor}">
+                        <img ms-css="{visibility:##visibleAttr}" ms-attr="{src:##vipData.c_imageUrl}" class="image" alt="img">
+                        <div class="title">
+                            <p class="author">
+                                <img src="img/cobe_img.jpg" ms-attr="{src:##vipData.c_joinLogoUrl}" alt="img">
+                                <span>{{##vipData.c_joinName}}会员卡</span>
+                                <span style="font-size: 14px;margin-top: 5px;color: #4c4c4c">{{##vipData.c_joinTitle}}</span>
+                            </p>
+                        </div>
+                        <p class="card-number">No.2514524154</p>
                     </div>
-                    <p class="card-number">No.2514524154</p>
+                    <ul class="list-group">
+                        <li class="list-group-item padding-l-30 padding-r-30">适用门店<i class="pull-right fa fa-angle-right" style="line-height: 1.5em"></i></li>
+                        <li class="list-group-item padding-l-30 padding-r-30">公众号<i class="pull-right fa fa-angle-right" style="line-height: 1.5em"></i></li>
+                        <li class="list-group-item padding-l-30 padding-r-30">会员卡<i class="pull-right fa fa-angle-right" style="line-height: 1.5em"></i></li>
+                        <li class="list-group-item padding-l-30 padding-r-30" ms-for="el in ##enterdata">{{el.rkname}}<a class="pull-right" style="line-height: 1.5em">使用</a></li>
+                    </ul>
                 </div>
-                <p class="text">There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally...</p>
-                <a href="#">Read More</a>
-                <p class="author">
-                    <img src="img/profileimg.png" alt="img">
-                    <span>Jonathan Doe</span>
-                    Designer
-                </p>
+
             </div>
         </div>
     </div>
@@ -228,12 +216,7 @@
 <script>
     require(['card'],function (card) {
         var url = {
-            getOfflinepayList:'json/offlinepaylist.json',
-            getDeptTree:'json/treejson.json',
-            editPayUrl:'json/offlinepaylist.json',
-            addPayUrl:'json/offlinepaylist.json',
-            refundMoneyUrl:'',
-            logoUrl:'json/offlinepaylist.json'//上传logo地址
+            addBackgroundImageUrl:'json/offlinepaylist.json'//上传背景图片
         };
         card.init_start(url);
     })
