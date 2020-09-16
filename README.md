@@ -28,7 +28,41 @@ attribute商品属性类型管理>商品属性管理：不需要分页
     }
 ## 数据统计
 
-[https://www.tom10.co/](https://www.tom10.co/)
-[https://www.youtube.com/user/TomNr10/](https://www.youtube.com/user/TomNr10/)
-[https://www.worldbank.org](https://www.worldbank.org)
-[https://www.tom10.co/](https://www.tom10.co/)
+```
+Thanks for watching the video and if you liked, leave a like and comment and subscribe to "Woraph" channel.
+
+Youtube Channel in Korean :: https://bit.ly/2ZKjgWz
+Youtube Channel in English :: https://bit.ly/2UD7auu
+
+Country Comparison :: https://bit.ly/2IDYXmY
+Population :: https://bit.ly/2Fs0tGE
+Health & Food :: https://bit.ly/31O3B9H
+Economy & Growth :: https://bit.ly/2RA1QZ0
+Company :: https://bit.ly/2XrQTxX
+Social Protection & Labor :: https://bit.ly/2X2f7iP
+Science & Technology :: https://bit.ly/2WZBZ2k
+War & Peace :: https://bit.ly/2J1kMfg
+Gender :: https://bit.ly/2IDqKEc
+Politics :: https://bit.ly/2xd486J
+Education :: https://bit.ly/2FtC6Zn
+Entertainment :: https://bit.ly/2WYPRtQ
+Energy & Environment :: https://bit.ly/2X1LER6
+Social Media :: https://bit.ly/2YZzAVD
+Cryptocurrency :: https://bit.ly/33BpREC
+
+[FONTS]
+Name: NOTO SANS
+https://www.google.com/get/noto/#sans...
+
+[IMAGES SOURCES]
+https://www.freepik.com
+http://www.freeqration.com/featured
+https://unsplash.com
+https://pixabay.com
+
+[STATISTICS SOURCES]
+https://www.worldbank.org
+http://www.oecd.org
+http://kostat.go.kr
+https://www.un.org/en
+```
