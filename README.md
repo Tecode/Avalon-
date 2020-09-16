@@ -1,4 +1,4 @@
-# -2.0.0
+## -2.0.0
 增加新的UI交互和设计，对以前的代码进行了优化提升性能。
 
 对所有的页面都进行了改版，对已有的js进行优化通过对象的方式进行调用。
@@ -26,3 +26,9 @@ attribute商品属性类型管理>商品属性管理：不需要分页
       "pageindex": 0,
       "totalcount":500
     }
+## 数据统计
+
+[https://www.tom10.co/](https://www.tom10.co/)
+[https://www.youtube.com/user/TomNr10/](https://www.youtube.com/user/TomNr10/)
+[https://www.worldbank.org](https://www.worldbank.org)
+[https://www.tom10.co/](https://www.tom10.co/)
